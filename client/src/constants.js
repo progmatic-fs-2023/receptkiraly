@@ -30,3 +30,4 @@ export const TEMP_RECIPES = [
       'Classic homemade chocolate chip cookies with a perfect balance of chewiness and chocolate goodness.',
   },
 ];
+export const API_URL_GET_RECIPES = 'https://jsonplaceholder.typicode.com/users';

@@ -7,11 +7,11 @@ import Recipes from './pages/Recipes.jsx';
 function App() {
   const [isConnect, setIsConnect] = useState(false);
 
-  useEffect(() => {
-    fetch(`${API_URL}`).then((response) => {
-      if (response.ok) setIsConnect(true);
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${API_URL}`).then((response) => {
+  //     if (response.ok) setIsConnect(true);
+  //   });
+  // }, []);
 
   useEffect(() => {
     console.log(isConnect);
