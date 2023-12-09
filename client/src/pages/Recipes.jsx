@@ -1,4 +1,9 @@
+import RecipeCard from '../components/RecipeCard.jsx';
 const Recipes = () => {
-  return <div>Recipes</div>;
+  return (
+    <div>
+      <RecipeCard />
+    </div>
+  );
 };
 export default Recipes;
