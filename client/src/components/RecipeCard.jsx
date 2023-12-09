@@ -1,8 +1,8 @@
-const RecipeCard = () => {
+const RecipeCard = ({ name, description }) => {
   return (
     <div>
-      <h3>Recipe_name</h3>
-      <p>Recipe_description</p>
+      <h3>{name}</h3>
+      <p>{description}</p>
     </div>
   );
 };
