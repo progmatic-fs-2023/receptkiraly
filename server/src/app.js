@@ -3,6 +3,8 @@ import cors from 'cors';
 import logger from './middlewares/logger.middleware';
 import errorHandler from './middlewares/errorHandler.middleware';
 import recipeRouter from './routes/recipes.route';
+import apiRouter from './routes/api.router';
+
 
 const app = express();
 
