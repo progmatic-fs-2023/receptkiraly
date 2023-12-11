@@ -9,7 +9,7 @@ export const list = async (req, res) => {
       res.status(200).json(recipes);
     } else {
       res.status(404).json({
-        errorMessage: 'There is no receipts...',
+        errorMessage: 'There is no recipes...',
       });
     }
   } catch (err) {
