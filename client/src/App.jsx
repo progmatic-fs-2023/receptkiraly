@@ -1,20 +1,16 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { API_URL } from './constants';
 import { Route, Routes } from 'react-router-dom';
-import Recipes from './pages/Recipes.jsx';
+import Recipes from './pages/Recipes';
+import { API_URL } from './constants';
 
 function App() {
   const [isConnect, setIsConnect] = useState(false);
 
-  // useEffect(() => {
-  //   fetch(`${API_URL}`).then((response) => {
-  //     if (response.ok) setIsConnect(true);
-  //   });
-  // }, []);
-
   useEffect(() => {
-    console.log(isConnect);
+    fetch(`${API_URL}`).then((response) => {
+      if (response.ok) setIsConnect(true);
+    });
   }, []);
 
   return (
