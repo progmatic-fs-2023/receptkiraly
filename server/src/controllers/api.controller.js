@@ -1,10 +1,9 @@
-//import { *services } from '../services/api.services.js';
+// import { *services } from '../services/api.services';
 
+// GET /api/
 export const getApi = (req, res) => {
   try {
-    res
-      .status(200)
-      .send(`<html style='background-color: grey'><h1> GET URL:  ${req.url}api/ </h1></html>`);
+    res.status(200);
   } catch (err) {
     res.status(400).send({
       error: 'Internal server error.',

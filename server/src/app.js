@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 
 app.use('/api/recipes', recipeRouter);
+app.use('/api', apiRouter);
 
 app.use(errorHandler);
 
