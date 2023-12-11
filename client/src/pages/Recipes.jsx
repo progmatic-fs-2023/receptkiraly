@@ -1,11 +1,11 @@
 import RecipeCard from '../components/RecipeCard.jsx';
 import { useState, useEffect } from 'react';
-import { TEMP_RECIPES, API_URL_GET_RECIPES } from '../constants.js';
+import { API_URL } from '../constants.js';
 const Recipes = () => {
-  const [recipes, setRecipes] = useState(TEMP_RECIPES);
+  const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     const fetchRecipes = async () => {
-      const response = await fetch(API_URL_GET_RECIPES);
+      const response = await fetch(API_URL + '/recipes');
       const data = await response.json();
       setRecipes(data);
     };
