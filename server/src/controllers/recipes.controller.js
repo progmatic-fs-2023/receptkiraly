@@ -1,4 +1,4 @@
-import * as services from '../services/recipes.service.js';
+import * as services from '../services/recipes.service';
 
 // GET /api/recipes
 export const list = async (req, res) => {

@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import logger from './middlewares/logger.middleware.js';
-import errorHandler from './middlewares/errorHandler.middleware.js';
-import recipeRouter from './routes/recipes.route.js';
+import logger from './middlewares/logger.middleware';
+import errorHandler from './middlewares/errorHandler.middleware';
+import recipeRouter from './routes/recipes.route';
 
 const app = express();
 
