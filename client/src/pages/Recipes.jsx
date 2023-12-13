@@ -6,7 +6,7 @@ function Recipes() {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     const fetchRecipes = async () => {
-      const response = await fetch(`${API_URL}recipes`);
+      const response = await fetch(`${API_URL}/recipes`);
       const data = await response.json();
       setRecipes(data);
     };
