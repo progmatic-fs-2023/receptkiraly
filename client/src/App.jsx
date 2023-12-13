@@ -1,5 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Recipes from './pages/Recipes';
 import { API_URL } from './constants';
 
 function App() {
@@ -11,10 +13,6 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(isConnect);
-  }, []);
-
   return (
     <div>
       Hello project!
@@ -23,6 +21,9 @@ function App() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
+      <Routes>
+        <Route index element={<Recipes />} />
+      </Routes>
     </div>
   );
 }
