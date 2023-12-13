@@ -11,10 +11,6 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(isConnect);
-  }, []);
-
   return (
     <div>
       Hello project!
