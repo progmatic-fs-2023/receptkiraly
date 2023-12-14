@@ -14,6 +14,7 @@ app.use(logger);
 
 app.use('/api/recipes', recipeRouter);
 app.use('/api', apiRouter);
+app.use(express.static('dist'));
 
 app.use(errorHandler);
 
