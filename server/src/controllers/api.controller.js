@@ -1,5 +1,5 @@
 // GET /api/
-export const getApi = (req, res, next) => {
+export const isLive = (req, res, next) => {
   try {
     res.status(200);
   } catch (err) {
