@@ -5,7 +5,6 @@ import errorHandler from './middlewares/errorHandler.middleware';
 import recipeRouter from './routes/recipes.route';
 import apiRouter from './routes/api.router';
 
-
 const app = express();
 
 app.use(cors());
