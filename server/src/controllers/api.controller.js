@@ -1,11 +1,10 @@
+import errorHandler from "../middlewares/errorHandler.middleware";
+
 // GET /api/
-export const getApi = (req, res) => {
+export const getApi = (req, res, next) => {
   try {
     res.status(200);
   } catch (err) {
-    res.status(400).send({
-      error: 'Internal server error.',
-      message: err.message,
-    });
+    errorHandler(err, req, res, next);
   }
 };
