@@ -15,7 +15,7 @@ info:
     url: https://github.com/progmatic-fs-2023/receptkiraly
   version: 1.0.0
 servers:
-  - url: http://http://localhost:3000
+  - url: http://localhost:3000/
 paths:
   /api:
     get:
@@ -62,6 +62,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Users'
+        '400':
+          description: Recipes are not found
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/UsersNotFound'
 components:
   schemas:
     Recipes:
@@ -121,4 +127,11 @@ components:
           example: "2000-12-15"
       items:
             $ref: '#/components/schemas/Users'
-          
+    UsersNotFound:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          example: "There is no users..."
+      items:
+            $ref: '#/components/schemas/UsersNotFound'
