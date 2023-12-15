@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Recipe King - OpenAPI 3.0
+  description: |-
+    Recipe King is a unique and interactive social app that lets users easily share their favorite recipes. It's a grassroots initiative where everyday people create and share their cooking ideas with the world through the app.
+    
+    Users can scroll through a news feed of recipes and use the app to find dishes based on their preferences. Whether you're in the mood for something specific or just exploring, the app makes it simple to discover new recipes.
+    
+    
+    Additionally, Recipe King lets users challenge each other with a fun battle game. In this game, everyone can test their cooking skills and see how their recipes stack up against others in a friendly competition.
+    
+  
+  license:
+    name: GitHUB
+    url: https://github.com/progmatic-fs-2023/receptkiraly
+  version: 1.0.0
+servers:
+  - url: http://http://localhost:3000
+paths:
+  /api:
+    get:
+      tags:
+        - api
+      summary: Check the server is alive
+      description: ''
+      responses:
+        '200':
+          description: successful operation
+  /api/recipes:
+    get:
+      tags:
+        - recipes
+      summary: Get all of the recipes
+      description: ''
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipes'
+        '400':
+          description: Recipes are not found
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/RecipesNotFound'
+  /api/users:
+    get:
+      tags:
+        - users
+      summary: Get all of the users
+      description: ''
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Users'
+components:
+  schemas:
+    Recipes:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: "Spagetti Pomodoro"
+        description:
+          type: string
+          example: "paradicsomos stb..."
+        national:
+          type: string
+          example: "Olasz"
+        kcal:
+          type: integer
+          format: int64
+          example: "100"
+        glutenfree:
+          type: boolean
+          example: false
+        cookingtime:
+          type: string
+          example: "50 min"
+      items:
+            $ref: '#/components/schemas/Recipes'
+    RecipesNotFound:
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          example: "There is no recipes..."
+      items:
+            $ref: '#/components/schemas/RecipesNotFound'
+    Users:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        username:
+          type: string
+          example: "john_doe"
+        email:
+          type: string
+          example: "john@example.com"
+        password_hash:
+          type: string
+          example: "as8d7s8d45as21ds5"
+        registration_date:
+          type: string
+          example: "2000-12-15"
+      items:
+            $ref: '#/components/schemas/Users'
+          
