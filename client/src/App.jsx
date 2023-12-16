@@ -1,4 +1,3 @@
-import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Recipes from './pages/Recipes';
@@ -27,7 +26,6 @@ function App() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
-      
       {!showRegistrationForm ? (
         <button type="button" onClick={handleRegistrationButtonClick}>
           Registration
