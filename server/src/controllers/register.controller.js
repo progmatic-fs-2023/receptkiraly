@@ -10,13 +10,16 @@ export const add = async (req, res) => {
   } catch (err) {
     const usernameError = 'duplicate key value violates unique constraint "users_username_key"';
     const emailError = 'duplicate key value violates unique constraint "users_email_key"';
+    
+    let errorMsg;
 
-    const errorMsg =
-      err.message == usernameError
-        ? 'Username already taken!'
-        : err.message == emailError
-          ? 'This email was registered before!'
-          : err.message;
+    if (err.message === usernameError) {
+      errorMsg = 'Username already taken!';
+    } else if (err.message === emailError) {
+      errorMsg = 'This email was registered before!';
+    } else {
+      errorMsg = err.message;
+    }
 
     res.status(400).json({
       message: 'Bad Request',
