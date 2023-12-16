@@ -8,6 +8,7 @@ import SearchRecipes from './pages/SearchRecipes';
 import HomeNews from './pages/HomeNews';
 import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
+import RegistrationForm from './pages/Registration';
 import NoPage from './pages/NoPages';
 /* Template */
 import Banner from './components/Banner';
@@ -17,7 +18,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="app">
+    <div>
       <Banner />
       <NavigationBar />
       <ErrorBoundary FallbackComponent={Fallback}>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/recipesfeed" element={<RecipesFeed />} />
           <Route path="/searchrecipes" element={<SearchRecipes />} />
           <Route path="/battle" element={<Battle />} />
+          <Route path="/register" element={<RegistrationForm />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
       </ErrorBoundary>
