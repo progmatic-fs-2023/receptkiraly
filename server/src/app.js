@@ -5,6 +5,7 @@ import errorHandler from './middlewares/errorHandler.middleware';
 import recipeRouter from './routes/recipes.route';
 import apiRouter from './routes/api.router';
 import loginRouter from './routes/login.router';
+import registerRouter from './routes/register.route';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(logger);
 
 app.use('/api/recipes', recipeRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/register', registerRouter);
 app.use('/api', apiRouter);
 app.use(express.static('dist'));
 
