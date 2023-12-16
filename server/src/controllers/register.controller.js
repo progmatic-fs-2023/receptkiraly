@@ -10,7 +10,7 @@ export const add = async (req, res) => {
   } catch (err) {
     const usernameError = 'duplicate key value violates unique constraint "users_username_key"';
     const emailError = 'duplicate key value violates unique constraint "users_email_key"';
-    
+
     let errorMsg;
 
     if (err.message === usernameError) {
