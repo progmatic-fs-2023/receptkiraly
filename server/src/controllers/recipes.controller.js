@@ -3,7 +3,7 @@ import * as services from '../services/recipes.service';
 // GET /api/recipes
 export const list = async (req, res) => {
   try {
-    const recipes = await services.listReceiptsOnLogIn();
+    const recipes = await services.listRecipes();
 
     if (recipes) {
       res.status(200).json(recipes);
