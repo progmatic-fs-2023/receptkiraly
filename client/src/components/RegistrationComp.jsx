@@ -21,7 +21,7 @@ function RegistrationForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('http://localhost:3000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,12 +29,10 @@ function RegistrationForm() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
         setRegistrationMessage('Registration successful!');
       } else {
-        setRegistrationMessage(data.error);
+        setRegistrationMessage('Registration failed.');
       }
     } catch (err) {
       setRegistrationMessage('An error occurred during registration.');
@@ -42,8 +40,8 @@ function RegistrationForm() {
   };
 
   return (
-    <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-      <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign up</h2>
+    <div>
+      <h2>Registration</h2>
       <form onSubmit={handleSubmit}>
         <label className="leading-7 text-sm text-gray-600" htmlFor="username">
           Username:
@@ -84,7 +82,7 @@ function RegistrationForm() {
           />
         </label>
 
-        {registrationMessage && <div>{registrationMessage}</div>}
+        {registrationMessage && <p className="text-xs text-gray-500 mt-3">{registrationMessage}</p>}
 
         <button
           className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
@@ -96,4 +94,5 @@ function RegistrationForm() {
     </div>
   );
 }
+
 export default RegistrationForm;
