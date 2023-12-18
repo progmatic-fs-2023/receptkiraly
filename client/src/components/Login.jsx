@@ -3,17 +3,44 @@ import { Link } from 'react-router-dom';
 
 function Login() {
   const [isOpen, panelIsOpen] = useState(false);
+  const [loginMessage, setLoginMessage] = useState(null);
 
   const handleToggle = () => {
     panelIsOpen(!isOpen);
+    setLoginMessage(null);
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: e.target.username.value,
+          password: e.target.password.value,
+        }),
+      });
+
+      if (response.ok) {
+        setLoginMessage('Bejelentkeztél ✅');
+      } else if (response.status === 401) {
+        setLoginMessage('Rossz név/jelszó ❗️');
+      } else {
+        setLoginMessage('Egyéb ❗️');
+      }
+    } catch (error) {
+      setLoginMessage('technikai hiba ❗️');
+    }
   };
+
   return (
     <div className="relative inline-block">
-      <button type="button" 
+      <button
+        type="button"
         className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
         onClick={handleToggle}
       >
@@ -39,10 +66,11 @@ function Login() {
               </Link>
             </div>
           </form>
+          {loginMessage && <p>{loginMessage}</p>}
         </div>
       )}
     </div>
   );
-};
+}
 
 export default Login;
