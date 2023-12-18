@@ -1,6 +1,5 @@
 import * as services from '../services/recipes.service';
 
-// GET /api/recipes
 export const list = async (req, res) => {
   try {
     const recipes = await services.listRecipes();
