@@ -4,6 +4,7 @@ import logger from './middlewares/logger.middleware';
 import errorHandler from './middlewares/errorHandler.middleware';
 import recipeRouter from './routes/recipes.route';
 import apiRouter from './routes/api.router';
+import loginRouter from './routes/login.router';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 
 app.use('/api/recipes', recipeRouter);
+app.use('/api/login', loginRouter);
 app.use('/api', apiRouter);
 app.use(express.static('dist'));
 
