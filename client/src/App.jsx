@@ -1,8 +1,12 @@
+'use client';
+
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import Recipes from './pages/Recipes';
 import { API_URL } from './constants';
+import Fallback from './components/Fallback';
 
 function App() {
   const [isConnect, setIsConnect] = useState(false);
@@ -21,9 +25,11 @@ function App() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
-      <Routes>
-        <Route index element={<Recipes />} />
-      </Routes>
+      <ErrorBoundary FallbackComponent={Fallback}>
+        <Routes>
+          <Route index element={<Recipes />} />
+        </Routes>
+      </ErrorBoundary>
     </div>
   );
 }
