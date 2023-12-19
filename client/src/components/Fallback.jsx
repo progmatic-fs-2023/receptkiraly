@@ -11,8 +11,12 @@ function Fallback({ error, resetErrorBoundary }) {
     </div>
   );
 }
+
+Fallback.defaultProps = {
+  resetErrorBoundary: () => null,
+};
 Fallback.propTypes = {
   error: PropTypes.shape.isRequired,
-  resetErrorBoundary: PropTypes.func.isRequired,
+  resetErrorBoundary: PropTypes.func,
 };
 export default Fallback;
