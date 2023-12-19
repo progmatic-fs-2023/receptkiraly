@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Login() {
-  const [isOpen, panelIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loginMessage, setLoginMessage] = useState(null);
 
   const handleToggle = () => {
-    panelIsOpen(!isOpen);
+    setIsOpen(!isOpen);
     setLoginMessage(null);
   };
 
@@ -20,8 +22,8 @@ function Login() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: e.target.username.value,
-          password: e.target.password.value,
+          username,
+          password,
         }),
       });
 
@@ -51,11 +53,23 @@ function Login() {
           <form onSubmit={handleLogin}>
             <label htmlFor="username" className="block mb-2">
               Username:
-              <input type="text" name="username" className="border p-2" />
+              <input
+                type="text"
+                name="username"
+                className="border p-2"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </label>
             <label htmlFor="password" className="block mb-2">
               Password:
-              <input type="password" name="password" className="border p-2" />
+              <input
+                type="password"
+                name="password"
+                className="border p-2"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </label>
             <div className="flex flex-col items-center justify-between">
               <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
