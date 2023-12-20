@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
-import NewsFeed from './NewsFeed';
+import NewsCarousel from './NewsCarousel';
 
 function HomeNews() {
   const [isConnect, setIsConnect] = useState(false);
@@ -19,7 +19,7 @@ function HomeNews() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
-      <NewsFeed />
+      <NewsCarousel />
     </div>
   );
 }

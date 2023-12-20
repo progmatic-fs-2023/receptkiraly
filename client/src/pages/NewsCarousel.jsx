@@ -4,7 +4,7 @@ import NewsItem from '../components/NewsItem';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-function NewsFeed() {
+function NewsCarousel() {
   const newsArray = [
     {
       id: 1,
@@ -66,4 +66,4 @@ function NewsFeed() {
     </div>
   );
 }
-export default NewsFeed;
+export default NewsCarousel;
