@@ -3,16 +3,17 @@
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import './App.css';
+/* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
-import NavigationBar from './components/NavigationBar';
 import HomeNews from './pages/HomeNews';
 import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
-import Login from './components/Login';
 import NoPage from './pages/NoPages';
-import Footer from './components/Footer';
+/* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -25,7 +26,6 @@ function App() {
           <Route path="/recipesfeed" element={<RecipesFeed />} />
           <Route path="/searchrecipes" element={<SearchRecipes />} />
           <Route path="/battle" element={<Battle />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
       </ErrorBoundary>
