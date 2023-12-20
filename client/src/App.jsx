@@ -1,29 +1,35 @@
-import './App.css';
-import { useEffect, useState } from 'react';
+'use client';
+
 import { Route, Routes } from 'react-router-dom';
-import Recipes from './pages/Recipes';
-import { API_URL } from './constants';
+import { ErrorBoundary } from 'react-error-boundary';
+import './App.css';
+/* Navbar pages */
+import SearchRecipes from './pages/SearchRecipes';
+import HomeNews from './pages/HomeNews';
+import RecipesFeed from './pages/RecipesFeed';
+import Battle from './pages/Battle';
+import NoPage from './pages/NoPages';
+/* Template */
+import Banner from './components/Banner';
+import Fallback from './components/Fallback';
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
 
 function App() {
-  const [isConnect, setIsConnect] = useState(false);
-
-  useEffect(() => {
-    fetch(`${API_URL}`).then((response) => {
-      if (response.ok) setIsConnect(true);
-    });
-  }, []);
-
   return (
-    <div>
-      Hello project!
-      <ul>
-        <li>
-          {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
-        </li>
-      </ul>
-      <Routes>
-        <Route index element={<Recipes />} />
-      </Routes>
+    <div className="app">
+      <Banner />
+      <NavigationBar />
+      <ErrorBoundary FallbackComponent={Fallback}>
+        <Routes>
+          <Route path="/" element={<HomeNews />} />
+          <Route path="/recipesfeed" element={<RecipesFeed />} />
+          <Route path="/searchrecipes" element={<SearchRecipes />} />
+          <Route path="/battle" element={<Battle />} />
+          <Route path="/*" element={<NoPage />} />
+        </Routes>
+      </ErrorBoundary>
+      <Footer />
     </div>
   );
 }
