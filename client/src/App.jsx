@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Recipes from './pages/Recipes';
+import Login from './components/Login';
 import { API_URL } from './constants';
 import Fallback from './components/Fallback';
 
@@ -25,7 +26,9 @@ function App() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
+
       <ErrorBoundary FallbackComponent={Fallback}>
+        <Login />
         <Routes>
           <Route index element={<Recipes />} />
         </Routes>
