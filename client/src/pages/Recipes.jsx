@@ -5,7 +5,7 @@ import { useErrorBoundary } from 'react-error-boundary';
 import RecipeCard from '../components/RecipeCard';
 import { API_URL } from '../constants';
 
-function Recipes() {
+function RecipesFeed() {
   const [recipes, setRecipes] = useState([]);
   const { showBoundary } = useErrorBoundary();
 
@@ -29,4 +29,4 @@ function Recipes() {
     </div>
   );
 }
-export default Recipes;
+export default RecipesFeed;
