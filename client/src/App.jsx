@@ -1,5 +1,5 @@
-
 'use client';
+
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import './App.css';
@@ -20,14 +20,14 @@ function App() {
       <Banner />
       <NavigationBar />
       <ErrorBoundary FallbackComponent={Fallback}>
-      <Routes>
-        <Route path="/" element={<HomeNews />} />
-        <Route path="/recipesfeed" element={<RecipesFeed />} />
-        <Route path="/searchrecipes" element={<SearchRecipes />} />
-        <Route path="/battle" element={<Battle />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<NoPage />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomeNews />} />
+          <Route path="/recipesfeed" element={<RecipesFeed />} />
+          <Route path="/searchrecipes" element={<SearchRecipes />} />
+          <Route path="/battle" element={<Battle />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/*" element={<NoPage />} />
+        </Routes>
       </ErrorBoundary>
       <Footer />
     </div>
