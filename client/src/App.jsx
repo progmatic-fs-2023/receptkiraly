@@ -1,31 +1,29 @@
-import './App.css';
-import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Recipes from './pages/Recipes';
+import './App.css';
+import SearchRecipes from './pages/SearchRecipes';
+import NavigationBar from './components/NavigationBar';
+import HomeNews from './pages/HomeNews';
+import RecipesFeed from './pages/RecipesFeed';
+import Battle from './pages/Battle';
 import Login from './components/Login';
-import { API_URL } from './constants';
+import NoPage from './pages/NoPages';
+import Footer from './components/Footer';
+import Banner from './components/Banner';
 
 function App() {
-  const [isConnect, setIsConnect] = useState(false);
-
-  useEffect(() => {
-    fetch(`${API_URL}`).then((response) => {
-      if (response.ok) setIsConnect(true);
-    });
-  }, []);
-
   return (
-    <div>
-      Hello project!
-      <ul>
-        <li>
-          {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
-        </li>
-      </ul>
-      <Login />
+    <div className="app">
+      <Banner />
+      <NavigationBar />
       <Routes>
-        <Route index element={<Recipes />} />
+        <Route path="/" element={<HomeNews />} />
+        <Route path="/recipesfeed" element={<RecipesFeed />} />
+        <Route path="/searchrecipes" element={<SearchRecipes />} />
+        <Route path="/battle" element={<Battle />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<NoPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
