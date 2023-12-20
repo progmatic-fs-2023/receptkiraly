@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
+import NewsFeed from './NewsFeed';
 
 function HomeNews() {
   const [isConnect, setIsConnect] = useState(false);
@@ -18,6 +19,7 @@ function HomeNews() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
+      <NewsFeed />
     </div>
   );
 }
