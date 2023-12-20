@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 function NavigationBar() {
   return (
     <nav>
-      <ul>
+      <ul className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center space-x-5">
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
