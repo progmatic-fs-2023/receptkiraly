@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
-import NewsCarousel from './NewsCarousel';
+import NewsCarousel from '../components/NewsCarousel';
 
 function HomeNews() {
   const [isConnect, setIsConnect] = useState(false);
