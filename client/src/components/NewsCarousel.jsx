@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import Slider from 'react-slick';
-import NewsItem from '../components/NewsItem';
+import NewsItem from './NewsItem';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
