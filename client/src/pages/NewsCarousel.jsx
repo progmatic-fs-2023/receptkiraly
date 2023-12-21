@@ -46,9 +46,11 @@ function NewsCarousel() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 10000,
   };
   return (
     <div className="w-96 h-48 bg-orange-50 m-10 p-1 px-2 relative border-2 rounded-lg border-gray-200 border-opacity-50">
