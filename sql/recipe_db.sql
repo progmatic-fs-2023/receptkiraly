@@ -5,7 +5,12 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE recipes (
 	id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
 	name VARCHAR(100) NOT NULL,
-	description VARCHAR(255) NOT NULL
+	description VARCHAR(255) NOT NULL,
+	vegetarian BOOLEAN DEFAULT false,
+	vegan BOOLEAN DEFAULT false,
+	glutenfree BOOLEAN DEFAULT false,
+	lactosefree BOOLEAN DEFAULT false,
+	sugarfree BOOLEAN DEFAULT false
 );
 
 
