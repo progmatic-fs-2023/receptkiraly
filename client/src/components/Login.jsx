@@ -75,7 +75,7 @@ function Login() {
               <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
                 Login/Sign In
               </button>
-              <Link to="/register" className="text-blue-500 hover:underline">
+              <Link to="/register" onClick={handleToggle} className="text-blue-500 hover:underline">
                 Registration/Sign Up
               </Link>
             </div>
