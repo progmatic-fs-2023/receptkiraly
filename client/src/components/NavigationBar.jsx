@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Login from './Login';
 
 function NavigationBar() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <nav>
       <ul className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center space-x-5">
@@ -18,7 +20,13 @@ function NavigationBar() {
           <NavLink to="/battle" className="bg-blue-500 text-white px-4 py-2 rounded">Battle</NavLink>
         </li>
         <li>
-          <Login />
+        {isAuthenticated ? (
+            <NavLink to="/profile" className="bg-blue-500 text-white px-4 py-2 rounded">
+              Profile
+            </NavLink>
+          ) : (
+            <Login setIsAuthenticated={setIsAuthenticated} />
+          )}
         </li>
       </ul>
     </nav>

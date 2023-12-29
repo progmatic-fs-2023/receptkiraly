@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function Login() {
+function Login({setIsAuthenticated }) {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -28,7 +29,10 @@ function Login() {
       });
 
       if (response.ok) {
+        const { token } = await response.json();
         setLoginMessage('Bejelentkeztél ✅');
+        localStorage.setItem('token', token);
+        setIsAuthenticated(true);
       } else if (response.status === 401) {
         setLoginMessage('Rossz név/jelszó ❗️');
       } else {
@@ -86,5 +90,9 @@ function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  setIsAuthenticated: PropTypes.func.isRequired,
+};
 
 export default Login;

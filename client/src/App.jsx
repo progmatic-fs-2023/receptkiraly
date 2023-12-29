@@ -10,6 +10,7 @@ import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
 import RegistrationForm from './pages/Registration';
 import NoPage from './pages/NoPages';
+import Profile from './pages/Profile';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/searchrecipes" element={<SearchRecipes />} />
           <Route path="/battle" element={<Battle />} />
           <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
       </ErrorBoundary>
