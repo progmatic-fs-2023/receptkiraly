@@ -25,7 +25,7 @@ function Profile() {
         <MyRecipes />
         <NewRecipe />
         </div>
-        <div className="w-1/4 bg-orange-300 p-4">
+        <div className="w-1/4">
           <UserData />
         </div>
       </div>

@@ -21,7 +21,9 @@ function App() {
   return (
     <div>
       <Banner />
+      <div className="flex justify-center lg:w-3/4 xl:w-4/5 mx-auto mt-2 mb-2">
       <NavigationBar />
+      </div>
       <ErrorBoundary FallbackComponent={Fallback}>
       <div className="lg:w-3/4 xl:w-4/5 mx-auto mt-2 mb-2">
         <Routes>

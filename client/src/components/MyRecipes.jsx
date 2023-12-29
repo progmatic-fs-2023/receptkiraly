@@ -14,7 +14,7 @@ function MyRecipes() {
       </div>
 
       <div className="w-full p-4 bg-white rounded-md shadow mt-1">
-        <h3 className="text-md font-bold">Ingredients</h3>
+        <h3 className="text-md font-bold">Labels</h3>
       </div>
 
       <div className="flex justify-center mt-4">
