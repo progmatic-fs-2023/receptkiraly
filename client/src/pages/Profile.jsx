@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
 import UserData from '../components/UserData';
+import MyRecipes from '../components/MyRecipes';
+import NewRecipe from '../components/NewRecipe';
 
 function Profile() {
   const [isConnect, setIsConnect] = useState(false);
@@ -13,13 +15,20 @@ function Profile() {
 
   return (
     <div>
-      Bejelentkeztél
       <ul>
         <li>
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
-      <UserData />
+      <div className="flex">
+        <div className="flex-grow w-3/4 bg-orange-200">
+        <MyRecipes />
+        <NewRecipe />
+        </div>
+        <div className="w-1/4 bg-orange-300 p-4">
+          <UserData />
+        </div>
+      </div>
     </div>
   );
 }
