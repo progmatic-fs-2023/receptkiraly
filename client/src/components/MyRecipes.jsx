@@ -8,13 +8,13 @@ function MyRecipes() {
         <div className="w-1/5">
           <img src="https://placekitten.com/200/200" alt="Recipe" className="w-full h-auto" />
         </div>
-        <div className="w-4/5 p-4 bg-white rounded-md shadow-md ml-1">
-          <p className="text-gray-800">Description</p>
+        <div className="w-4/5 p-4 bg-white rounded-md shadow ml-1">
+          <p className="text-md font-bold text-gray-800">Description</p>
         </div>
       </div>
 
-      <div className="w-full rounded-md">
-        <h3 className="text-lg font-bold">Ingredients</h3>
+      <div className="w-full p-4 bg-white rounded-md shadow mt-1">
+        <h3 className="text-md font-bold">Ingredients</h3>
       </div>
 
       <div className="flex justify-center mt-4">
