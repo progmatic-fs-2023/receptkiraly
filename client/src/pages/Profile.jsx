@@ -20,8 +20,8 @@ function Profile() {
           {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
         </li>
       </ul>
-      <div className="flex">
-        <div className="flex-grow w-3/4 bg-orange-200">
+      <div className="flex items-start">
+        <div className="flex flex-grow flex-col justify-center items-center w-3/4">
         <MyRecipes />
         <NewRecipe />
         </div>

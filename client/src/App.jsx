@@ -23,6 +23,7 @@ function App() {
       <Banner />
       <NavigationBar />
       <ErrorBoundary FallbackComponent={Fallback}>
+      <div className="lg:w-3/4 xl:w-4/5 mx-auto mt-2 mb-2">
         <Routes>
           <Route path="/" element={<HomeNews />} />
           <Route path="/recipesfeed" element={<RecipesFeed />} />
@@ -32,6 +33,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
+        </div>
       </ErrorBoundary>
       <Footer />
     </div>
