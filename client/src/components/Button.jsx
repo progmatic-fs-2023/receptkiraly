@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
 
-function handleClick() {
-  return;
-}
-function Button(props) {
-  return <button onClick={handleClick}>{props.text}</button>;
+function Button({ text }) {
+  return <button type="button">{text}</button>;
 }
 
-ButtonProject.propTypes = {
-  props: PropTypes.string.isRequired,
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
 };
 export default Button;
