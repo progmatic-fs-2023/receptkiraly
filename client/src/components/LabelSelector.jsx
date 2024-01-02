@@ -1,5 +1,3 @@
-import Button from './Button';
-
 function labelSelector() {
   return (
     <div>
@@ -86,7 +84,6 @@ function labelSelector() {
           </div>
         </li>
       </ul>
-      <Button text="Search" />
     </div>
   );
 }
