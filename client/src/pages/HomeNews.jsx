@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
 import NewsCarousel from '../components/NewsCarousel';
-import PostRecipe from '../components/PostRecipe';
 
 function HomeNews() {
   const [isConnect, setIsConnect] = useState(false);
@@ -21,7 +20,6 @@ function HomeNews() {
         </li>
       </ul>
       <NewsCarousel />
-      <PostRecipe />
     </div>
   );
 }
