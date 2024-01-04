@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+
 function LikeBadge({ likeCount, isStart }) {
   return (
-    <>
+    <div>
       {isStart ? (
         <>
           <div className="hidden md:block mb-3 font-normal text-gray-700 dark:text-gray-400 py-1 translate-x-[-60px]">
@@ -25,7 +26,7 @@ function LikeBadge({ likeCount, isStart }) {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 

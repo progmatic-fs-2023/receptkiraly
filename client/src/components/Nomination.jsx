@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import LikeBadge from './LikeBadge';
+import { API_URL } from '../constants';
+
 function Nomination({ id, isStart }) {
   const [nominationData, setNominationData] = useState({
     id: 12,
@@ -24,9 +27,12 @@ function Nomination({ id, isStart }) {
         src={nominationData.imgUrl}
         alt=""
       />
-      {isStart ? <LikeBadge likeCount={99} isStart={true} /> : null}
+      {isStart ? <LikeBadge likeCount={99} isStart /> : null}
     </div>
   );
 }
-
+Nomination.propTypes = {
+  id: PropTypes.number.isRequired,
+  isStart: PropTypes.bool.isRequired,
+};
 export default Nomination;

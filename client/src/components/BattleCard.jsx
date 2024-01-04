@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-
+import { API_URL } from '../constants';
 import Nomination from './Nomination';
+
 function BattleCard({ battleId }) {
   const [userDidVote, setUserDidVote] = useState(false);
   const [battleData, setBattleData] = useState({
@@ -25,7 +26,7 @@ function BattleCard({ battleId }) {
         userDidVote ? 'pointer-events-none bg-green-50' : ''
       }`}
     >
-      <Nomination id={battleData.idNominationA} isStart={true} onVote={setUserDidVote} />
+      <Nomination id={battleData.idNominationA} isStart onVote={setUserDidVote} />
       <div className="flex flex-col justify-center p-4 leading-normal text-center">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {battleData.title}
@@ -40,7 +41,7 @@ function BattleCard({ battleId }) {
 }
 
 BattleCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  battleId: PropTypes.number.isRequired,
 };
 
 export default BattleCard;
