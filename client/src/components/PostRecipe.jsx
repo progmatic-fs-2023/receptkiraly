@@ -31,14 +31,6 @@ function PostRecipe() {
     );
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleRecipeTitleChange = (event) => {
-    setRecipeTitle(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // API call
@@ -132,7 +124,7 @@ function PostRecipe() {
                 id="recipe-title"
                 className="w-full"
                 value={recipeTitle}
-                onChange={handleRecipeTitleChange}
+                onChange={(event) => setRecipeTitle(event.target.value)}
                 rows={1}
               />
             </label>
@@ -143,7 +135,7 @@ function PostRecipe() {
                 id="description"
                 className="w-full"
                 value={description}
-                onChange={handleDescriptionChange}
+                onChange={(event) => setDescription(event.target.value)}
                 rows={8}
               />
             </label>
