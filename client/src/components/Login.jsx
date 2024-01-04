@@ -40,7 +40,7 @@ function Login() {
   };
 
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block z-10">
       <button
         type="button"
         className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"

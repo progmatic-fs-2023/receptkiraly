@@ -17,21 +17,35 @@ function Nomination({ id, isStart }) {
   return (
     <div className="flex ">
       {isStart ? null : (
-        <div className="mb-3 font-normal text-gray-700 dark:text-gray-400 inline-block py-1 translate-x-[60px]">
-          <span className="bg-white p-0.5 rounded">100 🩷</span>
-        </div>
+        <>
+          <div className="hidden md:block mb-3 font-normal text-gray-700 dark:text-gray-400 py-1 translate-x-[60px]">
+            <span className="bg-white p-0.5 rounded">100 🩷</span>
+          </div>
+          <div className="relative">
+            <span className="md:hidden absolute top-2 w-16 text-center left-2 bg-white p-0.5 rounded">
+              100 🩷
+            </span>
+          </div>
+        </>
       )}
       <img
         className={`object-cover w-full h-96 md:h-auto md:w-48 ${
-          isStart ? 'md:rounded-s-lg' : 'md:rounded-e-lg'
+          isStart ? 'rounded-t-lg md:rounded-s-lg' : 'rounded-b-lg md:rounded-e-lg'
         }`}
         src={nominationData.imgUrl}
         alt=""
       />
       {isStart ? (
-        <div className="mb-3 font-normal text-gray-700 dark:text-gray-400 py-1 translate-x-[-60px]">
-          <span className="bg-white p-0.5 rounded-lg">100 🩷</span>
-        </div>
+        <>
+          <div className="hidden md:block mb-3 font-normal text-gray-700 dark:text-gray-400 py-1 translate-x-[-60px]">
+            <span className="bg-white p-0.5 rounded">100 🩷</span>
+          </div>
+          <div className="relative">
+            <span className="md:hidden absolute bottom-2 w-16 text-center right-2 bg-white p-0.5 rounded">
+              100 🩷
+            </span>
+          </div>
+        </>
       ) : null}
     </div>
   );
