@@ -15,8 +15,12 @@ RecipeCard.propTypes = {
   description: PropTypes.string,
   imgUrl: PropTypes.string,
 };
+<<<<<<< HEAD
 RecipeCard.defaultProps = {
   description: '',
   imgUrl: '',
 };
+=======
+
+>>>>>>> 50339e3 (Recipe card has additional newline at end)
 export default RecipeCard;
