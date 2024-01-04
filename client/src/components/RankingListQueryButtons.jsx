@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import queryButtons from './RankingListQueryButtonsArray';
 
 function RankingListQueryButtons({ queryCallback }) {
-  function handleClick(query) {
-    queryCallback(query);
+  function handleClick(queryValue) {
+    queryCallback(queryValue);
   }
   const buttons = queryButtons;
   return (
-    <>
+    <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center space-x-5">
       {buttons.map(({ key, label, value }) => (
         <button
           key={key}
@@ -19,7 +19,7 @@ function RankingListQueryButtons({ queryCallback }) {
           {label}
         </button>
       ))}
-    </>
+    </div>
   );
 }
 
