@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import RankingQueryResultItem from './RankingQueryResultItem';
 
-function RankingQueryResultList({ queryRanking, actualQueryValue }) {
-  return queryRanking.map((element) => (
+function RankingQueryResultList({ queriedRankingData, actualQueryValue }) {
+  return queriedRankingData.map((element) => (
     <ul key={element.key}>
       <RankingQueryResultItem
         queryValue={actualQueryValue}

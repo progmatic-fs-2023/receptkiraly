@@ -4,14 +4,14 @@ import RankingQueryResultList from './RankingQueryResultList';
 import mockRankings from '../mockRankings';
 
 function RankingList() {
-  const [queryRanking, setQueryRankings] = useState([]);
-  const [actualQueryValue, setActualQueryValue] = useState('');
+  const [queriedRankingData, setQueriedRankingData] = useState([]);
+  const [actualQueryButtonValue, setActualQueryButtonValue] = useState('');
 
   const mockData = mockRankings;
 
-  function handleRankingQueryButton(string) {
-    setActualQueryValue(string);
-    setQueryRankings(mockData[string]);
+  function handleRankingQueryButton(queryButtonValue) {
+    setActualQueryButtonValue(queryButtonValue);
+    setQueriedRankingData(mockData[queryButtonValue]);
 
     // Ez itt lenne a fetch ha majd megírjuk a backendet hozzá.
     /*
@@ -29,8 +29,13 @@ function RankingList() {
 
   return (
     <section>
-      <RankingListQueryButtons queryCallback={(string) => handleRankingQueryButton(string)} />
-      <RankingQueryResultList queryRanking={queryRanking} actualQueryValue={actualQueryValue} />
+      <RankingListQueryButtons
+        queryCallback={(queryButtonValue) => handleRankingQueryButton(queryButtonValue)}
+      />
+      <RankingQueryResultList
+        queriedRankingData={queriedRankingData}
+        actualQueryValue={actualQueryButtonValue}
+      />
     </section>
   );
 }
