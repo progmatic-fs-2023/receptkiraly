@@ -3,6 +3,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import './App.css';
+import './components/RecipePostsCard.css';
+import './components/DailyRecipeCard.css';
 /* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
 import HomeNews from './pages/HomeNews';
