@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import queryButtons from './RankingListQueryButtonsArray';
 
-function RankingListQueryButtons({ queryCallback }) {
+function RankingListQueryButtons({ onFilterChange }) {
   function handleClick(queryValue) {
-    queryCallback(queryValue);
+    onFilterChange(queryValue);
   }
   const buttons = queryButtons;
   return (
@@ -24,7 +24,7 @@ function RankingListQueryButtons({ queryCallback }) {
 }
 
 RankingListQueryButtons.propTypes = {
-  queryCallback: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default RankingListQueryButtons;
