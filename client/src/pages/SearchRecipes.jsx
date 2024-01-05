@@ -1,6 +1,6 @@
 import LabelSelector from '../components/LabelSelector';
 import Button from '../components/Button';
-import SearchResults from '../components/SearchResult';
+import SearchResultRecepies from '../components/SearchResultRecepies';
 
 function SearchRecipes() {
   return (
@@ -11,9 +11,16 @@ function SearchRecipes() {
           <Button text="Search" />
         </div>
       </div>
-      <div>
-        <SearchResults />
-      </div>
+      <section className="text-gray-600 body-font ">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="flex flex-wrap -m-4">
+            <SearchResultRecepies />
+            <SearchResultRecepies />
+            <SearchResultRecepies />
+            <SearchResultRecepies />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
