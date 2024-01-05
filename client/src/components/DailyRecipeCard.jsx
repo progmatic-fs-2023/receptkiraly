@@ -14,7 +14,7 @@ function DailyRecipeCard({ imgUrl, prepTime, name, rating }) {
               <div> Rating ⭐ {rating} /5</div>
             </div>
 
-            <button type="submit" className="daily-button">
+            <button type="button1" className="daily-button">
               I want to Cook It
             </button>
           </div>

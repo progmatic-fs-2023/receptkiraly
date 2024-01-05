@@ -27,7 +27,7 @@ function RecipePostsCard({
               <h3>Taste ⭐ {tasteRating} / 5</h3>
               <h3>Like {iCockedIt} ❤ </h3>
             </div>
-            <button type="submit" className="posts-button">
+            <button type="button" className="posts-button">
               I want to Cook It
             </button>
           </div>
