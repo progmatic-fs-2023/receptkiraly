@@ -13,7 +13,7 @@ function RankingList() {
     setActualQueryButtonValue(queryButtonValue);
     setQueriedRankingData(mockData[queryButtonValue]);
 
-    // Ez itt lenne a fetch ha majd megírjuk a backendet hozzá.
+    // Ez itt lenne a fetch ha majd megírjuk a backendet hozzá. Majd az elnevezéseket frissíteni kell!
     /*
     try {
       const response = await fetch(`http://localhost:3000/${string}`);
@@ -30,7 +30,7 @@ function RankingList() {
   return (
     <section>
       <RankingListQueryButtons
-        queryCallback={(queryButtonValue) => handleRankingQueryButton(queryButtonValue)}
+        onFilterChange={(queryButtonValue) => handleRankingQueryButton(queryButtonValue)}
       />
       <RankingQueryResultList
         queriedRankingData={queriedRankingData}
