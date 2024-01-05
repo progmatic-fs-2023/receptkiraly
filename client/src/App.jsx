@@ -12,6 +12,7 @@ import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
 import RegistrationForm from './pages/Registration';
 import NoPage from './pages/NoPages';
+import Rankings from './pages/Rankings';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -30,6 +31,7 @@ function App() {
           <Route path="/searchrecipes" element={<SearchRecipes />} />
           <Route path="/battle" element={<Battle />} />
           <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/rankings" element={<Rankings />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
       </ErrorBoundary>

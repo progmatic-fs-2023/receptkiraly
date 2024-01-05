@@ -26,6 +26,11 @@ function NavigationBar() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/rankings" className="bg-blue-500 text-white px-4 py-2 rounded">
+            Rankings
+          </NavLink>
+        </li>
+        <li>
           <Login />
         </li>
       </ul>
