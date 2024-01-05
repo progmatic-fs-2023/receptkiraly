@@ -1,0 +1,22 @@
+.background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2%;
+
+  background: linear-gradient(45deg, #d2001a, #746, #f48e21, #23d5ab);
+  background-size: 300% 400%;
+  animation: color 12s ease-in-out infinite;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
