@@ -50,14 +50,13 @@
 }
 
 .posts-button {
-  background-color: rgb(20, 60, 98);
   color: white;
-  padding: 15px 20px;
+
   display: flex;
+  flex-direction: row-reverse;
   justify-content: center;
-  border-radius: 10px;
-  margin-left: 120px;
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .pots-card:hover {
@@ -75,7 +74,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.posts-hozzávalók {
+.posts-ingredients-main {
   font-size: 20px;
   font-weight: bold;
 }
@@ -85,7 +84,7 @@
   margin-top: 0%;
 }
 
-.posts-elkészítés {
+.posts-creating {
   font-size: 20px;
   font-weight: bold;
 }

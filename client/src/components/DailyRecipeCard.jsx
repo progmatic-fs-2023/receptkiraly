@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './DailyRecipeCard.css';
+import Button from './Button';
 
 function DailyRecipeCard({ imgUrl, prepTime, name, rating }) {
   return (
@@ -13,10 +14,9 @@ function DailyRecipeCard({ imgUrl, prepTime, name, rating }) {
               <div>{prepTime} min </div>
               <div> Rating ⭐ {rating} /5</div>
             </div>
-
-            <button type="button1" className="daily-button">
-              I want to Cook It
-            </button>
+            <div className="daily-button">
+              <Button text="I want to Cook It" />
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './RecipePostsCard.css';
+import Button from './Button';
 
 function RecipePostsCard({
   imgUrl,
@@ -18,18 +19,18 @@ function RecipePostsCard({
 
           <div>
             <h2>{name}</h2>
-            <p className="posts-hozzávalók">Hozzávalók</p>
+            <p className="posts-ingredients-main">Ingredients</p>
             <p className="posts-ingredients">{ingredients}</p>
-            <p className="posts-elkészítés">Elkészítés</p>
+            <p className="posts-creating">Prepare</p>
             <p className="posts-description">{description}</p>
             <div className="posts-ratings">
               <h3>Visual ⭐ {visualRating} / 5</h3>
               <h3>Taste ⭐ {tasteRating} / 5</h3>
               <h3>Like {iCockedIt} ❤ </h3>
             </div>
-            <button type="button" className="posts-button">
-              I want to Cook It
-            </button>
+            <div className="posts-button">
+              <Button text="I want to Cook It" />
+            </div>
           </div>
         </div>
       </div>
