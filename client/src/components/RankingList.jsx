@@ -30,7 +30,7 @@ function RankingList() {
   return (
     <section>
       <RankingListQueryButtons queryCallback={(string) => handleRankingQueryButton(string)} />
-      <RankingQueryResultList query={queryRanking} queryValue={actualQueryValue} />
+      <RankingQueryResultList queryRanking={queryRanking} actualQueryValue={actualQueryValue} />
     </section>
   );
 }
