@@ -9,7 +9,7 @@ function LikeBadge({ likeCount, isStart }) {
             <span className="bg-white p-0.5 rounded">100 🩷</span>
           </div>
           <div className="relative">
-            <span className="md:hidden absolute bottom-2 w-16 text-center right-2 bg-white p-0.5 rounded">
+            <span className="md:hidden absolute top-80 w-16 text-center right-2 bg-white p-0.5 rounded">
               {`${likeCount} 🩷`}
             </span>
           </div>
@@ -20,7 +20,7 @@ function LikeBadge({ likeCount, isStart }) {
             <span className="bg-white p-0.5 rounded">100 🩷</span>
           </div>
           <div className="relative">
-            <span className="md:hidden absolute top-2 w-16 text-center left-2 bg-white p-0.5 rounded">
+            <span className="md:hidden absolute top-8 w-16 text-center left-2 bg-white p-0.5 rounded">
               {`${likeCount} 🩷`}
             </span>
           </div>

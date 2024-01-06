@@ -5,19 +5,19 @@ import Candidate from './Candidate';
 
 function BattleCard({ battleId }) {
   const [userDidVote, setUserDidVote] = useState(false);
-  const [battleData, setBattleData] = useState({
+  const [battle, setBattle] = useState({
     id: 1,
     title: 'Cake of 2024',
     idNominationA: 12,
     idNominationB: 23,
   });
   useEffect(() => {
-    const fetchBattleData = async () => {
-      const response = await fetch(`${API_URL}/battles/${battleId}`);
+    const getBattle = async () => {
+      const response = await fetch(`${API_URL}/battle/${battleId}`);
       const data = await response.json();
-      setBattleData(data);
+      setBattle(data);
     };
-    fetchBattleData();
+    getBattle();
   }, []);
 
   return (
@@ -26,16 +26,16 @@ function BattleCard({ battleId }) {
         userDidVote ? 'pointer-events-none bg-green-50' : ''
       }`}
     >
-      <Candidate id={battleData.idNominationA} isStart onVote={setUserDidVote} />
+      <Candidate id={battle.idNominationA} isStart onVote={setUserDidVote} />
       <div className="flex flex-col justify-center p-4 leading-normal text-center">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {battleData.title}
+          {battle.title}
         </h5>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {userDidVote ? 'Thank you, your vote has been sent' : 'Vote by clicking on the image'}
         </p>
       </div>
-      <Candidate id={battleData.idNominationB} isStart={false} onVote={setUserDidVote} />
+      <Candidate id={battle.idNominationB} isStart={false} onVote={setUserDidVote} />
     </div>
   );
 }
