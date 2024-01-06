@@ -5,18 +5,18 @@ import Login from './Login';
 function NavigationBar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return ''; 
-  };
-
   useEffect(() => {
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return '';
+    };
+
     const token = getCookie('authToken');
     setIsAuthenticated(!!token);
   }, []);
-
+  
   return (
     <nav>
       <ul className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center space-x-5">
