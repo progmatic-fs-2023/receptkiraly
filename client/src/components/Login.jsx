@@ -29,9 +29,7 @@ function Login({setIsAuthenticated }) {
       });
 
       if (response.ok) {
-        const { token } = await response.json();
         setLoginMessage('Bejelentkeztél ✅');
-        localStorage.setItem('token', token);
         setIsAuthenticated(true);
       } else if (response.status === 401) {
         setLoginMessage('Rossz név/jelszó ❗️');
