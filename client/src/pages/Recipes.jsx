@@ -23,9 +23,12 @@ function RecipesFeed() {
   }, []);
   return (
     <div>
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} name={recipe.name} description={recipe.description} />
-      ))}
+      <div>
+        {recipes.map((recipe) => (
+          <RecipeCard key={recipe.id} name={recipe.name} description={recipe.description} />
+        ))}
+      </div>
+      <div>HELLO</div>
     </div>
   );
 }

@@ -15,6 +15,7 @@ RecipeCard.propTypes = {
   description: PropTypes.string,
   imgUrl: PropTypes.string,
 };
+
 RecipeCard.defaultProps = {
   description: '',
   imgUrl: '',

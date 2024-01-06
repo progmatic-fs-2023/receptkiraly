@@ -3,6 +3,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import './App.css';
+import './components/RecipePostsCard.css';
+import './components/DailyRecipeCard.css';
 /* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
 import HomeNews from './pages/HomeNews';
@@ -11,6 +13,7 @@ import Battle from './pages/Battle';
 import RegistrationForm from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
+import Rankings from './pages/Rankings';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -33,6 +36,7 @@ function App() {
           <Route path="/battle" element={<Battle />} />
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/rankings" element={<Rankings />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
         </div>
