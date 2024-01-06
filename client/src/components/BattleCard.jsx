@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { API_URL } from '../constants';
-import Nomination from './Nomination';
+import Candidate from './Candidate';
 
 function BattleCard({ battleId }) {
   const [userDidVote, setUserDidVote] = useState(false);
@@ -26,7 +26,7 @@ function BattleCard({ battleId }) {
         userDidVote ? 'pointer-events-none bg-green-50' : ''
       }`}
     >
-      <Nomination id={battleData.idNominationA} isStart onVote={setUserDidVote} />
+      <Candidate id={battleData.idNominationA} isStart onVote={setUserDidVote} />
       <div className="flex flex-col justify-center p-4 leading-normal text-center">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {battleData.title}
@@ -35,7 +35,7 @@ function BattleCard({ battleId }) {
           {userDidVote ? 'Thank you, your vote has been sent' : 'Vote by clicking on the image'}
         </p>
       </div>
-      <Nomination id={battleData.idNominationB} isStart={false} onVote={setUserDidVote} />
+      <Candidate id={battleData.idNominationB} isStart={false} onVote={setUserDidVote} />
     </div>
   );
 }

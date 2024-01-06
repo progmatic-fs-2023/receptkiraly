@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 import LikeBadge from './LikeBadge';
 import { API_URL } from '../constants';
 
-function Nomination({ id, isStart }) {
-  const [nominationData, setNominationData] = useState({
+function Candidate({ id, isStart }) {
+  const [candidate, setCandidate] = useState({
     id: 12,
     imgUrl:
       'https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg',
   });
   useEffect(() => {
-    const fetchNominationData = async () => {
-      const response = await fetch(`${API_URL}/nominations/${id}`);
+    const getCandidate = async () => {
+      const response = await fetch(`${API_URL}/candidate/${id}`);
       const data = await response.json();
-      setNominationData(data);
+      setCandidate(data);
     };
-    fetchNominationData();
+    getCandidate();
   }, []);
   return (
     <div className="flex ">
@@ -24,15 +24,15 @@ function Nomination({ id, isStart }) {
         className={`object-cover w-full h-96 md:h-auto md:w-48 ${
           isStart ? 'rounded-t-lg md:rounded-s-lg' : 'rounded-b-lg md:rounded-e-lg'
         }`}
-        src={nominationData.imgUrl}
+        src={candidate.imgUrl}
         alt=""
       />
       {isStart ? <LikeBadge likeCount={99} isStart /> : null}
     </div>
   );
 }
-Nomination.propTypes = {
+Candidate.propTypes = {
   id: PropTypes.number.isRequired,
   isStart: PropTypes.bool.isRequired,
 };
-export default Nomination;
+export default Candidate;
