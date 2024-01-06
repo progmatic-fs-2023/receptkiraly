@@ -23,6 +23,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div>
+      <div className="container mx-auto">
       <Banner />
       <div className="flex justify-center lg:w-3/4 xl:w-4/5 mx-auto mt-2 mb-2">
       <NavigationBar />
@@ -41,6 +42,7 @@ function App() {
         </Routes>
         </div>
       </ErrorBoundary>
+      </div>
       <Footer />
     </div>
   );

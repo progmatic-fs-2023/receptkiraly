@@ -3,17 +3,17 @@ function Banner() {
     <div className="flex items-center justify-between p-4">
       <div className="flex flex-row">
       <div className="flex items-center">
-        <h1 className="text-2xl font-bold text-black ml-2 mr-2">Recipe King</h1>
+        <h1 className="text-2xl font-bold text-black mx-2">Recipe King</h1>
       </div>  
       <div className="flex items-center">
         <input
           type="text"
           placeholder="Search..."
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
         />
         <button
           type="button"
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
         >
           Search
         </button>
@@ -22,15 +22,15 @@ function Banner() {
       <div className="flex items-center">
         <button
           type="button"
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1 jasmine"
         >
-          Button 1
+          Sign In
         </button>
         <button
           type="button"
-          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1 jasmine"
         >
-          Button 2
+          Sign Up
         </button>
       </div>
     </div>
