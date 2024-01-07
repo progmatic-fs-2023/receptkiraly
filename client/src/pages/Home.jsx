@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
-import NewsCarousel from '../components/NewsCarousel';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 
