@@ -3,7 +3,7 @@ import { API_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
-import ResponsiveImage from '../components/ResponsiveImage';
+
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -31,7 +31,7 @@ function Home() {
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                 Find recipes
               </h1>
-              <p className="leading-relaxed text-base">and meet the "Recipe Queen"</p>
+              <p className="leading-relaxed text-base">and meet the &quot;Recipe Queen&quot;</p>
             </div>
           </div>
         </div>
