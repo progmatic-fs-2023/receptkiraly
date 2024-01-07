@@ -11,7 +11,7 @@ function Banner() {
           <input
             type="text"
             placeholder="Search..."
-            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
+            className="w-96 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
           />
           <button
             type="button"
@@ -29,7 +29,7 @@ function Banner() {
           <input
             type="text"
             placeholder="Search..."
-            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
+            className="w-96 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
           />
           <button
             type="button"
@@ -43,13 +43,13 @@ function Banner() {
       <div className="flex justify-center items-center sm:mt-4 md:mt-0">
         <button
           type="button"
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1 jasmine"
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
         >
           Sign In
         </button>
         <button
           type="button"
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1 jasmine"
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
         >
           Sign Up
         </button>
