@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-function RecipeCard({ name, description, imgUrl }) {
   return (
     <div>
       {imgUrl ? <img src={imgUrl} alt="" /> : null}
@@ -12,8 +11,6 @@ function RecipeCard({ name, description, imgUrl }) {
 
 RecipeCard.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  imgUrl: PropTypes.string,
 };
 
 RecipeCard.defaultProps = {
