@@ -17,7 +17,7 @@ import Rankings from './pages/Rankings';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from './components/navigation/NavigationBar';
 import Footer from './components/Footer';
 
 function App() {
