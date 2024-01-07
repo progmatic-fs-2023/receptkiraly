@@ -17,8 +17,10 @@ function Carousel({ children, title }) {
   };
   return (
     <div className="m-10">
-      <h1 className="title-font text-xl font-medium text-blueGray-800 mb-3 ">{title}</h1>
-      <div className="w-64 h-64 sm:h-72 rounded p-1 relative">
+      <h1 className=" xl:text-l lg:text-xl md:text-2xl sm:text-3xl text-2xl font-medium title-font mb-4 text-bluegary-900">
+        {title}
+      </h1>
+      <div className="w-64 h-64 lg:w-80 lg:h-72 sm:h-72 rounded p-1 relative">
         <Slider {...settings}>{children.map((child) => child)}</Slider>
       </div>
     </div>
