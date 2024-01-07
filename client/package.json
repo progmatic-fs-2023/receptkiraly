@@ -24,7 +24,8 @@
     "react-error-boundary": "^4.0.12",
     "react-router-dom": "^6.20.1",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
