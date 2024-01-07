@@ -1,0 +1,13 @@
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: rgb(251 146 60);
+}
+
+span.swiper-pagination-bullet-active {
+  background-color: rgb(251 146 60);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none;
+}
