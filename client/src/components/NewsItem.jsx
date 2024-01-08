@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import './NewsItem.css';
 
 function NewsItem({ id, columnName, title, headline }) {
   return (

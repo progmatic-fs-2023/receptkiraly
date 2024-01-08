@@ -1,0 +1,11 @@
+orange-400	
+amber-300	főszín
+orange-50	egész oldal háttere
+blueGray-800	szöveg szín
+trueGray-900
+
+amber-300 ->(hover) orange-400
+amber-300 - orange-50
+
+blueGray-800 ->(hover) trueGray-900
+blueGray-800 - orange-50

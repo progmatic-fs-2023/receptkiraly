@@ -1,21 +1,6 @@
-import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import Login from './Login';
 
 function NavigationBar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const getCookie = (name) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-      return '';
-    };
-
-    const token = getCookie('authToken');
-    setIsAuthenticated(!!token);
-  }, []);
 
   return (
     <nav>
@@ -44,15 +29,6 @@ function NavigationBar() {
           <NavLink to="/rankings" className="bg-blue-500 text-white px-4 py-2 rounded">
             Rankings
           </NavLink>
-        </li>
-        <li>
-        {isAuthenticated ? (
-            <NavLink to="/profile" className="bg-blue-500 text-white px-4 py-2 rounded">
-              Profile
-            </NavLink>
-          ) : (
-            <Login setIsAuthenticated={setIsAuthenticated} />
-          )}
         </li>
       </ul>
     </nav>
