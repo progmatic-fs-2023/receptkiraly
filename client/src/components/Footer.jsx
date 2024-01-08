@@ -96,7 +96,7 @@ function Footer() {
               </Link>
             </h6>
             <p>Explore the realm of culinary arts and reign over the flavors</p> <br />
-            <p>Recept Király: Where the magic of food finds its kingdom!</p>
+            <p>Recipe King: Where the magic of food finds its kingdom!</p>
           </div>
           {/* <!-- Products section --> */}
           <div className="pl-10">
