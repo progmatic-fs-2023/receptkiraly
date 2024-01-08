@@ -3,7 +3,7 @@ import { API_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
-import RecipeKingCard from '../components/RecipeKingCard';
+import DetailedRecipe from '../components/DetailedRecipe';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
@@ -13,6 +13,8 @@ function Home() {
       if (response.ok) setIsConnect(true);
     });
   }, []);
+
+  const isLoggedIn = true;
 
   return (
     <div className="">
@@ -82,6 +84,7 @@ function Home() {
           </SwiperComponent>
         </div>
       </div>
+      <DetailedRecipe isLoggedIn={isLoggedIn} />
     </div>
   );
 }

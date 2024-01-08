@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function MethodComp({ isLoggedIn }) {
+function MethodComp({ editMode }) {
   const [description, setDescription] = useState();
 
   const handleDescriptionChange = (event) => {
@@ -12,7 +12,7 @@ function MethodComp({ isLoggedIn }) {
     <div>
       <h1>Method:</h1>
       <div>
-        {isLoggedIn ? (
+        {editMode ? (
           <textarea value={description} onChange={handleDescriptionChange} />
         ) : (
           <p>{description}</p>
@@ -23,7 +23,7 @@ function MethodComp({ isLoggedIn }) {
 }
 
 MethodComp.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default MethodComp;

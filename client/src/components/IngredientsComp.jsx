@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function IngredientsComp({ isLoggedIn }) {
+function IngredientsComp({ editMode }) {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
 
@@ -19,7 +19,7 @@ function IngredientsComp({ isLoggedIn }) {
   return (
     <div>
       <h1>Ingredients:</h1>
-      {isLoggedIn ? (
+      {editMode ? (
         <div>
           <input
             type="text"
@@ -36,7 +36,7 @@ function IngredientsComp({ isLoggedIn }) {
         {ingredients.map((ingredient) => (
           <li key={ingredient.id}>
             {ingredient.text}
-            {isLoggedIn ? (
+            {editMode ? (
               <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
                 Delete
               </button>
@@ -49,7 +49,7 @@ function IngredientsComp({ isLoggedIn }) {
 }
 
 IngredientsComp.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default IngredientsComp;
