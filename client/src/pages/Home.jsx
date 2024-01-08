@@ -3,6 +3,7 @@ import { API_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
+import DetailedRecipe from '../components/DetailedRecipe';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
@@ -12,6 +13,8 @@ function Home() {
       if (response.ok) setIsConnect(true);
     });
   }, []);
+
+  const isLoggedIn = true;
 
   return (
     <div>
@@ -63,6 +66,7 @@ function Home() {
           />
         ))}
       </SwiperComponent>
+      <DetailedRecipe isLoggedIn={isLoggedIn} />
     </div>
   );
 }

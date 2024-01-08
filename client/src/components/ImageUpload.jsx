@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ResponsiveImage from './ResponsiveImage';
-import NoImage from '../../public/no_image.svg';
 
-function ImageUpload({ isLoggedIn }) {
+function ImageUpload({ editMode }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
 
@@ -25,24 +24,24 @@ function ImageUpload({ isLoggedIn }) {
   return (
     <div>
       {fileUpload ? (
-        <div>
+        <div className="w-1/2 sm:w-full">
           <ResponsiveImage imgUrl={imgUrl} />
-          {isLoggedIn ? (
+          {editMode ? (
             <label htmlFor="image">
-              Upload image:
+              Change image:
               <input type="file" id="image" onChange={handleImageUpload} accept="image/*" />
             </label>
           ) : null}
         </div>
       ) : (
         <div className="flex items-center justify-center">
-          {isLoggedIn ? (
+          {editMode ? (
             <label htmlFor="image">
               Upload image:
               <input type="file" id="image" onChange={handleImageUpload} accept="image/*" />
             </label>
           ) : (
-            <ResponsiveImage imgUrl={NoImage} />
+            <ResponsiveImage imgUrl="/images/no_image.svg" />
           )}
         </div>
       )}
@@ -51,7 +50,7 @@ function ImageUpload({ isLoggedIn }) {
 }
 
 ImageUpload.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default ImageUpload;

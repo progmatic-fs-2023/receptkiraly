@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function RecipeText({ isLoggedIn }) {
+function RecipeText({ editMode }) {
   const [recipeText, setRecipeText] = useState('');
 
   const handleRecipeTextChange = (event) => {
@@ -10,7 +10,7 @@ function RecipeText({ isLoggedIn }) {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {editMode ? (
         <textarea
           value={recipeText}
           onChange={handleRecipeTextChange}
@@ -25,7 +25,7 @@ function RecipeText({ isLoggedIn }) {
 }
 
 RecipeText.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default RecipeText;

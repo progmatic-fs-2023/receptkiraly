@@ -17,7 +17,7 @@ function Carousel({ children, title }) {
   };
   return (
     <div className="m-10">
-      <h1 className=" xl:text-l lg:text-xl md:text-2xl sm:text-3xl text-2xl font-medium title-font mb-4 text-bluegary-900">
+      <h1 className=" xl:text-l lg:text-xl md:text-2xl sm:text-3xl text-2xl font-medium title-font mb-4 text-blueGray-800">
         {title}
       </h1>
       <div className="w-64 h-64 lg:w-80 lg:h-72 sm:h-72 rounded p-1 relative">

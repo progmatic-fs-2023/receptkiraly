@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function LabelsComp({ isLoggedIn }) {
+function LabelsComp({ editMode }) {
   const [labels, setLabels] = useState([]);
 
   const handleLabelChange = (event) => {
@@ -15,7 +15,7 @@ function LabelsComp({ isLoggedIn }) {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {editMode ? (
         <ul>
           <li>
             <label htmlFor="vegetarian">
@@ -81,7 +81,7 @@ function LabelsComp({ isLoggedIn }) {
 }
 
 LabelsComp.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default LabelsComp;

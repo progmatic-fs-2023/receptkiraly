@@ -8,7 +8,7 @@ import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 
-function DetailedRecipe({ isLoggedIn }) {
+function DetailedRecipe({ editMode }) {
   const [minutes, setMinutes] = useState();
   const [difficulty, setDifficulty] = useState();
   const [serves, setServes] = useState();
@@ -30,45 +30,45 @@ function DetailedRecipe({ isLoggedIn }) {
   return (
     <div className="container">
       <div className="felsődiv">
-        <ImageUpload isLoggedIn={isLoggedIn} />
+        <ImageUpload editMode={editMode} />
         <div className="képmellettidiv">
           <IconContainer>
             {minutes ? (
               <Icon
                 imgUrl="/images/time-icon.svg"
                 text={`${minutes} mins`}
-                isLoggedIn={isLoggedIn}
+                editMode={editMode}
               />
             ) : null}
             {difficulty ? (
               <Icon
                 imgUrl="/images/difficulty-icon.svg"
                 text={difficulty}
-                isLoggedIn={isLoggedIn}
+                editMode={editMode}
               />
             ) : null}
             {serves ? (
               <Icon
                 imgUrl="/images/serves-icon.svg"
                 text={serves.toString()}
-                isLoggedIn={isLoggedIn}
+                editMode={editMode}
               />
             ) : null}
           </IconContainer>
-          <RecipeText isLoggedIn={isLoggedIn} />
-          <Labels isLoggedIn={isLoggedIn} />
+          <RecipeText editMode={editMode} />
+          <Labels editMode={editMode} />
         </div>
       </div>
       <div className="alsódiv">
-        <Ingredients isLoggedIn={isLoggedIn} />
-        <Method isLoggedIn={isLoggedIn} />
+        <Ingredients editMode={editMode} />
+        <Method editMode={editMode} />
       </div>
     </div>
   );
 }
 
 DetailedRecipe.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool.isRequired,
 };
 
 export default DetailedRecipe;
