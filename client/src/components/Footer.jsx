@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
+import Logo from '../assets/Logo.png';
+
 function Footer() {
   return (
     <footer className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
       {/* Footer container */}
       <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
         <div className="mr-12 hidden lg:block">
-          <span>Megtalálsz minket a közösségi felületeken:</span>
+          <span>You can find us on social media platforms:</span>
         </div>
         {/* Social network icons container */}
         <div className="flex justify-center">
@@ -82,23 +85,21 @@ function Footer() {
       <div className="mx-6 py-10 text-center md:text-left">
         <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* <!-- TW elements section --> */}
-          <div className="">
-            <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="mr-3 h-4 w-4"
-              >
-                <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-              </svg>
-              Recept Király
+          <div className="font-bold">
+            <h6 className="mb-4 flex items-center  font-semibold uppercase">
+              <Link to="/" className="focus:outline-none">
+                <img
+                  src={Logo}
+                  alt="Recipe King"
+                  className="object-cover h-10 w-30 justify-item-center pb-1"
+                />
+              </Link>
             </h6>
-            <p>Fedezd fel a kulináris művészetek birodalmát és uralkodj az ízek felett</p> <br />
-            <p>Recept Király: ahol az ételvarázslat birodalomra talál!</p>
+            <p>Explore the realm of culinary arts and reign over the flavors</p> <br />
+            <p>Recept Király: Where the magic of food finds its kingdom!</p>
           </div>
           {/* <!-- Products section --> */}
-          <div className="">
+          <div className="pl-10">
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Content
             </h6>
@@ -124,7 +125,7 @@ function Footer() {
             </p>
           </div>
           {/* <!-- Useful links section --> */}
-          <div className="">
+          <div className="pl-8">
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Useful links
             </h6>
@@ -150,7 +151,7 @@ function Footer() {
             </p>
           </div>
           {/* <!-- Contact section --> */}
-          <div>
+          <div className="pl-5">
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
               Contact
             </h6>
@@ -214,13 +215,21 @@ function Footer() {
 
       {/* <!--Copyright section--> */}
       <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
-        <span>© 2023 Copyright:</span>
+        <span>© 2023 Copyright: </span>
         <a
           className="font-semibold text-neutral-600 dark:text-neutral-400"
           href="http://localhost:5173/"
         >
-          Recept Király
+          Recipe King
         </a>
+        <div className="flex flex-col ">
+          <Link to="/termsofuse" className="hover:underline">
+            Terms of Use
+          </Link>
+          <Link to="privacypolicy" className="hover:underline">
+            Privacy Policy
+          </Link>
+        </div>
       </div>
     </footer>
   );
