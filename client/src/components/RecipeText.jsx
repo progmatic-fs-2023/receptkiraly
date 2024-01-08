@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function RecipeText({ isLoggedIn }) {
-  const { recipeText, setRecipeText } = useState('');
+  const [recipeText, setRecipeText] = useState('');
 
   const handleRecipeTextChange = (event) => {
     setRecipeText(event.target.value);
