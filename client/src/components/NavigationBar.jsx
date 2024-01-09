@@ -16,7 +16,7 @@ function NavigationBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/searchrecipes" className="bg-blue-500 text-white px-4 py-2 rounded">
+          <NavLink to="/search" className="bg-blue-500 text-white px-4 py-2 rounded">
             Search Recipes
           </NavLink>
         </li>
