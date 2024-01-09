@@ -72,18 +72,18 @@ VALUES
     ('emma_wilson', 'emma@example.com', 'hashed_password_012'),
     ('michael_brown', 'michael@example.com', 'hashed_password_345');
 
-	INSERT INTO recipes (recipe_name, recipe_description, recipe_main_category)
+	INSERT INTO recipes (recipe_name, recipe_description, recipe_main_category, recipe_img)
 VALUES
-    ('Scrambled Eggs', 'Classic breakfast dish', 1),
-    ('Grilled Chicken Salad', 'Healthy and delicious', 1),
-    ('Spaghetti Bolognese', 'Italian pasta dish', 1),
-    ('Guacamole', 'Perfect party appetizer', 1),
-    ('Fruit Smoothie', 'Refreshing and nutritious', 3);
-	('Chocolate Cake', 'Classic chocolate cake', 2),
-    ('Strawberry Smoothie', 'Healthy and delicious', 3),
-    ('Vegan Spaghetti Bolognese', 'Healthy and delicious pasta dish', 1),
-    ('Plant-based Hamburger', 'Gluten-free, healthy and delicious', 1),
-    ('Garlic Cream Soup with Pan-Seared Shrimp', 'Perfect appetizer soup', 3);
+    ('Scrambled Eggs', 'Classic breakfast dish', 1, 'scrambled_eggs'),
+    ('Grilled Chicken Salad', 'Healthy and delicious', 1), 'grilled_chicken_salad',
+    ('Spaghetti Bolognese', 'Italian pasta dish', 1, 'spaghetti_bolognese'),
+    ('Guacamole', 'Perfect party appetizer', 1, 'guacamole'),
+    ('Fruit Smoothie', 'Refreshing and nutritious', 3, 'fruit_smoothie');
+	('Chocolate Cake', 'Classic chocolate cake', 2, 'chocolate_cake'),
+    ('Strawberry Smoothie', 'Healthy and delicious', 3, 'strawberry_smoothie'),
+    ('Vegan Spaghetti Bolognese', 'Healthy and delicious pasta dish', 1, 'vegan_spaghetti_bolognese'),
+    ('Plant-based Hamburger', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger'),
+    ('Garlic Cream Soup with Pan-Seared Shrimp', 'Perfect appetizer soup', 3), 'garlic_cream_soup_with_shrimp';
 
 	INSERT INTO main_category (main_category_name) VALUES 
     ('meals'),
