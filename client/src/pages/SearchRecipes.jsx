@@ -1,9 +1,18 @@
 import LabelSelector from '../components/LabelSelector';
 import Button from '../components/Button';
 import SearchResultRecepies from '../components/SearchResultRecepies';
+import SearchBar from '../components/SearchBar';
+import SearchFilter from '../components/SearchFilter';
 
 function SearchRecipes() {
   return (
+    <div>
+      <div className="bg-blue-500">
+      <SearchBar />
+      </div>
+      <div className="bg-blue-500">
+      <SearchFilter />
+      </div>
     <div className="flex">
       <div>
         <LabelSelector />
@@ -21,6 +30,7 @@ function SearchRecipes() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }
