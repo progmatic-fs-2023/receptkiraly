@@ -220,9 +220,13 @@ function NavigationBar() {
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
                     <div className="flex mt-8 space-x-6">
-                      <PopularThisWeekItem img={dummyImg1} link={link} text="valami" />
-                      <PopularThisWeekItem img={dummyImg2} link={link} text="valami" />
-                      <PopularThisWeekItem img={dummyImg3} link={link} text="valami" />
+                      <PopularThisWeekItem img={dummyImg1} link={link} text="ChuckleChomp Deluxe" />
+                      <PopularThisWeekItem
+                        img={dummyImg2}
+                        link={link}
+                        text="MeatyMirth Masterpiece"
+                      />
+                      <PopularThisWeekItem img={dummyImg3} link={link} text="BrothBelly Giggler" />
                     </div>
                   </div>
                 </div>
@@ -364,7 +368,7 @@ function NavigationBar() {
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
                     <div className="flex mt-8 space-x-6">
-                      <PopularThisWeekItem img={dummyImg4} link={link} text="valami" />
+                      <PopularThisWeekItem img={dummyImg4} link={link} text="LaughLayers Delight" />
                     </div>
                   </div>
                 </div>
@@ -502,8 +506,8 @@ function NavigationBar() {
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
                     <div className="flex mt-8 space-x-6">
-                      <PopularThisWeekItem img={dummyImg5} link={link} text="valami" />
-                      <PopularThisWeekItem img={dummyImg6} link={link} text="valami" />
+                      <PopularThisWeekItem img={dummyImg5} link={link} text="Double Sip" />
+                      <PopularThisWeekItem img={dummyImg6} link={link} text="Chuckle Blend" />
                     </div>
                   </div>
                 </div>
