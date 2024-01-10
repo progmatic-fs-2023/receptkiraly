@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-blue-500 {
+.bg-orange-400 {
     background-color: #f4d06f;
   }
+.bg-orange-500{
+  background-color: #ff8811;
+}
   
   h1 {
     font-family: gilroy,Helvetica,Arial,sans-serif;

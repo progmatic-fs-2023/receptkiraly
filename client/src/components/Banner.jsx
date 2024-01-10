@@ -24,7 +24,7 @@ function Banner() {
     navigate(`/search?q=${encodeURIComponent(searchText)}`);
   };
 
-  const handleKeyPress = (event) => {
+  const handleonKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleSearch();
     }
@@ -45,13 +45,13 @@ function Banner() {
             placeholder="Search..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleonKeyDown}
             className="w-96 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
           />
           <button
             type="button"
             onClick={handleSearch}
-            className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
+            className="bg-orange-400 text-white px-4 py-2 rounded focus:outline-none"
           >
             Search
           </button>
@@ -67,13 +67,13 @@ function Banner() {
             placeholder="Search..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleonKeyDown}
             className="w-96 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
           />
           <button
             type="button"
             onClick={handleSearch}
-            className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
+            className="bg-orange-400 text-white px-4 py-2 rounded focus:outline-none"
           >
             Search
           </button>
@@ -86,7 +86,7 @@ function Banner() {
               {isAuthenticated ? (
                 <NavLink
                   to="/profile"
-                  className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
+                  className="bg-orange-400 text-white px-4 py-2 rounded focus:outline-none mx-1"
                 >
                   Profile
                 </NavLink>
@@ -96,7 +96,7 @@ function Banner() {
             </li>
           </ul>
         </nav>
-        <Link to="/register" className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1">
+        <Link to="/register" className="bg-orange-400 text-white px-4 py-2 rounded focus:outline-none mx-1">
           Sign Up
         </Link>
       </div>

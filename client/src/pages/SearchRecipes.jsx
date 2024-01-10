@@ -39,7 +39,7 @@ function SearchRecipes() {
 
   return (
     <section>
-      <div className="bg-blue-500">
+      <div className="bg-orange-400">
       <h1 className="p-8 text-white">Search</h1>
       </div>
       <SearchForm />

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SearchFilter() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLabels, setSelectedLabels] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
 
   const toggleFilter = () => {
     setIsOpen(!isOpen);
@@ -13,15 +16,33 @@ function SearchFilter() {
     setSelectedLabels(selectedOptions);
   };
 
+  const handleSearch = () => {
+    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+  };
+
+  const handleonKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="border-b border-b-light pb-6 lg:pb-10">
-      <div className="flex items-center mb-4 p-4 lg:px-8 lg:py-5 w-full bg-blue-500">
-        <input type="text" id="search" className="border-0 grow p-3" placeholder="Search" />
+      <div className="flex items-center mb-4 p-4 lg:px-8 lg:py-5 w-full bg-orange-400">
+        <input type="text" id="search" className="border-0 grow p-3" value={searchText}
+            onChange={(e) => setSearchText(e.target.value)} onKeyDown={handleonKeyDown} placeholder="Search" />
+                     <button
+            type="button"
+            onClick={handleSearch}
+            className="bg-orange-500 text-white px-4 py-3 focus:outline-none"
+          >
+            Search
+          </button>
       </div>
       <div className="bg-white">
       <button
         type="button"
-        className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
+        className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none"
         onClick={toggleFilter}
       >
         Filters
@@ -29,7 +50,7 @@ function SearchFilter() {
       {isOpen && (
           <button
             type="button"
-            className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none ml-2"
+            className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none ml-2"
           >
             Apply Changes
           </button>

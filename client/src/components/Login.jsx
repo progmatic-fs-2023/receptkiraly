@@ -44,7 +44,7 @@ function Login({setIsAuthenticated }) {
     <div className="relative inline-block z-10">
       <button
         type="button"
-        className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
+        className="bg-orange-400 text-white px-4 py-2 rounded focus:outline-none mx-1"
         onClick={handleToggle}
       >
         Sign In
@@ -73,7 +73,7 @@ function Login({setIsAuthenticated }) {
               />
             </label>
             <div className="flex flex-col items-center justify-between">
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+              <button type="submit" className="bg-orange-400 text-white px-4 py-2 rounded">
                 Sign In
               </button>
             </div>
