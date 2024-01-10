@@ -41,6 +41,14 @@ function RegistrationhtmlForm() {
       setRegistrationMessage('An error occurred during registration.');
     }
   };
+  const [checkedTerm, setCheckedTerm] = useState(false);
+  const [checkedPrivacy, setCheckedPrivacy] = useState(false);
+  const handleChangeTerm = (event) => {
+    setCheckedTerm(event.target.checked);
+  };
+  const handleChangePrivacy = (event) => {
+    setCheckedPrivacy(event.target.checked);
+  };
 
   return (
     <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col mx-auto w-full mt-10 md:mt-0">
@@ -89,6 +97,8 @@ function RegistrationhtmlForm() {
         <div className="flex  m-4">
           <div className="flex items-center">
             <input
+              onChange={handleChangeTerm}
+              name="checked"
               id="link-checkbox"
               type="checkbox"
               value=""
@@ -107,6 +117,8 @@ function RegistrationhtmlForm() {
           </div>
           <div className="flex items-center  my-2">
             <input
+              onChange={handleChangePrivacy}
+              name="checked"
               id="link-checkbox"
               type="checkbox"
               value=""
@@ -127,8 +139,11 @@ function RegistrationhtmlForm() {
         <div className="flex-row flex justify-center m-4">
           {' '}
           <button
-            className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            className={`text-white  border-0 py-2 px-8 focus:outline-none ${
+              checkedTerm && checkedPrivacy ? 'hover:bg-indigo-600 bg-indigo-500' : 'bg-indigo-300'
+            } rounded text-lg `}
             type="submit"
+            disabled={!(checkedTerm && checkedPrivacy)}
           >
             Submit
           </button>
