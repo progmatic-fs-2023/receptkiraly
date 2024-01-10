@@ -1,9 +1,30 @@
 import { NavLink } from 'react-router-dom';
 import NavSubHeadItem from './NavSubHeadItem';
 import NavSubListItem from './NavSubListItem';
-import PopularThisWeek from './PopularThisWeek';
+import PopularThisWeekItem from './PopularThisWeekItem';
+import NavButton from './NavButton';
+
+// Pictures of dishes
+import dummyImg1 from './img/dishes/dummyImg1.webp';
+import dummyImg2 from './img/dishes/dummyImg2.webp';
+import dummyImg3 from './img/dishes/dummyImg3.webp';
+import dummyImg4 from './img/dishes/dummyImg4.webp';
+import dummyImg5 from './img/dishes/dummyImg5.webp';
+import dummyImg6 from './img/dishes/dummyImg6.webp';
+
+// Pictures of chefs
+
+import chef1 from './img/chefs/chef1.webp';
+import chef2 from './img/chefs/chef2.webp';
+import chef3 from './img/chefs/chef3.webp';
+import chef4 from './img/chefs/chef4.webp';
+import chef5 from './img/chefs/chef5.webp';
+import chef6 from './img/chefs/chef6.webp';
+import chef7 from './img/chefs/chef7.webp';
 
 function NavigationBar() {
+  const link = 'http://localhost:5173/searchrecipes';
+
   return (
     <nav>
       <div className="border-t border-t-light hidden lg:flex justify-between py-6 valami">
@@ -27,7 +48,7 @@ function NavigationBar() {
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
-                            text="Dips and Dippers"
+                            text="Dippers"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
@@ -51,7 +72,7 @@ function NavigationBar() {
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
-                            text="Egg Dishes"
+                            text="Egg"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
@@ -96,7 +117,7 @@ function NavigationBar() {
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Pasta and Noodles"
+                            text="Pasta"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
@@ -124,7 +145,7 @@ function NavigationBar() {
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Grilled and BBQ"
+                            text="Grilled"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                         </ul>
@@ -194,19 +215,16 @@ function NavigationBar() {
                         </ul>
                       </li>
                     </ul>
-
-                    <div className="mt-6">
-                      <a
-                        className="block border border-primary font-semibold hover:bg-primary hover:text-white py-3 px-8 rounded sm:inline-block text-primary text-sm text-center uppercase"
-                        target="_self"
-                        title=""
-                        href="https://foodnetwork.co.uk/recipes"
-                      >
-                        <span>Explore All Recipes</span>
-                      </a>
+                    <NavButton text="Explore All Recipes" />
+                  </div>
+                  <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
+                    <p className="block text-xs uppercase text-body/60">Popular This Week</p>
+                    <div className="flex mt-8 space-x-6">
+                      <PopularThisWeekItem img={dummyImg1} link={link} text="valami" />
+                      <PopularThisWeekItem img={dummyImg2} link={link} text="valami" />
+                      <PopularThisWeekItem img={dummyImg3} link={link} text="valami" />
                     </div>
                   </div>
-                  <PopularThisWeek />
                 </div>
               </div>
             </div>
@@ -341,18 +359,14 @@ function NavigationBar() {
                       </li>
                     </ul>
 
-                    <div className="mt-6">
-                      <a
-                        className="block border border-primary font-semibold hover:bg-primary hover:text-white py-3 px-8 rounded sm:inline-block text-primary text-sm text-center uppercase"
-                        target="_self"
-                        title=""
-                        href="https://foodnetwork.co.uk/recipes"
-                      >
-                        <span>Explore All Recipes</span>
-                      </a>
+                    <NavButton text="Explore All Recipes" />
+                  </div>
+                  <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
+                    <p className="block text-xs uppercase text-body/60">Popular This Week</p>
+                    <div className="flex mt-8 space-x-6">
+                      <PopularThisWeekItem img={dummyImg4} link={link} text="valami" />
                     </div>
                   </div>
-                  <PopularThisWeek />
                 </div>
               </div>
             </div>
@@ -483,18 +497,15 @@ function NavigationBar() {
                       </li>
                     </ul>
 
-                    <div className="mt-6">
-                      <a
-                        className="block border border-primary font-semibold hover:bg-primary hover:text-white py-3 px-8 rounded sm:inline-block text-primary text-sm text-center uppercase"
-                        target="_self"
-                        title=""
-                        href="https://foodnetwork.co.uk/recipes"
-                      >
-                        <span>Explore All Recipes</span>
-                      </a>
+                    <NavButton text="Explore All Recipes" />
+                  </div>
+                  <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
+                    <p className="block text-xs uppercase text-body/60">Popular This Week</p>
+                    <div className="flex mt-8 space-x-6">
+                      <PopularThisWeekItem img={dummyImg5} link={link} text="valami" />
+                      <PopularThisWeekItem img={dummyImg6} link={link} text="valami" />
                     </div>
                   </div>
-                  <PopularThisWeek />
                 </div>
               </div>
             </div>
@@ -513,98 +524,72 @@ function NavigationBar() {
                     <ul className="flex space-x-20">
                       <li>
                         <NavSubHeadItem
-                          text="Special Occasions"
+                          text="Professional Chefs"
                           link="http://localhost:5173/searchrecipes?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
-                            text="Christmas Recipes"
+                            text="Executive"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Valami 2"
+                            text="Sous"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Valami 3"
+                            text="Pastry"
+                            link="http://localhost:5173/searchrecipes?query="
+                          />
+                          <NavSubListItem
+                            text="Cold Kitchen"
+                            link="http://localhost:5173/searchrecipes?query="
+                          />
+                          <NavSubListItem
+                            text="Saucier"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
-                          text="Special Occasions"
+                          text="Amateur Chefs"
                           link="http://localhost:5173/searchrecipes?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
-                            text="Christmas Recipes"
+                            text="Dinner"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Valami 2"
+                            text="Soup"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Valami 3"
-                            link="http://localhost:5173/searchrecipes?query="
-                          />
-                        </ul>
-                      </li>
-                      <li>
-                        <NavSubHeadItem
-                          text="Special Occasions"
-                          link="http://localhost:5173/searchrecipes?query="
-                        />
-                        <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            text="Christmas Recipes"
+                            text="Italian"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Valami 2"
-                            link="http://localhost:5173/searchrecipes?query="
-                          />
-                          <NavSubListItem
-                            text="Valami 3"
-                            link="http://localhost:5173/searchrecipes?query="
-                          />
-                        </ul>
-                      </li>
-                      <li>
-                        <NavSubHeadItem
-                          text="Special Occasions"
-                          link="http://localhost:5173/searchrecipes?query="
-                        />
-                        <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            text="Christmas Recipes"
-                            link="http://localhost:5173/searchrecipes?query="
-                          />
-                          <NavSubListItem
-                            text="Valami 2"
-                            link="http://localhost:5173/searchrecipes?query="
-                          />
-                          <NavSubListItem
-                            text="Valami 3"
+                            text="Fast"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                         </ul>
                       </li>
                     </ul>
 
-                    <div className="mt-6">
-                      <a
-                        className="block border border-primary font-semibold hover:bg-primary hover:text-white py-3 px-8 rounded sm:inline-block text-primary text-sm text-center uppercase"
-                        target="_self"
-                        title=""
-                        href="https://foodnetwork.co.uk/recipes"
-                      >
-                        <span>Explore All Recipes</span>
-                      </a>
+                    <NavButton text="Explore Our Shefs" />
+                  </div>
+                  <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
+                    <p className="block text-xs uppercase text-body/60">Popular This Week</p>
+                    <div className="flex mt-8 space-x-6">
+                      <PopularThisWeekItem img={chef1} link={link} text="Whisker Wendy" />
+                      <PopularThisWeekItem img={chef2} link={link} text="Giggles Gary" />
+                      <PopularThisWeekItem img={chef3} link={link} text="Laughing Larry" />
+                      <PopularThisWeekItem img={chef4} link={link} text="Snicker Steve" />
+                      <PopularThisWeekItem img={chef5} link={link} text="Jocular James" />
+                      <PopularThisWeekItem img={chef6} link={link} text="Chuckle Charlie" />
+                      <PopularThisWeekItem img={chef7} link={link} text="Humorous Hannah" />
                     </div>
                   </div>
-                  <PopularThisWeek />
                 </div>
               </div>
             </div>
