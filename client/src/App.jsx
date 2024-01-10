@@ -19,7 +19,7 @@ import TermsOfUse from './pages/TermsOfUse';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from './components/navigation/NavigationBar';
 import Footer from './components/Footer';
 
 function App() {
