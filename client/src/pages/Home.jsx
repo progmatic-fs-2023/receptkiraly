@@ -3,6 +3,7 @@ import { API_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
+import RecipeKingCard from '../components/RecipeKingCard';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
@@ -14,17 +15,26 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      Hello project!
-      <ul>
-        <li>
-          {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
-        </li>
-      </ul>
+    <div className="">
+      <div className="">
+        Hello project!
+        <ul>
+          <li>
+            {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
+          </li>
+        </ul>
+      </div>
+
       <div className="flex">
-        <div className="xl:w-2/6 lg:w-1/3 md:w-full flex">
+        <div className=" flex text-center justify-center items-center basis-2/6 ">
+          <div>
+            <RecipeKingCard />
+          </div>
+        </div>
+
+        <div className=" flex basis-2/6 border-x">
           <div className="m-auto">
-            <div className="text-center">
+            <div className="text-center ">
               <h2 className="text-xs text-orange-400 tracking-widest font-medium title-font mb-1">
                 Recipe king
               </h2>
@@ -36,8 +46,29 @@ function Home() {
           </div>
         </div>
 
-        <div className="xl:w-4/6 lg:w-2/3 md:w-full border-l-2 border-gray-200 border-opacity-60 pl-2">
-          <Carousel title="Recipe of the day">
+        <div className=" basis-2/6">
+          <div className="flex justify-center ">
+            <div className="">
+              <Carousel title="Recipe of the day">
+                {arr.map(() => (
+                  <RecipeCard
+                    id={7}
+                    imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
+                    minutes={55}
+                    difficulty="Easy"
+                    serves={5}
+                    name="Air Fryer Fried Prawns"
+                  />
+                ))}
+              </Carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <SwiperComponent title="Most Popular">
             {arr.map(() => (
               <RecipeCard
                 id={7}
@@ -48,21 +79,9 @@ function Home() {
                 name="Air Fryer Fried Prawns"
               />
             ))}
-          </Carousel>
+          </SwiperComponent>
         </div>
       </div>
-      <SwiperComponent title="Most popular">
-        {arr.map(() => (
-          <RecipeCard
-            id={7}
-            imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
-            minutes={55}
-            difficulty="Easy"
-            serves={5}
-            name="Air Fryer Fried Prawns"
-          />
-        ))}
-      </SwiperComponent>
     </div>
   );
 }
