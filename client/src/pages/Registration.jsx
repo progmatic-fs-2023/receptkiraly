@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function RegistrationForm() {
-  const [formData, setFormData] = useState({
+function RegistrationhtmlForm() {
+  const [htmlFormData, sethtmlFormData] = useState({
     username: '',
     email: '',
     password: '',
@@ -12,8 +12,8 @@ function RegistrationForm() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    sethtmlFormData({
+      ...htmlFormData,
       [name]: value,
     });
   };
@@ -27,7 +27,7 @@ function RegistrationForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(htmlFormData),
       });
 
       const data = await response.json();
@@ -45,7 +45,7 @@ function RegistrationForm() {
   return (
     <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col mx-auto w-full mt-10 md:mt-0">
       <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign up</h2>
-      <form onSubmit={handleSubmit}>
+      <htmlForm onSubmit={handleSubmit}>
         <label className="leading-7 text-sm text-gray-600" htmlFor="username">
           Username:
           <input
@@ -53,7 +53,7 @@ function RegistrationForm() {
             type="text"
             id="username"
             name="username"
-            value={formData.username}
+            value={htmlFormData.username}
             onChange={handleInputChange}
             required
           />
@@ -66,7 +66,7 @@ function RegistrationForm() {
             type="text"
             id="email"
             name="email"
-            value={formData.email}
+            value={htmlFormData.email}
             onChange={handleInputChange}
             required
           />
@@ -79,24 +79,24 @@ function RegistrationForm() {
             type="text"
             id="password"
             name="password"
-            value={formData.password}
+            value={htmlFormData.password}
             onChange={handleInputChange}
             required
           />
         </label>
 
         {registrationMessage && <div>{registrationMessage}</div>}
-        <div class="flex  m-4">
+        <div className="flex  m-4">
           <div className="flex items-center">
             <input
               id="link-checkbox"
               type="checkbox"
               value=""
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              for="link-checkbox"
-              class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              htmlFor="link-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
               <Link to="/termsofuse" className="hover:underline">
@@ -110,11 +110,11 @@ function RegistrationForm() {
               id="link-checkbox"
               type="checkbox"
               value=""
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              for="link-checkbox"
-              class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              htmlFor="link-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
               <Link to="/privacypolicy" className="hover:underline">
@@ -133,8 +133,8 @@ function RegistrationForm() {
             Submit
           </button>
         </div>
-      </form>
+      </htmlForm>
     </div>
   );
 }
-export default RegistrationForm;
+export default RegistrationhtmlForm;
