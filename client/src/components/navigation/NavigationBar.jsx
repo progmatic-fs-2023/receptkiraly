@@ -141,7 +141,7 @@ function NavigationBar() {
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
-                            text="Seafood Specials"
+                            text="Seafood"
                             link="http://localhost:5173/searchrecipes?query="
                           />
                           <NavSubListItem
