@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function RegistrationhtmlForm() {
-  const [htmlFormData, sethtmlFormData] = useState({
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
@@ -12,8 +12,8 @@ function RegistrationhtmlForm() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    sethtmlFormData({
-      ...htmlFormData,
+    setFormData({
+      ...formData,
       [name]: value,
     });
   };
@@ -27,7 +27,7 @@ function RegistrationhtmlForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(htmlFormData),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
@@ -41,6 +41,7 @@ function RegistrationhtmlForm() {
       setRegistrationMessage('An error occurred during registration.');
     }
   };
+
   const [checkedTerm, setCheckedTerm] = useState(false);
   const [checkedPrivacy, setCheckedPrivacy] = useState(false);
   const handleChangeTerm = (event) => {
@@ -53,7 +54,7 @@ function RegistrationhtmlForm() {
   return (
     <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col mx-auto w-full mt-10 md:mt-0">
       <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign up</h2>
-      <htmlForm onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label className="leading-7 text-sm text-gray-600" htmlFor="username">
           Username:
           <input
@@ -61,7 +62,7 @@ function RegistrationhtmlForm() {
             type="text"
             id="username"
             name="username"
-            value={htmlFormData.username}
+            value={formData.username}
             onChange={handleInputChange}
             required
           />
@@ -74,7 +75,7 @@ function RegistrationhtmlForm() {
             type="text"
             id="email"
             name="email"
-            value={htmlFormData.email}
+            value={formData.email}
             onChange={handleInputChange}
             required
           />
@@ -87,7 +88,7 @@ function RegistrationhtmlForm() {
             type="text"
             id="password"
             name="password"
-            value={htmlFormData.password}
+            value={formData.password}
             onChange={handleInputChange}
             required
           />
@@ -148,8 +149,8 @@ function RegistrationhtmlForm() {
             Submit
           </button>
         </div>
-      </htmlForm>
+      </form>
     </div>
   );
 }
-export default RegistrationhtmlForm;
+export default RegistrationForm;
