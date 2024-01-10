@@ -31,7 +31,7 @@ function App() {
           <NavigationBar />
         </div>
         </header>
-        <main className="container mx-auto my-2">
+        <main className="container mx-auto my-14">
         <ErrorBoundary FallbackComponent={Fallback}>
             <Routes>
               <Route path="/" element={<Home />} />
