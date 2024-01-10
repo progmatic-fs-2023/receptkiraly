@@ -1,16 +1,13 @@
 import SearchResultRecepies from '../components/SearchResultRecepies';
-import SearchBar from '../components/SearchBar';
-import SearchFilter from '../components/SearchFilter';
+import SearchForm from '../components/SearchForm';
 
 function SearchRecipes() {
   return (
-    <div>
+    <section>
       <div className="bg-blue-500">
-      <SearchBar />
+      <h1 className="p-8 text-white">Search</h1>
       </div>
-      <div>
-      <SearchFilter />
-      </div>
+      <SearchForm />
     <div className="flex">
       <section className="text-gray-600 body-font ">
         <div className="container px-5 py-24 mx-auto">
@@ -23,7 +20,7 @@ function SearchRecipes() {
         </div>
       </section>
     </div>
-    </div>
+    </section>
   );
 }
 export default SearchRecipes;

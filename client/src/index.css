@@ -5,3 +5,10 @@
 .bg-blue-500 {
     background-color: #f4d06f;
   }
+  
+  h1 {
+    font-family: gilroy,Helvetica,Arial,sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+  }

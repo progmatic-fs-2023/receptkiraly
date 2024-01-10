@@ -31,6 +31,7 @@ function Banner() {
   };
 
   return (
+    <div className="relative wrapper">
     <div className="container mx-auto flex flex-col sm:flex-col md:flex-row justify-between py-6 sm:h-28">
       <div className="sm:hidden">
         <div className="flex justify-center mb-4">
@@ -99,6 +100,7 @@ function Banner() {
           Sign Up
         </Link>
       </div>
+    </div>
     </div>
   );
 }
