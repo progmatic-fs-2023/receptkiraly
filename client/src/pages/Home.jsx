@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <div className="">
-      <div>
+      <div className="">
         Hello project!
         <ul>
           <li>
