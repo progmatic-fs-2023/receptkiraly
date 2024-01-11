@@ -9,11 +9,11 @@ function MethodComp({ editMode }) {
   };
 
   return (
-    <div className="p-10">
-      <h1>Method:</h1>
+    <div className="p-8">
+      <h1 className="flex mx-auto justify-center">Method:</h1>
       <div>
         {editMode ? (
-          <textarea value={description} onChange={handleDescriptionChange} rows={12} cols={60} />
+          <textarea className="flex mx-auto bg-amber-300 text-trueGray-900" value={description} onChange={handleDescriptionChange} rows={12} cols={60} />
         ) : (
           <p>{description}</p>
         )}
