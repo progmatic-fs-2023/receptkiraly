@@ -8,7 +8,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
   return (
     <div>
       {editMode ? (
-        <div>
+        <div className="m-2 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3 flex justify-around">
           <label htmlFor="meals">
             <input
               type="radio"
@@ -24,6 +24,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
             <input
               type="radio"
               value="Desserts"
+              id="desserts"
               checked={selectedMainCategory === 'Desserts'}
               onChange={onValueChange}
             />
@@ -34,6 +35,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
             <input
               type="radio"
               value="Beverages"
+              id="beverages"
               checked={selectedMainCategory === 'Beverages'}
               onChange={onValueChange}
             />

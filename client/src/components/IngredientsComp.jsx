@@ -24,24 +24,24 @@ function IngredientsComp({
         Ingredients:
       </h1>
       {editMode ? (
-        <div className="flex mx-auto justify-center">
+        <div className="flex mx-auto justify-center m-4">
           <input
             type="text"
             placeholder="Add new ingredient"
             value={newIngredient}
             onChange={(e) => setNewIngredient(e.target.value)}
           />
-          <button type="button" onClick={addIngredient}>
+          <button type="button" className="bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium" onClick={addIngredient}>
             Add
           </button>
         </div>
       ) : null}
       <ul>
         {ingredients.map((ingredient) => (
-          <li className="flex mx-auto justify-center bg-amber-300" key={ingredient.id}>
+          <li className="text-center bg-amber-300 text-2xl text-2xl font-medium" key={ingredient.id}>
             {ingredient.text}
             {editMode ? (
-              <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
+              <button type="button" className="flex mx-auto bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg" onClick={() => deleteIngredient(ingredient.id)}>
                 Delete
               </button>
             ) : null}
