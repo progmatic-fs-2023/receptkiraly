@@ -50,7 +50,7 @@ function Banner() {
           <button
             type="button"
             onClick={handleSearch}
-            className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
+            className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none"
           >
             Search
           </button>
@@ -72,7 +72,7 @@ function Banner() {
           <button
             type="button"
             onClick={handleSearch}
-            className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
+            className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none"
           >
             Search
           </button>
@@ -85,7 +85,7 @@ function Banner() {
               {isAuthenticated ? (
                 <NavLink
                   to="/profile"
-                  className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
+                  className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
                 >
                   Profile
                 </NavLink>
@@ -95,7 +95,7 @@ function Banner() {
             </li>
           </ul>
         </nav>
-        <Link to="/register" className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1">
+        <Link to="/register" className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none mx-1">
           Sign Up
         </Link>
       </div>
