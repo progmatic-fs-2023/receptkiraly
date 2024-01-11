@@ -1,3 +1,4 @@
+import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
 
 function SearchRecipes() {
@@ -37,7 +38,12 @@ function SearchRecipes() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+    <section>
+      <div className="bg-orange-400">
+      <h1 className="p-8 text-white">Search</h1>
+      </div>
+      <SearchForm />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         {recipesData.map((recipe) => (
           <RecipeCard
             key={recipe.id}
@@ -50,6 +56,7 @@ function SearchRecipes() {
           />
         ))}
       </div>
+    </section>
   );
 }
 export default SearchRecipes;
