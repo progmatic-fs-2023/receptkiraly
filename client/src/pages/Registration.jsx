@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -39,6 +40,15 @@ function RegistrationForm() {
     } catch (err) {
       setRegistrationMessage('An error occurred during registration.');
     }
+  };
+
+  const [checkedTerm, setCheckedTerm] = useState(false);
+  const [checkedPrivacy, setCheckedPrivacy] = useState(false);
+  const handleChangeTerm = (event) => {
+    setCheckedTerm(event.target.checked);
+  };
+  const handleChangePrivacy = (event) => {
+    setCheckedPrivacy(event.target.checked);
   };
 
   return (
@@ -85,13 +95,60 @@ function RegistrationForm() {
         </label>
 
         {registrationMessage && <div>{registrationMessage}</div>}
-
-        <button
-          className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-          type="submit"
-        >
-          Submit
-        </button>
+        <div className="flex  m-4">
+          <div className="flex items-center">
+            <input
+              onChange={handleChangeTerm}
+              name="checked"
+              id="link-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="link-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              I agree with the{' '}
+              <Link to="/termsofuse" className="hover:underline">
+                terms and conditions
+              </Link>
+              .
+            </label>
+          </div>
+          <div className="flex items-center  my-2">
+            <input
+              onChange={handleChangePrivacy}
+              name="checked"
+              id="link-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="link-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              I agree with the{' '}
+              <Link to="/privacypolicy" className="hover:underline">
+                privacy and policy
+              </Link>
+              .
+            </label>
+          </div>
+        </div>
+        <div className="flex-row flex justify-center m-4">
+          {' '}
+          <button
+            className={`text-white  border-0 py-2 px-8 focus:outline-none ${
+              checkedTerm && checkedPrivacy ? 'hover:bg-indigo-600 bg-indigo-500' : 'bg-indigo-300'
+            } rounded text-lg `}
+            type="submit"
+            disabled={!(checkedTerm && checkedPrivacy)}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
