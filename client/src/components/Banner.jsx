@@ -21,7 +21,7 @@ function Banner() {
   }, []);
 
   const handleSearch = () => {
-    navigate(`/searchrecipes?query=${encodeURIComponent(searchText)}`);
+    navigate(`/search?query=${encodeURIComponent(searchText)}`);
   };
 
   const handleKeyDown = (event) => {

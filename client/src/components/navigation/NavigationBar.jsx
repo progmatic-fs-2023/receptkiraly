@@ -23,7 +23,7 @@ import chef6 from './img/chefs/chef6.webp';
 import chef7 from './img/chefs/chef7.webp';
 
 function NavigationBar() {
-  const link = 'http://localhost:5173/searchrecipes';
+  const link = 'http://localhost:5173/search';
 
   return (
     <nav>
@@ -44,173 +44,173 @@ function NavigationBar() {
                       <li>
                         <NavSubHeadItem
                           text="Appetizers"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Dippers"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Mini Bites"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Salads"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Pastry Slices"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Breakfast"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Egg"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Cereals"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Fruit Salads"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
 
                           <NavSubListItem
                             text="Dairy-based"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Lunch"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Sandwiches"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Salads"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Soups"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Burgers"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Stews"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Pasta"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Meaty"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Dinner"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Steak"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Rice dishes"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Seafood"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Grilled"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="National cuisines"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Italian"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="French"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Mexican"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Chinese"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Indian"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Indian"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Greek"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Seasonal"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Spring"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Summer"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Fall"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Winter"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Indian"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
@@ -248,116 +248,116 @@ function NavigationBar() {
                       <li>
                         <NavSubHeadItem
                           text="Cakes"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Cakes"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Sponge cakes"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Muffins"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Cupcakes"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Frozen Desserts"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Ice cream"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Sorbet"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Gelato"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Ice cream cakes"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Chocolate and Candies"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Truffles"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Bonbons"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Bars and slabs"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Creams and mousses"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Fruit Desserts"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Fruit salads"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Puddings"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Sorbet"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Traditional "
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Éclairs"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Baklava"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Cannoli"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Mochi"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
@@ -390,112 +390,112 @@ function NavigationBar() {
                       <li>
                         <NavSubHeadItem
                           text="Hot Drinks"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Coffee"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Tea"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Hot Chocolate"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Chai tea"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Cold Drinks"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Iced coffee"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Iced tea"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Cold brew"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Lemonade"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Soft drinks"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Cola"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Ginger ale"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Root beer"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Juices"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Orange juice"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Apple juice"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Grape juice"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Cranberry juice"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Smoothies"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Berry smoothie"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Green smoothie"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Protein smoothie"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
@@ -529,52 +529,52 @@ function NavigationBar() {
                       <li>
                         <NavSubHeadItem
                           text="Professional Chefs"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Executive"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Sous"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Pastry"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Cold Kitchen"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Saucier"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
                       <li>
                         <NavSubHeadItem
                           text="Amateur Chefs"
-                          link="http://localhost:5173/searchrecipes?query="
+                          link="http://localhost:5173/search?query="
                         />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             text="Dinner"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Soup"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Italian"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                           <NavSubListItem
                             text="Fast"
-                            link="http://localhost:5173/searchrecipes?query="
+                            link="http://localhost:5173/search?query="
                           />
                         </ul>
                       </li>
