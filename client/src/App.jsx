@@ -14,8 +14,6 @@ import RegistrationForm from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfUse from './pages/TermsOfUse';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -41,8 +39,6 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/rankings" element={<Rankings />} />
               <Route path="/*" element={<NoPage />} />
-              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-              <Route path="/termsofuse" element={<TermsOfUse />} />
             </Routes>
           </div>
         </ErrorBoundary>
