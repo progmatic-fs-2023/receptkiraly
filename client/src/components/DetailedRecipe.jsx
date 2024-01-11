@@ -51,11 +51,6 @@ function DetailedRecipe({ editMode }) {
           setImgUrl={setImgUrl}
         />
         <div>
-          <RecipeTitle
-            editMode={editMode}
-            recipeTitle={recipeTitle}
-            setRecipeTitle={setRecipeTitle}
-          />
           <IconContainer>
             {minutes ? (
               <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} editMode={editMode} />
@@ -67,6 +62,11 @@ function DetailedRecipe({ editMode }) {
               <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} editMode={editMode} />
             ) : null}
           </IconContainer>
+          <RecipeTitle
+            editMode={editMode}
+            recipeTitle={recipeTitle}
+            setRecipeTitle={setRecipeTitle}
+          />
           <RecipeMainCategory
             editMode={editMode}
             selectedMainCategory={selectedMainCategory}
@@ -90,7 +90,7 @@ function DetailedRecipe({ editMode }) {
         {editMode ? (
           <button
             type="submit"
-            className="flex mx-auto bg-amber-300 text-trueGray-900 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg"
+            className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
           >
             Save
           </button>
