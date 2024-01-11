@@ -1,11 +1,7 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ResponsiveImage from './ResponsiveImage';
 
-function ImageUpload({ editMode }) {
-  const [fileUpload, setFileUpload] = useState();
-  const [imgUrl, setImgUrl] = useState();
-
+function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl }) {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
 
@@ -22,9 +18,9 @@ function ImageUpload({ editMode }) {
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       {fileUpload ? (
-        <div className="w-1/2 sm:w-full">
+        <div>
           <ResponsiveImage imgUrl={imgUrl} />
           {editMode ? (
             <label htmlFor="image">
@@ -34,12 +30,15 @@ function ImageUpload({ editMode }) {
           ) : null}
         </div>
       ) : (
-        <div className="flex items-center justify-center">
+        <div>
           {editMode ? (
-            <label htmlFor="image">
-              Upload image:
-              <input type="file" id="image" onChange={handleImageUpload} accept="image/*" />
-            </label>
+            <div>
+              <ResponsiveImage imgUrl="/images/no_image.svg" />
+              <label htmlFor="image">
+                Upload image:
+                <input type="file" id="image" onChange={handleImageUpload} accept="image/*" />
+              </label>
+            </div>
           ) : (
             <ResponsiveImage imgUrl="/images/no_image.svg" />
           )}
@@ -51,6 +50,10 @@ function ImageUpload({ editMode }) {
 
 ImageUpload.propTypes = {
   editMode: PropTypes.bool.isRequired,
+  fileUpload: PropTypes.string.isRequired,
+  setFileUpload: PropTypes.func.isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  setImgUrl: PropTypes.func.isRequired,
 };
 
 export default ImageUpload;

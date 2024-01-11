@@ -9,11 +9,11 @@ function MethodComp({ editMode }) {
   };
 
   return (
-    <div>
+    <div className="p-10">
       <h1>Method:</h1>
       <div>
         {editMode ? (
-          <textarea value={description} onChange={handleDescriptionChange} />
+          <textarea value={description} onChange={handleDescriptionChange} rows={12} cols={60} />
         ) : (
           <p>{description}</p>
         )}

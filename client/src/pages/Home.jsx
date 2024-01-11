@@ -14,7 +14,7 @@ function Home() {
     });
   }, []);
 
-  const isLoggedIn = true;
+  const editMode = true;
 
   return (
     <div className="">
@@ -84,7 +84,7 @@ function Home() {
           </SwiperComponent>
         </div>
       </div>
-      <DetailedRecipe isLoggedIn={isLoggedIn} />
+      <DetailedRecipe editMode={editMode} />
     </div>
   );
 }
