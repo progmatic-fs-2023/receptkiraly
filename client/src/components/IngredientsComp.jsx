@@ -20,7 +20,9 @@ function IngredientsComp({
 
   return (
     <div className="p-10 ">
-      <h1 className="flex mx-auto justify-center">Ingredients:</h1>
+      <h1 className="flex mx-auto justify-center sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+        Ingredients:
+      </h1>
       {editMode ? (
         <div className="flex mx-auto justify-center">
           <input
@@ -36,7 +38,7 @@ function IngredientsComp({
       ) : null}
       <ul>
         {ingredients.map((ingredient) => (
-          <li key={ingredient.id}>
+          <li className="flex mx-auto justify-center bg-amber-300" key={ingredient.id}>
             {ingredient.text}
             {editMode ? (
               <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
