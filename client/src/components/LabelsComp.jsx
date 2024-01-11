@@ -14,7 +14,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
     <div>
       {editMode ? (
         <ul className="flex flex-wrap">
-          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3 ">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="vegan">
               <input
                 type="checkbox"
@@ -26,7 +26,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Vegan
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="vegetarian">
               <input
                 type="checkbox"
@@ -38,7 +38,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Vegetarian
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="nut-free">
               <input
                 type="checkbox"
@@ -50,7 +50,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Nut-free
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="egg-free">
               <input
                 type="checkbox"
@@ -62,7 +62,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Egg-free
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="dairy-free">
               <input
                 type="checkbox"
@@ -74,7 +74,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Dairy-free
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="gluten-free">
               <input
                 type="checkbox"
@@ -86,7 +86,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Gluten-free
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="low-carb">
               <input
                 type="checkbox"
@@ -98,7 +98,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Low-carb
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="spicy">
               <input
                 type="checkbox"
@@ -110,7 +110,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Spicy
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="alcoholic">
               <input
                 type="checkbox"
@@ -122,7 +122,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Alcoholic
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="non-alcoholic">
               <input
                 type="checkbox"
@@ -134,7 +134,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
               Non-alcoholic
             </label>
           </li>
-          <li className="p-3 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          <li className="p-3 title-font sm:text-1xl text-xl font-medium text-gray-900 mb-3">
             <label htmlFor="seafood">
               <input
                 type="checkbox"
@@ -150,7 +150,7 @@ function LabelsComp({ editMode, labels, setLabels }) {
       ) : (
         <div className="flex">
           {labels.map((label) => (
-            <div className="m-1 p-1 border-solid border-2 border-orange-400 rounded-lg">
+            <div className="m-1 p-1 border-solid border-2 border-amber-300 rounded-lg">
               {label}
             </div>
           ))}

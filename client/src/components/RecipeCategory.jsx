@@ -7,10 +7,20 @@ function RecipeCategory({ editMode, category, setCategory }) {
   };
 
   const categories = [
+    { value: 'Breakfast', label: 'Breakfast' },
+    { value: 'Lunch', label: 'Lunch' },
+    { value: 'Dinner', label: 'Dinner' },
+    { value: 'Appetizer', label: 'Appetizer' },
+    { value: 'Cheesecake', label: 'Cheesecake' },
     { value: 'Cake', label: 'Cake' },
-    { value: 'Beer', label: 'Beer' },
-    { value: 'Coffee', label: 'Coffee' },
+    { value: 'Cookie', label: 'Cookie' },
+    { value: 'Cocktail', label: 'Cocktail' },
     { value: 'Soup', label: 'Soup' },
+    { value: 'Pie', label: 'Pie' },
+    { value: 'Pizza', label: 'Pizza' },
+    { value: 'Hamburger', label: 'Hamburger' },
+    { value: 'Pasta', label: 'Pasta' },
+    { value: 'Salad', label: 'Salad' },
   ];
 
   const selectedCategory = categories.find((c) => c.value === category);
