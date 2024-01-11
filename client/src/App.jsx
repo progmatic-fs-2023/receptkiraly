@@ -25,13 +25,14 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div>
-      <div className="container mx-auto">
+      <header className="container mx-auto">
         <Banner />
         <div className="flex justify-center">
           <NavigationBar />
         </div>
+        </header>
+        <main className="container mx-auto my-2">
         <ErrorBoundary FallbackComponent={Fallback}>
-          <div className="my-2">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/recipesfeed" element={<RecipesFeed />} />
@@ -44,9 +45,8 @@ function App() {
               <Route path="/privacypolicy" element={<PrivacyPolicy />} />
               <Route path="/termsofuse" element={<TermsOfUse />} />
             </Routes>
-          </div>
         </ErrorBoundary>
-      </div>
+        </main>
       <Footer />
     </div>
   );
