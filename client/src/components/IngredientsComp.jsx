@@ -19,10 +19,10 @@ function IngredientsComp({
   };
 
   return (
-    <div className="p-10">
-      <h1>Ingredients:</h1>
+    <div className="p-10 ">
+      <h1 className="flex mx-auto justify-center">Ingredients:</h1>
       {editMode ? (
-        <div>
+        <div className="flex mx-auto justify-center">
           <input
             type="text"
             placeholder="Add new ingredient"

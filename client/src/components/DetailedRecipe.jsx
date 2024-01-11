@@ -4,6 +4,7 @@ import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
 import IconContainer from './IconContainer';
 import Icon from './Icon';
+import RecipeMainCategory from './RecipeMainCategory';
 import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
@@ -12,6 +13,7 @@ function DetailedRecipe({ editMode }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
+  const [selectedOption, setSelectedOption] = useState('Meals');
   const [labels, setLabels] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -28,7 +30,7 @@ function DetailedRecipe({ editMode }) {
       minutes: '60',
       difficulty: 'easy',
       serves: '4',
-      recipeTitle: "Mákos bejgli"
+      recipeTitle: 'Mákos bejgli',
     };
 
     setMinutes(data.minutes);
@@ -38,7 +40,7 @@ function DetailedRecipe({ editMode }) {
 
   return (
     <form onSubmit="API CALL">
-      <div className="lg:flex items-center justify-center bg-amber-300 rounded-lg">
+      <div className="lg:flex items-center justify-center bg-orange-400 rounded-lg">
         <ImageUpload
           editMode={editMode}
           fileUpload={fileUpload}
@@ -54,12 +56,7 @@ function DetailedRecipe({ editMode }) {
           />
           <IconContainer>
             {minutes ? (
-              <Icon
-                imgUrl="/images/time-icon.svg"
-                text={`${minutes} mins`}
-                editMode={editMode}
-                className="bg-orange-500"
-              />
+              <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} editMode={editMode} />
             ) : null}
             {difficulty ? (
               <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} editMode={editMode} />
@@ -68,20 +65,34 @@ function DetailedRecipe({ editMode }) {
               <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} editMode={editMode} />
             ) : null}
           </IconContainer>
+          <RecipeMainCategory
+            editMode={editMode}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+          />
           <Labels editMode={editMode} labels={labels} setLabels={setLabels} />
         </div>
       </div>
-      <div className="mt-10 md:flex items-center justify-evenly bg-amber-300 rounded-lg">
-        <Ingredients
-          editMode={editMode}
-          ingredients={ingredients}
-          setIngredients={setIngredients}
-          newIngredient={newIngredient}
-          setNewIngredient={setNewIngredient}
-        />
-        <Method editMode={editMode} description={description} setDescription={setDescription} />
+      <div className="bg-orange-400 rounded-lg">
+        <div className="mt-10 md:flex items-center justify-evenly">
+          <Ingredients
+            editMode={editMode}
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+            newIngredient={newIngredient}
+            setNewIngredient={setNewIngredient}
+          />
+          <Method editMode={editMode} description={description} setDescription={setDescription} />
+        </div>
+        {editMode ? (
+          <button
+            type="submit"
+            className="flex mx-auto bg-amber-300 text-trueGray-900 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg"
+          >
+            Save
+          </button>
+        ) : null}
       </div>
-      {editMode ? <button type="submit">Save</button> : null}
     </form>
   );
 }
