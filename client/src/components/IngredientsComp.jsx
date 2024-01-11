@@ -30,18 +30,30 @@ function IngredientsComp({
             placeholder="Add new ingredient"
             value={newIngredient}
             onChange={(e) => setNewIngredient(e.target.value)}
+            className='p-2'
           />
-          <button type="button" className="bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium" onClick={addIngredient}>
+          <button
+            type="button"
+            className="bg-orange-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
+            onClick={addIngredient}
+          >
             Add
           </button>
         </div>
       ) : null}
       <ul>
         {ingredients.map((ingredient) => (
-          <li className="text-center bg-amber-300 text-2xl text-2xl font-medium" key={ingredient.id}>
+          <li
+            className="flex items-center justify-between bg-orange-300 text-2xl font-medium m-1 p-1 pl-2"
+            key={ingredient.id}
+          >
             {ingredient.text}
             {editMode ? (
-              <button type="button" className="flex mx-auto bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg" onClick={() => deleteIngredient(ingredient.id)}>
+              <button
+                type="button"
+                className="ml-auto bg-red-700 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg uppercase text-white"
+                onClick={() => deleteIngredient(ingredient.id)}
+              >
                 Delete
               </button>
             ) : null}
