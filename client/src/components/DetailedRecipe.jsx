@@ -5,6 +5,7 @@ import RecipeTitle from './RecipeTitle';
 import IconContainer from './IconContainer';
 import Icon from './Icon';
 import RecipeMainCategory from './RecipeMainCategory';
+import RecipeCategory from './RecipeCategory';
 import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
@@ -13,7 +14,8 @@ function DetailedRecipe({ editMode }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
-  const [selectedOption, setSelectedOption] = useState('Meals');
+  const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
+  const [category, setCategory] = useState();
   const [labels, setLabels] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -67,9 +69,10 @@ function DetailedRecipe({ editMode }) {
           </IconContainer>
           <RecipeMainCategory
             editMode={editMode}
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
+            selectedMainCategory={selectedMainCategory}
+            setSelectedMainCategory={setSelectedMainCategory}
           />
+          <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
           <Labels editMode={editMode} labels={labels} setLabels={setLabels} />
         </div>
       </div>

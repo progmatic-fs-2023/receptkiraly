@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-function RecipeMainCategory({ editMode, selectedOption, setSelectedOption }) {
+function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCategory }) {
   function onValueChange(event) {
-    setSelectedOption(event.target.value);
+    setSelectedMainCategory(event.target.value);
   }
 
   return (
@@ -14,7 +14,7 @@ function RecipeMainCategory({ editMode, selectedOption, setSelectedOption }) {
               type="radio"
               value="Meals"
               id="meals"
-              checked={selectedOption === 'Meals'}
+              checked={selectedMainCategory === 'Meals'}
               onChange={onValueChange}
             />
             Meals
@@ -24,7 +24,7 @@ function RecipeMainCategory({ editMode, selectedOption, setSelectedOption }) {
             <input
               type="radio"
               value="Desserts"
-              checked={selectedOption === 'Desserts'}
+              checked={selectedMainCategory === 'Desserts'}
               onChange={onValueChange}
             />
             Desserts
@@ -34,14 +34,14 @@ function RecipeMainCategory({ editMode, selectedOption, setSelectedOption }) {
             <input
               type="radio"
               value="Beverages"
-              checked={selectedOption === 'Beverages'}
+              checked={selectedMainCategory === 'Beverages'}
               onChange={onValueChange}
             />
             Beverages
           </label>
         </div>
       ) : (
-        <div>{selectedOption}</div>
+        <div>{selectedMainCategory}</div>
       )}
     </div>
   );
@@ -49,8 +49,8 @@ function RecipeMainCategory({ editMode, selectedOption, setSelectedOption }) {
 
 RecipeMainCategory.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  selectedOption: PropTypes.string.isRequired,
-  setSelectedOption: PropTypes.func.isRequired,
+  selectedMainCategory: PropTypes.string.isRequired,
+  setSelectedMainCategory: PropTypes.func.isRequired,
 };
 
 export default RecipeMainCategory;
