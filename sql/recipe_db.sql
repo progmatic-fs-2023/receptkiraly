@@ -77,16 +77,16 @@ VALUES
 
 INSERT INTO recipes (recipe_name, recipe_description, recipe_main_category, recipe_img, recipe_time, recipe_difficulty, recipe_serve)
 VALUES
-    ('Scrambled Eggs', 'Classic breakfast dish', 1, 'scrambled_eggs', 20, 1, 4),
-    ('Grilled Chicken Salad', 'Healthy and delicious', 1, 'grilled_chicken_salad', 45, 2, 4),
-    ('Spaghetti Bolognese', 'Italian pasta dish', 1, 'spaghetti_bolognese', 60, 3, 4),
-    ('Guacamole', 'Perfect party appetizer', 1, 'guacamole', 30, 2, 4),
-    ('Fruit Smoothie', 'Refreshing and nutritious', 3, 'fruit_smoothie', 10, 1, 1),
-    ('Chocolate Cake', 'Classic chocolate cake', 2, 'chocolate_cake', 120, 3, 4),
-    ('Strawberry Smoothie', 'Healthy and delicious', 3, 'strawberry_smoothie', 10, 1, 1),
-    ('Vegan Spaghetti Bolognese', 'Healthy and delicious pasta dish', 1, 'vegan_spaghetti_bolognese', 45, 2, 4),
-    ('Plant-based Hamburger', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger', 60, 3, 4),
-    ('Garlic Cream Soup with Pan-Seared Shrimp', 'Perfect appetizer soup', 3, 'garlic_cream_soup_with_shrimp', 120, 3, 4);
+    ('Scrambled Eggs', 'Classic breakfast dish', 1, 'scrambled_eggs.png', 20, 1, 4),
+    ('Grilled Chicken Salad', 'Healthy and delicious', 1, 'grilled_chicken_salad.png', 45, 2, 4),
+    ('Spaghetti Bolognese', 'Italian pasta dish', 1, 'spaghetti_bolognese.png', 60, 3, 4),
+    ('Guacamole', 'Perfect party appetizer', 1, 'guacamole.png', 30, 2, 4),
+    ('Fruit Smoothie', 'Refreshing and nutritious', 3, 'fruit_smoothie.png', 10, 1, 1),
+    ('Chocolate Cake', 'Classic chocolate cake', 2, 'chocolate_cake.png', 120, 3, 4),
+    ('Strawberry Smoothie', 'Healthy and delicious', 3, 'strawberry_smoothie.png', 10, 1, 1),
+    ('Vegan Spaghetti Bolognese', 'Healthy and delicious pasta dish', 1, 'vegan_spaghetti_bolognese.png', 45, 2, 4),
+    ('Plant-based Hamburger', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger.png', 60, 3, 4),
+    ('Garlic Cream Soup with Pan-Seared Shrimp', 'Perfect appetizer soup', 3, 'garlic_cream_soup_with_shrimp.png', 120, 3, 4);
 
 	INSERT INTO main_category (main_category_name) VALUES 
     ('meals'),
