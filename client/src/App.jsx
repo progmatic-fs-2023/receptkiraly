@@ -10,7 +10,7 @@ import SearchRecipes from './pages/SearchRecipes';
 import Home from './pages/Home';
 import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
-import RegistrationForm from './pages/Registration';
+import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
@@ -35,7 +35,7 @@ function App() {
               <Route path="/recipesfeed" element={<RecipesFeed />} />
               <Route path="/searchrecipes" element={<SearchRecipes />} />
               <Route path="/battle" element={<Battle />} />
-              <Route path="/register" element={<RegistrationForm />} />
+              <Route path="/register" element={<Registration />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/rankings" element={<Rankings />} />
               <Route path="/*" element={<NoPage />} />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from '../components/Modal';
 
-function RegistrationForm() {
+function Registration() {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -150,13 +150,8 @@ function RegistrationForm() {
         <div className="flex-row flex justify-center m-4">
           {' '}
           <button
-<<<<<<< HEAD
             className={`text-white px-4 py-2 rounded focus:outline-none  ${
               checkedTerm && checkedPrivacy ? 'bg-amber-300' : 'bg-amber-200'
-=======
-            className={`bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1 focus:outline-none ${
-              checkedTerm && checkedPrivacy ? 'hover:bg-indigo-600 bg-indigo-500' : 'bg-indigo-300'
->>>>>>> main
             } rounded text-lg `}
             type="submit"
             disabled={!(checkedTerm && checkedPrivacy)}
@@ -4016,4 +4011,4 @@ function RegistrationForm() {
     </div>
   );
 }
-export default RegistrationForm;
+export default Registration;
