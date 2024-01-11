@@ -102,13 +102,13 @@ function RegistrationForm() {
             <input
               onChange={handleChangeTerm}
               name="checked"
-              id="link-checkbox"
+              id="termsId"
               type="checkbox"
               value=""
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              htmlFor="link-checkbox"
+              htmlFor="termsId"
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
@@ -126,13 +126,13 @@ function RegistrationForm() {
             <input
               onChange={handleChangePrivacy}
               name="checked"
-              id="link-checkbox"
+              id="privacyId"
               type="checkbox"
               value=""
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
-              htmlFor="link-checkbox"
+              htmlFor="privacyId"
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
@@ -150,8 +150,13 @@ function RegistrationForm() {
         <div className="flex-row flex justify-center m-4">
           {' '}
           <button
+<<<<<<< HEAD
             className={`text-white px-4 py-2 rounded focus:outline-none  ${
               checkedTerm && checkedPrivacy ? 'bg-amber-300' : 'bg-amber-200'
+=======
+            className={`bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1 focus:outline-none ${
+              checkedTerm && checkedPrivacy ? 'hover:bg-indigo-600 bg-indigo-500' : 'bg-indigo-300'
+>>>>>>> main
             } rounded text-lg `}
             type="submit"
             disabled={!(checkedTerm && checkedPrivacy)}
