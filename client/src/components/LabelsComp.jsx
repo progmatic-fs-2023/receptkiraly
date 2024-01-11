@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function LabelsComp({ editMode }) {
-  const [labels, setLabels] = useState([]);
-
+function LabelsComp({ editMode, labels, setLabels }) {
   const handleLabelChange = (event) => {
     const selectedLabel = event.target.value;
     setLabels((prevLabels) =>
@@ -16,18 +13,7 @@ function LabelsComp({ editMode }) {
   return (
     <div>
       {editMode ? (
-        <ul>
-          <li>
-            <label htmlFor="vegetarian">
-              <input
-                type="checkbox"
-                value="vegetarian"
-                checked={labels.includes('vegetarian')}
-                onChange={handleLabelChange}
-              />
-              Vegetarian
-            </label>
-          </li>
+        <ul className="flex flex-wrap">
           <li>
             <label htmlFor="vegan">
               <input
@@ -40,41 +26,124 @@ function LabelsComp({ editMode }) {
             </label>
           </li>
           <li>
-            <label htmlFor="glutenfree">
+            <label htmlFor="vegetarian">
               <input
                 type="checkbox"
-                value="glutenfree"
-                checked={labels.includes('glutenfree')}
+                value="vegetarian"
+                checked={labels.includes('vegetarian')}
+                onChange={handleLabelChange}
+              />
+              Vegetarian
+            </label>
+          </li>
+          <li>
+            <label htmlFor="nut-free">
+              <input
+                type="checkbox"
+                value="nut-free"
+                checked={labels.includes('nut-free')}
+                onChange={handleLabelChange}
+              />
+              Nut-free
+            </label>
+          </li>
+          <li>
+            <label htmlFor="egg-free">
+              <input
+                type="checkbox"
+                value="egg-free"
+                checked={labels.includes('egg-free')}
+                onChange={handleLabelChange}
+              />
+              Egg-free
+            </label>
+          </li>
+          <li>
+            <label htmlFor="dairy-free">
+              <input
+                type="checkbox"
+                value="dairy-free"
+                checked={labels.includes('dairy-free')}
+                onChange={handleLabelChange}
+              />
+              Dairy-free
+            </label>
+          </li>
+          <li>
+            <label htmlFor="gluten-free">
+              <input
+                type="checkbox"
+                value="gluten-free"
+                checked={labels.includes('gluten-free')}
                 onChange={handleLabelChange}
               />
               Gluten-free
             </label>
           </li>
           <li>
-            <label htmlFor="lactosefree">
+            <label htmlFor="low-carb">
               <input
                 type="checkbox"
-                value="lactosefree"
-                checked={labels.includes('lactosefree')}
+                value="low-carb"
+                checked={labels.includes('low-carb')}
                 onChange={handleLabelChange}
               />
-              Lactose-free
+              Low-carb
             </label>
           </li>
           <li>
-            <label htmlFor="sugarfree">
+            <label htmlFor="spicy">
               <input
                 type="checkbox"
-                value="sugarfree"
-                checked={labels.includes('sugarfree')}
+                value="spicy"
+                checked={labels.includes('spicy')}
                 onChange={handleLabelChange}
               />
-              Sugar-free
+              Spicy
+            </label>
+          </li>
+          <li>
+            <label htmlFor="alcoholic">
+              <input
+                type="checkbox"
+                value="alcoholic"
+                checked={labels.includes('alcoholic')}
+                onChange={handleLabelChange}
+              />
+              Alcoholic
+            </label>
+          </li>
+          <li>
+            <label htmlFor="non-alcoholic">
+              <input
+                type="checkbox"
+                value="non-alcoholic"
+                checked={labels.includes('non-alcoholic')}
+                onChange={handleLabelChange}
+              />
+              Non-alcoholic
+            </label>
+          </li>
+          <li>
+            <label htmlFor="seafood">
+              <input
+                type="checkbox"
+                value="seafood"
+                checked={labels.includes('seafood')}
+                onChange={handleLabelChange}
+              />
+              Seafood
             </label>
           </li>
         </ul>
       ) : (
-        <div>{labels.map((label) => label)}</div>
+        <div className="flex">
+          {labels.map((label) => (
+            <div className="m-1 p-1 border-solid border-2 border-orange-400 rounded-lg">
+              {label}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
@@ -82,6 +151,8 @@ function LabelsComp({ editMode }) {
 
 LabelsComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
+  labels: PropTypes.string.isRequired,
+  setLabels: PropTypes.func.isRequired,
 };
 
 export default LabelsComp;

@@ -1,10 +1,12 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function IngredientsComp({ editMode }) {
-  const [ingredients, setIngredients] = useState([]);
-  const [newIngredient, setNewIngredient] = useState('');
-
+function IngredientsComp({
+  editMode,
+  ingredients,
+  setIngredients,
+  newIngredient,
+  setNewIngredient,
+}) {
   const addIngredient = () => {
     if (newIngredient.trim() !== '') {
       setIngredients([...ingredients, { id: Date.now(), text: newIngredient }]);
@@ -17,7 +19,7 @@ function IngredientsComp({ editMode }) {
   };
 
   return (
-    <div>
+    <div className="p-10">
       <h1>Ingredients:</h1>
       {editMode ? (
         <div>
@@ -50,6 +52,10 @@ function IngredientsComp({ editMode }) {
 
 IngredientsComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
+  ingredients: PropTypes.string.isRequired,
+  setIngredients: PropTypes.func.isRequired,
+  newIngredient: PropTypes.string.isRequired,
+  setNewIngredient: PropTypes.func.isRequired,
 };
 
 export default IngredientsComp;
