@@ -42,7 +42,7 @@ function DetailedRecipe({ editMode }) {
 
   return (
     <form onSubmit="API CALL">
-      <div className="lg:flex items-center justify-center bg-orange-400 rounded-lg">
+      <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
         <ImageUpload
           editMode={editMode}
           fileUpload={fileUpload}
@@ -72,11 +72,13 @@ function DetailedRecipe({ editMode }) {
             selectedMainCategory={selectedMainCategory}
             setSelectedMainCategory={setSelectedMainCategory}
           />
-          <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
-          <Labels editMode={editMode} labels={labels} setLabels={setLabels} />
+          <div className="flex justify-center items-center">
+            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
+            <Labels editMode={editMode} labels={labels} setLabels={setLabels} />
+          </div>
         </div>
       </div>
-      <div className="bg-orange-400 rounded-lg">
+      <div className="bg-orange-50 rounded-lg">
         <div className="mt-10 md:flex items-center justify-evenly">
           <Ingredients
             editMode={editMode}
