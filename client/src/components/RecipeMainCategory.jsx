@@ -6,9 +6,9 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
   }
 
   return (
-    <div>
+    <div className="flex justify-center">
       {editMode ? (
-        <div className="m-2 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3 flex justify-around">
+        <div className="grid w-[45rem] grid-cols-3 gap-2 bg-orange-300 rounded-xl p-2 m-4">
           <label htmlFor="meals">
             <input
               type="radio"
@@ -16,8 +16,11 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
               id="meals"
               checked={selectedMainCategory === 'Meals'}
               onChange={onValueChange}
+              className="peer hidden"
             />
-            Meals
+            <span className="uppercase text-xl block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-950 peer-checked:font-bold peer-checked:text-white">
+              Meal
+            </span>
           </label>
 
           <label htmlFor="desserts">
@@ -27,8 +30,11 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
               id="desserts"
               checked={selectedMainCategory === 'Desserts'}
               onChange={onValueChange}
+              className="peer hidden"
             />
-            Desserts
+            <span className="uppercase text-xl block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-950 peer-checked:font-bold peer-checked:text-white">
+              Dessert
+            </span>
           </label>
 
           <label htmlFor="beverages">
@@ -38,8 +44,11 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
               id="beverages"
               checked={selectedMainCategory === 'Beverages'}
               onChange={onValueChange}
+              className="peer hidden"
             />
-            Beverages
+            <span className="uppercase text-xl block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-950 peer-checked:font-bold peer-checked:text-white">
+              Beverage
+            </span>
           </label>
         </div>
       ) : (
