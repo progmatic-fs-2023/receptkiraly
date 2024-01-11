@@ -6,16 +6,18 @@ function RecipeTitle({ editMode, recipeTitle, setRecipeTitle }) {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center opacity-60">
       {editMode ? (
         <input
-          className="p-2 m-2 bg-amber-300 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3"
+          className="p-2 m-2 bg-white border-solid border-4 border-orange-500 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3"
           value={recipeTitle}
           onChange={handleRecipeTitleChange}
           placeholder="Give a name to your recipe!"
         />
       ) : (
-        <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{recipeTitle}</h1>
+        <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+          {recipeTitle}
+        </h1>
       )}
     </div>
   );
