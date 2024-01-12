@@ -3,6 +3,7 @@ import { API_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
+import DetailedRecipe from '../components/DetailedRecipe';
 import RecipeKingCard from '../components/RecipeKingCard';
 
 function Home() {
@@ -13,6 +14,8 @@ function Home() {
       if (response.ok) setIsConnect(true);
     });
   }, []);
+
+  const editMode = true;
 
   return (
     <div className="">
@@ -82,6 +85,7 @@ function Home() {
           </SwiperComponent>
         </div>
       </div>
+      <DetailedRecipe editMode={editMode} />
     </div>
   );
 }
