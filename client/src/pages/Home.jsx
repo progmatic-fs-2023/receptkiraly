@@ -4,6 +4,7 @@ import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
 import DetailedRecipe from '../components/DetailedRecipe';
+import RecipeKingCard from '../components/RecipeKingCard';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
