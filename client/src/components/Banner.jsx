@@ -56,7 +56,7 @@ function Banner() {
           </button>
         </div>
       </div>
-      <div className="hidden sm:flex w-full md:w-3/4 justify-start sm:items-end">
+      <div className="hidden sm:flex w-full md:w-3/4 justify-around sm:items-end">
         <div className="flex items-center">
           <img src={Logo} alt="Recipe King" className="logo" />
         </div>
@@ -95,7 +95,10 @@ function Banner() {
             </li>
           </ul>
         </nav>
-        <Link to="/register" className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none mx-1">
+        <Link
+          to="/register"
+          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
+        >
           Sign Up
         </Link>
       </div>

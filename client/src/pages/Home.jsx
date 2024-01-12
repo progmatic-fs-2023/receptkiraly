@@ -36,12 +36,12 @@ function Home() {
           <div className="m-auto">
             <div className="text-center ">
               <h2 className="text-xs text-orange-400 tracking-widest font-medium title-font mb-1">
-                Recipe king
+                Recipe King
               </h2>
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
                 Find recipes
               </h1>
-              <p className="leading-relaxed text-base">and meet the &quot;Recipe Queen&quot;</p>
+              <p className="leading-relaxed text-base">and meet the &quot;Recipe King&quot;</p>
             </div>
           </div>
         </div>

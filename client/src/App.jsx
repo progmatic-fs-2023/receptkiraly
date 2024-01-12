@@ -10,12 +10,10 @@ import SearchRecipes from './pages/SearchRecipes';
 import Home from './pages/Home';
 import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
-import RegistrationForm from './pages/Registration';
+import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfUse from './pages/TermsOfUse';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -38,12 +36,10 @@ function App() {
               <Route path="/recipesfeed" element={<RecipesFeed />} />
               <Route path="/search" element={<SearchRecipes />} />
               <Route path="/battle" element={<Battle />} />
-              <Route path="/register" element={<RegistrationForm />} />
+              <Route path="/register" element={<Registration />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/rankings" element={<Rankings />} />
               <Route path="/*" element={<NoPage />} />
-              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-              <Route path="/termsofuse" element={<TermsOfUse />} />
             </Routes>
         </ErrorBoundary>
         </main>
