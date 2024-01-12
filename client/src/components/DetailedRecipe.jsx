@@ -16,10 +16,11 @@ function DetailedRecipe({ editMode }) {
   const [recipeTitle, setRecipeTitle] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
   const [category, setCategory] = useState();
-  const [labels, setLabels] = useState([]);
+  // const [labels, setLabels] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
   const [description, setDescription] = useState();
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const [minutes, setMinutes] = useState();
   const [difficulty, setDifficulty] = useState();
@@ -60,8 +61,9 @@ function DetailedRecipe({ editMode }) {
             ) : null}
             {serves ? (
               <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} editMode={editMode} />
-            ) : null}
+            ) : null}{' '}
           </IconContainer>
+
           <RecipeTitle
             editMode={editMode}
             recipeTitle={recipeTitle}
@@ -74,7 +76,11 @@ function DetailedRecipe({ editMode }) {
           />
           <div className="flex justify-center items-center">
             <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
-            <Labels editMode={editMode} labels={labels} setLabels={setLabels} />
+            <Labels
+              editMode={editMode}
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+            />
           </div>
         </div>
       </div>
