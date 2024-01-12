@@ -22,7 +22,7 @@ function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name }) {
           {difficulty ? <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} /> : null}
           {serves ? <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} /> : null}
         </IconContainer>
-        <div className="mt-3">
+        <div className="flex justify-center mt-3">
           <h3 className="group-hover:text-primary">{name}</h3>
         </div>
       </a>
