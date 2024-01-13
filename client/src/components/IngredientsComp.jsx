@@ -36,7 +36,7 @@ function IngredientsComp({
           <Button
             type="button"
             text="Add"
-            className="bg-orange-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
+            className="bg-orange-300 border-0 py-2 px-8 hover:bg-orange-600 text-lg font-medium"
             onClick={addIngredient}/>
         </div>
       ) : null}
@@ -51,7 +51,7 @@ function IngredientsComp({
               <Button
                 type="button"
                 text="Delete"
-                className="ml-auto bg-red-700 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg uppercase text-white"
+                className="ml-auto bg-red-700 border-0 py-2 px-8 hover:bg-orange-600 text-lg uppercase"
                 onClick={() => deleteIngredient(ingredient.id)}/>
             ) : null}
           </li>
