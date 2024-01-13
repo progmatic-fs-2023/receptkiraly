@@ -39,8 +39,10 @@ function SearchRecipes() {
 
   return (
     <section>
-      <div className="bg-orange-400">
-      <h1 className="p-8 text-white">Search</h1>
+      <div className="bg-orange-400 relative z-0">
+      <img src="/images/meal-2.svg" alt="Meal Icon" className="absolute left-0 top-0 h-40 transform scale-x-[-1] z-0"/>
+      <img src="/images/top-orange.svg" alt="Meal Icon" className="absolute right-0 top-0 z-0"/>
+      <h1 className="relative p-8 text-5xl text-white z-20">Search</h1>
       </div>
       <SearchForm />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">

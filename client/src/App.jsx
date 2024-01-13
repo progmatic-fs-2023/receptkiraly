@@ -23,12 +23,14 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div>
-      <header className="container mx-auto">
+      <header className="container mx-auto relative">
         <Banner />
         <div className="flex justify-center">
           <NavigationBar />
         </div>
         </header>
+        <img src="/images/meal.svg" alt="Meal Icon" className="absolute left-0 top-0 z-0"/>
+        <img src="/images/stirring.svg" alt="Meal Icon" className="absolute right-0 transform scale-y-[-1] top-0 z-0"/>
         <main className="container mx-auto my-2">
         <ErrorBoundary FallbackComponent={Fallback}>
             <Routes>
