@@ -29,7 +29,7 @@ function App() {
           <NavigationBar />
         </div>
         </header>
-        <img src="/images/meal.svg" alt="Meal Icon" className="absolute left-0 top-1/2 z-0 hidden sm:block"/>
+        <img src="/images/meal.svg" alt="Meal Icon" className="absolute left-0 top-0 z-0 hidden sm:block"/>
         <img src="/images/stirring.svg" alt="Meal Icon" className="absolute right-0 transform scale-y-[-1] top-0 z-0 hidden sm:block"/>
         <main>
         <ErrorBoundary FallbackComponent={Fallback}>
