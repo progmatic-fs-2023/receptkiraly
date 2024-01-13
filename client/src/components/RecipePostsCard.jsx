@@ -29,7 +29,7 @@ function RecipePostsCard({
               <h3>Like {iCockedIt} ❤ </h3>
             </div>
             <div className="posts-button">
-              <Button text="I want to Cook It" />
+              <Button type="button" text="I want to Cook It" />
             </div>
           </div>
         </div>

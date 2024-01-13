@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 function IngredientsComp({
   editMode,
@@ -32,13 +33,11 @@ function IngredientsComp({
             onChange={(e) => setNewIngredient(e.target.value)}
             className='p-2'
           />
-          <button
+          <Button
             type="button"
-            className="bg-orange-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
-            onClick={addIngredient}
-          >
-            Add
-          </button>
+            text="Add"
+            className="bg-orange-300 border-0 py-2 px-8 hover:bg-orange-600 text-lg font-medium"
+            onClick={addIngredient}/>
         </div>
       ) : null}
       <ul>
@@ -49,13 +48,11 @@ function IngredientsComp({
           >
             {ingredient.text}
             {editMode ? (
-              <button
+              <Button
                 type="button"
-                className="ml-auto bg-red-700 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg uppercase text-white"
-                onClick={() => deleteIngredient(ingredient.id)}
-              >
-                Delete
-              </button>
+                text="Delete"
+                className="ml-auto bg-red-700 border-0 py-2 px-8 hover:bg-orange-600 text-lg uppercase"
+                onClick={() => deleteIngredient(ingredient.id)}/>
             ) : null}
           </li>
         ))}

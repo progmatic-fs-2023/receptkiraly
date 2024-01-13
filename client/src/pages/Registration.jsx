@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from '../components/Modal';
+import Button from '../components/Button';
 
 function Registration() {
   const [formData, setFormData] = useState({
@@ -112,13 +113,11 @@ function Registration() {
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
-              <button
+              <Button
+              text="terms and conditions"
+              type="button"
                 onClick={() => setShowTermsOfUse(true)}
-                className="hover:underline"
-                type="button"
-              >
-                terms and conditions
-              </button>
+                addClassName="hover:underline"/>
               .
             </label>
           </div>
@@ -136,28 +135,24 @@ function Registration() {
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
-              <button
+              <Button
+              type="button"
+              text="privacy and policy"
                 onClick={() => setShowPrivacyPolicy(true)}
-                className="hover:underline"
-                type="button"
-              >
-                privacy and policy
-              </button>
+                addClassName="hover:underline"/>
               .
             </label>
           </div>
         </div>
         <div className="flex-row flex justify-center m-4">
           {' '}
-          <button
-            className={`text-white px-4 py-2 rounded focus:outline-none  ${
+          <Button
+          text="Submit"
+          type="submit"
+            addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
               checkedTerm && checkedPrivacy ? 'bg-amber-300' : 'bg-amber-200'
             } rounded text-lg `}
-            type="submit"
-            disabled={!(checkedTerm && checkedPrivacy)}
-          >
-            Submit
-          </button>
+            disabled={!(checkedTerm && checkedPrivacy)}/>
         </div>
       </form>
       {showPrivacyPolicy ? (

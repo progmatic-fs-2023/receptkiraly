@@ -20,3 +20,26 @@ h1 {
   font-weight: 700;
   line-height: 52px;
 }
+
+.custom-button-color {
+  background: #ffab56;
+  background-image: -webkit-linear-gradient(top, #ffab56, #ff8811);
+  background-image: -moz-linear-gradient(top, #ffab56, #ff8811);
+  background-image: -ms-linear-gradient(top, #ffab56, #ff8811);
+  background-image: -o-linear-gradient(top, #ffab56, #ff8811);
+  background-image: linear-gradient(to bottom, #ffab56, #ff8811);
+}
+.custom-button-color:hover {
+  background: #fa942d;
+  background-image: -webkit-linear-gradient(top, #fa942d, #d66b00);
+  background-image: -moz-linear-gradient(top, #fa942d, #d66b00);
+  background-image: -ms-linear-gradient(top, #fa942d, #d66b00);
+  background-image: -o-linear-gradient(top, #fa942d, #d66b00);
+  background-image: linear-gradient(to bottom, #fa942d, #d66b00);
+}
+.custom-button-border {
+  border-color: #ffb870;
+}
+.custom-button-shadow {
+  box-shadow: 0px 0px 0px 1px #ff8e1d;
+}

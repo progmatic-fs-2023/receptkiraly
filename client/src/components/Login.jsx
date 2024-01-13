@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 function Login({setIsAuthenticated }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,13 +43,10 @@ function Login({setIsAuthenticated }) {
 
   return (
     <div className="relative inline-block z-10">
-      <button
+      <Button
         type="button"
-        className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
-        onClick={handleToggle}
-      >
-        Sign In
-      </button>
+        text="Sign In"
+        onClick={handleToggle}/>
       {isOpen && (
         <div className="absolute left-0 mt-2 bg-white p-4 border rounded shadow-md">
           <form onSubmit={handleLogin}>
@@ -73,9 +71,7 @@ function Login({setIsAuthenticated }) {
               />
             </label>
             <div className="flex flex-col items-center justify-between">
-              <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded">
-                Sign In
-              </button>
+              <Button type="submit" text="Sign In"/>
             </div>
           </form>
           {loginMessage && <p>{loginMessage}</p>}

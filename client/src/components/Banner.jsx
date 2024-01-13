@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo.png';
 import Login from './Login';
+import Button from './Button';
 
 function Banner() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,13 +48,7 @@ function Banner() {
             onKeyDown={handleKeyDown}
             className="w-96 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
           />
-          <button
-            type="button"
-            onClick={handleSearch}
-            className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none"
-          >
-            Search
-          </button>
+          <Button text="Search" type="button" onClick={handleSearch} />
         </div>
       </div>
       <div className="hidden sm:flex w-full md:w-3/4 justify-around sm:items-end">
@@ -69,13 +64,7 @@ function Banner() {
             onKeyDown={handleKeyDown}
             className="w-96 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
           />
-          <button
-            type="button"
-            onClick={handleSearch}
-            className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none"
-          >
-            Search
-          </button>
+          <Button text="Search" type="button" onClick={handleSearch} />
         </div>
       </div>
       <div className="flex justify-center items-center sm:mt-4 md:mt-0">
@@ -83,11 +72,8 @@ function Banner() {
           <ul>
             <li>
               {isAuthenticated ? (
-                <NavLink
-                  to="/profile"
-                  className="bg-orange-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
-                >
-                  Profile
+                <NavLink to="/profile">
+                  <Button text="Profile" type="button" />
                 </NavLink>
               ) : (
                 <Login setIsAuthenticated={setIsAuthenticated} />
@@ -95,11 +81,8 @@ function Banner() {
             </li>
           </ul>
         </nav>
-        <Link
-          to="/register"
-          className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none mx-1"
-        >
-          Sign Up
+        <Link to="/register">
+          <Button text="Sign Up" type="button" />
         </Link>
       </div>
     </div>
