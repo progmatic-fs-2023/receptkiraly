@@ -9,17 +9,18 @@ import RecipeKingCard from '../components/RecipeKingCard';
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const [idsLatestRecipe, setIdsLatestRecipe] = useState([0, 0, 0, 0, 0]);
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8];
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
-    fetch(`${API_URL}/api/recipe/latest/5`)
+    fetch(`${API_URL}/recipes/latest/5`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
         return response.json();
       })
-      .then((data) => setIdsLatestRecipe(data.ids));
+      .then((data) => {
+        setIdsLatestRecipe(data.ids);
+      });
   }, []);
 
   const editMode = true;
