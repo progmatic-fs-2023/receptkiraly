@@ -8,8 +8,8 @@ function RecipeKingCard() {
       <img src={King} alt="" className="w-44 h-44 rounded-lg relative top-5 left-16 " />
       <img src={Crown} alt="" className="w-20 relative -top-48 left-8" />
       <div className="flex justify-around">
-        <p className="">Battles winned: 35⚔</p>
-        <p className="">Likes: 50❤ </p>
+        <p className="hidden">Battles winned: 35⚔</p>
+        <p className="hidden">Likes: 50❤ </p>
       </div>
     </div>
   );
