@@ -26,7 +26,7 @@ function NavigationBar() {
   const link = 'http://localhost:5173/search';
 
   return (
-    <nav>
+    <nav className="z-50">
       <div className="border-t border-t-light hidden lg:flex justify-between py-6 valami">
         <ul className="flex -mx-[20px] z-10">
           <li className="mega-menu__item group px-[20px]">

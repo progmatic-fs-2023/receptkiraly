@@ -31,7 +31,7 @@ function Banner() {
   };
 
   return (
-    <div className="container mx-auto flex flex-col sm:flex-col md:flex-row justify-between py-6 sm:h-28">
+    <div className="container mx-auto flex flex-col sm:flex-col md:flex-row justify-between py-6 sm:h-28 relative z-20">
       <div className="sm:hidden">
         <div className="flex justify-center mb-4">
           <Link to="/" className="focus:outline-none">
