@@ -9,6 +9,7 @@ import RecipeCategory from './RecipeCategory';
 import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
+import Button from './Button';
 
 function DetailedRecipe({ editMode }) {
   const [fileUpload, setFileUpload] = useState();
@@ -96,12 +97,11 @@ function DetailedRecipe({ editMode }) {
           <Method editMode={editMode} description={description} setDescription={setDescription} />
         </div>
         {editMode ? (
-          <button
+          <Button
             type="submit"
+            text="Save"
             className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
-          >
-            Save
-          </button>
+          />
         ) : null}
       </div>
     </form>

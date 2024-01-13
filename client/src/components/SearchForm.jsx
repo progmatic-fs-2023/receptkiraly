@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from './Button';
 
 function SearchFilter() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,31 +49,22 @@ function SearchFilter() {
           onKeyDown={handleonKeyDown}
           placeholder="Search"
         />
-        <button
-          type="button"
-          onClick={handleSearch}
-          className="bg-orange-500 text-white px-4 py-2 ml-2 rounded-md focus:outline-none"
-        >
-          Search
-        </button>
+        <Button text="Search" type="button" onClick={handleSearch} />
       </div>
       </div>
-      <div className="bg-white">
-        <button
+      <div>
+        <Button
+          text="Filters"
           type="button"
-          className="bg-orange-500 text-white px-4 py-2 rounded-md focus:outline-none"
           onClick={toggleFilter}
-        >
-          Filters
-        </button>
+        />
         {isOpen && (
           <>
-            <button
-              type="button"
-              className="bg-orange-500 text-white px-4 py-2 rounded-md focus:outline-none ml-2"
-            >
-              Apply Changes
-            </button>
+          <Button
+            text="Apply Changes"
+            type="button"
+            addClassName="ml-2"
+          />
             <div className="mb-4 mt-6 lg:mt-10">
               <div className="flex flex-nowrap">
                 <div className="mb-6 lg:mb-0 lg:w-1/4 lg:mr-2">

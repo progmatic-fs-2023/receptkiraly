@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 function MyRecipes() {
   return (
@@ -19,14 +20,10 @@ function MyRecipes() {
 
       <div className="flex justify-center mt-4">
         <div className="w-1/2 text-center">
-          <button type="button" className="p-2 bg-indigo-500 text-white hover:bg-indigo-600 transition duration-300 ease-in-out rounded-md">
-            Edit
-          </button>
+          <Button type="button" text="Edit"/>
         </div>
         <div className="w-1/2 text-center">
-          <button type="button" className="p-2 bg-red-500 text-white hover:bg-red-600 transition duration-300 ease-in-out rounded-md">
-            Delete
-          </button>
+          <Button type="button" text="Delete"/>
         </div>
       </div>
     </div>
