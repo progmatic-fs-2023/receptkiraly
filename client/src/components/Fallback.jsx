@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 function Fallback({ error, resetErrorBoundary }) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>
-      <button type="submit" onClick={resetErrorBoundary}>
-        Try again
-      </button>
+      <Button type="submit" text="Try again" onClick={resetErrorBoundary}/>
     </div>
   );
 }

@@ -1,11 +1,9 @@
+/* eslint-disable react/button-has-type */
 import PropTypes from 'prop-types';
 
-function Button({ text }) {
+function Button({ text, type, addClassName }) {
   return (
-    <button
-      type="button"
-      className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-    >
+    <button type={type} className={`bg-orange-500 text-white px-4 py-2 rounded focus:outline-none ${addClassName}`}>
       {text}
     </button>
   );
@@ -13,5 +11,12 @@ function Button({ text }) {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  addClassName: PropTypes.string,
+};
+
+Button.defaultProps = {
+  type: 'button',
+  addClassName: '',
 };
 export default Button;
