@@ -73,14 +73,16 @@ export const addNewRecipe = async (
     ],
   );
 
-  db.query(
+  const recipeID = result.rows[0].recipe_id;
+
+  await db.query(
     `
     INSERT INTO recipes_categories
     (categories_recipe_id, categories_category_id)
     VALUES
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = $1), (SELECT category_id FROM category WHERE category_name = $2));
+    ($1, (SELECT category_id FROM category WHERE category_name = $2));
   `,
-    [recipeName, recipeCategory],
+    [recipeID, recipeCategory],
   );
 
   for (let i = 0; i < recipeLabels.length; i += 1) {
@@ -89,9 +91,9 @@ export const addNewRecipe = async (
     INSERT INTO recipes_labels
     (labels_recipe_id, labels_label_id)
     VALUES
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = $1), (SELECT label_id FROM labels WHERE label_name = $2))
+    ($1, (SELECT label_id FROM labels WHERE label_name = $2))
     `,
-      [recipeName, recipeLabels[i]],
+      [recipeID, recipeLabels[i]],
     );
   }
 
