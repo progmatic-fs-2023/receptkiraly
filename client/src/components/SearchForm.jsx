@@ -28,7 +28,7 @@ function SearchFilter() {
   };
 
   return (
-    <div className="border-b border-gray-200 pb-6 lg:pb-10 relative z-20">
+    <div className="border-b border-gray-200 pb-6 lg:pb-10 relative z-10">
       <div className="bg-orange-400 mb-4 p-4 lg:px-8 lg:py-5 custom-div-shadow relative z-0">
       <div>
         <img
