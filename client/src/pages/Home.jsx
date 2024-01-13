@@ -18,8 +18,10 @@ function Home() {
   const editMode = true;
 
   return (
-    <div className="">
-      <div className="">
+    <div>
+       <div><img src="/images/banner-v2.png" alt="Banner" className="w-full relative z-20"/></div>
+       <div className="container mx-auto my-2">
+      <div>
         Hello project!
         <ul>
           <li>
@@ -86,6 +88,7 @@ function Home() {
         </div>
       </div>
       <DetailedRecipe editMode={editMode} />
+      </div>
     </div>
   );
 }
