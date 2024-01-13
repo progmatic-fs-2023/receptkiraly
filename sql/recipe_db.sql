@@ -75,7 +75,7 @@ VALUES
     ('emma_wilson', 'emma@example.com', 'hashed_password_012'),
     ('michael_brown', 'michael@example.com', 'hashed_password_345');
 
-INSERT INTO recipes (recipe_name, recipe_description, recipe_main_category, recipe_img, recipe_time, recipe_difficulty, recipe_serve)
+INSERT INTO recipes (recipe_name, recipe_description, recipe_main_category_id, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count)
 VALUES
     ('Scrambled Eggs', 'Classic breakfast dish', 1, 'scrambled_eggs.png', 20, 1, 4),
     ('Grilled Chicken Salad', 'Healthy and delicious', 1, 'grilled_chicken_salad.png', 45, 2, 4),

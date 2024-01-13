@@ -7,7 +7,7 @@ function ExploreAllButton({ text }) {
         className="block border-2 border-orange-400 font-semibold hover:bg-primary hover:bg-orange-400 hover:text-white py-3 px-8 rounded sm:inline-block text-orange-400 text-sm text-center uppercase"
         target="_self"
         title=""
-        href="http://localhost:5173/searchrecipes"
+        href="http://localhost:5173/search"
       >
         <span>{text}</span>
       </a>
