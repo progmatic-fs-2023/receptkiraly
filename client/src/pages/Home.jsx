@@ -59,7 +59,7 @@ function Home() {
         <div className=" basis-2/6">
           <div className="flex justify-center ">
             <div className="">
-              <Carousel title="Latest recipe">
+              <Carousel title="Latest recipes">
                 {idsLatestRecipe.map((id) => (
                   <RecipeCard
                     id={id}
