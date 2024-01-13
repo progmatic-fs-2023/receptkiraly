@@ -31,6 +31,8 @@ export const getRecipe = async recipeID => {
   category.category_name, 
   main_category.main_category_name, 
   labels.label_name 
+
+  FROM recipes
   
   INNER JOIN recipes_categories 
   ON recipes_categories.categories_recipe_id = recipes.recipe_id 
@@ -41,11 +43,11 @@ export const getRecipe = async recipeID => {
   INNER JOIN main_category 
   ON main_category.main_category_id = category.category_main_category 
   
-  INNER JOIN recipe_labels 
-  ON recipe_labels.labels_recipe_id = recipes.recipe_id 
+  INNER JOIN recipes_labels 
+  ON recipes_labels.labels_recipe_id = recipes.recipe_id 
   
   INNER JOIN labels 
-  ON labels.label_id = recipe_labels.labels_label_id 
+  ON labels.label_id = recipes_labels.labels_label_id 
   
   WHERE 
   recipes.recipe_id = $1
@@ -53,4 +55,58 @@ export const getRecipe = async recipeID => {
     [recipeID],
   );
   return result.rows[0];
+};
+
+export const addNewRecipe = async (
+  recipeName,
+  recipeDescription,
+  recipeImg,
+  recipeTimeMinutes,
+  recipeDifficultyLevel,
+  recipeServeCount,
+  recipeCategory,
+  recipeLabels,
+) => {
+  const result = await db.query(
+    `
+    INSERT INTO recipes
+    (recipe_name, recipe_description, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count)
+    VALUES 
+    ($1, $2, $3, $4, $5, $6)
+
+    RETURNING *
+    `,
+    [
+      recipeName,
+      recipeDescription,
+      recipeImg,
+      recipeTimeMinutes,
+      recipeDifficultyLevel,
+      recipeServeCount,
+    ],
+  );
+
+  db.query(
+    `
+    INSERT INTO recipes_categories
+    (categories_recipe_id, categories_category_id)
+    VALUES
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = $1), (SELECT category_id FROM category WHERE category_name = $2));
+  `,
+    [recipeName, recipeCategory],
+  );
+
+  for (let i = 0; i < recipeLabels.length; i += 1) {
+    db.query(
+      `
+    INSERT INTO recipes_labels
+    (labels_recipe_id, labels_label_id)
+    VALUES
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = $1), (SELECT label_id FROM labels WHERE label_name = $2))
+    `,
+      [recipeName, recipeLabels[i]],
+    );
+  }
+
+  return result.rows;
 };
