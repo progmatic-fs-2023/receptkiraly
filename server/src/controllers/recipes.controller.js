@@ -21,7 +21,7 @@ export const list = async (req, res) => {
 
 export const getLatest = async (req, res) => {
   try {
-    const count = req.params.count;
+    const { count } = req.params;
     const recipes = await services.listRecipes(count);
 
     if (recipes) {
