@@ -46,7 +46,6 @@ function Login({setIsAuthenticated }) {
       <Button
         type="button"
         text="Sign In"
-        addClassName="mx-1"
         onClick={handleToggle}/>
       {isOpen && (
         <div className="absolute left-0 mt-2 bg-white p-4 border rounded shadow-md">

@@ -5,7 +5,7 @@ function Button({ text, type, addClassName, onClick, disabled }) {
   return (
     <button
       type={type}
-      className={`bg-orange-500 text-white px-4 py-2 rounded focus:outline-none ${addClassName}`}
+      className={`custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 ${addClassName}`}
       onClick={onClick}
       disabled={disabled}
     >
