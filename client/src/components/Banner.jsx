@@ -54,7 +54,7 @@ function Banner() {
           </button>
         </div>
       </div>
-      <div className="flex justify-center items-center sm:mt-4 md:mt-0">
+      <div className="flex flex-grow justify-center items-center sm:mt-4 md:mt-0">
         <nav>
           <ul>
             <li>
