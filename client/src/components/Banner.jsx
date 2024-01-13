@@ -57,9 +57,9 @@ function Banner() {
         </div>
       </div>
       <div className="hidden sm:flex w-full md:w-3/4 justify-around sm:items-end">
-        <div className="flex items-center">
+        <Link to="/" className="focus:outline-none">
           <img src={Logo} alt="Recipe King" className="logo" />
-        </div>
+        </Link>
         <div className="flex items-end mx-6">
           <input
             type="text"
