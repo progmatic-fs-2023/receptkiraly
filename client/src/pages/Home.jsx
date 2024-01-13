@@ -8,11 +8,18 @@ import RecipeKingCard from '../components/RecipeKingCard';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
+  const [idsLatestRecipe, setIdsLatestRecipe] = useState([0, 0, 0, 0, 0]);
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
+    fetch(`${API_URL}/api/recipe/latest/5`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Latest recipe cannot be fetched');
+        return response.json();
+      })
+      .then((data) => setIdsLatestRecipe(data.ids));
   }, []);
 
   const editMode = true;
@@ -52,10 +59,10 @@ function Home() {
         <div className=" basis-2/6">
           <div className="flex justify-center ">
             <div className="">
-              <Carousel title="Recipe of the day">
-                {arr.map(() => (
+              <Carousel title="Latest recipe">
+                {idsLatestRecipe.map((id) => (
                   <RecipeCard
-                    id={7}
+                    id={id}
                     imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
                     minutes={55}
                     difficulty="Easy"
