@@ -16,17 +16,17 @@ function DetailedRecipe({ editMode }) {
   const [recipeTitle, setRecipeTitle] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
   const [category, setCategory] = useState();
-  // const [labels, setLabels] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
   const [description, setDescription] = useState();
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
   const [minutes, setMinutes] = useState();
   const [difficulty, setDifficulty] = useState();
   const [serves, setServes] = useState();
 
-  useEffect(() => {
+  useEffect(async () => {
+    // const response = await fetch('/api/recipes/');
+
     // API call here
     // Dummy data
     const data = {
@@ -41,15 +41,46 @@ function DetailedRecipe({ editMode }) {
     setServes(data.serves);
   }, []);
 
+  const uploadRecipe = async () => {
+    const formData = new FormData();
+    formData.append('recipeName', recipeTitle);
+    formData.append('recipeDescription', description);
+    formData.append('recipeImg', imgUrl);
+    formData.append('recipeTimeMinutes', minutes);
+    formData.append('recipeDifficultyLevel', difficulty);
+    formData.append('recipeServeCount', serves);
+    formData.append('recipeCategory', category);
+    formData.append('recipeLabels', selectedOptions);
+    formData.append('image', fileUpload);
+
+    try {
+      const response = await fetch('/api/recipes/newrecipe', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const responseData = await response.json();
+      const uploadedImageUrl = responseData.imageUrl;
+      setImgUrl(uploadedImageUrl);
+
+      if (response.status === 200) {
+        // alert('Recipe saved!');
+      } else {
+        // alert('Something went wrong.');
+      }
+    } catch (error) {
+      // alert('Error uploading recipe: ', error);
+    }
+  };
+
   return (
-    <form onSubmit="API CALL">
+    <form encType="multipart/form-data">
       <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
         <ImageUpload
           editMode={editMode}
           fileUpload={fileUpload}
           setFileUpload={setFileUpload}
           imgUrl={imgUrl}
-          setImgUrl={setImgUrl}
         />
         <div>
           <IconContainer>
@@ -97,8 +128,9 @@ function DetailedRecipe({ editMode }) {
         </div>
         {editMode ? (
           <button
-            type="submit"
+            type="button"
             className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
+            onClick={uploadRecipe}
           >
             Save
           </button>
