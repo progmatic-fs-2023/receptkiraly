@@ -25,7 +25,7 @@ export const getLatest = async (req, res) => {
     const recipe = await services.getRecipe(recipeID);
 
     if (recipe) {
-      res.status(200).json(recipe);
+      res.status(200).json({ recipe });
     } else {
       res.status(404).json({
         errorMessage: `Cannot get recipes of user ${id}`,
@@ -51,6 +51,8 @@ export const add = async (req, res) => {
   } = req.body;
 
   try {
+    const imageUrl = `http://localhost:3000/src/uploads/${req.file.filename}`;
+
     const newRecipe = await services.addNewRecipe(
       recipeName,
       recipeDescription,
@@ -63,7 +65,7 @@ export const add = async (req, res) => {
     );
 
     if (newRecipe) {
-      res.status(200).json({newRecipe});
+      res.status(200).json({ imageUrl });
     }
   } catch (err) {
     res.status(400).json({

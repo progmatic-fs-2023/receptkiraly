@@ -1,11 +1,35 @@
 import express from 'express';
+import multer from 'multer';
+import path from 'path';
 import * as recipesController from '../controllers/recipes.controller';
 
 const router = express.Router();
 
-router.get('/latest/:count', recipesController.getLatest);
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, 'uploads/'));
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname} ${Date.now()} ${path.extname(file.originalname)}`);
+  },
+});
+
+const upload = multer({ storage });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, 'uploads/'));
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname} ${Date.now()} ${path.extname(file.originalname)}`);
+  },
+});
+
+const upload = multer({ storage });
+
 router.get('/', recipesController.list);
 router.get('/:id', recipesController.get);
-router.post('/newrecipe', recipesController.add);
+router.get('/latest/:count', recipesController.getLatest);
+router.post('/newrecipe', upload.single('image'), recipesController.add);
 
 export default router;
