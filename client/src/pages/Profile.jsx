@@ -4,14 +4,26 @@ import { API_URL } from '../constants';
 import InfoCard from '../components/InfoCard';
 import RecipeGrid from '../components/RecipeGrid';
 import RecipeCard from '../components/RecipeCard';
+import Modal from '../components/Modal';
+import DetailedRecipe from '../components/DetailedRecipe';
 
 function Profile() {
   const [isConnect, setIsConnect] = useState(false);
-
+  const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
+  const [myRecipes, setMyRecipes] = useState([1, 2, 3, 4]);
+  const userID = 5;
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
+    fetch(`${API_URL}/user/${userID}/recipes/`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Recipes cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setMyRecipes(data.ids);
+      });
   }, []);
 
   const recipesData = [
@@ -79,7 +91,13 @@ function Profile() {
                 <div className="flex-1">
                   <div className="flex items-center">
                     <div className="mx-auto scale-150 hover:text-orange-400">
-                      <Add />
+                      <button
+                        aria-label="Click this to add a new recipe"
+                        type="button"
+                        onClick={() => setCreatingNewRecipe(true)}
+                      >
+                        <Add />
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -89,21 +107,27 @@ function Profile() {
         </div>
       </div>
       <div className="w-3/4 mx-auto">
+        <h1>My recipes</h1>
         <RecipeGrid>
-          {recipesData.map((recipe) => (
+          {myRecipes.map((recipe, index) => (
             <RecipeCard
-                key={recipe.id}
-                id={recipe.id}
-                imgUrl={recipe.imgUrl}
-                minutes={recipe.minutes}
-                difficulty={recipe.difficulty}
-                serves={recipe.serves}
-                name={recipe.name}
-                actions
-              />
+              key={recipe}
+              id={recipe}
+              imgUrl={recipesData[index].imgUrl}
+              minutes={recipesData[index].minutes}
+              difficulty={recipesData[index].difficulty}
+              serves={recipesData[index].serves}
+              name={recipesData[index].name}
+              actions
+            />
           ))}
         </RecipeGrid>
       </div>
+      {creatingNewRecipe ? (
+        <Modal title="Creating new recipe" close={() => setCreatingNewRecipe(false)}>
+          <DetailedRecipe editMode />
+        </Modal>
+      ) : null}
     </div>
   );
 }
