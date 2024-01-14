@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function InfoCard({ children, title }) {
   return (
@@ -10,3 +11,8 @@ function InfoCard({ children, title }) {
 }
 
 export default InfoCard;
+
+InfoCard.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+};

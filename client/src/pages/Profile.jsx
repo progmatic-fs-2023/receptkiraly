@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Add } from '@mui/icons-material';
 import { API_URL } from '../constants';
 import InfoCard from '../components/InfoCard';
 import RecipeGrid from '../components/RecipeGrid';
 import RecipeCard from '../components/RecipeCard';
-import { Add } from '@mui/icons-material';
 
 function Profile() {
   const [isConnect, setIsConnect] = useState(false);
@@ -79,7 +79,7 @@ function Profile() {
                 <div className="flex-1">
                   <div className="flex items-center">
                     <div className="mx-auto scale-150 hover:text-orange-400">
-                      <Add></Add>
+                      <Add />
                     </div>
                   </div>
                 </div>
@@ -91,8 +91,7 @@ function Profile() {
       <div className="w-3/4 mx-auto">
         <RecipeGrid>
           {recipesData.map((recipe) => (
-            <>
-              <RecipeCard
+            <RecipeCard
                 key={recipe.id}
                 id={recipe.id}
                 imgUrl={recipe.imgUrl}
@@ -100,9 +99,8 @@ function Profile() {
                 difficulty={recipe.difficulty}
                 serves={recipe.serves}
                 name={recipe.name}
-                actions={true}
+                actions
               />
-            </>
           ))}
         </RecipeGrid>
       </div>
