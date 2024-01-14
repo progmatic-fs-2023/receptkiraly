@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import Icon from './Icon';
 import ResponsiveImage from './ResponsiveImage';
 import IconContainer from './IconContainer';
+import Button from './Button';
+import { Edit, Delete } from '@mui/icons-material';
 
 /* <RecipeCard
   id={7}
@@ -12,10 +14,28 @@ import IconContainer from './IconContainer';
   name="Air Fryer Fried Prawns"
 /> */
 
-function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name }) {
+function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions }) {
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />;
   return (
     <div>
       <a className="block group" href={`/recipe/${id}`}>
+        {actions ? (
+          <div className="justify-between flex">
+            <div className="relative  ">
+              <div className="absolute top-2 left-2 bg-white bg-opacity-75 rounded hover:filter hover:invert">
+                <Edit></Edit>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute top-2 right-2 bg-white bg-opacity-75 rounded hover:filter hover:invert">
+                <Delete></Delete>
+              </div>
+            </div>
+          </div>
+        ) : null}
         <ResponsiveImage imgUrl={imgUrl} />
         <IconContainer>
           {minutes ? <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} /> : null}
