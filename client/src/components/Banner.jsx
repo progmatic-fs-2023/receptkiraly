@@ -63,9 +63,13 @@ function Banner() {
             </li>
           </ul>
         </nav>
-        <Link to="/register">
-          <Button text="Sign Up" type="button" />
-        </Link>
+        {isAuthenticated ? (
+          <Button text="Log out" type="button" onClick={() => setIsAuthenticated(false)} />
+        ) : (
+          <Link to="/register">
+            <Button text="Sign Up" type="button" />
+          </Link>
+        )}
       </div>
     </div>
   );

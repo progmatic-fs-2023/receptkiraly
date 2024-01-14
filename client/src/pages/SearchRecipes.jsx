@@ -1,5 +1,6 @@
 import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
+import RecipeGrid from '../components/RecipeGrid';
 
 function SearchRecipes() {
   const recipesData = [
@@ -40,7 +41,7 @@ function SearchRecipes() {
   return (
     <section className="container mx-auto my-2">
       <SearchForm />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+      <RecipeGrid>
         {recipesData.map((recipe) => (
           <RecipeCard
             key={recipe.id}
@@ -52,7 +53,7 @@ function SearchRecipes() {
             name={recipe.name}
           />
         ))}
-      </div>
+      </RecipeGrid>
     </section>
   );
 }

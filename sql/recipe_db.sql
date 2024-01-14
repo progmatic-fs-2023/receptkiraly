@@ -6,7 +6,7 @@ CREATE DATABASE recipe_db;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE users (
-	user_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+	user_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
 	user_username VARCHAR(100) NOT NULL UNIQUE,
 	user_email VARCHAR(100) NOT NULL UNIQUE,
 	user_password_hash VARCHAR(255) NOT NULL,
@@ -15,6 +15,7 @@ CREATE TABLE users (
 
 CREATE TABLE recipes (
     recipe_id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES users(user_id),
     recipe_name VARCHAR(100) NOT NULL,
     recipe_description VARCHAR(255) NOT NULL,
     recipe_main_category_id SMALLINT,
@@ -25,14 +26,15 @@ CREATE TABLE recipes (
     recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE users_recipes (
-	post_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-	post_user_id UUID,
-	post_recipe_id INT,
-	FOREIGN KEY (post_user_id) REFERENCES users(user_id),
-	FOREIGN KEY (post_recipe_id) REFERENCES recipes(recipe_id)
-);
-
+-- Ez nem fog kelleni
+-- CREATE TABLE users_recipes (
+-- 	post_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+-- 	post_user_id UUID,
+-- 	post_recipe_id INT,
+-- 	FOREIGN KEY (post_user_id) REFERENCES users(user_id),
+-- 	FOREIGN KEY (post_recipe_id) REFERENCES recipes(recipe_id)
+-- );
+--Ez egy recipe type hierarchy :D
 CREATE TABLE main_category (
 	main_category_id SERIAL PRIMARY KEY,
 	main_category_name VARCHAR(100) NOT NULL
@@ -68,26 +70,26 @@ CREATE TABLE recipes_labels (
 
 /* Copy-paste példák: */
 
-INSERT INTO users (user_username, user_email, user_password_hash)
+INSERT INTO users (user_id, user_username, user_email, user_password_hash)
 VALUES
-    ('john_doe', 'john@example.com', 'hashed_password_123'),
-    ('alice_smith', 'alice@example.com', 'hashed_password_456'),
-    ('bob_jones', 'bob@example.com', 'hashed_password_789'),
-    ('emma_wilson', 'emma@example.com', 'hashed_password_012'),
-    ('michael_brown', 'michael@example.com', 'hashed_password_345');
+    ('bb48918b-62c2-4af8-9a3f-bfe2f487edfc','john_doe', 'john@example.com', 'hashed_password_123'),
+    ('2c7e2091-fb34-44e7-8dfd-fe1c0bc2deb9','alice_smith', 'alice@example.com', 'hashed_password_456'),
+    ('5703d862-c54c-47dc-bfc7-911e242ca24a','bob_jones', 'bob@example.com', 'hashed_password_789'),
+    ('31f330e8-fff1-4bf0-a8d1-f98cd2b601e2','emma_wilson', 'emma@example.com', 'hashed_password_012'),
+    ('e31ec973-37b0-42c2-b789-3e135cc2110a','michael_brown', 'michael@example.com', 'hashed_password_345');
 
-INSERT INTO recipes (recipe_name, recipe_description, recipe_main_category_id, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count)
+INSERT INTO recipes (recipe_name, user_id, recipe_description, recipe_main_category_id, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count)
 VALUES
-    ('Scrambled Eggs', 'Classic breakfast dish', 1, 'scrambled_eggs.png', 20, 1, 4),
-    ('Grilled Chicken Salad', 'Healthy and delicious', 1, 'grilled_chicken_salad.png', 45, 2, 4),
-    ('Spaghetti Bolognese', 'Italian pasta dish', 1, 'spaghetti_bolognese.png', 60, 3, 4),
-    ('Guacamole', 'Perfect party appetizer', 1, 'guacamole.png', 30, 2, 4),
-    ('Fruit Smoothie', 'Refreshing and nutritious', 3, 'fruit_smoothie.png', 10, 1, 1),
-    ('Chocolate Cake', 'Classic chocolate cake', 2, 'chocolate_cake.png', 120, 3, 4),
-    ('Strawberry Smoothie', 'Healthy and delicious', 3, 'strawberry_smoothie.png', 10, 1, 1),
-    ('Vegan Spaghetti Bolognese', 'Healthy and delicious pasta dish', 1, 'vegan_spaghetti_bolognese.png', 45, 2, 4),
-    ('Plant-based Hamburger', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger.png', 60, 3, 4),
-    ('Garlic Cream Soup with Pan-Seared Shrimp', 'Perfect appetizer soup', 3, 'garlic_cream_soup_with_shrimp.png', 120, 3, 4);
+    ('Scrambled Eggs','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Classic breakfast dish', 1, 'scrambled_eggs.png', 20, 1, 4),
+    ('Grilled Chicken Salad','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Healthy and delicious', 1, 'grilled_chicken_salad.png', 45, 2, 4),
+    ('Spaghetti Bolognese','2c7e2091-fb34-44e7-8dfd-fe1c0bc2deb9', 'Italian pasta dish', 1, 'spaghetti_bolognese.png', 60, 3, 4),
+    ('Guacamole','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Perfect party appetizer', 1, 'guacamole.png', 30, 2, 4),
+    ('Fruit Smoothie','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Refreshing and nutritious', 3, 'fruit_smoothie.png', 10, 1, 1),
+    ('Chocolate Cake','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Classic chocolate cake', 2, 'chocolate_cake.png', 120, 3, 4),
+    ('Strawberry Smoothie','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Healthy and delicious', 3, 'strawberry_smoothie.png', 10, 1, 1),
+    ('Vegan Spaghetti Bolognese','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Healthy and delicious pasta dish', 1, 'vegan_spaghetti_bolognese.png', 45, 2, 4),
+    ('Plant-based Hamburger','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger.png', 60, 3, 4),
+    ('Garlic Cream Soup with Pan-Seared Shrimp','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Perfect appetizer soup', 3, 'garlic_cream_soup_with_shrimp.png', 120, 3, 4);
 
 	INSERT INTO main_category (main_category_name) VALUES 
     ('meals'),
