@@ -21,7 +21,8 @@ CREATE TABLE recipes (
     recipe_img VARCHAR(255),
     recipe_time_minutes SMALLINT,
     recipe_difficulty_level SMALLINT,
-    recipe_serve_count SMALLINT
+    recipe_serve_count SMALLINT,
+    recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE users_recipes (
