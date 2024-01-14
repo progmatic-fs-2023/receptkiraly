@@ -22,7 +22,7 @@ export const list = async (req, res) => {
 export const getLatest = async (req, res) => {
   try {
     const { count } = req.params;
-    const recipes = await services.listRecipes(count);
+    const recipes = await services.listRecipes({ count });
 
     if (recipes) {
       const arr = utils.transformArrayToIntegers(recipes, 'recipe_id');
@@ -30,6 +30,26 @@ export const getLatest = async (req, res) => {
     } else {
       res.status(404).json({
         errorMessage: `Cannot get ${count} latest recipes`,
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      errorMessage: err.message,
+    });
+  }
+};
+
+export const byUserid = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const recipes = await services.listRecipes({ userID: id });
+
+    if (recipes) {
+      const arr = utils.transformArrayToIntegers(recipes, 'recipe_id');
+      res.status(200).json({ ids: arr });
+    } else {
+      res.status(404).json({
+        errorMessage: `Cannot get recipes of user ${id}`,
       });
     }
   } catch (err) {
