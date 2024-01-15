@@ -7,7 +7,7 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
     { value: 'vegetarian', label: 'Vegetarian' },
     { value: 'nut-free', label: 'Nut-free' },
     { value: 'egg-free', label: 'Egg-free' },
-    { value: 'dairy-free', label: 'Dairy-free' },
+    { value: 'diary-free', label: 'Diary-free' },
     { value: 'gluten-free', label: 'Gluten-free' },
     { value: 'low-carb', label: 'Low-carb' },
     { value: 'spicy', label: 'Spicy' },

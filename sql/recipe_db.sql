@@ -18,6 +18,7 @@ CREATE TABLE recipes (
     user_id UUID REFERENCES users(user_id),
     recipe_name VARCHAR(100) NOT NULL,
     recipe_description VARCHAR(255) NOT NULL,
+    recipe_main_category_id SMALLINT,
     recipe_img VARCHAR(255),
     recipe_time_minutes SMALLINT,
     recipe_difficulty_level SMALLINT,
@@ -25,6 +26,15 @@ CREATE TABLE recipes (
     recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Ez nem fog kelleni
+-- CREATE TABLE users_recipes (
+-- 	post_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+-- 	post_user_id UUID,
+-- 	post_recipe_id INT,
+-- 	FOREIGN KEY (post_user_id) REFERENCES users(user_id),
+-- 	FOREIGN KEY (post_recipe_id) REFERENCES recipes(recipe_id)
+-- );
+--Ez egy recipe type hierarchy :D
 CREATE TABLE main_category (
 	main_category_id SERIAL PRIMARY KEY,
 	main_category_name VARCHAR(100) NOT NULL
