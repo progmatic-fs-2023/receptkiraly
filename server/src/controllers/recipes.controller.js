@@ -40,14 +40,15 @@ export const get = async (req, res) => {
 
 export const getLatest = async (req, res) => {
   try {
-    const recipeID = req.params.id
-    const recipe = await services.getRecipe(recipeID);
+    const { count } = req.params;
+    const recipes = await services.listRecipes({ count });
 
-    if (recipe) {
-      res.status(200).json({ recipe });
+    if (recipes) {
+      const arr = utils.transformArrayToIntegers(recipes, 'recipe_id');
+      res.status(200).json({ ids: arr });
     } else {
       res.status(404).json({
-        errorMessage: `Cannot get recipes of user ${id}`,
+        errorMessage: `Cannot get ${count} latest recipes`,
       });
     }
   } catch (err) {
@@ -57,32 +58,18 @@ export const getLatest = async (req, res) => {
   }
 };
 
-export const add = async (req, res) => {
-  const {
-    recipeName,
-    recipeDescription,
-    recipeTimeMinutes,
-    recipeDifficultyLevel,
-    recipeServeCount,
-    recipeCategory,
-    recipeLabels,
-  } = req.body;
-  const imagePath = req.file.path;
-
+export const byUserid = async (req, res) => {
   try {
-    const newRecipe = await services.addNewRecipe(
-      recipeName,
-      recipeDescription,
-      imagePath,
-      recipeTimeMinutes,
-      recipeDifficultyLevel,
-      recipeServeCount,
-      recipeCategory,
-      recipeLabels,
-    );
+    const { id } = req.params;
+    const recipes = await services.listRecipes({ userID: id });
 
-    if (newRecipe) {
-      res.status(201).send('Recipe created successfully.');
+    if (recipes) {
+      const arr = utils.transformArrayToIntegers(recipes, 'recipe_id');
+      res.status(200).json({ ids: arr });
+    } else {
+      res.status(404).json({
+        errorMessage: `Cannot get recipes of user ${id}`,
+      });
     }
   } catch (err) {
     res.status(400).json({

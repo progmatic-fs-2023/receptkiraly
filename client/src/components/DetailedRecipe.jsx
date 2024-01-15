@@ -100,15 +100,7 @@ function DetailedRecipe({ editMode, recipeID }) {
           />
           <Method editMode={editMode} description={description} setDescription={setDescription} />
         </div>
-        {editMode ? (
-          <button
-            type="button"
-            className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
-            onClick={uploadRecipe}
-          >
-            Save
-          </button>
-        ) : null}
+        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
       </div>
     </form>
   );
