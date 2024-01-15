@@ -60,7 +60,7 @@ export const getRecipe = async recipeID => {
 export const addNewRecipe = async (
   recipeName,
   recipeDescription,
-  recipeImg,
+  imagePath,
   recipeTimeMinutes,
   recipeDifficultyLevel,
   recipeServeCount,
@@ -79,7 +79,7 @@ export const addNewRecipe = async (
     [
       recipeName,
       recipeDescription,
-      recipeImg,
+      imagePath,
       recipeTimeMinutes,
       recipeDifficultyLevel,
       recipeServeCount,
@@ -87,6 +87,8 @@ export const addNewRecipe = async (
   );
 
   const recipeID = result.rows[0].recipe_id;
+  console.log(typeof recipeLabels);
+  console.log(recipeLabels);
 
   await db.query(
     `
