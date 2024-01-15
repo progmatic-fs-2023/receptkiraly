@@ -42,21 +42,19 @@ export const add = async (req, res) => {
   const {
     recipeName,
     recipeDescription,
-    recipeImg,
     recipeTimeMinutes,
     recipeDifficultyLevel,
     recipeServeCount,
     recipeCategory,
     recipeLabels,
   } = req.body;
+  const imagePath = req.file.path;
 
   try {
-    const imageUrl = `http://localhost:3000/src/uploads/${req.file.filename}`;
-
     const newRecipe = await services.addNewRecipe(
       recipeName,
       recipeDescription,
-      recipeImg,
+      imagePath,
       recipeTimeMinutes,
       recipeDifficultyLevel,
       recipeServeCount,
@@ -65,7 +63,7 @@ export const add = async (req, res) => {
     );
 
     if (newRecipe) {
-      res.status(200).json({ imageUrl });
+      res.status(201).send('Recipe created successfully.');
     }
   } catch (err) {
     res.status(400).json({
