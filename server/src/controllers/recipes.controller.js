@@ -19,25 +19,6 @@ export const list = async (req, res) => {
   }
 };
 
-export const get = async (req, res) => {
-  try {
-    const recipeID = req.params.id;
-    const recipe = await services.getRecipe(recipeID);
-
-    if (recipe) {
-      res.status(200).json(recipe);
-    } else {
-      res.status(404).json({
-        errorMessage: 'There is no recipe with that ID.',
-      });
-    }
-  } catch (err) {
-    res.status(400).json({
-      errorMessage: err.message,
-    });
-  }
-};
-
 export const getLatest = async (req, res) => {
   try {
     const { count } = req.params;
@@ -70,44 +51,6 @@ export const byUserid = async (req, res) => {
       res.status(404).json({
         errorMessage: `Cannot get recipes of user ${id}`,
       });
-    }
-  } catch (err) {
-    res.status(400).json({
-      errorMessage: err.message,
-    });
-  }
-};
-
-export const add = async (req, res) => {
-  const {
-    recipeName,
-    recipeDescription,
-    recipeTimeMinutes,
-    recipeDifficultyLevel,
-    recipeServeCount,
-    recipeCategory,
-    recipeLabels,
-  } = req.body;
-  const imagePath = req.file.path;
-  const { userID } = req.userID || {};
-
-  try {
-    const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
-
-    const newRecipe = await services.addNewRecipe(
-      recipeName,
-      recipeDescription,
-      recipeTimeMinutes,
-      recipeDifficultyLevel,
-      recipeServeCount,
-      recipeCategory,
-      recipeLabels,
-      imagePath,
-      userID,
-    );
-
-    if (newRecipe) {
-      res.status(201).json({ imageUrl });
     }
   } catch (err) {
     res.status(400).json({

@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
-import Icons from './IconsInDetailedRecipe';
+import IconContainer from './IconContainer';
+import Icon from './Icon';
 import RecipeMainCategory from './RecipeMainCategory';
 import RecipeCategory from './RecipeCategory';
 import Labels from './LabelsComp';
@@ -12,44 +11,39 @@ import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
 
-function DetailedRecipe({ editMode, recipeID }) {
+function DetailedRecipe({ editMode }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
   const [category, setCategory] = useState();
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  // const [labels, setLabels] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
   const [description, setDescription] = useState();
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
   const [minutes, setMinutes] = useState();
   const [difficulty, setDifficulty] = useState();
   const [serves, setServes] = useState();
 
-  useEffect(async () => {
-    axios.get(`/api/recipes/${recipeID}`).then((response) => {
-      setRecipeTitle(response.recipeName);
-    });
+  useEffect(() => {
+    // API call here
+    // Dummy data
+    const data = {
+      minutes: '60',
+      difficulty: 'easy',
+      serves: '4',
+      recipeTitle: 'Mákos bejgli',
+    };
+
+    setMinutes(data.minutes);
+    setDifficulty(data.difficulty);
+    setServes(data.serves);
   }, []);
 
-  const uploadRecipe = () => {
-    const formData = new FormData();
-    formData.append('recipeName', recipeTitle);
-    formData.append('recipeDescription', description);
-    formData.append('recipeTimeMinutes', minutes);
-    formData.append('recipeDifficultyLevel', difficulty);
-    formData.append('recipeServeCount', serves);
-    formData.append('recipeCategory', category);
-    selectedOptions.forEach((option) => {
-      formData.append('recipeLabels', option);
-    });
-    formData.append('image', fileUpload);
-
-    axios.post('/api/recipes/newrecipe', formData);
-  };
-
   return (
-    <form encType="multipart/form-data">
+    <form onSubmit="API CALL">
       <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
         <ImageUpload
           editMode={editMode}
@@ -59,15 +53,17 @@ function DetailedRecipe({ editMode, recipeID }) {
           setImgUrl={setImgUrl}
         />
         <div>
-          <Icons
-            editMode={editMode}
-            minutes={minutes}
-            setMinutes={setMinutes}
-            difficulty={difficulty}
-            setDifficulty={setDifficulty}
-            serves={serves}
-            setServes={setServes}
-          />
+          <IconContainer>
+            {minutes ? (
+              <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} editMode={editMode} />
+            ) : null}
+            {difficulty ? (
+              <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} editMode={editMode} />
+            ) : null}
+            {serves ? (
+              <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} editMode={editMode} />
+            ) : null}{' '}
+          </IconContainer>
 
           <RecipeTitle
             editMode={editMode}
@@ -100,7 +96,13 @@ function DetailedRecipe({ editMode, recipeID }) {
           />
           <Method editMode={editMode} description={description} setDescription={setDescription} />
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
+        {editMode ? (
+          <Button
+            type="submit"
+            text="Save"
+            className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
+          />
+        ) : null}
       </div>
     </form>
   );
@@ -108,11 +110,6 @@ function DetailedRecipe({ editMode, recipeID }) {
 
 DetailedRecipe.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  recipeID: PropTypes.number,
-};
-
-DetailedRecipe.defaultProps = {
-  recipeID: 0,
 };
 
 export default DetailedRecipe;
