@@ -24,6 +24,7 @@ CREATE TABLE recipes (
     recipe_difficulty_level SMALLINT,
     recipe_serve_count SMALLINT,
     recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  
 );
 
 -- Ez nem fog kelleni
