@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function MethodComp({ editMode }) {
-  const [description, setDescription] = useState();
-
+function MethodComp({ editMode, description, setDescription }) {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
@@ -32,6 +29,8 @@ function MethodComp({ editMode }) {
 
 MethodComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
+  description: PropTypes.string.isRequired,
+  setDescription: PropTypes.func.isRequired,
 };
 
 export default MethodComp;

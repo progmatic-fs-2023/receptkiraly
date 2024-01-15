@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
 import ResponsiveImage from './ResponsiveImage';
 
-function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl }) {
+function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl }) {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
 
     if (file) {
       setFileUpload(file);
     }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImgUrl(reader.result);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -46,6 +53,7 @@ ImageUpload.propTypes = {
   fileUpload: PropTypes.string.isRequired,
   setFileUpload: PropTypes.func.isRequired,
   imgUrl: PropTypes.string.isRequired,
+  setImgUrl: PropTypes.func.isRequired,
 };
 
 export default ImageUpload;

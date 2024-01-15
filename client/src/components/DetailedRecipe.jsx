@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
-import IconContainer from './IconContainer';
-import Icon from './Icon';
+import Icons from './IconsInDetailedRecipe';
 import RecipeMainCategory from './RecipeMainCategory';
 import RecipeCategory from './RecipeCategory';
 import Labels from './LabelsComp';
@@ -11,7 +12,7 @@ import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
 
-function DetailedRecipe({ editMode }) {
+function DetailedRecipe({ editMode, recipeID }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
@@ -26,52 +27,25 @@ function DetailedRecipe({ editMode }) {
   const [serves, setServes] = useState();
 
   useEffect(async () => {
-    // const response = await fetch('/api/recipes/');
-
-    // API call here
-    // Dummy data
-    const data = {
-      minutes: '60',
-      difficulty: 'easy',
-      serves: '4',
-      recipeTitle: 'Mákos bejgli',
-    };
-
-    setMinutes(data.minutes);
-    setDifficulty(data.difficulty);
-    setServes(data.serves);
+    axios.get(`/api/recipes/${recipeID}`).then((response) => {
+      setRecipeTitle(response.recipeName);
+    });
   }, []);
 
-  const uploadRecipe = async () => {
+  const uploadRecipe = () => {
     const formData = new FormData();
     formData.append('recipeName', recipeTitle);
     formData.append('recipeDescription', description);
-    formData.append('recipeImg', imgUrl);
     formData.append('recipeTimeMinutes', minutes);
     formData.append('recipeDifficultyLevel', difficulty);
     formData.append('recipeServeCount', serves);
     formData.append('recipeCategory', category);
-    formData.append('recipeLabels', selectedOptions);
+    selectedOptions.forEach((option) => {
+      formData.append('recipeLabels', option);
+    });
     formData.append('image', fileUpload);
 
-    try {
-      const response = await fetch('/api/recipes/newrecipe', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const responseData = await response.json();
-      const uploadedImageUrl = responseData.imageUrl;
-      setImgUrl(uploadedImageUrl);
-
-      if (response.status === 200) {
-        // alert('Recipe saved!');
-      } else {
-        // alert('Something went wrong.');
-      }
-    } catch (error) {
-      // alert('Error uploading recipe: ', error);
-    }
+    axios.post('/api/recipes/newrecipe', formData);
   };
 
   return (
@@ -82,19 +56,18 @@ function DetailedRecipe({ editMode }) {
           fileUpload={fileUpload}
           setFileUpload={setFileUpload}
           imgUrl={imgUrl}
+          setImgUrl={setImgUrl}
         />
         <div>
-          <IconContainer>
-            {minutes ? (
-              <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} editMode={editMode} />
-            ) : null}
-            {difficulty ? (
-              <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} editMode={editMode} />
-            ) : null}
-            {serves ? (
-              <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} editMode={editMode} />
-            ) : null}{' '}
-          </IconContainer>
+          <Icons
+            editMode={editMode}
+            minutes={minutes}
+            setMinutes={setMinutes}
+            difficulty={difficulty}
+            setDifficulty={setDifficulty}
+            serves={serves}
+            setServes={setServes}
+          />
 
           <RecipeTitle
             editMode={editMode}
@@ -143,6 +116,11 @@ function DetailedRecipe({ editMode }) {
 
 DetailedRecipe.propTypes = {
   editMode: PropTypes.bool.isRequired,
+  recipeID: PropTypes.number,
+};
+
+DetailedRecipe.defaultProps = {
+  recipeID: 0,
 };
 
 export default DetailedRecipe;
