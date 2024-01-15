@@ -68,13 +68,14 @@ export const addNewRecipe = async (
   recipeCategory,
   recipeLabels,
   imagePath,
+  userID,
 ) => {
   const result = await db.query(
     `
     INSERT INTO recipes
-    (recipe_name, recipe_description, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count)
+    (recipe_name, recipe_description, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count, user_id)
     VALUES 
-    ($1, $2, $3, $4, $5, $6)
+    ($1, $2, $3, $4, $5, $6, $7)
 
     RETURNING *
     `,
@@ -85,6 +86,7 @@ export const addNewRecipe = async (
       recipeTimeMinutes,
       recipeDifficultyLevel,
       recipeServeCount,
+      userID,
     ],
   );
 
