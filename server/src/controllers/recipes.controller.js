@@ -21,7 +21,7 @@ export const list = async (req, res) => {
 
 export const get = async (req, res) => {
   try {
-    const recipeID = req.params.id
+    const recipeID = req.params.id;
     const recipe = await services.getRecipe(recipeID);
 
     if (recipe) {
@@ -82,7 +82,6 @@ export const add = async (req, res) => {
   const {
     recipeName,
     recipeDescription,
-    recipeImg,
     recipeTimeMinutes,
     recipeDifficultyLevel,
     recipeServeCount,
@@ -97,13 +96,12 @@ export const add = async (req, res) => {
     const newRecipe = await services.addNewRecipe(
       recipeName,
       recipeDescription,
-      recipeImg,
-      imagePath,
       recipeTimeMinutes,
       recipeDifficultyLevel,
       recipeServeCount,
       recipeCategory,
       recipeLabels,
+      imagePath,
     );
 
     if (newRecipe) {

@@ -62,12 +62,12 @@ export const getRecipe = async recipeID => {
 export const addNewRecipe = async (
   recipeName,
   recipeDescription,
-  imagePath,
   recipeTimeMinutes,
   recipeDifficultyLevel,
   recipeServeCount,
   recipeCategory,
   recipeLabels,
+  imagePath,
 ) => {
   const result = await db.query(
     `
