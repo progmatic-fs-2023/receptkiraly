@@ -100,7 +100,7 @@ VALUES
 VALUES
  ('appetizers',1),
 ('dippers',1),
-('mini_ites',1,)
+('mini_bites',1,)
 ('salads',1),
 ('pastry_slices',1),
 ('breakfast',1),
