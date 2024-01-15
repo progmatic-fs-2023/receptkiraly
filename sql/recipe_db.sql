@@ -24,7 +24,6 @@ CREATE TABLE recipes (
     recipe_difficulty_level SMALLINT,
     recipe_serve_count SMALLINT,
     recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  
 );
 
 -- Ez nem fog kelleni
@@ -96,7 +95,6 @@ VALUES
     ('meals'),
     ('desserts'),
     ('beverages');
-    ('chefs');
 	INSERT INTO category (category_name,category_main_category)
 VALUES
  ('appetizers',1),
