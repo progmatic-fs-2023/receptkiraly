@@ -8,7 +8,7 @@ export const loginUser = async (username, password) => {
   ]);
   const user = result.rows[0];
 
-  if(user){
+  if (user) {
     const token = jwt.sign({ userId: user.user_id, username: user.username }, 'secret_key');
     return { user, token };
   }
