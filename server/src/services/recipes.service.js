@@ -51,6 +51,8 @@ export const getRecipe = async recipeID => {
   
   WHERE 
   recipes.recipe_id = $1
+
+  RETURNING *
   `,
     [recipeID],
   );
@@ -87,8 +89,6 @@ export const addNewRecipe = async (
   );
 
   const recipeID = result.rows[0].recipe_id;
-  console.log(typeof recipeLabels);
-  console.log(recipeLabels);
 
   await db.query(
     `
