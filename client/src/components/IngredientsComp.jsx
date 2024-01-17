@@ -20,39 +20,41 @@ function IngredientsComp({
   };
 
   return (
-    <div className="p-10 ">
-      <h1 className="flex mx-auto justify-center sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-        Ingredients:
-      </h1>
+    <div>
       {editMode ? (
-        <div className="flex mx-auto justify-center m-4">
-          <input
-            type="text"
-            placeholder="Add new ingredient"
-            value={newIngredient}
-            onChange={(e) => setNewIngredient(e.target.value)}
-            className='p-2'
-          />
-          <Button
-            type="button"
-            text="Add"
-            className="bg-orange-300 border-0 py-2 px-8 hover:bg-orange-600 text-lg font-medium"
-            onClick={addIngredient}/>
-        </div>
+          <label htmlFor="ingredients">
+            Add ingredients:
+            <div className="flex flex-nowrap flex-row justify-start items-center my-2">
+            <input
+              id="ingredients"
+              type="text"
+              placeholder="Add new ingredient"
+              value={newIngredient}
+              onChange={(e) => setNewIngredient(e.target.value)}
+              className="w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            <Button
+              type="button"
+              text="Add"
+              onClick={addIngredient}
+            />
+            </div>
+          </label>
       ) : null}
       <ul>
+        <li>Ingredients:</li>
         {ingredients.map((ingredient) => (
           <li
-            className="flex items-center justify-between bg-orange-300 text-2xl font-medium m-1 p-1 pl-2"
+            className="flex flex-nowrap flex-row items-center justify-between my-3"
             key={ingredient.id}
           >
             {ingredient.text}
             {editMode ? (
               <Button
                 type="button"
-                text="Delete"
-                className="ml-auto bg-red-700 border-0 py-2 px-8 hover:bg-orange-600 text-lg uppercase"
-                onClick={() => deleteIngredient(ingredient.id)}/>
+                text="Remove"
+                onClick={() => deleteIngredient(ingredient.id)}
+              />
             ) : null}
           </li>
         ))}

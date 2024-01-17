@@ -46,8 +46,8 @@ function DetailedRecipe({ editMode }) {
     <section>
       <form onSubmit="API CALL">
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 lg:w-2/3 bg-blue-500 p-2 lg:flex">
-            <div className="flex-1 lg:mr-4">
+          <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 bg-blue-500 p-2">
+            <div className="flex-1">
               <ImageUpload
             editMode={editMode}
             fileUpload={fileUpload}
@@ -56,7 +56,7 @@ function DetailedRecipe({ editMode }) {
             setImgUrl={setImgUrl}
             />
             </div>
-            <div className="flex-1">
+            <div className="flex-grow flex flex-wrap flex-col">
             <RecipeTitle
               editMode={editMode}
               recipeTitle={recipeTitle}
