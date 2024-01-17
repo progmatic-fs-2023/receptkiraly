@@ -6,18 +6,23 @@ function RecipeTitle({ editMode, recipeTitle, setRecipeTitle }) {
   };
 
   return (
-    <div className="flex justify-center opacity-60">
+    <div className="flex flex-col justify-start">
+      <label htmlFor="recipeTitle">
+        Recipe Title
+      </label>
       {editMode ? (
         <input
-          className="p-2 m-2 bg-white border-solid border-4 border-orange-500 title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3"
+          id="recipeTitle"
+          type="text"
+          className="w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           value={recipeTitle}
           onChange={handleRecipeTitleChange}
           placeholder="Give a name to your recipe!"
         />
       ) : (
-        <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+        <p>
           {recipeTitle}
-        </h1>
+        </p>
       )}
     </div>
   );

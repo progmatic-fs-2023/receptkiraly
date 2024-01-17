@@ -46,7 +46,7 @@ function DetailedRecipe({ editMode }) {
     <section>
       <form onSubmit="API CALL">
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 lg:w-2/3 bg-blue-500 p-8 lg:flex">
+          <div className="flex-1 lg:w-2/3 bg-blue-500 p-2 lg:flex">
             <div className="flex-1 lg:mr-4">
               <ImageUpload
             editMode={editMode}
@@ -72,7 +72,7 @@ function DetailedRecipe({ editMode }) {
             />
             </div>
           </div>
-          <div className="w-full lg:w-1/3 bg-gray-300 p-4 mt-4 lg:mt-0">
+          <div className="w-full lg:w-1/3 bg-gray-300 p-2 mt-4 lg:mt-0">
           <RecipeMainCategory
               editMode={editMode}
               selectedMainCategory={selectedMainCategory}
