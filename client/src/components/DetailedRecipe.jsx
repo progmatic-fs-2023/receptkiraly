@@ -44,82 +44,71 @@ function DetailedRecipe({ editMode }) {
 
   return (
     <section>
-<div className="flex flex-col lg:flex-row">
-  <div className="flex-1 lg:w-2/3 bg-blue-500 p-8 lg:flex">
-    <div className="flex-1 lg:mr-4">
-      <p className="text-white">Fotó</p>
-    </div>
-    <div className="flex-1">
-      <p className="text-white">Lényeges</p>
-    </div>
-  </div>
-  <div className="w-full lg:w-1/3 bg-gray-300 p-4 mt-4 lg:mt-0">
-    <p>Idő</p>
-  </div>
-</div>
-
-    <form onSubmit="API CALL">
-      <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
-        <ImageUpload
-          editMode={editMode}
-          fileUpload={fileUpload}
-          setFileUpload={setFileUpload}
-          imgUrl={imgUrl}
-          setImgUrl={setImgUrl}
-        />
-        <div>
-          <IconContainer>
-            {minutes ? (
-              <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} editMode={editMode} />
-            ) : null}
-            {difficulty ? (
-              <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} editMode={editMode} />
-            ) : null}
-            {serves ? (
-              <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} editMode={editMode} />
-            ) : null}{' '}
-          </IconContainer>
-
-          <RecipeTitle
+      <form onSubmit="API CALL">
+        <div className="flex flex-col lg:flex-row">
+          <div className="flex-1 lg:w-2/3 bg-blue-500 p-8 lg:flex">
+            <div className="flex-1 lg:mr-4">
+              <ImageUpload
             editMode={editMode}
-            recipeTitle={recipeTitle}
-            setRecipeTitle={setRecipeTitle}
-          />
-          <RecipeMainCategory
-            editMode={editMode}
-            selectedMainCategory={selectedMainCategory}
-            setSelectedMainCategory={setSelectedMainCategory}
-          />
-          <div className="flex justify-center items-center">
-            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
-            <Labels
-              editMode={editMode}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
+            fileUpload={fileUpload}
+            setFileUpload={setFileUpload}
+            imgUrl={imgUrl}
+            setImgUrl={setImgUrl}
             />
+            </div>
+            <div className="flex-1">
+            <RecipeTitle
+              editMode={editMode}
+              recipeTitle={recipeTitle}
+              setRecipeTitle={setRecipeTitle}
+            />
+            <Method editMode={editMode} description={description} setDescription={setDescription} />
+            <Ingredients
+              editMode={editMode}
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+              newIngredient={newIngredient}
+              setNewIngredient={setNewIngredient}
+            />
+            </div>
+          </div>
+          <div className="w-full lg:w-1/3 bg-gray-300 p-4 mt-4 lg:mt-0">
+          <RecipeMainCategory
+              editMode={editMode}
+              selectedMainCategory={selectedMainCategory}
+              setSelectedMainCategory={setSelectedMainCategory}
+            />
+            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
+          <IconContainer>
+              {minutes ? (
+                <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} editMode={editMode} />
+              ) : null}
+              {difficulty ? (
+                <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} editMode={editMode} />
+              ) : null}
+              {serves ? (
+                <Icon
+                  imgUrl="/images/serves-icon.svg"
+                  text={serves.toString()}
+                  editMode={editMode}
+                />
+              ) : null}{' '}
+            </IconContainer>
+            <Labels
+                editMode={editMode}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+              />
           </div>
         </div>
-      </div>
-      <div className="bg-orange-50 rounded-lg">
-        <div className="mt-10 md:flex items-center justify-evenly">
-          <Ingredients
-            editMode={editMode}
-            ingredients={ingredients}
-            setIngredients={setIngredients}
-            newIngredient={newIngredient}
-            setNewIngredient={setNewIngredient}
-          />
-          <Method editMode={editMode} description={description} setDescription={setDescription} />
-        </div>
         {editMode ? (
-          <Button
-            type="submit"
-            text="Save"
-            className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
-          />
-        ) : null}
-      </div>
-    </form>
+            <Button
+              type="submit"
+              text="Save"
+              className="flex mx-auto bg-amber-300 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg font-medium"
+            />
+          ) : null}
+      </form>
     </section>
   );
 }
