@@ -51,8 +51,6 @@ export const getRecipe = async recipeID => {
   
   WHERE 
   recipes.recipe_id = $1
-
-  RETURNING *
   `,
     [recipeID],
   );
