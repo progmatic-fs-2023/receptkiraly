@@ -25,28 +25,20 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [minutes, setMinutes] = useState();
   const [difficulty, setDifficulty] = useState();
   const [serves, setServes] = useState();
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
-    if (recipeID !== 0) {
+    if (!editMode) {
       axios
         .get(`/api/recipes/${recipeID}`)
         .then((response) => {
           setRecipeTitle(response.recipeName);
         })
         .catch((error) => {
-          if (error.response) {
-            console.error('Response error:', error.response.data);
-            console.error('Status code:', error.response.status);
-            console.error('Headers:', error.response.headers);
-          } else if (error.request) {
-            console.error('No response received:', error.request);
-          } else {
-            console.error('Error setting up the request:', error.message);
-          }
-          console.error('Config:', error.config);
+          setErrorMessage(error.message);
         });
     }
-  }, [recipeID]);
+  }, []);
 
   const uploadRecipe = () => {
     const formData = new FormData();
@@ -64,7 +56,11 @@ function DetailedRecipe({ editMode, recipeID }) {
     axios.post('/api/recipes/newrecipe', formData);
   };
 
-  return (
+  return errorMessage ? (
+    <div>
+      <p>{errorMessage}</p>
+    </div>
+  ) : (
     <form encType="multipart/form-data">
       <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
         <ImageUpload
