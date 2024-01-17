@@ -44,10 +44,20 @@ function DetailedRecipe({ editMode }) {
 
   return (
     <section>
-    <div className="flex">
-  <div className="flex-1 bg-blue-500 p-8"/>
-  <div className="w-1/3 bg-gray-300 p-4"/>
+<div className="flex flex-col lg:flex-row">
+  <div className="flex-1 lg:w-2/3 bg-blue-500 p-8 lg:flex">
+    <div className="flex-1 lg:mr-4">
+      <p className="text-white">Fotó</p>
+    </div>
+    <div className="flex-1">
+      <p className="text-white">Lényeges</p>
+    </div>
+  </div>
+  <div className="w-full lg:w-1/3 bg-gray-300 p-4 mt-4 lg:mt-0">
+    <p>Idő</p>
+  </div>
 </div>
+
     <form onSubmit="API CALL">
       <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
         <ImageUpload
