@@ -52,19 +52,15 @@ function SearchFilter() {
         <Button text="Search" type="button" onClick={handleSearch} />
       </div>
       </div>
-      <div>
+      <div className={`filterContainer transition-opacity ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
         <Button
           text="Filters"
           type="button"
           onClick={toggleFilter}
+          addClassName="transition-none"
         />
         {isOpen && (
-          <>
-          <Button
-            text="Apply Changes"
-            type="button"
-            addClassName="ml-2"
-          />
+          <div id="filterContainer">
             <div className="mb-4 mt-6 lg:mt-10">
               <div className="flex flex-nowrap">
                 <div className="mb-6 lg:mb-0 lg:w-1/4 lg:mr-2">
@@ -126,8 +122,13 @@ function SearchFilter() {
                   </label>
                 </div>
               </div>
+              <Button
+            text="Apply Changes"
+            type="button"
+            addClassName="ml-2"
+          />
             </div>
-          </>
+            </div>
         )}
       </div>
     </div>

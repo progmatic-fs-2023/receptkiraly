@@ -43,6 +43,11 @@ function DetailedRecipe({ editMode }) {
   }, []);
 
   return (
+    <section>
+    <div className="flex">
+  <div className="flex-1 bg-blue-500 p-8"/>
+  <div className="w-1/3 bg-gray-300 p-4"/>
+</div>
     <form onSubmit="API CALL">
       <div className="lg:flex items-center justify-center bg-orange-50 rounded-lg">
         <ImageUpload
@@ -105,6 +110,7 @@ function DetailedRecipe({ editMode }) {
         ) : null}
       </div>
     </form>
+    </section>
   );
 }
 
