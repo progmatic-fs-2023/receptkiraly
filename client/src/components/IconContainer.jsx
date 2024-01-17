@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function IconContainer({ children, addClassName }) {
   return (
     <div className="hidden sm:block mt-4">
-      <div className={`flex sm:flex-wrap justify-center ${addClassName}`}>{children.map((child) => child)} </div>
+      <div className={`flex ${addClassName}`}>{children.map((child) => child)} </div>
     </div>
   );
 }
