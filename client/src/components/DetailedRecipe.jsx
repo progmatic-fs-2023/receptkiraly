@@ -26,7 +26,7 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [difficulty, setDifficulty] = useState();
   const [serves, setServes] = useState();
 
-  useEffect(async () => {
+  useEffect(() => {
     if (recipeID !== 0) {
       axios
         .get(`/api/recipes/${recipeID}`)
