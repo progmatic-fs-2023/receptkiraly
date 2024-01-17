@@ -9,23 +9,21 @@ function MethodComp({ editMode }) {
   };
 
   return (
-    <div className="p-8">
-      <h1 className="flex mx-auto justify-center sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-        Method:
-      </h1>
-      <div>
-        {editMode ? (
+    <div>
+      {editMode ? (
+        <label htmlFor="recipeTitle">
+          Description:
           <textarea
-            className="flex mx-auto bg-orange-300 text-black p-2 text-xl"
+            className="w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={description}
             onChange={handleDescriptionChange}
             rows={12}
             cols={60}
           />
-        ) : (
-          <p className="flex mx-auto bg-amber-300 text-black">{description}</p>
-        )}
-      </div>
+        </label>
+      ) : (
+        <p className="flex mx-auto text-black">{description}</p>
+      )}
     </div>
   );
 }
