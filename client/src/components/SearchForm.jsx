@@ -52,7 +52,7 @@ function SearchFilter() {
         <Button text="Search" type="button" onClick={handleSearch} />
       </div>
       </div>
-      <div className={`filterContainer transition-opacity ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+      <div>
         <Button
           text="Filters"
           type="button"

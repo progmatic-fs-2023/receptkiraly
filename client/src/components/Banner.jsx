@@ -50,6 +50,15 @@ function Banner() {
         </div>
       </div>
       <div className="flex flex-grow justify-center items-center sm:mt-4 md:mt-0">
+      {isAuthenticated ? (
+          <Link to="/postrecipe">
+          <Button text="Post Recipe" type="button" />
+          </Link>
+        ) : (
+          <Link to="/postrecipe">
+            <Button text="Post Recipe" type="button" addClassName="grayscale disabled-button" disabled/>
+          </Link>
+        )}
         <nav>
           <ul>
             <li>

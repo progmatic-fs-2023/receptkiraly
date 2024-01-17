@@ -43,7 +43,7 @@ function DetailedRecipe({ editMode }) {
   }, []);
 
   return (
-    <section>
+    <div>
       <form onSubmit="API CALL" className="flex flex-col flex-nowrap items-center">
         <div className="flex flex-col lg:flex-row">
           <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 p-2">
@@ -124,7 +124,7 @@ function DetailedRecipe({ editMode }) {
           />
         ) : null}
       </form>
-    </section>
+    </div>
   );
 }
 
