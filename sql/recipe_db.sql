@@ -18,6 +18,7 @@ CREATE TABLE recipes (
     user_id UUID REFERENCES users(user_id),
     recipe_name VARCHAR(100) NOT NULL,
     recipe_description VARCHAR(255) NOT NULL,
+    recipe_main_category_id SMALLINT,
     recipe_img VARCHAR(255),
     recipe_time_minutes SMALLINT,
     recipe_difficulty_level SMALLINT,
@@ -25,6 +26,15 @@ CREATE TABLE recipes (
     recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Ez nem fog kelleni
+-- CREATE TABLE users_recipes (
+-- 	post_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+-- 	post_user_id UUID,
+-- 	post_recipe_id INT,
+-- 	FOREIGN KEY (post_user_id) REFERENCES users(user_id),
+-- 	FOREIGN KEY (post_recipe_id) REFERENCES recipes(recipe_id)
+-- );
+--Ez egy recipe type hierarchy :D
 CREATE TABLE main_category (
 	main_category_id SERIAL PRIMARY KEY,
 	main_category_name VARCHAR(100) NOT NULL
@@ -85,26 +95,89 @@ VALUES
     ('meals'),
     ('desserts'),
     ('beverages');
-
 	INSERT INTO category (category_name,category_main_category)
 VALUES
-    ('Breakfast', 1),
-    ('Lunch', 1),
-    ('Dinner', 1),
-    ('Appetizer', 1),
-    ('Cheesecake', 2),
-	('Cake', 2),
-	('Cookie', 2),
-	('Cocktail', 3),
-	('Smoothie', 3),
-	('Shake', 3),
-	('Cocktail', 3),
-	('Soup', 1),
-	('Pie', 2),
-	('Pizza', 1),
-	('Hamburger', 1),
-	('Pasta', 1),
-	('Salad', 1);
+ ('appetizers',1),
+('dippers',1),
+('mini_bites',1,)
+('salads',1),
+('pastry_slices',1),
+('breakfast',1),
+('egg',1),
+('cereals',1),
+('fruit_salads',1),
+('dairy_based',1),
+('lunch',1),
+('sandwiches',1),
+('salads',1),
+('soups',1),
+('burgers',1),
+('stews',1),
+('pasta',1),
+('meaty',1),
+('dinner',1),
+('steak',1),
+('rice_dishes',1),
+('seafood',1),
+('grilled',1),
+('national_cuisines',1),
+('italian',1),
+('french',1),
+('mexican',1),
+('chinese',1),
+('indian',1),
+('greek',1),
+('seasonal',1),
+('spring',1),
+('summer',1),
+('fall',1),
+('winter',1),
+("cakes",2),
+("sponge_cakes",2),
+("muffins",2),
+("cupcakes",2),
+("frozen_desserts",2),
+("ice_cream",2),
+("sorbet",2),
+("gelato",2),
+("ice_cream_cakes",2),
+("chocolates_and_candies",2),
+("truffles",2),
+("bonbons",2),
+("bars_and_slabs",2),
+("creams_and_mousses",2),
+("fruit_desserts",2),
+("fruit_salads",2),
+("puddings",2),
+("sorbet",2),
+("traditional",2),
+("éclairs",2),
+("baklava",2),
+("cannoli",2),
+("mochi",2),
+("hot_drinks",3),
+("coffee",3),
+("tea",3),
+("hot_chocolate",3),
+("chai_tea",3),
+("cold_drinks",3),
+("iced_coffee",3),
+("iced_tea"3),
+("cold_brew",3),
+("lemonade",3),
+("soft_drinks",3),
+("cola",3),
+("ginger_ale",3),
+("root_beer",3),
+("juices",3),
+("orange_juices",3),
+("apple_juice",3),
+("grape_juice",3),
+("cranberry_juice",3),
+("smoothies",3),
+("berry_smoothie",3),
+("green_smoothie",3),
+("protein_smoothie",3);
 
 	INSERT INTO labels (label_name)
 VALUES
@@ -151,16 +224,16 @@ VALUES
 
 /* KÉSŐBB, HA kellene..:
 -> hozzávalós tábla alapja: egyedi azonosító, recept azonosító, hozzávaló neve
-
+);*/
  CREATE TABLE ingredients (
 	ingredient_id SERIAL PRIMARY KEY,
 	ingredient_recipe_id INT,
 	ingredient_name VARCHAR(255) NOT NULL,
 	FOREIGN KEY (ingredients_recipe_id) REFERENCES recipes(recipe_id)
 );
-
+/*
 -> értékelés/visszajelzés tábla alapja: egyedi azonosító, recept azonosító, értékelés, hozzászólás, értékelő id, idő
-
+);*/
 CREATE TABLE recipes_review (
 	review_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
 	review_user_id INT,
@@ -168,4 +241,4 @@ CREATE TABLE recipes_review (
 	review_comment TEXT,
 	review_date DATE DEFAULT CURRENT_DATE.
 	FOREIGN KEY (review_user_id) REFERENCES users(user_id)
-);*/
+

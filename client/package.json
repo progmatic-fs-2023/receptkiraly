@@ -19,7 +19,6 @@
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
     "@mui/x-date-pickers": "^6.19.0",
-    "axios": "^1.6.5",
     "create-vite": "^5.1.0",
     "fs-extra": "^11.2.0",
     "jsonwebtoken": "^9.0.2",
