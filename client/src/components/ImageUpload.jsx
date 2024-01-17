@@ -4,8 +4,10 @@ import ResponsiveImage from './ResponsiveImage';
 
 function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl }) {
   const [imageName, setImageName] = useState();
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
+
     setImageName(file.name);
 
     if (file) {
