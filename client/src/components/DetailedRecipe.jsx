@@ -46,7 +46,7 @@ function DetailedRecipe({ editMode }) {
     <section>
       <form onSubmit="API CALL">
         <div className="flex flex-col lg:flex-row">
-          <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 bg-blue-500 p-2">
+          <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 p-2">
             <div className="flex-1">
               <ImageUpload
             editMode={editMode}
