@@ -3,7 +3,6 @@ import { API_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
-import DetailedRecipe from '../components/DetailedRecipe';
 import RecipeKingCard from '../components/RecipeKingCard';
 
 function Home() {
@@ -22,8 +21,6 @@ function Home() {
         setIdsLatestRecipe(data.ids);
       });
   }, []);
-
-  const editMode = true;
 
   return (
     <div>
@@ -95,7 +92,6 @@ function Home() {
           </SwiperComponent>
         </div>
       </div>
-      <DetailedRecipe editMode={editMode} />
       </div>
     </div>
   );
