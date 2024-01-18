@@ -65,7 +65,7 @@ function NavigationBar() {
                   <div className="bg-zinc-50 pr-16 py-12 relative">
                     <ul className="flex space-x-20">
                       <li>
-                        <NavSubHeadItem text="Meals" link="http://localhost:5173/search?q=" />
+                        <NavSubHeadItem text="Meals" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={meals}
@@ -74,7 +74,7 @@ function NavigationBar() {
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem text="Desserts" link="http://localhost:5173/search?q=" />
+                        <NavSubHeadItem text="Desserts" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={desserts}
@@ -83,7 +83,7 @@ function NavigationBar() {
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem text="Beverages" link="http://localhost:5173/search?q=" />
+                        <NavSubHeadItem text="Beverages" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={beverages}
@@ -97,13 +97,21 @@ function NavigationBar() {
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
                     <div className="flex mt-8 space-x-6">
-                      <PopularThisWeekItem img={dummyImg1} link={link} text="ChuckleChomp Deluxe" />
+                      <PopularThisWeekItem
+                        img={dummyImg1}
+                        link="http://localhost:5173/recipe/1"
+                        text="ChuckleChomp Deluxe"
+                      />
                       <PopularThisWeekItem
                         img={dummyImg2}
-                        link={link}
+                        link="http://localhost:5173/recipe/2"
                         text="MeatyMirth Masterpiece"
                       />
-                      <PopularThisWeekItem img={dummyImg3} link={link} text="BrothBelly Giggler" />
+                      <PopularThisWeekItem
+                        img={dummyImg3}
+                        link="http://localhost:5173/recipe/3"
+                        text="BrothBelly Giggler"
+                      />
                     </div>
                   </div>
                 </div>
@@ -129,10 +137,7 @@ function NavigationBar() {
                   <div className="bg-zinc-50 pr-16 py-12 relative">
                     <ul className="flex space-x-20">
                       <li>
-                        <NavSubHeadItem
-                          text="Professional Chefs"
-                          link="http://localhost:5173/search?q="
-                        />
+                        <NavSubHeadItem text="Professional" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={chefsProf}
@@ -141,10 +146,7 @@ function NavigationBar() {
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem
-                          text="Amateur Chefs"
-                          link="http://localhost:5173/search?q="
-                        />
+                        <NavSubHeadItem text="Amateur" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={chefsAmateur}
