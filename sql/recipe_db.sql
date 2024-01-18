@@ -26,15 +26,6 @@ CREATE TABLE recipes (
     recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Ez nem fog kelleni
--- CREATE TABLE users_recipes (
--- 	post_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
--- 	post_user_id UUID,
--- 	post_recipe_id INT,
--- 	FOREIGN KEY (post_user_id) REFERENCES users(user_id),
--- 	FOREIGN KEY (post_recipe_id) REFERENCES recipes(recipe_id)
--- );
---Ez egy recipe type hierarchy :D
 CREATE TABLE main_category (
 	main_category_id SERIAL PRIMARY KEY,
 	main_category_name VARCHAR(100) NOT NULL
@@ -221,10 +212,6 @@ VALUES
     ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Fruit Smoothie'), (SELECT label_id FROM labels WHERE label_name = 'non-alcoholic')),
     ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Garlic Cream Soup with Pan-Seared Shrimp'), (SELECT label_id FROM labels WHERE label_name = 'seafood'));
 
-
-/* KÉSŐBB, HA kellene..:
--> hozzávalós tábla alapja: egyedi azonosító, recept azonosító, hozzávaló neve
-);*/
  CREATE TABLE ingredients (
 	ingredient_id SERIAL PRIMARY KEY,
 	ingredient_recipe_id INT,
@@ -234,11 +221,11 @@ VALUES
 /*
 -> értékelés/visszajelzés tábla alapja: egyedi azonosító, recept azonosító, értékelés, hozzászólás, értékelő id, idő
 );*/
-CREATE TABLE recipes_review (
-	review_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-	review_user_id INT,
-	review_stars INT,
-	review_comment TEXT,
-	review_date DATE DEFAULT CURRENT_DATE.
-	FOREIGN KEY (review_user_id) REFERENCES users(user_id)
+-- CREATE TABLE recipes_review (
+-- 	review_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+-- 	review_user_id INT,
+-- 	review_stars INT,
+-- 	review_comment TEXT,
+-- 	review_date DATE DEFAULT CURRENT_DATE.
+-- 	FOREIGN KEY (review_user_id) REFERENCES users(user_id)
 
