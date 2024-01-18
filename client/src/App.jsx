@@ -15,6 +15,7 @@ import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
 import NewRecipe from './pages/NewRecipe';
+import About from './pages/About';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -29,26 +30,35 @@ function App() {
         <div className="flex justify-center">
           <NavigationBar />
         </div>
-        </header>
-        <img src="/images/meal.svg" alt="Meal Icon" className="absolute left-0 top-0 z-0 hidden sm:block"/>
-        <img src="/images/stirring.svg" alt="Meal Icon" className="absolute right-0 transform scale-y-[-1] top-0 z-0 hidden sm:block"/>
-        <main className="py-10">
+      </header>
+      <img
+        src="/images/meal.svg"
+        alt="Meal Icon"
+        className="absolute left-0 top-0 z-0 hidden sm:block"
+      />
+      <img
+        src="/images/stirring.svg"
+        alt="Meal Icon"
+        className="absolute right-0 transform scale-y-[-1] top-0 z-0 hidden sm:block"
+      />
+      <main className="py-10">
         <ErrorBoundary FallbackComponent={Fallback}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/recipesfeed" element={<RecipesFeed />} />
-              <Route path="/search" element={<SearchRecipes />} />
-              <Route path="/battle" element={<Battle />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/rankings" element={<Rankings />} />
-              <Route path="/postrecipe" element={<NewRecipe />} />
-              <Route path="/*" element={<NoPage />} />
-            </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipesfeed" element={<RecipesFeed />} />
+            <Route path="/search" element={<SearchRecipes />} />
+            <Route path="/battle" element={<Battle />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/rankings" element={<Rankings />} />
+            <Route path="/postrecipe" element={<NewRecipe />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/*" element={<NoPage />} />
+          </Routes>
         </ErrorBoundary>
-        </main>
-        <footer className="relative z-0">
-      <Footer />
+      </main>
+      <footer className="relative z-0">
+        <Footer />
       </footer>
     </div>
   );
