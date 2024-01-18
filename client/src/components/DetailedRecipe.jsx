@@ -20,7 +20,6 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
   const [category, setCategory] = useState();
   const [difficulty, setDifficulty] = useState();
-  // const [labels, setLabels] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -65,7 +64,7 @@ const uploadRecipe = () => {
   ) : (
     <div>
       <form form encType="multipart/form-data" className="flex flex-col flex-nowrap items-center">
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row my-4">
           <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 p-2">
             <div className="flex-1">
               <ImageUpload
@@ -92,7 +91,7 @@ const uploadRecipe = () => {
           />
             </div>
           </div>
-          <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0">
+          <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
             <RecipeMainCategory
               editMode={editMode}
               selectedMainCategory={selectedMainCategory}
@@ -117,6 +116,7 @@ const uploadRecipe = () => {
               selectedOptions={selectedOptions}
               setSelectedOptions={setSelectedOptions}
             />
+          <div className="flex justify-center"><img src="/images/newrecipe_ingredients.png" alt="Ingredients" className="w-2/3"/></div>
           </div>
         </div>
         {editMode ? <Button text="Save" onClick={uploadRecipe}/> : null}
