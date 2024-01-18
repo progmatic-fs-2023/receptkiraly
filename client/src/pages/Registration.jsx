@@ -113,11 +113,13 @@ function Registration() {
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
-              <Button
-              text="terms and conditions"
-              type="button"
-                onClick={() => setShowTermsOfUse(true)}
-                addClassName="hover:underline"/>
+              <button
+                type="button"
+                className="underline text-blue-500 hover:opacity-80 focus:outline-none"
+                onClick={() => setShowPrivacyPolicy(true)}
+              >
+                privacy and policy
+              </button>
               .
             </label>
           </div>
@@ -135,11 +137,11 @@ function Registration() {
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
-              <Button
-              type="button"
-              text="privacy and policy"
-                onClick={() => setShowPrivacyPolicy(true)}
-                addClassName="hover:underline"/>
+              <button
+                type="button"
+                className="underline text-blue-500 hover:opacity-80 focus:outline-none"
+                onClick={() => setShowTermsOfUse(true)}
+              >terms of use</button>
               .
             </label>
           </div>
@@ -147,12 +149,13 @@ function Registration() {
         <div className="flex-row flex justify-center m-4">
           {' '}
           <Button
-          text="Submit"
-          type="submit"
+            text="Submit"
+            type="submit"
             addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
               checkedTerm && checkedPrivacy ? 'bg-amber-300' : 'bg-amber-200'
             } rounded text-lg `}
-            disabled={!(checkedTerm && checkedPrivacy)}/>
+            disabled={!(checkedTerm && checkedPrivacy)}
+          />
         </div>
       </form>
       {showPrivacyPolicy ? (
