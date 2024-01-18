@@ -23,7 +23,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div>
-      <header className="container mx-auto relative">
+      <header className="container mx-auto w-full">
         <Banner />
         <div className="flex justify-center">
           <NavigationBar />

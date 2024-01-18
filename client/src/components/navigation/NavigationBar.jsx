@@ -42,7 +42,7 @@ function NavigationBar() {
   }, []);
 
   return (
-    <nav className="z-50">
+    <nav className="z-50 ">
       <div className="border-t border-t-light hidden lg:flex justify-between py-6 w-full">
         <ul className="flex -mx-[20px] z-10 ">
           <li className="mega-menu__item group px-[20px]">
@@ -58,7 +58,7 @@ function NavigationBar() {
             <div
               className={`absolute bg-zinc-50 z-50 border-t-[24px] border-t-white ${
                 activeMenu === 'recipes' ? '' : 'hidden'
-              } left-0 overflow-hidden w-full mega-menu__dd`}
+              } left-0 overflow-hidden w-screen mega-menu__dd`}
             >
               <div className="container mx-auto">
                 <div className="flex">
@@ -122,7 +122,7 @@ function NavigationBar() {
             <div
               className={`absolute bg-zinc-50 z-50 border-t-[24px] border-t-white ${
                 activeMenu === 'chefs' ? '' : 'hidden'
-              } left-0 overflow-hidden w-full mega-menu__dd`}
+              } left-0 overflow-hidden w-screen mega-menu__dd`}
             >
               <div className="container mx-auto">
                 <div className="flex">
