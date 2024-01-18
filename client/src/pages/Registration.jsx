@@ -114,10 +114,11 @@ function Registration() {
             >
               I agree with the{' '}
               <Button
-              text="terms and conditions"
-              type="button"
+                text="terms and conditions"
+                type="button"
                 onClick={() => setShowTermsOfUse(true)}
-                addClassName="hover:underline"/>
+                addClassName="hover:underline"
+              />
               .
             </label>
           </div>
@@ -136,10 +137,11 @@ function Registration() {
             >
               I agree with the{' '}
               <Button
-              type="button"
-              text="privacy and policy"
+                type="button"
+                text="privacy and policy"
                 onClick={() => setShowPrivacyPolicy(true)}
-                addClassName="hover:underline"/>
+                addClassName="hover:underline"
+              />
               .
             </label>
           </div>
@@ -147,16 +149,21 @@ function Registration() {
         <div className="flex-row flex justify-center m-4">
           {' '}
           <Button
-          text="Submit"
-          type="submit"
+            text="Submit"
+            type="submit"
             addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
               checkedTerm && checkedPrivacy ? 'bg-amber-300' : 'bg-amber-200'
             } rounded text-lg `}
-            disabled={!(checkedTerm && checkedPrivacy)}/>
+            disabled={!(checkedTerm && checkedPrivacy)}
+          />
         </div>
       </form>
       {showPrivacyPolicy ? (
-        <Modal title="Privacy and policy" close={() => setShowPrivacyPolicy(false)}>
+        <Modal
+          title="Privacy and policy"
+          addClassName="w-4/5"
+          close={() => setShowPrivacyPolicy(false)}
+        >
           <>
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="Generator" content="Microsoft Word 15 (filtered)" />
@@ -1956,7 +1963,7 @@ function Registration() {
         </Modal>
       ) : null}
       {showTermsOfUse ? (
-        <Modal title="Terms of use" close={() => setShowTermsOfUse(false)}>
+        <Modal title="Terms of use" addClassName="w-4/5" close={() => setShowTermsOfUse(false)}>
           <>
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="Generator" content="Microsoft Word 15 (filtered)" />
