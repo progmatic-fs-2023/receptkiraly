@@ -41,13 +41,13 @@ function IngredientsComp({
             </div>
           </label>
       ) : null}
+      <div className="recipe-paper"><div className="recipe-paper-header">Ingredients</div>
       <ul>
-        <li>Ingredients:</li>
+        <li><div className="recipe-paper-ingredients"/></li>
         {ingredients.map((ingredient) => (
           <li
-            className="flex flex-nowrap flex-row items-center justify-between my-3"
             key={ingredient.id}
-          >
+          ><div className="recipe-paper-ingredients flex flex-nowrap flex-row items-center justify-between my-3">
             {ingredient.text}
             {editMode ? (
               <Button
@@ -56,9 +56,9 @@ function IngredientsComp({
                 onClick={() => deleteIngredient(ingredient.id)}
               />
             ) : null}
-          </li>
+          </div></li>
         ))}
-      </ul>
+      </ul><div className="recipe-paper-footer"/></div>
     </div>
   );
 }

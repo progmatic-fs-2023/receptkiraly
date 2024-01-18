@@ -62,3 +62,28 @@ h1 {
   background-image: -o-linear-gradient(top, #b6b6b6, #999999);
   background-image: linear-gradient(to bottom, #b6b6b6, #999999);
 }
+
+.recipe-paper {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.recipe-paper-header {
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-bottom: 2px solid #ccc;
+  font-weight: bold;
+}
+
+.recipe-paper-ingredients {
+  padding: 10px;
+}
+
+.recipe-paper-footer {
+  height: 20px;
+  background-color: #f9f9f9;
+  border-top: 2px solid #ccc;
+}

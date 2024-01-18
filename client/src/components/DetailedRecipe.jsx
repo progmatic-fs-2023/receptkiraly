@@ -116,7 +116,6 @@ const uploadRecipe = () => {
               selectedOptions={selectedOptions}
               setSelectedOptions={setSelectedOptions}
             />
-          <div className="flex justify-center"><img src="/images/newrecipe_ingredients.png" alt="Ingredients" className="w-2/3"/></div>
           </div>
         </div>
         {editMode ? <Button text="Save" onClick={uploadRecipe}/> : null}
