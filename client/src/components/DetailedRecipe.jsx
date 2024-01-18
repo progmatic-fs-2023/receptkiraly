@@ -95,37 +95,45 @@ function DetailedRecipe({ editMode, recipeID }) {
               />
             </div>
           </div>
-          <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
-            <RecipeMainCategory
+        </div>
+        <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
+          <RecipeMainCategory
+            editMode={editMode}
+            selectedMainCategory={selectedMainCategory}
+            setSelectedMainCategory={setSelectedMainCategory}
+          />
+          <RecipeCategory
+            editMode={editMode}
+            category={category}
+            setCategory={setCategory}
+            selectedMainCategory={selectedMainCategory}
+          />
+          <div className="flex flex-nowrap flex-row items-center w-full">
+            <Icons
               editMode={editMode}
-              selectedMainCategory={selectedMainCategory}
-              setSelectedMainCategory={setSelectedMainCategory}
+              minutes={minutes}
+              setMinutes={setMinutes}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              serves={serves}
+              setServes={setServes}
             />
-            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
-            <div className="flex flex-nowrap flex-row items-center w-full">
-              <Icons
+
+            <RecipeTitle
+              editMode={editMode}
+              recipeTitle={recipeTitle}
+              setRecipeTitle={setRecipeTitle}
+            />
+            <div className="flex justify-center items-center">
+              <Labels
                 editMode={editMode}
-                minutes={minutes}
-                setMinutes={setMinutes}
-                difficulty={difficulty}
-                setDifficulty={setDifficulty}
-                serves={serves}
-                setServes={setServes}
-                addClassName="text-right w-28"
-              />
-              <RecipeDifficulty
-                editMode={editMode}
-                difficulty={difficulty}
-                setDifficulty={setDifficulty}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
             </div>
-            <Labels
-              editMode={editMode}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
-            />
           </div>
         </div>
+
         {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
       </form>
     </div>
