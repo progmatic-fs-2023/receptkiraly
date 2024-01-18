@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
-import Icons from './IconsInDetailedRecipe'
+import Icons from './IconsInDetailedRecipe';
 import RecipeMainCategory from './RecipeMainCategory';
 import RecipeCategory from './RecipeCategory';
 import Labels from './LabelsComp';
@@ -40,7 +40,7 @@ function DetailedRecipe({ editMode, recipeID }) {
     }
   }, []);
 
-const uploadRecipe = () => {
+  const uploadRecipe = () => {
     const formData = new FormData();
     formData.append('recipeName', recipeTitle);
     formData.append('recipeDescription', description);
@@ -92,7 +92,12 @@ const uploadRecipe = () => {
             setSelectedMainCategory={setSelectedMainCategory}
           />
           <div className="flex justify-center items-center">
-            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
+            <RecipeCategory
+              editMode={editMode}
+              category={category}
+              setCategory={setCategory}
+              selectedMainCategory={selectedMainCategory}
+            />
             <Labels
               editMode={editMode}
               selectedOptions={selectedOptions}
@@ -112,7 +117,7 @@ const uploadRecipe = () => {
           />
           <Method editMode={editMode} description={description} setDescription={setDescription} />
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe}/> : null}
+        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
       </div>
     </form>
   );
