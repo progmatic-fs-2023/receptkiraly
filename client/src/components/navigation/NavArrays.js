@@ -21,11 +21,11 @@ export const beverages = [
 ];
 
 export const chefsProf = [
-  { key: 1, value: 'executive', text: 'Hot drinks' },
-  { key: 2, value: 'sous', text: 'cold drinks' },
-  { key: 3, value: 'pastry', text: 'soft drinks' },
-  { key: 4, value: 'cold_kitchen', text: 'juices' },
-  { key: 5, value: 'saucier', text: 'smoothies' },
+  { key: 1, value: 'executive', text: 'Executive' },
+  { key: 2, value: 'sous', text: 'Sous' },
+  { key: 3, value: 'pastry', text: 'Pastry' },
+  { key: 4, value: 'cold_kitchen', text: 'Cold kitchen' },
+  { key: 5, value: 'saucier', text: 'Saucier' },
 ];
 
 export const chefsAmateur = [
