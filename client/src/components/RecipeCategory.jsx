@@ -7,20 +7,19 @@ function RecipeCategory({ editMode, category, setCategory }) {
   };
 
   const categories = [
-    { value: 'Breakfast', label: 'Breakfast' },
-    { value: 'Lunch', label: 'Lunch' },
-    { value: 'Dinner', label: 'Dinner' },
-    { value: 'Appetizer', label: 'Appetizer' },
-    { value: 'Cheesecake', label: 'Cheesecake' },
-    { value: 'Cake', label: 'Cake' },
-    { value: 'Cookie', label: 'Cookie' },
-    { value: 'Cocktail', label: 'Cocktail' },
-    { value: 'Soup', label: 'Soup' },
-    { value: 'Pie', label: 'Pie' },
-    { value: 'Pizza', label: 'Pizza' },
-    { value: 'Hamburger', label: 'Hamburger' },
-    { value: 'Pasta', label: 'Pasta' },
-    { value: 'Salad', label: 'Salad' },
+    { value: 'appetizers', label: 'Appetizers' },
+    { value: 'breakfast', label: 'Breakfast' },
+    { value: 'lunch', label: 'Lunch' },
+    { value: 'dinner', label: 'Dinner' },
+    { value: 'cakes', label: 'Cakes' },
+    { value: 'frozen_desserts', label: 'Frozen Desserts' },
+    { value: 'chocolate_and_candies', label: 'Chocolate and Candies' },
+    { value: 'fruit_desserts', label: 'Fruit Desserts' },
+    { value: 'hot_drinks', label: 'Hot Drinks' },
+    { value: 'cold_drinks', label: 'Cold Drinks' },
+    { value: 'soft_drinks', label: 'Soft Drinks' },
+    { value: 'juices', label: 'Juices' },
+    { value: 'smoothies', label: 'Smoothies' },
   ];
 
   const customStyles = {
