@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
-import Icons from './IconsInDetailedRecipe'
+import Icons from './IconsInDetailedRecipe';
 import RecipeMainCategory from './RecipeMainCategory';
 import RecipeCategory from './RecipeCategory';
 import RecipeDifficulty from './RecipeDifficulty';
@@ -41,7 +41,7 @@ function DetailedRecipe({ editMode, recipeID }) {
     }
   }, []);
 
-const uploadRecipe = () => {
+  const uploadRecipe = () => {
     const formData = new FormData();
     formData.append('recipeName', recipeTitle);
     formData.append('recipeDescription', description);
@@ -81,44 +81,60 @@ const uploadRecipe = () => {
                 recipeTitle={recipeTitle}
                 setRecipeTitle={setRecipeTitle}
               />
-              <Method editMode={editMode} description={description} setDescription={setDescription} />
+              <Method
+                editMode={editMode}
+                description={description}
+                setDescription={setDescription}
+              />
               <Ingredients
-            editMode={editMode}
-            ingredients={ingredients}
-            setIngredients={setIngredients}
-            newIngredient={newIngredient}
-            setNewIngredient={setNewIngredient}
-          />
+                editMode={editMode}
+                ingredients={ingredients}
+                setIngredients={setIngredients}
+                newIngredient={newIngredient}
+                setNewIngredient={setNewIngredient}
+              />
             </div>
-          </div>
-          <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
-            <RecipeMainCategory
-              editMode={editMode}
-              selectedMainCategory={selectedMainCategory}
-              setSelectedMainCategory={setSelectedMainCategory}
-            />
-            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
-            <div className="flex flex-nowrap flex-row items-center w-full">
-            <Icons
-            editMode={editMode}
-            minutes={minutes}
-            setMinutes={setMinutes}
-            difficulty={difficulty}
-            setDifficulty={setDifficulty}
-            serves={serves}
-            setServes={setServes}
-            addClassName="text-right w-28"
-          />
-            <RecipeDifficulty editMode={editMode} difficulty={difficulty} setDifficulty={setDifficulty} />
-            </div>
-            <Labels
-              editMode={editMode}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
-            />
           </div>
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe}/> : null}
+        <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
+          <RecipeMainCategory
+            editMode={editMode}
+            selectedMainCategory={selectedMainCategory}
+            setSelectedMainCategory={setSelectedMainCategory}
+          />
+          <RecipeCategory
+            editMode={editMode}
+            category={category}
+            setCategory={setCategory}
+            selectedMainCategory={selectedMainCategory}
+          />
+          <div className="flex flex-nowrap flex-row items-center w-full">
+            <Icons
+              editMode={editMode}
+              minutes={minutes}
+              setMinutes={setMinutes}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              serves={serves}
+              setServes={setServes}
+            />
+
+            <RecipeTitle
+              editMode={editMode}
+              recipeTitle={recipeTitle}
+              setRecipeTitle={setRecipeTitle}
+            />
+            <div className="flex justify-center items-center">
+              <Labels
+                editMode={editMode}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+              />
+            </div>
+          </div>
+        </div>
+
+        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
       </form>
     </div>
   );
