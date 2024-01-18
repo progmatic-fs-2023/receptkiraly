@@ -6,6 +6,7 @@ import IconContainer from './IconContainer';
 import Icon from './Icon';
 import RecipeMainCategory from './RecipeMainCategory';
 import RecipeCategory from './RecipeCategory';
+import RecipeDifficulty from './RecipeDifficulty';
 import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
@@ -17,6 +18,7 @@ function DetailedRecipe({ editMode }) {
   const [recipeTitle, setRecipeTitle] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
   const [category, setCategory] = useState();
+  const [difficulty, setDifficulty] = useState();
   // const [labels, setLabels] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
@@ -24,7 +26,6 @@ function DetailedRecipe({ editMode }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const [minutes, setMinutes] = useState();
-  const [difficulty, setDifficulty] = useState();
   const [serves, setServes] = useState();
 
   useEffect(() => {
@@ -38,7 +39,6 @@ function DetailedRecipe({ editMode }) {
     };
 
     setMinutes(data.minutes);
-    setDifficulty(data.difficulty);
     setServes(data.serves);
   }, []);
 
@@ -83,19 +83,12 @@ function DetailedRecipe({ editMode }) {
               setSelectedMainCategory={setSelectedMainCategory}
             />
             <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
+            <div className="flex flex-col lg:flex-row items-center">
             <IconContainer addClassName="flex-wrap flex-row items-center">
               {minutes ? (
                 <Icon
                   imgUrl="/images/time-icon.svg"
                   text={`${minutes} mins`}
-                  editMode={editMode}
-                  addClassName="text-right w-20"
-                />
-              ) : null}
-              {difficulty ? (
-                <Icon
-                  imgUrl="/images/difficulty-icon.svg"
-                  text={difficulty}
                   editMode={editMode}
                   addClassName="text-right w-20"
                 />
@@ -109,6 +102,8 @@ function DetailedRecipe({ editMode }) {
                 />
               ) : null}{' '}
             </IconContainer>
+            <RecipeDifficulty editMode={editMode} difficulty={difficulty} setDifficulty={setDifficulty} />
+            </div>
             <Labels
               editMode={editMode}
               selectedOptions={selectedOptions}
