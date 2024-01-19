@@ -36,7 +36,7 @@ function Banner() {
     <div className="container mx-auto flex flex-wrap flex-row sm:justify-between justify-center py-6 relative z-20">
       <div className="flex flex-wrap flex-row w-full md:w-3/4 justify-around items-center">
         <Link to="/" className="focus:outline-none">
-          <img src={Logo} alt="Recipe King" className="logo" />
+          <img src={Logo} alt="Recipe King" className="logo transform transition-transform hover:scale-110"/>
         </Link>
         <div className="flex items-center mx-6">
           <input

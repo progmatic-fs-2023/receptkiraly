@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function MainCategories() {
     const style = {
@@ -7,7 +8,7 @@ function MainCategories() {
   return (
     <div className="w-full flex flex-col lg:flex-row justify-between items-start">
       <div className="w-full lg:w-1/3 mx-2 my-3">
-        <img src="/images/meal.png" alt="Meals" />
+        <Link to="/" className="focus:outline-none relative overflow-hidden"><img src="/images/meal.png" alt="Meals" className="transition-transform transform hover:brightness-150 motion-reduce:transition-none motion-reduce:hover:transform-none" /></Link>
         <div className="w-full flex flex-row flex-nowrap justify-center items-center"><button type="button" className="round-button font-bold bg-orange-900">GF</button><button type="button" className="round-button font-bold bg-yellow-400">VG</button><button type="button" className="round-button font-bold bg-green-500">V</button><button type="button" className="round-button font-bold bg-red-300">DF</button><button type="button" className="round-button font-bold bg-teal-400">NS</button><button type="button" className="round-button font-bold bg-red-600">H!</button></div>
         <div className="features-row my-1 text-center font-bold" style={style}>Meals</div>
       </div>
