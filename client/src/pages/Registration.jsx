@@ -113,13 +113,13 @@ function Registration() {
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
-              <Button
-                text="terms and conditions"
+              <button
                 type="button"
-                onClick={() => setShowTermsOfUse(true)}
-                addClassName="hover:underline"
-              />
-              .
+                className="underline text-blue-500 hover:opacity-80 focus:outline-none"
+                onClick={() => setShowPrivacyPolicy(true)}
+              >
+                privacy and policy
+              </button>
             </label>
           </div>
           <div className="flex items-center  my-2">
@@ -136,13 +136,11 @@ function Registration() {
               className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree with the{' '}
-              <Button
+              <button
                 type="button"
-                text="privacy and policy"
-                onClick={() => setShowPrivacyPolicy(true)}
-                addClassName="hover:underline"
-              />
-              .
+                className="underline text-blue-500 hover:opacity-80 focus:outline-none"
+                onClick={() => setShowTermsOfUse(true)}
+              >terms of use</button>
             </label>
           </div>
         </div>

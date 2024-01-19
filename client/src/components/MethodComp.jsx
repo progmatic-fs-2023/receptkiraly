@@ -1,28 +1,27 @@
 import PropTypes from 'prop-types';
 
-function MethodComp({ editMode, description, setDescription }) {
+function MethodComp({ editMode, description, setDescription, addClassName }) {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
 
   return (
-    <div className="p-8">
-      <h1 className="flex mx-auto justify-center sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-        Method:
-      </h1>
-      <div>
-        {editMode ? (
+    <div>
+      {editMode ? (
+        <label htmlFor="description">
+          Description:
           <textarea
-            className="flex mx-auto bg-orange-300 text-black p-2 text-xl"
+            id="description"
+            className={`w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${addClassName}`}
             value={description}
             onChange={handleDescriptionChange}
             rows={12}
             cols={60}
           />
-        ) : (
-          <p className="flex mx-auto bg-amber-300 text-black">{description}</p>
-        )}
-      </div>
+        </label>
+      ) : (
+        <p className="flex mx-auto text-black">{description}</p>
+      )}
     </div>
   );
 }
@@ -31,6 +30,9 @@ MethodComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
   description: PropTypes.string.isRequired,
   setDescription: PropTypes.func.isRequired,
+  addClassName: PropTypes.string,
 };
-
+MethodComp.defaultProps = {
+  addClassName: '',
+};
 export default MethodComp;
