@@ -8,7 +8,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
   return (
     <div className="flex justify-center">
       {editMode ? (
-        <div className="grid w-[45rem] grid-cols-3 gap-2 bg-orange-300 rounded-xl p-2 m-4">
+        <div className="grid w-[45rem] grid-cols-3 gap-2 rounded-xl p-2 m-4">
           <label htmlFor="meals">
             <input
               type="radio"

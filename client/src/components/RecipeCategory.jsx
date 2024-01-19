@@ -41,26 +41,28 @@ function RecipeCategory({ editMode, category, setCategory, selectedMainCategory 
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      border: '3px solid #ff8811',
-      fontSize: '20px',
-      fontWeight: 'bold',
+      border: '1px solid #d2d6dc',
+      borderRadius: '4px',
+      fontSize: '16px',
+      fontWeight: 'normal',
+      minHeight: '42px',
 
       boxShadow: state.isFocused ? '0 0 0 1px #5a8dee' : 'none',
       '&:hover': {
-        boxShadow: '0 0 0 1px #ff8822',
-        fontSize: '20px',
+        boxShadow: '0 0 0 1px #d2d6dc',
+        fontSize: '16px',
       },
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: 'black',
+      color: '#4b5563',
     }),
   };
 
   const selectedCategory = options.find((c) => c.value === category);
 
   return (
-    <div className="w-1/6">
+    <div className="w-full">
       {editMode ? (
         <Select
           options={options}

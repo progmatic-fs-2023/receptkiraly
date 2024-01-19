@@ -24,7 +24,7 @@ function Home() {
 
   return (
     <div>
-       <div><img src="/images/banner-v2.png" alt="Banner" className="w-full relative z-20"/></div>
+       <div><img src="/images/banner-v2.png" alt="Banner" className="w-full relative z-10"/></div>
        <div className="container mx-auto my-2">
       <div>
         Hello project!
