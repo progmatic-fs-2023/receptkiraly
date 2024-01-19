@@ -9,4 +9,9 @@ const pool = new pg.Pool({
   port: process.env.DB_PORT,
 });
 
+pool
+  .connect()
+  .then(() => console.log('Connected to the database'))
+  .catch(err => console.log(`Error connecting to the database: ${err}`));
+
 export const query = (text, params) => pool.query(text, params);
