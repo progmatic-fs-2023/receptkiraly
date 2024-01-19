@@ -17,6 +17,7 @@ import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
+import DetailedRecipe from './components/DetailedRecipe';
 import NewRecipe from './pages/NewRecipe';
 /* Template */
 import Banner from './components/Banner';
