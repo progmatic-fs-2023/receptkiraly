@@ -14,6 +14,7 @@ import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
+import NewRecipe from './pages/NewRecipe';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -31,7 +32,7 @@ function App() {
         </header>
         <img src="/images/meal.svg" alt="Meal Icon" className="absolute left-0 top-0 z-0 hidden sm:block"/>
         <img src="/images/stirring.svg" alt="Meal Icon" className="absolute right-0 transform scale-y-[-1] top-0 z-0 hidden sm:block"/>
-        <main>
+        <main className="py-10">
         <ErrorBoundary FallbackComponent={Fallback}>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -41,11 +42,12 @@ function App() {
               <Route path="/register" element={<Registration />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/rankings" element={<Rankings />} />
+              <Route path="/postrecipe" element={<NewRecipe />} />
               <Route path="/*" element={<NoPage />} />
             </Routes>
         </ErrorBoundary>
         </main>
-        <footer className="relative z-50">
+        <footer className="relative z-0">
       <Footer />
       </footer>
     </div>

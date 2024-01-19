@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/Logo.png';
 import Login from './Login';
 import Button from './Button';
+import Tooltips from './Tooltips';
 
 function Banner() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -50,6 +51,22 @@ function Banner() {
         </div>
       </div>
       <div className="flex flex-grow justify-center items-center sm:mt-4 md:mt-0">
+        {isAuthenticated ? (
+          <Link to="/postrecipe">
+            <Button text="Post Recipe" type="button" />
+          </Link>
+        ) : (
+          <Link to="/postrecipe">
+            <Tooltips title="Sign in to post new recipe!">
+              <Button
+                text="Post Recipe"
+                type="button"
+                addClassName="grayscale disabled-button"
+                disabled
+              />
+            </Tooltips>
+          </Link>
+        )}
         <nav>
           <ul>
             <li>
