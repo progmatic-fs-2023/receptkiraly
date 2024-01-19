@@ -81,14 +81,18 @@ function DetailedRecipe({ editMode, recipeID }) {
                 recipeTitle={recipeTitle}
                 setRecipeTitle={setRecipeTitle}
               />
-              <Method editMode={editMode} description={description} setDescription={setDescription} />
+              <Method
+                editMode={editMode}
+                description={description}
+                setDescription={setDescription}
+              />
               <Ingredients
-            editMode={editMode}
-            ingredients={ingredients}
-            setIngredients={setIngredients}
-            newIngredient={newIngredient}
-            setNewIngredient={setNewIngredient}
-          />
+                editMode={editMode}
+                ingredients={ingredients}
+                setIngredients={setIngredients}
+                newIngredient={newIngredient}
+                setNewIngredient={setNewIngredient}
+              />
             </div>
           </div>
           <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
@@ -99,57 +103,62 @@ function DetailedRecipe({ editMode, recipeID }) {
             />
             <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
             <div className="flex flex-nowrap flex-row items-center w-full">
-            <Icons
-            editMode={editMode}
-            minutes={minutes}
-            setMinutes={setMinutes}
-            difficulty={difficulty}
-            setDifficulty={setDifficulty}
-            serves={serves}
-            setServes={setServes}
-            addClassName="text-right w-28"
-          />
-          <RecipeTitle
-            editMode={editMode}
-            recipeTitle={recipeTitle}
-            setRecipeTitle={setRecipeTitle}
-          />
-          <RecipeMainCategory
-            editMode={editMode}
-            selectedMainCategory={selectedMainCategory}
-            setSelectedMainCategory={setSelectedMainCategory}
-          />
-          <div className="flex justify-center items-center">
-            <RecipeCategory
-              editMode={editMode}
-              category={category}
-              setCategory={setCategory}
-              selectedMainCategory={selectedMainCategory}
-            />
-            <RecipeDifficulty editMode={editMode} difficulty={difficulty} setDifficulty={setDifficulty} />
+              <Icons
+                editMode={editMode}
+                minutes={minutes}
+                setMinutes={setMinutes}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
+                serves={serves}
+                setServes={setServes}
+                addClassName="text-right w-28"
+              />
+              <RecipeTitle
+                editMode={editMode}
+                recipeTitle={recipeTitle}
+                setRecipeTitle={setRecipeTitle}
+              />
+              <RecipeMainCategory
+                editMode={editMode}
+                selectedMainCategory={selectedMainCategory}
+                setSelectedMainCategory={setSelectedMainCategory}
+              />
+              <div className="flex justify-center items-center">
+                <RecipeCategory
+                  editMode={editMode}
+                  category={category}
+                  setCategory={setCategory}
+                  selectedMainCategory={selectedMainCategory}
+                />
+                <RecipeDifficulty
+                  editMode={editMode}
+                  difficulty={difficulty}
+                  setDifficulty={setDifficulty}
+                />
+              </div>
+              <Labels
+                editMode={editMode}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+              />
             </div>
-            <Labels
-              editMode={editMode}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
-            />
           </div>
         </div>
-      </div>
-      <div className="bg-orange-50 rounded-lg">
-        <div className="mt-10 md:flex items-center justify-evenly">
-          <Ingredients
-            editMode={editMode}
-            ingredients={ingredients}
-            setIngredients={setIngredients}
-            newIngredient={newIngredient}
-            setNewIngredient={setNewIngredient}
-          />
-          <Method editMode={editMode} description={description} setDescription={setDescription} />
+        <div className="bg-orange-50 rounded-lg">
+          <div className="mt-10 md:flex items-center justify-evenly">
+            <Ingredients
+              editMode={editMode}
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+              newIngredient={newIngredient}
+              setNewIngredient={setNewIngredient}
+            />
+            <Method editMode={editMode} description={description} setDescription={setDescription} />
+          </div>
+          {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 
