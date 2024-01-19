@@ -71,7 +71,7 @@ function Home() {
             <div className="m-auto">
               <div className="text-center ">
                 <h2 className="text-4xl text-orange-400 tracking-widest font-medium title-font mb-5">
-                  Recipe King
+                  Post Recipes
                 </h2>
 
                 {/* Modal button */}
@@ -83,7 +83,7 @@ function Home() {
                           <button
                             aria-label="Click this to add a new recipe"
                             type="button"
-                            onClick={() => handleButtonClick(true)}
+                            onClick={() => handleButtonClick()}
                           >
                             <Add />
                           </button>
@@ -92,33 +92,34 @@ function Home() {
                     </div>
                   </div>
 
-                  {/* Content modal */}
-                  <div className="modal">
-                    {isCreateRecipe ? (
-                      <Modal title="Create New Recipes" close={() => setISCreateRecipe(false)}>
-                        <div>
-                          <DetailedRecipe editMode={editMode} />
-                        </div>
+                  {/* Combined modal */}
+                  <div>
+                    {(isCreateRecipe || showLoginModal) && (
+                      <Modal
+                        title={isCreateRecipe ? 'Create New Recipes' : 'Login'}
+                        close={() => {
+                          setISCreateRecipe(false);
+                          setShowLoginModal(false);
+                        }}
+                      >
+                        {isCreateRecipe ? (
+                          <div>
+                            <DetailedRecipe editMode={editMode} />
+                          </div>
+                        ) : (
+                          <div>
+                            <Login />
+                            <button type="button" onClick={handleLogin}>
+                              Login
+                            </button>
+                          </div>
+                        )}
                       </Modal>
-                    ) : null}
-                  </div>
-
-                  {/* Login modal */}
-                  <div className="modal">
-                    {showLoginModal ? (
-                      <Modal title="Login" close={() => setShowLoginModal(false)}>
-                        <>
-                          <Login />
-                          <button type="button" onClick={handleLogin}>
-                            Login
-                          </button>
-                        </>
-                      </Modal>
-                    ) : null}
+                    )}
                   </div>
                 </div>
 
-                <p className="leading-relaxed text-base">and meet the &quot;Recipe King&quot;</p>
+                <p className="leading-relaxed text-base">and be the &quot;Recipe King&quot;</p>
               </div>
             </div>
           </div>
