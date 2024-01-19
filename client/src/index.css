@@ -87,3 +87,51 @@ h1 {
   background-color: #f9f9f9;
   border-top: 2px solid #ccc;
 }
+
+.features-row{
+  clear: both;
+  color: #fff;
+  background-image: linear-gradient(to bottom, #ffc036, #ff8811);
+  overflow: hidden;
+  padding: 25px 0 23px;
+  margin-bottom: 40px;
+}
+
+.custom-features-title{
+  font-size: 13px;
+  font-family: Arial,Helvetica,sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.round-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 6px;
+  font-size: 10px;
+}
+h2.divider,h3.divider {
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: .3em;
+}
+
+.divider span {
+  background-color: #fff;
+  padding: 0 9px 0 10px
+}
+
+.divider:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #121212;
+  margin: -12px 0 35px
+}

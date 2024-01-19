@@ -7,7 +7,7 @@ import './components/RecipePostsCard.css';
 import './components/DailyRecipeCard.css';
 /* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
-import Home from './pages/Home';
+import Home from './pages/Home-v1';
 import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
 import Registration from './pages/Registration';
@@ -30,9 +30,9 @@ function App() {
           <NavigationBar />
         </div>
         </header>
-        <img src="/images/meal.svg" alt="Meal Icon" className="absolute left-0 top-0 z-0 hidden sm:block"/>
+        <img src="/images/chopping-board.svg" alt="Meal Icon" className="absolute left-0 top-0 transform scale-x-[-1] z-0 hidden sm:block"/>
         <img src="/images/stirring.svg" alt="Meal Icon" className="absolute right-0 transform scale-y-[-1] top-0 z-0 hidden sm:block"/>
-        <main className="py-10">
+        <main className="pb-10">
         <ErrorBoundary FallbackComponent={Fallback}>
             <Routes>
               <Route path="/" element={<Home />} />
