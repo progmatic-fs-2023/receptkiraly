@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
@@ -14,6 +15,9 @@ import Method from './MethodComp';
 import Button from './Button';
 
 function DetailedRecipe({ editMode, recipeID }) {
+  const { recipeIdParam } = useParams();
+  console.log(recipeIdParam);
+
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
@@ -34,12 +38,13 @@ function DetailedRecipe({ editMode, recipeID }) {
         .get(`/api/recipes/${recipeID}`)
         .then((response) => {
           setRecipeTitle(response.recipeName);
+          console.log(response);
         })
         .catch((error) => {
           setErrorMessage(error.message);
         });
     }
-  }, []);
+  }, [recipeIdParam]);
 
   const uploadRecipe = () => {
     const formData = new FormData();
@@ -56,7 +61,6 @@ function DetailedRecipe({ editMode, recipeID }) {
 
     axios.post('/api/recipes/newrecipe', formData);
   };
-
   return errorMessage ? (
     <div>
       <p>{errorMessage}</p>
