@@ -49,7 +49,7 @@ function App() {
           </Routes>
         </ErrorBoundary>
       </main>
-      <footer className="relative z-50">
+      <footer className="relative z-0">
         <Footer />
       </footer>
     </div>
