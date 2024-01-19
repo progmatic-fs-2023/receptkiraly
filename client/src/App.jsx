@@ -7,7 +7,7 @@ import './App.css';
 /* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
 import Home from './pages/Home';
-
+import Rankings from './pages/Rankings';
 import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
@@ -46,7 +46,7 @@ function App() {
 
             <Route path="/register" element={<Registration />} />
             <Route path="/profile" element={<Profile />} />
-
+            <Route path="/rankings" element={<Rankings />} />
             <Route path="/*" element={<NoPage />} />
           </Routes>
         </ErrorBoundary>
