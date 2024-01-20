@@ -71,7 +71,9 @@ function Login({ setIsAuthenticated }) {
               <Button type="submit" text="Sign In" />
             </div>
           </form>
-          <div className="flex flex-row justify-center items-center my-1">{loginMessage && <p>{loginMessage}</p>}</div>
+          <div className="flex flex-row justify-center items-center my-1">
+            {loginMessage && <p>{loginMessage}</p>}
+          </div>
         </div>
       )}
     </div>
