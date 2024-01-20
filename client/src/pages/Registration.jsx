@@ -140,7 +140,9 @@ function Registration() {
                 type="button"
                 className="underline text-blue-500 hover:opacity-80 focus:outline-none"
                 onClick={() => setShowTermsOfUse(true)}
-              >terms of use</button>
+              >
+                terms of use
+              </button>
             </label>
           </div>
         </div>

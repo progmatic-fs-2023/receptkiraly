@@ -34,21 +34,21 @@ function App() {
         <img src="/images/stirring.svg" alt="Meal Icon" className="absolute right-0 transform scale-y-[-1] top-0 z-0 hidden sm:block"/>
         <main className="pb-10">
         <ErrorBoundary FallbackComponent={Fallback}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/recipesfeed" element={<RecipesFeed />} />
-              <Route path="/search" element={<SearchRecipes />} />
-              <Route path="/battle" element={<Battle />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/rankings" element={<Rankings />} />
-              <Route path="/postrecipe" element={<NewRecipe />} />
-              <Route path="/*" element={<NoPage />} />
-            </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipesfeed" element={<RecipesFeed />} />
+            <Route path="/search" element={<SearchRecipes />} />
+            <Route path="/battle" element={<Battle />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/rankings" element={<Rankings />} />
+            <Route path="/postrecipe" element={<NewRecipe />} />
+            <Route path="/*" element={<NoPage />} />
+          </Routes>
         </ErrorBoundary>
-        </main>
-        <footer className="relative z-0">
-      <Footer />
+      </main>
+      <footer className="relative z-0">
+        <Footer />
       </footer>
     </div>
   );

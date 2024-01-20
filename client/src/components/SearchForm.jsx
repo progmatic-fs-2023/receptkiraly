@@ -30,27 +30,31 @@ function SearchFilter() {
   return (
     <div className="border-b border-gray-200 pb-6 lg:pb-10 relative z-10">
       <div className="bg-orange-400 mb-4 p-4 lg:px-8 lg:py-5 custom-div-shadow relative z-0">
-      <div>
-        <img
-          src="/images/meal-2.svg"
-          alt="Meal Icon"
-          className="absolute left-0 top-0 h-40 transform scale-x-[-1] z-0"
-        />
-        <img src="/images/top-orange.svg" alt="Meal Icon" className="absolute right-0 top-0 z-0" />
-        <h1 className="relative py-8 text-5xl text-white z-20">Search</h1>
-      </div>
-      <div className="flex flex-row flex-nowrap  relative z-20">
-        <input
-          type="text"
-          id="search"
-          className="border-2 border-gray-300 focus:outline-none py-3 px-4 rounded-md w-full"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          onKeyDown={handleonKeyDown}
-          placeholder="Search"
-        />
-        <Button text="Search" type="button" onClick={handleSearch} />
-      </div>
+        <div>
+          <img
+            src="/images/meal-2.svg"
+            alt="Meal Icon"
+            className="absolute left-0 top-0 h-40 transform scale-x-[-1] z-0"
+          />
+          <img
+            src="/images/top-orange.svg"
+            alt="Meal Icon"
+            className="absolute right-0 top-0 z-0"
+          />
+          <h1 className="relative py-8 text-5xl text-white z-20">Search</h1>
+        </div>
+        <div className="flex flex-row flex-nowrap  relative z-20">
+          <input
+            type="text"
+            id="search"
+            className="border-2 border-gray-300 focus:outline-none py-3 px-4 rounded-md w-full"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={handleonKeyDown}
+            placeholder="Search"
+          />
+          <Button text="Search" type="button" onClick={handleSearch} />
+        </div>
       </div>
       <div>
         <Button
@@ -122,17 +126,13 @@ function SearchFilter() {
                   </label>
                 </div>
               </div>
-              <Button
-            text="Apply Changes"
-            type="button"
-            addClassName="ml-2"
-          />
+              <Button text="Apply Changes" type="button" addClassName="ml-2" />
             </div>
-            </div>
+          </div>
         )}
       </div>
     </div>
-  );  
+  );
 }
 
 export default SearchFilter;

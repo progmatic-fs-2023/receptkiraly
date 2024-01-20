@@ -6,7 +6,7 @@ function Fallback({ error, resetErrorBoundary }) {
     <div role="alert">
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>
-      <Button type="submit" text="Try again" onClick={resetErrorBoundary}/>
+      <Button type="submit" text="Try again" onClick={resetErrorBoundary} />
     </div>
   );
 }
