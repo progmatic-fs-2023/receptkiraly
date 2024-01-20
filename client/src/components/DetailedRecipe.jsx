@@ -101,7 +101,12 @@ function DetailedRecipe({ editMode, recipeID }) {
               selectedMainCategory={selectedMainCategory}
               setSelectedMainCategory={setSelectedMainCategory}
             />
-            <RecipeCategory editMode={editMode} category={category} setCategory={setCategory} />
+            <RecipeCategory
+              editMode={editMode}
+              category={category}
+              setCategory={setCategory}
+              selectedMainCategory={selectedMainCategory}
+            />
             <div className="flex flex-nowrap flex-row items-center w-full">
               <Icons
                 editMode={editMode}
