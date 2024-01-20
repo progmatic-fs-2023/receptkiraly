@@ -51,8 +51,8 @@ function App() {
             <Route path="/register" element={<Registration />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/rankings" element={<Rankings />} />
-            <Route path="/postrecipe" element={<NewRecipe />} />
             <Route path="/about" element={<About />} />
+            <Route path="/newrecipe" element={<NewRecipe />} />
             <Route path="/*" element={<NoPage />} />
           </Routes>
         </ErrorBoundary>
