@@ -53,7 +53,7 @@ function Banner() {
       <div className="flex flex-grow justify-center items-center sm:mt-4 md:mt-0">
         {isAuthenticated ? (
           <Link to="/postrecipe">
-            <Button text="Post Recipe" type="button" />
+            <Button text="Post Recipe" type="button" addImage="/images/post.svg" />
           </Link>
         ) : (
           <Link to="/postrecipe">
@@ -63,6 +63,7 @@ function Banner() {
                 type="button"
                 addClassName="grayscale disabled-button"
                 disabled
+                addImage="/images/post.svg"
               />
             </Tooltips>
           </Link>
@@ -72,7 +73,7 @@ function Banner() {
             <li>
               {isAuthenticated ? (
                 <NavLink to="/profile">
-                  <Button text="Profile" type="button" />
+                  <Button text="Profile" type="button" addImage="/images/profile.svg" />
                 </NavLink>
               ) : (
                 <Login setIsAuthenticated={setIsAuthenticated} />
@@ -81,10 +82,10 @@ function Banner() {
           </ul>
         </nav>
         {isAuthenticated ? (
-          <Button text="Log out" type="button" onClick={() => setIsAuthenticated(false)} />
+          <Button text="Log out" type="button" addImage="/images/logout.svg" onClick={() => setIsAuthenticated(false)} />
         ) : (
           <Link to="/register">
-            <Button text="Sign Up" type="button" />
+            <Button text="Sign Up" type="button" addImage="/images/register.svg" />
           </Link>
         )}
       </div>

@@ -46,6 +46,7 @@ function Login({setIsAuthenticated }) {
       <Button
         type="button"
         text="Sign In"
+        addImage="/images/signin.svg"
         onClick={handleToggle}/>
       {isOpen && (
         <div className="absolute left-0 mt-2 bg-white p-4 border rounded shadow-md">
@@ -71,7 +72,7 @@ function Login({setIsAuthenticated }) {
               />
             </label>
             <div className="flex flex-col items-center justify-between">
-              <Button type="submit" text="Sign In"/>
+              <Button type="submit" text="Sign In" addImage="/images/signin.svg"/>
             </div>
           </form>
           {loginMessage && <p>{loginMessage}</p>}
