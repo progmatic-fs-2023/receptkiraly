@@ -7,13 +7,10 @@ export const listRecipes = async params => {
     result = await db.query('SELECT * FROM recipes');
   }
   if (count && !userID) {
-    result = await db.query(
-      'SELECT recipe_id FROM recipes ORDER BY recipe_created_at DESC LIMIT $1',
-      [count],
-    );
+    result = await db.query('SELECT id FROM recipes ORDER BY created_at DESC LIMIT $1', [count]);
   }
   if (userID && !count) {
-    result = await db.query('SELECT recipe_id FROM recipes WHERE user_id = $1', [userID]);
+    result = await db.query('SELECT id FROM recipes WHERE user_id = $1', [userID]);
   }
   return result.rows;
 };
@@ -22,15 +19,15 @@ export const getRecipe = async recipeID => {
   const result = await db.query(
     `
   SELECT 
-  recipes.recipe_name, 
-  recipes.recipe_description, 
-  recipes.recipe_img, 
-  recipes.recipe_time_minutes, 
-  recipes.recipe_difficulty_level, 
-  recipes.recipe_serve_count, 
-  category.category_name, 
-  main_category.main_category_name, 
-  labels.label_name 
+  recipes.name, 
+  recipes.description, 
+  recipes.img, 
+  recipes.time_minutes, 
+  recipes.difficulty_level, 
+  recipes.serve_count, 
+  category.name, 
+  main_category.name, 
+  labels.name 
 
   FROM recipes
   
@@ -38,19 +35,19 @@ export const getRecipe = async recipeID => {
   ON recipes_categories.categories_recipe_id = recipes.recipe_id 
   
   INNER JOIN category 
-  ON category.category_id = recipes_categories.categories_category_id 
+  ON category.id = recipes_categories.categories_id 
   
   INNER JOIN main_category 
-  ON main_category.main_category_id = category.category_main_category 
+  ON main_category.id = category.main_category 
   
   INNER JOIN recipes_labels 
-  ON recipes_labels.labels_recipe_id = recipes.recipe_id 
+  ON recipes_labels.recipe_id = recipes.id 
   
   INNER JOIN labels 
-  ON labels.label_id = recipes_labels.labels_label_id 
+  ON labels.id = recipes_labels.label_id 
   
   WHERE 
-  recipes.recipe_id = $1
+  recipes.id = $1
   `,
     [recipeID],
   );
@@ -71,7 +68,7 @@ export const addNewRecipe = async (
   const result = await db.query(
     `
     INSERT INTO recipes
-    (recipe_name, recipe_description, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count, user_id)
+    (name, description, img, time_minutes, difficulty_level, serve_count, user_id)
     VALUES 
     ($1, $2, $3, $4, $5, $6, $7)
 
@@ -88,7 +85,7 @@ export const addNewRecipe = async (
     ],
   );
 
-  const recipeID = result.rows[0].recipe_id;
+  const recipeID = result.rows[0].id;
 
   await db.query(
     `
@@ -104,9 +101,9 @@ export const addNewRecipe = async (
     db.query(
       `
     INSERT INTO recipes_labels
-    (labels_recipe_id, labels_label_id)
+    (recipe_id, label_id)
     VALUES
-    ($1, (SELECT label_id FROM labels WHERE label_name = $2))
+    ($1, (SELECT id FROM labels WHERE name = $2))
     `,
       [recipeID, recipeLabels[i]],
     );

@@ -44,7 +44,7 @@ export const getLatest = async (req, res) => {
     const recipes = await services.listRecipes({ count });
 
     if (recipes) {
-      const arr = utils.transformArrayToIntegers(recipes, 'recipe_id');
+      const arr = utils.transformArrayToIntegers(recipes, 'id');
       res.status(200).json({ ids: arr });
     } else {
       res.status(404).json({
@@ -64,7 +64,7 @@ export const byUserid = async (req, res) => {
     const recipes = await services.listRecipes({ userID: id });
 
     if (recipes) {
-      const arr = utils.transformArrayToIntegers(recipes, 'recipe_id');
+      const arr = utils.transformArrayToIntegers(recipes, 'id');
       res.status(200).json({ ids: arr });
     } else {
       res.status(404).json({

@@ -6,62 +6,63 @@ CREATE DATABASE recipe_db;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE users (
-	user_id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-	user_username VARCHAR(100) NOT NULL UNIQUE,
-	user_email VARCHAR(100) NOT NULL UNIQUE,
-	user_password_hash VARCHAR(255) NOT NULL,
-	user_registration_date DATE DEFAULT CURRENT_DATE
+	id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+	username VARCHAR(100) NOT NULL UNIQUE,
+	email VARCHAR(100) NOT NULL UNIQUE,
+	password_hash VARCHAR(255) NOT NULL,
+	registration_date DATE DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE recipes (
-    recipe_id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(user_id),
-    recipe_name VARCHAR(100) NOT NULL,
-    recipe_description VARCHAR(255) NOT NULL,
-    recipe_main_category_id SMALLINT,
-    recipe_img VARCHAR(255),
-    recipe_time_minutes SMALLINT,
-    recipe_difficulty_level SMALLINT,
-    recipe_serve_count SMALLINT,
-    recipe_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES users(id),
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    -- recipe_category_id SMALLINT,
+    img VARCHAR(255),
+    time_minutes SMALLINT,
+    difficulty_level SMALLINT,
+    serve_count SMALLINT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -- category_id SMALLINT -> category.category_id
 );
 
 CREATE TABLE main_category (
-	main_category_id SERIAL PRIMARY KEY,
-	main_category_name VARCHAR(100) NOT NULL
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE category (
-	category_id SERIAL PRIMARY KEY,
-	category_name VARCHAR(100) NOT NULL,
-	category_main_category INT,
-	FOREIGN KEY (category_main_category) REFERENCES main_category(main_category_id)
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	main_category INT,
+	FOREIGN KEY (main_category) REFERENCES main_category(id)
 );
 
-CREATE TABLE recipes_categories (
-    categories_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    categories_recipe_id INT,
-    categories_category_id INT,
-    FOREIGN KEY (categories_recipe_id) REFERENCES recipes(recipe_id),
-    FOREIGN KEY (categories_category_id) REFERENCES category(category_id)
-);
+-- CREATE TABLE recipes_categories (
+--     categories_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+--     categories_recipe_id INT,
+--     categories_category_id INT,
+--     FOREIGN KEY (categories_recipe_id) REFERENCES recipes(recipe_id),
+--     FOREIGN KEY (categories_category_id) REFERENCES category(category_id)
+-- );
 
 CREATE TABLE labels (
-	label_id SERIAL PRIMARY KEY,
-	label_name VARCHAR(100) NOT NULL UNIQUE
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL UNIQUE
 );
 
 CREATE TABLE recipes_labels (
-    labels_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    labels_recipe_id INT,
-    labels_label_id INT,
-    FOREIGN KEY (labels_recipe_id) REFERENCES recipes(recipe_id),
-    FOREIGN KEY (labels_label_id) REFERENCES labels(label_id)
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    recipe_id INT,
+    label_id INT,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+    FOREIGN KEY (label_id) REFERENCES labels(id)
 );
 
 /* Copy-paste példák: */
 
-INSERT INTO users (user_id, user_username, user_email, user_password_hash)
+INSERT INTO users (id, username, email, password_hash)
 VALUES
     ('bb48918b-62c2-4af8-9a3f-bfe2f487edfc','john_doe', 'john@example.com', 'hashed_password_123'),
     ('2c7e2091-fb34-44e7-8dfd-fe1c0bc2deb9','alice_smith', 'alice@example.com', 'hashed_password_456'),
@@ -69,7 +70,7 @@ VALUES
     ('31f330e8-fff1-4bf0-a8d1-f98cd2b601e2','emma_wilson', 'emma@example.com', 'hashed_password_012'),
     ('e31ec973-37b0-42c2-b789-3e135cc2110a','michael_brown', 'michael@example.com', 'hashed_password_345');
 
-INSERT INTO recipes (recipe_name, user_id, recipe_description, recipe_main_category_id, recipe_img, recipe_time_minutes, recipe_difficulty_level, recipe_serve_count)
+INSERT INTO recipes (name, user_id, description, recipe_main_category_id, img, time_minutes, difficulty_level, serve_count)
 VALUES
     ('Scrambled Eggs','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Classic breakfast dish', 1, 'scrambled_eggs.png', 20, 1, 4),
     ('Grilled Chicken Salad','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Healthy and delicious', 1, 'grilled_chicken_salad.png', 45, 2, 4),
@@ -82,11 +83,11 @@ VALUES
     ('Plant-based Hamburger','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger.png', 60, 3, 4),
     ('Garlic Cream Soup with Pan-Seared Shrimp','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Perfect appetizer soup', 3, 'garlic_cream_soup_with_shrimp.png', 120, 3, 4);
 
-	INSERT INTO main_category (main_category_name) VALUES 
+	INSERT INTO main_category (name) VALUES 
     ('meals'),
     ('desserts'),
     ('beverages');
-	INSERT INTO category (category_name,category_main_category)
+	INSERT INTO category (name,main_category)
 VALUES
     ('Appetizer',1),
     ('Breakfast',1),
@@ -102,7 +103,7 @@ VALUES
     ('Juices',3),
     ('Smoothies',3);
 
-	INSERT INTO labels (label_name)
+	INSERT INTO labels (name)
 VALUES
     ('vegan'),
     ('vegetarian'),
@@ -130,32 +131,21 @@ VALUES
     ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Plant-based Hamburger'), (SELECT category_id FROM category WHERE category_name = 'Lunch')),
     ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Garlic Cream Soup with Pan-Seared Shrimp'), (SELECT category_id FROM category WHERE category_name = 'Lunch'));
 
-	INSERT INTO recipes_labels (labels_recipe_id, labels_label_id)
+	INSERT INTO recipes_labels (recipe_id, label_id)
 VALUES
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Scrambled Eggs'), (SELECT label_id FROM labels WHERE label_name = 'low-carb')),
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegan Spaghetti Bolognese'), (SELECT label_id FROM labels WHERE label_name = 'vegan')),
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegan Spaghetti Bolognese'), (SELECT label_id FROM labels WHERE label_name = 'vegetarian')),
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Plant-based Hamburger'), (SELECT label_id FROM labels WHERE label_name = 'vegan')),
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Plant-based Hamburger'), (SELECT label_id FROM labels WHERE label_name = 'vegetarian')),
-	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Plant-based Hamburger'), (SELECT label_id FROM labels WHERE label_name = 'gluten-free')),
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Chicken Salad'), (SELECT label_id FROM labels WHERE label_name = 'low-carb')),
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Fruit Smoothie'), (SELECT label_id FROM labels WHERE label_name = 'non-alcoholic')),
-    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Garlic Cream Soup with Pan-Seared Shrimp'), (SELECT label_id FROM labels WHERE label_name = 'seafood'));
+    ((SELECT id FROM recipes WHERE name = 'Scrambled Eggs'), (SELECT id FROM labels WHERE name = 'low-carb')),
+    ((SELECT id FROM recipes WHERE name = 'Vegan Spaghetti Bolognese'), (SELECT id FROM labels WHERE name = 'vegan')),
+	((SELECT id FROM recipes WHERE name = 'Vegan Spaghetti Bolognese'), (SELECT id FROM labels WHERE name = 'vegetarian')),
+    ((SELECT id FROM recipes WHERE name = 'Plant-based Hamburger'), (SELECT id FROM labels WHERE name = 'vegan')),
+    ((SELECT id FROM recipes WHERE name = 'Plant-based Hamburger'), (SELECT id FROM labels WHERE name = 'vegetarian')),
+	((SELECT id FROM recipes WHERE name = 'Plant-based Hamburger'), (SELECT id FROM labels WHERE name = 'gluten-free')),
+    ((SELECT id FROM recipes WHERE name = 'Grilled Chicken Salad'), (SELECT id FROM labels WHERE name = 'low-carb')),
+    ((SELECT id FROM recipes WHERE name = 'Fruit Smoothie'), (SELECT id FROM labels WHERE name = 'non-alcoholic')),
+    ((SELECT id FROM recipes WHERE name = 'Garlic Cream Soup with Pan-Seared Shrimp'), (SELECT id FROM labels WHERE name = 'seafood'));
 
  CREATE TABLE ingredients (
-	ingredient_id SERIAL PRIMARY KEY,
-	ingredient_recipe_id INT,
-	ingredient_name VARCHAR(255) NOT NULL,
-	FOREIGN KEY (ingredient_recipe_id) REFERENCES recipes(recipe_id)
+	id SERIAL PRIMARY KEY,
+	recipe_id INT,
+	name VARCHAR(255) NOT NULL,
+	FOREIGN KEY (recipe_id) REFERENCES recipes(id)
 );
-/*
--> értékelés/visszajelzés tábla alapja: egyedi azonosító, recept azonosító, értékelés, hozzászólás, értékelő id, idő
-);*/
--- CREATE TABLE recipes_review (
--- 	review_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
--- 	review_user_id INT,
--- 	review_stars INT,
--- 	review_comment TEXT,
--- 	review_date DATE DEFAULT CURRENT_DATE.
--- 	FOREIGN KEY (review_user_id) REFERENCES users(user_id)
-
