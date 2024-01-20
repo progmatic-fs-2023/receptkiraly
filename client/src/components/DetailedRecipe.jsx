@@ -95,45 +95,42 @@ function DetailedRecipe({ editMode, recipeID }) {
               />
             </div>
           </div>
-        </div>
-        <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
-          <RecipeMainCategory
-            editMode={editMode}
-            selectedMainCategory={selectedMainCategory}
-            setSelectedMainCategory={setSelectedMainCategory}
-          />
-          <RecipeCategory
-            editMode={editMode}
-            category={category}
-            setCategory={setCategory}
-            selectedMainCategory={selectedMainCategory}
-          />
-          <div className="flex flex-nowrap flex-row items-center w-full">
-            <Icons
+          <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
+            <RecipeMainCategory
               editMode={editMode}
-              minutes={minutes}
-              setMinutes={setMinutes}
-              difficulty={difficulty}
-              setDifficulty={setDifficulty}
-              serves={serves}
-              setServes={setServes}
+              selectedMainCategory={selectedMainCategory}
+              setSelectedMainCategory={setSelectedMainCategory}
             />
-
-            <RecipeTitle
+            <RecipeCategory
               editMode={editMode}
-              recipeTitle={recipeTitle}
-              setRecipeTitle={setRecipeTitle}
+              category={category}
+              setCategory={setCategory}
+              selectedMainCategory={selectedMainCategory}
             />
-            <div className="flex justify-center items-center">
-              <Labels
+            <div className="flex flex-nowrap flex-row items-center w-full">
+              <Icons
                 editMode={editMode}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
+                minutes={minutes}
+                setMinutes={setMinutes}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
+                serves={serves}
+                setServes={setServes}
+                addClassName="text-right w-28"
+              />
+              <RecipeDifficulty
+                editMode={editMode}
+                difficulty={difficulty}
+                setDifficulty={setDifficulty}
               />
             </div>
+            <Labels
+              editMode={editMode}
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+            />
           </div>
         </div>
-
         {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
       </form>
     </div>
