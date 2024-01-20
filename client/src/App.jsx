@@ -14,6 +14,7 @@ import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
+import About from './pages/About';
 import NewRecipe from './pages/NewRecipe';
 
 import About from './pages/About';
