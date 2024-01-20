@@ -8,12 +8,12 @@ const categoriesData = [
     name: 'Dinner',
     image: '/images/category_dinner.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
   {
@@ -21,12 +21,12 @@ const categoriesData = [
     name: 'Appetizer',
     image: '/images/category_appetizer.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
   {
@@ -34,12 +34,12 @@ const categoriesData = [
     name: 'Soup',
     image: '/images/category_soup.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
   {
@@ -47,11 +47,11 @@ const categoriesData = [
     name: 'Smoothie',
     image: '/images/category_smoothie.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
     ],
   },
   {
@@ -59,12 +59,12 @@ const categoriesData = [
     name: 'Vegan',
     image: '/images/category_vegan.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
   {
@@ -72,11 +72,11 @@ const categoriesData = [
     name: 'Cakes',
     image: '/images/category_cake.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
     ],
   },
   {
@@ -84,11 +84,11 @@ const categoriesData = [
     name: 'Salad',
     image: '/images/category_salad.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
   {
@@ -96,11 +96,11 @@ const categoriesData = [
     name: 'Pizza',
     image: '/images/category_pizza.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
   {
@@ -108,11 +108,11 @@ const categoriesData = [
     name: 'Cocktail',
     image: '/images/category_cocktail.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'NS', color: 'teal-400' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'NS', color: 'bg-teal-400' },
     ],
   },
   {
@@ -120,11 +120,11 @@ const categoriesData = [
     name: 'Pasta',
     image: '/images/category_pasta.png',
     buttons: [
-      { label: 'GF', color: 'orange-900' },
-      { label: 'VG', color: 'yellow-400' },
-      { label: 'V', color: 'green-500' },
-      { label: 'DF', color: 'red-300' },
-      { label: 'H!', color: 'red-600' },
+      { label: 'GF', color: 'bg-orange-900' },
+      { label: 'VG', color: 'bg-yellow-400' },
+      { label: 'V', color: 'bg-green-500' },
+      { label: 'DF', color: 'bg-red-300' },
+      { label: 'H!', color: 'bg-red-600' },
     ],
   },
 ];
@@ -148,7 +148,7 @@ function Category({ category }) {
           <Link key={button.label} to="/" className="focus:outline-none relative overflow-hidden">
             <button
               type="button"
-              className={`round-button font-bold bg-${button.color} transition-transform transform hover:brightness-50 focus:brightness-50`}
+              className={`round-button font-bold ${button.color} transition-transform transform hover:brightness-50 focus:brightness-50`}
             >
               {button.label}
             </button>
