@@ -31,11 +31,8 @@ export const getRecipe = async recipeID => {
 
   FROM recipes
   
-  INNER JOIN recipes_categories 
-  ON recipes_categories.categories_recipe_id = recipes.recipe_id 
-  
   INNER JOIN category 
-  ON category.id = recipes_categories.categories_id 
+  ON category.id = recipes.category_id 
   
   INNER JOIN main_category 
   ON main_category.id = category.main_category 
@@ -65,12 +62,18 @@ export const addNewRecipe = async (
   imagePath,
   userID,
 ) => {
+  const categoryIDobject = await db.query('SELECT id FROM category WHERE name = $1', [
+    recipeCategory,
+  ]);
+
+  const categoryID = categoryIDobject.rows[0].id;
+
   const result = await db.query(
     `
     INSERT INTO recipes
-    (name, description, img, time_minutes, difficulty_level, serve_count, user_id)
+    (name, description, img, time_minutes, difficulty_level, serve_count, user_id, category_id)
     VALUES 
-    ($1, $2, $3, $4, $5, $6, $7)
+    ($1, $2, $3, $4, $5, $6, $7, $8)
 
     RETURNING *
     `,
@@ -82,20 +85,11 @@ export const addNewRecipe = async (
       recipeDifficultyLevel,
       recipeServeCount,
       userID,
+      categoryID,
     ],
   );
 
   const recipeID = result.rows[0].id;
-
-  await db.query(
-    `
-    INSERT INTO recipes_categories
-    (categories_recipe_id, categories_category_id)
-    VALUES
-    ($1, (SELECT category_id FROM category WHERE category_name = $2));
-  `,
-    [recipeID, recipeCategory],
-  );
 
   for (let i = 0; i < recipeLabels.length; i += 1) {
     db.query(

@@ -89,10 +89,13 @@ export const add = async (req, res) => {
     recipeLabels,
   } = req.body;
   const imagePath = req.file.path;
-  const { userID } = req.userID || {};
+  // A 6-os azért van benne, mert recept feltöltésnél a requestbe még nem tudjuk berakni a userID-t.
+  const { userID } = req.userID || { userID: 6 };
 
   try {
     const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+
+    console.log('tryban vagyunk');
 
     const newRecipe = await services.addNewRecipe(
       recipeName,
