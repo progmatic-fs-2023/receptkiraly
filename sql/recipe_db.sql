@@ -18,7 +18,6 @@ CREATE TABLE recipes (
     user_id UUID REFERENCES users(user_id),
     recipe_name VARCHAR(100) NOT NULL,
     recipe_description VARCHAR(255) NOT NULL,
-    recipe_main_category_id SMALLINT,
     recipe_img VARCHAR(255),
     recipe_time_minutes SMALLINT,
     recipe_difficulty_level SMALLINT,
@@ -36,6 +35,14 @@ CREATE TABLE category (
 	category_name VARCHAR(100) NOT NULL,
 	category_main_category INT,
 	FOREIGN KEY (category_main_category) REFERENCES main_category(main_category_id)
+);
+
+CREATE TABLE recipes_categories (
+    categories_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    categories_recipe_id INT,
+    categories_category_id INT,
+    FOREIGN KEY (categories_recipe_id) REFERENCES recipes(recipe_id),
+    FOREIGN KEY (categories_category_id) REFERENCES category(category_id)
 );
 
 CREATE TABLE labels (
@@ -107,6 +114,22 @@ VALUES
 	('alcoholic'),
 	('non-alcoholic'),
 	('seafood');
+
+INSERT INTO recipes_categories (categories_recipe_id, categories_category_id)
+VALUES
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Scrambled Eggs'), (SELECT category_id FROM category WHERE category_name = 'Breakfast')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Chicken Salad'), (SELECT category_id FROM category WHERE category_name = 'Lunch')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Grilled Chicken Salad'), (SELECT category_id FROM category WHERE category_name = 'Salad')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti Bolognese'), (SELECT category_id FROM category WHERE category_name = 'Dinner')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti Bolognese'), (SELECT category_id FROM category WHERE category_name = 'Pasta')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegan Spaghetti Bolognese'), (SELECT category_id FROM category WHERE category_name = 'Dinner')),
+	((SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegan Spaghetti Bolognese'), (SELECT category_id FROM category WHERE category_name = 'Pasta')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Guacamole'), (SELECT category_id FROM category WHERE category_name = 'Appetizer')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Fruit Smoothie'), (SELECT category_id FROM category WHERE category_name = 'Smoothie')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Strawberry Smoothie'), (SELECT category_id FROM category WHERE category_name = 'Smoothie')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cake'), (SELECT category_id FROM category WHERE category_name = 'Cake')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Plant-based Hamburger'), (SELECT category_id FROM category WHERE category_name = 'Hamburger')),
+    ((SELECT recipe_id FROM recipes WHERE recipe_name = 'Garlic Cream Soup with Pan-Seared Shrimp'), (SELECT category_id FROM category WHERE category_name = 'Soup'));
 
 	INSERT INTO recipes_labels (labels_recipe_id, labels_label_id)
 VALUES

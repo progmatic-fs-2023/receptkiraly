@@ -29,12 +29,16 @@ export const getRecipe = async recipeID => {
   recipes.recipe_difficulty_level, 
   recipes.recipe_serve_count, 
   category.category_name, 
+  main_category.main_category_name, 
   labels.label_name 
 
   FROM recipes
   
+  INNER JOIN recipes_categories 
+  ON recipes_categories.categories_recipe_id = recipes.recipe_id 
+  
   INNER JOIN category 
-  ON category.category_id = $1
+  ON category.category_id = recipes_categories.categories_category_id 
   
   INNER JOIN main_category 
   ON main_category.main_category_id = category.category_main_category 
