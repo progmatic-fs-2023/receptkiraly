@@ -120,7 +120,6 @@ function Registration() {
               >
                 privacy and policy
               </button>
-              .
             </label>
           </div>
           <div className="flex items-center  my-2">
@@ -142,7 +141,6 @@ function Registration() {
                 className="underline text-blue-500 hover:opacity-80 focus:outline-none"
                 onClick={() => setShowTermsOfUse(true)}
               >terms of use</button>
-              .
             </label>
           </div>
         </div>
@@ -159,7 +157,11 @@ function Registration() {
         </div>
       </form>
       {showPrivacyPolicy ? (
-        <Modal title="Privacy and policy" close={() => setShowPrivacyPolicy(false)}>
+        <Modal
+          title="Privacy and policy"
+          addClassName="w-4/5"
+          close={() => setShowPrivacyPolicy(false)}
+        >
           <>
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="Generator" content="Microsoft Word 15 (filtered)" />
@@ -1959,7 +1961,7 @@ function Registration() {
         </Modal>
       ) : null}
       {showTermsOfUse ? (
-        <Modal title="Terms of use" close={() => setShowTermsOfUse(false)}>
+        <Modal title="Terms of use" addClassName="w-4/5" close={() => setShowTermsOfUse(false)}>
           <>
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="Generator" content="Microsoft Word 15 (filtered)" />
