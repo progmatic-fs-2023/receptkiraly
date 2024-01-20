@@ -13,20 +13,6 @@ CREATE TABLE users (
 	registration_date DATE DEFAULT CURRENT_DATE
 );
 
-CREATE TABLE recipes (
-    id SERIAL PRIMARY KEY,
-    user_id UUID REFERENCES users(id),
-    name VARCHAR(100) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    -- recipe_category_id SMALLINT,
-    img VARCHAR(255),
-    time_minutes SMALLINT,
-    difficulty_level SMALLINT,
-    serve_count SMALLINT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    -- category_id SMALLINT -> category.category_id
-);
-
 CREATE TABLE main_category (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(100) NOT NULL
@@ -39,13 +25,19 @@ CREATE TABLE category (
 	FOREIGN KEY (main_category) REFERENCES main_category(id)
 );
 
--- CREATE TABLE recipes_categories (
---     categories_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
---     categories_recipe_id INT,
---     categories_category_id INT,
---     FOREIGN KEY (categories_recipe_id) REFERENCES recipes(recipe_id),
---     FOREIGN KEY (categories_category_id) REFERENCES category(category_id)
--- );
+CREATE TABLE recipes (
+    id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES users(id),
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    img VARCHAR(255),
+    time_minutes SMALLINT,
+    difficulty_level SMALLINT,
+    serve_count SMALLINT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    category_id SMALLINT,
+    FOREIGN KEY(category_id) REFERENCES category(id)
+);
 
 CREATE TABLE labels (
 	id SERIAL PRIMARY KEY,
@@ -70,18 +62,18 @@ VALUES
     ('31f330e8-fff1-4bf0-a8d1-f98cd2b601e2','emma_wilson', 'emma@example.com', 'hashed_password_012'),
     ('e31ec973-37b0-42c2-b789-3e135cc2110a','michael_brown', 'michael@example.com', 'hashed_password_345');
 
-INSERT INTO recipes (name, user_id, description, recipe_main_category_id, img, time_minutes, difficulty_level, serve_count)
+INSERT INTO recipes (name, user_id, description, img, time_minutes, difficulty_level, serve_count, category_id)
 VALUES
-    ('Scrambled Eggs','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Classic breakfast dish', 1, 'scrambled_eggs.png', 20, 1, 4),
-    ('Grilled Chicken Salad','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Healthy and delicious', 1, 'grilled_chicken_salad.png', 45, 2, 4),
-    ('Spaghetti Bolognese','2c7e2091-fb34-44e7-8dfd-fe1c0bc2deb9', 'Italian pasta dish', 1, 'spaghetti_bolognese.png', 60, 3, 4),
-    ('Guacamole','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Perfect party appetizer', 1, 'guacamole.png', 30, 2, 4),
-    ('Fruit Smoothie','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Refreshing and nutritious', 3, 'fruit_smoothie.png', 10, 1, 1),
-    ('Chocolate Cake','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Classic chocolate cake', 2, 'chocolate_cake.png', 120, 3, 4),
-    ('Strawberry Smoothie','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Healthy and delicious', 3, 'strawberry_smoothie.png', 10, 1, 1),
-    ('Vegan Spaghetti Bolognese','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Healthy and delicious pasta dish', 1, 'vegan_spaghetti_bolognese.png', 45, 2, 4),
-    ('Plant-based Hamburger','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Gluten-free, healthy and delicious', 1, 'plant_based_hamburger.png', 60, 3, 4),
-    ('Garlic Cream Soup with Pan-Seared Shrimp','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Perfect appetizer soup', 3, 'garlic_cream_soup_with_shrimp.png', 120, 3, 4);
+    ('Scrambled Eggs','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Classic breakfast dish', 'scrambled_eggs.png', 20, 1, 4, 1),
+    ('Grilled Chicken Salad','bb48918b-62c2-4af8-9a3f-bfe2f487edfc', 'Healthy and delicious', 'grilled_chicken_salad.png', 45, 2, 4, 2),
+    ('Spaghetti Bolognese','2c7e2091-fb34-44e7-8dfd-fe1c0bc2deb9', 'Italian pasta dish', 'spaghetti_bolognese.png', 60, 3, 4, 3),
+    ('Guacamole','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Perfect party appetizer', 'guacamole.png', 30, 2, 4, 4),
+    ('Fruit Smoothie','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Refreshing and nutritious', 'fruit_smoothie.png', 10, 1, 1, 5),
+    ('Chocolate Cake','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Classic chocolate cake', 'chocolate_cake.png', 120, 3, 4, 6),
+    ('Strawberry Smoothie','5703d862-c54c-47dc-bfc7-911e242ca24a', 'Healthy and delicious', 'strawberry_smoothie.png', 10, 1, 1, 7),
+    ('Vegan Spaghetti Bolognese','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Healthy and delicious pasta dish', 'vegan_spaghetti_bolognese.png', 45, 2, 4, 8),
+    ('Plant-based Hamburger','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Gluten-free, healthy and delicious', 'plant_based_hamburger.png', 60, 3, 4, 9),
+    ('Garlic Cream Soup with Pan-Seared Shrimp','31f330e8-fff1-4bf0-a8d1-f98cd2b601e2', 'Perfect appetizer soup', 'garlic_cream_soup_with_shrimp.png', 120, 3, 4, 10);
 
 	INSERT INTO main_category (name) VALUES 
     ('meals'),
