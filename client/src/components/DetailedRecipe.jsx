@@ -107,8 +107,6 @@ function DetailedRecipe({ editMode, recipeID }) {
                 editMode={editMode}
                 minutes={minutes}
                 setMinutes={setMinutes}
-                difficulty={difficulty}
-                setDifficulty={setDifficulty}
                 serves={serves}
                 setServes={setServes}
                 addClassName="text-right w-28"
