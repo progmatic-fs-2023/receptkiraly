@@ -16,8 +16,6 @@ import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
 import About from './pages/About';
 import NewRecipe from './pages/NewRecipe';
-
-import About from './pages/About';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
