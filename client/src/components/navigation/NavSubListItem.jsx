@@ -1,21 +1,27 @@
 import PropTypes from 'prop-types';
 
-function NavSubHeadListItem({ text, link }) {
-  return (
-    <li>
+function NavSubHeadListItem({ itemsArray, link }) {
+  return itemsArray.map((element) => (
+    <li key={element.key}>
       <a
-        className="capitalize font-medium text-body text-sm hover:text-primary"
+        className="capitalize font-medium text-body text-sm hover:text-orange-400"
         target="_self"
-        href={link + text}
+        href={link + element.value}
       >
-        <span>{text}</span>
+        <span>{element.text}</span>
       </a>
     </li>
-  );
+  ));
 }
 
 NavSubHeadListItem.propTypes = {
-  text: PropTypes.string.isRequired,
+  itemsArray: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.number.isRequired,
+      value: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    }).isRequired,
+  ),
   link: PropTypes.string.isRequired,
 };
 

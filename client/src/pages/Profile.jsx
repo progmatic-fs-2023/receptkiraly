@@ -184,7 +184,11 @@ function Profile() {
         </RecipeGrid>
       </div>
       {creatingNewRecipe ? (
-        <Modal title="Creating new recipe" close={() => setCreatingNewRecipe(false)}>
+        <Modal
+          title="Creating new recipe"
+          addClassName="w-4/5"
+          close={() => setCreatingNewRecipe(false)}
+        >
           <DetailedRecipe editMode />
         </Modal>
       ) : null}

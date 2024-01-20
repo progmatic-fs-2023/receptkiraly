@@ -1,20 +1,15 @@
 import PropTypes from 'prop-types';
 
-function NavSubHeadItem({ text, link }) {
+function NavSubHeadItem({ text }) {
   return (
-    <a
-      className="block text-xs uppercase text-body/60 hover:text-primary"
-      target="_self"
-      href={link + text}
-    >
+    <p className="block text-xs uppercase text-body/60 hover:text-primary" target="_self">
       <span>{text}</span>
-    </a>
+    </p>
   );
 }
 
 NavSubHeadItem.propTypes = {
   text: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
 };
 
 export default NavSubHeadItem;

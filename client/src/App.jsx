@@ -15,6 +15,7 @@ import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
 import About from './pages/About';
+import NewRecipe from './pages/NewRecipe';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -24,7 +25,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div>
-      <header className="container mx-auto relative">
+      <header className="container mx-auto w-full">
         <Banner />
         <div className="flex justify-center">
           <NavigationBar />
@@ -50,12 +51,11 @@ function App() {
             <Route path="/register" element={<Registration />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/rankings" element={<Rankings />} />
-            <Route path="/about" element={<About />} />
             <Route path="/*" element={<NoPage />} />
           </Routes>
         </ErrorBoundary>
       </main>
-      <footer className="relative z-50">
+      <footer className="relative z-0">
         <Footer />
       </footer>
     </div>
