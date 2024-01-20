@@ -146,7 +146,7 @@ VALUES
 	ingredient_id SERIAL PRIMARY KEY,
 	ingredient_recipe_id INT,
 	ingredient_name VARCHAR(255) NOT NULL,
-	FOREIGN KEY (ingredients_recipe_id) REFERENCES recipes(recipe_id)
+	FOREIGN KEY (ingredient_recipe_id) REFERENCES recipes(recipe_id)
 );
 /*
 -> értékelés/visszajelzés tábla alapja: egyedi azonosító, recept azonosító, értékelés, hozzászólás, értékelő id, idő
