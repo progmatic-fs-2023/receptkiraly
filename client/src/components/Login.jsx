@@ -29,15 +29,15 @@ function Login({ setIsAuthenticated }) {
       });
 
       if (response.ok) {
-        setLoginMessage('Bejelentkeztél ✅');
+        setLoginMessage('Login successful!');
         setIsAuthenticated(true);
       } else if (response.status === 401) {
-        setLoginMessage('Rossz név/jelszó ❗️');
+        setLoginMessage('Invalid credentials.');
       } else {
-        setLoginMessage('Egyéb ❗️');
+        setLoginMessage('Server error.');
       }
     } catch (error) {
-      setLoginMessage('technikai hiba ❗️');
+      setLoginMessage('Connection error.');
     }
   };
 
@@ -71,7 +71,7 @@ function Login({ setIsAuthenticated }) {
               <Button type="submit" text="Sign In" />
             </div>
           </form>
-          {loginMessage && <p>{loginMessage}</p>}
+          <div className="flex flex-row justify-center items-center my-1">{loginMessage && <p>{loginMessage}</p>}</div>
         </div>
       )}
     </div>
