@@ -13,8 +13,8 @@ function Profile() {
   const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
   const [myRecipes, setMyRecipes] = useState([1, 2, 3, 4]);
   const [userData, setUserData] = useState({
-    user_id: 'dummy1',
-    user_username: 'dummy',
+    id: 'dummy1',
+    username: 'dummy',
     user_email: 'john@example.com',
     user_password_hash: 'hashed_password_123',
     user_registration_date: '2024-01-13T23:00:00.000Z',
@@ -126,7 +126,7 @@ function Profile() {
                   <div className="text-sm">
                     <p>
                       <strong>User name: </strong>
-                      {userData.user_username}
+                      {userData.username}
                     </p>
                     <p>
                       <strong>Recipes: </strong>
