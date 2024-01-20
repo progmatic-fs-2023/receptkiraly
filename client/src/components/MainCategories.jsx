@@ -59,7 +59,11 @@ function MainCategories() {
           </Link>
           <div className="w-full flex flex-row flex-nowrap justify-center items-center">
             {category.buttons.map((button) => (
-              <Link key={button.label} to="/" className="focus:outline-none relative overflow-hidden">
+              <Link
+                key={button.label}
+                to="/"
+                className="focus:outline-none relative overflow-hidden"
+              >
                 <button
                   type="button"
                   className={`round-button font-bold bg-${button.color} transition-transform transform hover:brightness-50 focus:brightness-50`}
@@ -70,7 +74,10 @@ function MainCategories() {
             ))}
           </div>
           <Link to="/" className="focus:outline-none relative overflow-hidden">
-            <div className="features-row my-1 text-center font-bold transition-transform transform hover:brightness-110 focus:brightness-110" style={style}>
+            <div
+              className="features-row my-1 text-center font-bold transition-transform transform hover:brightness-110 focus:brightness-110"
+              style={style}
+            >
               {category.name}
             </div>
           </Link>

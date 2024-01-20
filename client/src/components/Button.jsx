@@ -10,8 +10,8 @@ function Button({ text, type, addClassName, onClick, disabled, addImage }) {
       disabled={disabled}
     >
       <div className="flex flex-nowrap flex-row justify-between items-center">
-      {addImage && <img src={addImage} alt={`${text} icon`} className="w-5 mr-2" />}
-      {text}
+        {addImage && <img src={addImage} alt={`${text} icon`} className="w-5 mr-2" />}
+        {text}
       </div>
     </button>
   );

@@ -156,7 +156,10 @@ function Category({ category }) {
         ))}
       </div>
       <Link to="/" className="focus:outline-none relative overflow-hidden">
-        <div className="features-row my-1 text-center font-bold transition-transform transform hover:brightness-110 focus:brightness-110" style={style}>
+        <div
+          className="features-row my-1 text-center font-bold transition-transform transform hover:brightness-110 focus:brightness-110"
+          style={style}
+        >
           {category.name}
         </div>
       </Link>
@@ -176,7 +179,6 @@ function Categories() {
   );
 }
 
-
 Category.propTypes = {
   category: PropTypes.shape({
     image: PropTypes.string.isRequired,
@@ -185,7 +187,7 @@ Category.propTypes = {
       PropTypes.shape({
         label: PropTypes.string.isRequired,
         color: PropTypes.string.isRequired,
-      })
+      }),
     ).isRequired,
   }).isRequired,
 };
