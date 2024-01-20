@@ -9,25 +9,30 @@ function Tooltips({ title, children }) {
     background: '#fff !important',
     color: 'black',
   };
-  
+
   return (
     <Tooltip
       title={title}
       position="top"
       arrow
-      theme= "light"
+      theme="light"
       animation="fade"
       trigger="mouseenter"
       size="medium"
-      placement= "bottom"
+      placement="bottom"
       followCursor
       style={style}
-      html={<div className="flex flex-row flex-nowrap"><img src={info} alt="Alert" />&nbsp;{title}</div>}
+      html={
+        <div className="flex flex-row flex-nowrap">
+          <img src={info} alt="Alert" />
+          &nbsp;{title}
+        </div>
+      }
     >
       {children}
     </Tooltip>
   );
-};
+}
 
 Tooltips.propTypes = {
   title: PropTypes.string.isRequired,

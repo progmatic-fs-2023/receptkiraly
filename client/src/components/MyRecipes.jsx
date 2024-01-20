@@ -20,10 +20,10 @@ function MyRecipes() {
 
       <div className="flex justify-center mt-4">
         <div className="w-1/2 text-center">
-          <Button type="button" text="Edit"/>
+          <Button type="button" text="Edit" />
         </div>
         <div className="w-1/2 text-center">
-          <Button type="button" text="Delete"/>
+          <Button type="button" text="Delete" />
         </div>
       </div>
     </div>
