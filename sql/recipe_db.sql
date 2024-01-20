@@ -38,14 +38,6 @@ CREATE TABLE category (
 	FOREIGN KEY (category_main_category) REFERENCES main_category(main_category_id)
 );
 
-CREATE TABLE recipes_categories (
-    categories_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    categories_recipe_id INT,
-    categories_category_id INT,
-    FOREIGN KEY (categories_recipe_id) REFERENCES recipes(recipe_id),
-    FOREIGN KEY (categories_category_id) REFERENCES category(category_id)
-);
-
 CREATE TABLE labels (
 	label_id SERIAL PRIMARY KEY,
 	label_name VARCHAR(100) NOT NULL UNIQUE
