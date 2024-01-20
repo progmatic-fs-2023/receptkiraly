@@ -1,27 +1,81 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const categoriesData = [
+  {
+    id: 1,
+    name: 'Meals',
+    image: '/images/meal.png',
+    buttons: [
+      { label: 'GF', color: 'orange-900' },
+      { label: 'VG', color: 'yellow-400' },
+      { label: 'V', color: 'green-500' },
+      { label: 'DF', color: 'red-300' },
+      { label: 'NS', color: 'teal-400' },
+      { label: 'H!', color: 'red-600' },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Desserts',
+    image: '/images/dessert.png',
+    buttons: [
+      { label: 'GF', color: 'orange-900' },
+      { label: 'V', color: 'green-500' },
+      { label: 'DF', color: 'red-300' },
+      { label: 'NS', color: 'teal-400' },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Beverages',
+    image: '/images/beverage.png',
+    buttons: [
+      { label: 'GF', color: 'orange-900' },
+      { label: 'VG', color: 'yellow-400' },
+      { label: 'V', color: 'green-500' },
+      { label: 'DF', color: 'red-300' },
+      { label: 'NS', color: 'teal-400' },
+      { label: 'H!', color: 'red-600' },
+    ],
+  },
+];
+
 function MainCategories() {
-    const style = {
-        padding: "10px 0 10px",
-      };
+  const style = {
+    padding: '10px 0 10px',
+  };
+
   return (
     <div className="w-full flex flex-col lg:flex-row justify-between items-start">
-      <div className="w-full lg:w-1/3 mx-2 my-3">
-        <Link to="/" className="focus:outline-none relative overflow-hidden"><img src="/images/meal.png" alt="Meals" className="transition-transform transform hover:brightness-150 motion-reduce:transition-none motion-reduce:hover:transform-none" /></Link>
-        <div className="w-full flex flex-row flex-nowrap justify-center items-center"><button type="button" className="round-button font-bold bg-orange-900">GF</button><button type="button" className="round-button font-bold bg-yellow-400">VG</button><button type="button" className="round-button font-bold bg-green-500">V</button><button type="button" className="round-button font-bold bg-red-300">DF</button><button type="button" className="round-button font-bold bg-teal-400">NS</button><button type="button" className="round-button font-bold bg-red-600">H!</button></div>
-        <div className="features-row my-1 text-center font-bold" style={style}>Meals</div>
-      </div>
-      <div className="w-full lg:w-1/3 mx-2 my-3">
-        <img src="/images/dessert.png" alt="Desserts" />
-        <div className="w-full flex flex-row flex-nowrap justify-center items-center"><button type="button" className="round-button font-bold bg-orange-900">GF</button><button type="button" className="round-button font-bold bg-green-500">V</button><button type="button" className="round-button font-bold bg-red-300">DF</button><button type="button" className="round-button font-bold bg-teal-400">NS</button></div>
-        <div className="features-row my-1 text-center font-bold" style={style}>Desserts</div>
-      </div>
-      <div className="w-full lg:w-1/3 mx-2 my-3">
-        <img src="/images/beverage.png" alt="Beverages" />
-        <div className="w-full flex flex-row flex-nowrap justify-center items-center"><button type="button" className="round-button font-bold bg-orange-900">GF</button><button type="button" className="round-button font-bold bg-yellow-400">VG</button><button type="button" className="round-button font-bold bg-green-500">V</button><button type="button" className="round-button font-bold bg-red-300">DF</button><button type="button" className="round-button font-bold bg-teal-400">NS</button><button type="button" className="round-button font-bold bg-red-600">H!</button></div>
-        <div className="features-row my-1 text-center font-bold" style={style}>Beverages</div>
-      </div>
+      {categoriesData.map((category) => (
+        <div key={category.id} className="w-full lg:w-1/3 mx-2 my-3">
+          <Link to="/" className="focus:outline-none relative overflow-hidden">
+            <img
+              src={category.image}
+              alt={category.name}
+              className="transition-transform transform hover:brightness-150 focus:brightness-150"
+            />
+          </Link>
+          <div className="w-full flex flex-row flex-nowrap justify-center items-center">
+            {category.buttons.map((button) => (
+              <Link key={button.label} to="/" className="focus:outline-none relative overflow-hidden">
+                <button
+                  type="button"
+                  className={`round-button font-bold bg-${button.color} transition-transform transform hover:brightness-50 focus:brightness-50`}
+                >
+                  {button.label}
+                </button>
+              </Link>
+            ))}
+          </div>
+          <Link to="/" className="focus:outline-none relative overflow-hidden">
+            <div className="features-row my-1 text-center font-bold transition-transform transform hover:brightness-110 focus:brightness-110" style={style}>
+              {category.name}
+            </div>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }

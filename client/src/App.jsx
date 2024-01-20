@@ -7,7 +7,7 @@ import './components/RecipePostsCard.css';
 import './components/DailyRecipeCard.css';
 /* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
-import Home from './pages/Home-v1';
+import Home from './pages/Home';
 import RecipesFeed from './pages/RecipesFeed';
 import Battle from './pages/Battle';
 import Registration from './pages/Registration';
