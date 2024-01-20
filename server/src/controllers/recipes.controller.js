@@ -95,8 +95,6 @@ export const add = async (req, res) => {
   try {
     const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
 
-    console.log('tryban vagyunk');
-
     const newRecipe = await services.addNewRecipe(
       recipeName,
       recipeDescription,

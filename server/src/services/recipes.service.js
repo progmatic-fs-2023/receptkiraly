@@ -19,15 +19,15 @@ export const getRecipe = async recipeID => {
   const result = await db.query(
     `
   SELECT 
-  recipes.name, 
+  recipes.name AS recipe_name, 
   recipes.description, 
   recipes.img, 
   recipes.time_minutes, 
   recipes.difficulty_level, 
   recipes.serve_count, 
-  category.name, 
-  main_category.name, 
-  labels.name 
+  category.name AS category_name, 
+  main_category.name AS main_category_name, 
+  labels.name AS label_name
 
   FROM recipes
   
