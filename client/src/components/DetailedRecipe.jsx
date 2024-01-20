@@ -122,12 +122,6 @@ function DetailedRecipe({ editMode, recipeID }) {
                 setSelectedMainCategory={setSelectedMainCategory}
               />
               <div className="flex justify-center items-center">
-                <RecipeCategory
-                  editMode={editMode}
-                  category={category}
-                  setCategory={setCategory}
-                  selectedMainCategory={selectedMainCategory}
-                />
                 <RecipeDifficulty
                   editMode={editMode}
                   difficulty={difficulty}
