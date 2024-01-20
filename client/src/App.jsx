@@ -55,18 +55,6 @@ function App() {
             <Route path="/*" element={<NoPage />} />
             <Route path="/recipe/:recipeIdParam" element={<DetailedRecipe editMode={true} />} />
           </Routes>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/recipesfeed" element={<RecipesFeed />} />
-            <Route path="/search" element={<SearchRecipes />} />
-            <Route path="/battle" element={<Battle />} />
-            <Route path="/register" element={<Registration />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/rankings" element={<Rankings />} />
-            <Route path="/postrecipe" element={<NewRecipe />} />
-            <Route path="/*" element={<NoPage />} />
-            <Route path="/recipe/:recipeIdParam" element={<DetailedRecipe editMode={true} />} />
-          </Routes>
         </ErrorBoundary>
       </main>
       <footer className="relative z-0">
