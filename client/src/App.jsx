@@ -41,8 +41,8 @@ function App() {
           throw new Error(response.body);
         }
       })
-      .catch((err) => {
-        setIsLoggedIn(false); // eslint-disable-line no-alert
+      .catch(() => {
+        setIsLoggedIn(false);
       });
   };
   useEffect(revalidateLogin, []);
