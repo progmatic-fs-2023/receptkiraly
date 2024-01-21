@@ -26,6 +26,26 @@ import Footer from './components/Footer';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const revalidateLogin = () => {
+    fetch(`${API_URL}/login`, {
+      method: 'PATCH',
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsLoggedIn(true);
+        } else if (response.status === 401) {
+          throw new Error('not loggedd in');
+        } else {
+          throw new Error(response.body);
+        }
+      })
+      .catch((err) => {
+        alert(err.message); // eslint-disable-line no-alert
+      });
+  };
+  useEffect(revalidateLogin, []);
+
   return (
     <div>
       <LoginContext.Provider value={isLoggedIn}>
