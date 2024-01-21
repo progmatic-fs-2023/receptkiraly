@@ -2,7 +2,7 @@ import * as users from '../services/user.service';
 
 export const profile = async (req, res) => {
   try {
-    const userID = req.userID;
+    const {userID} = req;
     const result = await users.getByID(userID);
 
     if (result) {

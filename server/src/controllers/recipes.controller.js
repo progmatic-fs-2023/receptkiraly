@@ -1,5 +1,4 @@
 import * as services from '../services/recipes.service';
-import * as utils from '../utils/helpers';
 
 export const list = async (req, res) => {
   try {

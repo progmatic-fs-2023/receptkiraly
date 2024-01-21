@@ -9,7 +9,6 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import convertIsoTimestampToDate from '../helpers';
 
 function Profile() {
-  const [isConnect, setIsConnect] = useState(false);
   const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
   const [myRecipes, setMyRecipes] = useState([1, 2, 3, 4]);
   const [userData, setUserData] = useState({
@@ -19,7 +18,6 @@ function Profile() {
     user_password_hash: 'hashed_password_123',
     user_registration_date: '2024-01-13T23:00:00.000Z',
   });
-  const userID = '5703d862-c54c-47dc-bfc7-911e242ca24a';
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
@@ -41,73 +39,6 @@ function Profile() {
         setUserData(data);
       });
   }, []);
-
-  const recipesData = [
-    {
-      id: 1,
-      imgUrl: '../images/food/scrambled_eggs.png',
-      minutes: 30,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Scrambled Eggs',
-    },
-    {
-      id: 2,
-      imgUrl: '../images/food/spaghetti_bolognese.png',
-      minutes: 45,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Spaghetti Bolognese',
-    },
-    {
-      id: 3,
-      imgUrl: '../images/food/plant_based_hamburger.png',
-      minutes: 60,
-      difficulty: 'Medium',
-      serves: 4,
-      name: 'Plant-based Hamburger',
-    },
-    {
-      id: 4,
-      imgUrl: '../images/food/strawberry_smoothie.png',
-      minutes: 10,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Strawberry Smoothie',
-    },
-    {
-      id: 7,
-      imgUrl: '../images/food/scrambled_eggs.png',
-      minutes: 30,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Scrambled Eggs',
-    },
-    {
-      id: 8,
-      imgUrl: '../images/food/spaghetti_bolognese.png',
-      minutes: 45,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Spaghetti Bolognese',
-    },
-    {
-      id: 5,
-      imgUrl: '../images/food/plant_based_hamburger.png',
-      minutes: 60,
-      difficulty: 'Medium',
-      serves: 4,
-      name: 'Plant-based Hamburger',
-    },
-    {
-      id: 6,
-      imgUrl: '../images/food/strawberry_smoothie.png',
-      minutes: 10,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Strawberry Smoothie',
-    },
-  ];
 
   return (
     <div>

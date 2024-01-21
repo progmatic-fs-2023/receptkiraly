@@ -24,7 +24,7 @@ app.use('/api/register', registerRouter);
 app.use('/api/user', authenticate, userRouter);
 app.use('/api', apiRouter);
 app.use(express.static('dist'));
-
+app.use('*', express.static('dist/index.html'));
 app.use(errorHandler);
 
 export default app;

@@ -1,4 +1,5 @@
 import * as db from './db.service';
+
 const $RECIPE = `  
 SELECT 
   recipes.name AS recipe_name, 
@@ -35,7 +36,10 @@ export const listRecipes = async params => {
     result = await db.query(`${$RECIPE} ORDER BY recipes.created_at DESC LIMIT $1`, [count]);
   }
   if (userID && !count) {
-    result = await db.query(`${$RECIPE} WHERE recipes.user_id = $1`, [userID]);
+    result = await db.query(
+      `${$RECIPE} WHERE recipes.user_id = $1 ORDER BY recipes.created_at DESC`,
+      [userID],
+    );
   }
   return result.rows;
 };
