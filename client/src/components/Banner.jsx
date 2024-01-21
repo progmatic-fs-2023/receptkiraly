@@ -44,6 +44,7 @@ function Banner() {
       .then((response) => {
         if (response.ok) {
           setIsAuthenticated(false);
+          navigate('/');
         } else if (response.status === 401) {
           throw new Error('not loggedd in');
         } else {
