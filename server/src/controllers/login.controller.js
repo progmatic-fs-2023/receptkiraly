@@ -27,3 +27,15 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const logout = (req, res) => {
+  try {
+    res.clearCookie(COOKIE_NAME);
+    res.status(200).send('Logged out');
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal Server Error',
+      error: err.message,
+    });
+  }
+};

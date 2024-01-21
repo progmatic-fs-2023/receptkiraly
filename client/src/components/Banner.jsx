@@ -42,10 +42,16 @@ function Banner() {
       method: 'DELETE',
     })
       .then((response) => {
-        if (response.ok) setIsAuthenticated(false);
+        if (response.ok) {
+          setIsAuthenticated(false);
+        } else if (response.status === 401) {
+          throw new Error('not loggedd in');
+        } else {
+          throw new Error(response.body);
+        }
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.message); // eslint-disable-line no-alert
       });
   };
 
