@@ -7,6 +7,7 @@ import apiRouter from './routes/api.router';
 import loginRouter from './routes/login.router';
 import registerRouter from './routes/register.route';
 import userRouter from './routes/user.router';
+import searchRouter from './routes/search.router';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use('/api/recipes', recipeRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/register', registerRouter);
 app.use('/api/user', userRouter);
+app.use('/api/search', searchRouter);
 app.use('/api', apiRouter);
 app.use(express.static('dist'));
 
