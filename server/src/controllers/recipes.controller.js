@@ -59,7 +59,7 @@ export const getLatest = async (req, res) => {
 
 export const byUserid = async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.userID;
     const recipes = await services.listRecipes({ userID: id });
 
     if (recipes) {
