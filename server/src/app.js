@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import logger from './middlewares/logger.middleware';
 import errorHandler from './middlewares/errorHandler.middleware';
 import recipeRouter from './routes/recipes.route';
@@ -7,7 +8,6 @@ import apiRouter from './routes/api.router';
 import loginRouter from './routes/login.router';
 import registerRouter from './routes/register.route';
 import userRouter from './routes/user.router';
-import cookieParser from 'cookie-parser';
 import authenticate from './middlewares/authenticate.middleware';
 
 const app = express();
