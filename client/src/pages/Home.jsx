@@ -4,10 +4,24 @@ import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
 import RecipeKingCard from '../components/RecipeKingCard';
+import ModalRecipe from '../components/ModalRecipe';
+import DetailedRecipe from '../components/DetailedRecipe';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const [idsLatestRecipe, setIdsLatestRecipe] = useState([0, 0, 0, 0, 0]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
+  const openModal = (id) => {
+    setSelectedRecipe(id);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
@@ -89,12 +103,19 @@ function Home() {
                   difficulty="Easy"
                   serves={5}
                   name="Air Fryer Fried Prawns"
+                  openModal={openModal}
                 />
               ))}
             </SwiperComponent>
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <ModalRecipe title="Detailed Recipe" close={closeModal}>
+          <DetailedRecipe editMode recipeID={selectedRecipe} />
+        </ModalRecipe>
+      )}
     </div>
   );
 }
