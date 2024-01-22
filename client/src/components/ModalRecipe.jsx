@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import DetailedRecipe from './DetailedRecipe';
 
 export default function Modal({ children, title, close, addClassName }) {
   return (
@@ -22,7 +21,6 @@ export default function Modal({ children, title, close, addClassName }) {
               </div>
             </div>
             <div className="flex-1 overflow-y-auto p-6">
-              <DetailedRecipe />
               <div className="my-4 text-blueGray-500 text-lg leading-relaxed text-justify">
                 {children}
               </div>
