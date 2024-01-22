@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { API_URL } from '../constants';
+
 import Button from './Button';
 
 function Login({ setIsAuthenticated }) {
@@ -17,7 +19,7 @@ function Login({ setIsAuthenticated }) {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

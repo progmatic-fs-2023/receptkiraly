@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_URL } from '../constants';
 import Modal from '../components/Modal';
 import Button from '../components/Button';
 
@@ -25,7 +26,7 @@ function Registration() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch(`${API_URL}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
