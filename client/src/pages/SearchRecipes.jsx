@@ -3,84 +3,22 @@ import axios from 'axios';
 import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
+import ModalRecipe from '../components/ModalRecipe';
+import DetailedRecipe from '../components/DetailedRecipe';
 
 function SearchRecipes() {
   const [recipesData, setRecipesData] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  // const recipesData = [
-  //   {
-  //     id: 1,
-  //     imgUrl: '../images/food/scrambled_eggs.png',
-  //     minutes: 30,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Scrambled Eggs',
-  //   },
-  //   {
-  //     id: 2,
-  //     imgUrl: '../images/food/spaghetti_bolognese.png',
-  //     minutes: 45,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Spaghetti Bolognese',
-  //   },
-  //   {
-  //     id: 3,
-  //     imgUrl: '../images/food/plant_based_hamburger.png',
-  //     minutes: 60,
-  //     difficulty: 'Medium',
-  //     serves: 4,
-  //     name: 'Plant-based Hamburger',
-  //   },
-  //   {
-  //     id: 4,
-  //     imgUrl: '../images/food/strawberry_smoothie.png',
-  //     minutes: 10,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Strawberry Smoothie',
-  //   },
-  //   {
-  //     id: 5,
-  //     imgUrl: '../images/food/strawberry_smoothie.png',
-  //     minutes: 10,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Strawberry Smoothie',
-  //   },
-  //   {
-  //     id: 6,
-  //     imgUrl: '../images/food/strawberry_smoothie.png',
-  //     minutes: 10,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Strawberry Smoothie',
-  //   },
-  //   {
-  //     id: 7,
-  //     imgUrl: '../images/food/strawberry_smoothie.png',
-  //     minutes: 10,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Strawberry Smoothie',
-  //   },
-  //   {
-  //     id: 8,
-  //     imgUrl: '../images/food/strawberry_smoothie.png',
-  //     minutes: 10,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Strawberry Smoothie',
-  //   },
-  //   {
-  //     id: 9,
-  //     imgUrl: '../images/food/strawberry_smoothie.png',
-  //     minutes: 10,
-  //     difficulty: 'Easy',
-  //     serves: 4,
-  //     name: 'Strawberry Smoothie',
-  //   },
-  // ];
+  const openModal = (id) => {
+    setSelectedRecipe(id);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     axios
@@ -101,16 +39,22 @@ function SearchRecipes() {
       <RecipeGrid>
         {recipesData.map((recipe) => (
           <RecipeCard
-            key={recipe.recipe_id}
-            id={recipe.recipe_id}
-            imgUrl={`../images/food/${recipe.recipe_img}`}
-            minutes={recipe.recipe_time_minutes}
-            difficulty={recipe.recipe_difficulty_level}
-            serves={recipe.recipe_serve_count}
-            name={recipe.recipe_name}
+            key={recipe.id}
+            id={recipe.id}
+            imgUrl={`http://localhost:3000/${recipe.img}`}
+            minutes={recipe.time_minutes}
+            difficulty={recipe.difficulty_level}
+            serves={recipe.serve_count}
+            name={recipe.name}
+            openModal={openModal}
           />
         ))}
       </RecipeGrid>
+      {isModalOpen && (
+        <ModalRecipe title="Detailed Recipe" close={closeModal}>
+          <DetailedRecipe editMode recipeID={selectedRecipe} />
+        </ModalRecipe>
+      )}
     </section>
   );
 }
