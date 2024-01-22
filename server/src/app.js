@@ -21,6 +21,7 @@ app.use('/api/register', registerRouter);
 app.use('/api/user', userRouter);
 app.use('/api', apiRouter);
 app.use(express.static('dist'));
+app.use('/uploads', express.static('uploads'));
 
 app.use(errorHandler);
 
