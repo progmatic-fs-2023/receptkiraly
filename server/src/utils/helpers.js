@@ -24,10 +24,11 @@ function groupBy(array, keyOrIterator) {
   }, {});
 }
 //Preprocess recipes by creating array at label_name
-export const prepocess = Object.values(groupBy(arr, elem => elem.id)).map(arr => {
-  const labels = arr.reduce((acc, curr) => {
-    curr.label_name ? acc.push(curr.label_name) : null;
-    return acc;
-  }, []);
-  return { ...arr[0], label_name: labels };
-});
+export const prepocess = arr =>
+  Object.values(groupBy(arr, elem => elem.id)).map(arr => {
+    const labels = arr.reduce((acc, curr) => {
+      curr.label_name ? acc.push(curr.label_name) : null;
+      return acc;
+    }, []);
+    return { ...arr[0], label_name: labels };
+  });
