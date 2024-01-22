@@ -1,24 +1,7 @@
 import * as db from './db.service';
 
-export const listRecipes = async params => {
-  let result;
-  const { count, userID } = params || {};
-  if (!count && !userID) {
-    result = await db.query('SELECT * FROM recipes');
-  }
-  if (count && !userID) {
-    result = await db.query('SELECT id FROM recipes ORDER BY created_at DESC LIMIT $1', [count]);
-  }
-  if (userID && !count) {
-    result = await db.query('SELECT id FROM recipes WHERE user_id = $1', [userID]);
-  }
-  return result.rows;
-};
-
-export const getRecipe = async recipeID => {
-  const result = await db.query(
-    `
-  SELECT 
+const $RECIPE = `  
+SELECT 
   recipes.name AS recipe_name, 
   recipes.description, 
   recipes.img, 
@@ -29,20 +12,41 @@ export const getRecipe = async recipeID => {
   main_category.name AS main_category_name, 
   labels.name AS label_name
 
-  FROM recipes
-  
-  INNER JOIN category 
+FROM recipes
+
+INNER JOIN category 
   ON category.id = recipes.category_id 
-  
-  INNER JOIN main_category 
+
+INNER JOIN main_category 
   ON main_category.id = category.main_category 
-  
-  INNER JOIN recipes_labels 
+
+INNER JOIN recipes_labels 
   ON recipes_labels.recipe_id = recipes.id 
-  
-  INNER JOIN labels 
-  ON labels.id = recipes_labels.label_id 
-  
+
+INNER JOIN labels 
+  ON labels.id = recipes_labels.label_id `;
+
+export const listRecipes = async params => {
+  let result;
+  const { count, userID } = params || {};
+  if (!count && !userID) {
+    result = await db.query('SELECT * FROM recipes');
+  }
+  if (count && !userID) {
+    result = await db.query(`${$RECIPE} ORDER BY recipes.created_at DESC LIMIT $1`, [count]);
+  }
+  if (userID && !count) {
+    result = await db.query(
+      `${$RECIPE} WHERE recipes.user_id = $1 ORDER BY recipes.created_at DESC`,
+      [userID],
+    );
+  }
+  return result.rows;
+};
+
+export const getRecipe = async recipeID => {
+  const result = await db.query(
+    `${$RECIPE}
   WHERE 
   recipes.id = $1
   `,
