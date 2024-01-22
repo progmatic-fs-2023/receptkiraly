@@ -111,3 +111,41 @@ export const add = async (req, res) => {
     });
   }
 };
+
+export const searchRecipes = async (req, res) => {
+  let title;
+  let category;
+  let labels;
+
+  if (req.query.title) {
+    title = req.query.title;
+  }
+
+  if (req.query.category) {
+    category = req.query.category;
+  }
+
+  if (req.query.labels) {
+    if (typeof req.query.labels === 'string') {
+      labels = [req.query.labels];
+    } else {
+      labels = req.query.labels;
+    }
+  }
+
+  try {
+    const recipes = await services.listSearchedRecipes({ title, category, labels });
+
+    if (recipes) {
+      res.status(200).json(recipes);
+    } else {
+      res.status(404).json({
+        errorMessage: 'There is no recipes with that search filters...',
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      errorMessage: err.message,
+    });
+  }
+};

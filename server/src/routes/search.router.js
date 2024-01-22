@@ -3,6 +3,6 @@ import * as recipesController from '../controllers/recipes.controller';
 
 const router = express.Router();
 
-router.get('/', recipesController.list);
+router.get('/', recipesController.searchRecipes);
 
 export default router;

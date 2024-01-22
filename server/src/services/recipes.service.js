@@ -24,7 +24,7 @@ INNER JOIN recipes_labels
   ON recipes_labels.recipe_id = recipes.id 
 
 INNER JOIN labels 
-  ON labels.id = recipes_labels.label_id `;
+  ON labels.id = recipes_labels.label_id`;
 
 export const listRecipes = async params => {
   let result;
@@ -107,5 +107,40 @@ export const addNewRecipe = async (
     );
   }
 
+  return result.rows;
+};
+
+export const listSearchedRecipes = async params => {
+  const { title, category, labels } = params || {};
+
+  let queryString = '';
+  const queryParams = [];
+
+  if (title || category || labels !== undefined) {
+    queryString += 'WHERE';
+  }
+
+  if (title) {
+    queryString += ' main_category.name = $1';
+    queryParams.push(title);
+  }
+
+  if (category) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(category);
+    queryString += ` category.name = $${queryParams.length}`;
+  }
+
+  if (labels !== undefined) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(labels);
+    queryString += ` labels.name = ANY($${queryParams.length}::text[])`;
+  }
+
+  const result = await db.query(`${$RECIPE} ${queryString}`, queryParams);
   return result.rows;
 };
