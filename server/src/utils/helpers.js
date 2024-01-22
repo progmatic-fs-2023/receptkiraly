@@ -23,8 +23,8 @@ function groupBy(array, keyOrIterator) {
     return memo;
   }, {});
 }
-
-export const prepocessRecipe = Object.values(groupBy(arr, elem => elem.id)).map(arr => {
+//Preprocess recipes by creating array at label_name
+export const prepocess = Object.values(groupBy(arr, elem => elem.id)).map(arr => {
   const labels = arr.reduce((acc, curr) => {
     curr.label_name ? acc.push(curr.label_name) : null;
     return acc;
