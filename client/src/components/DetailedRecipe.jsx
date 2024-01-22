@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
 import Icons from './IconsInDetailedRecipe';
@@ -15,9 +13,6 @@ import Method from './MethodComp';
 import Button from './Button';
 
 function DetailedRecipe({ editMode, recipeID }) {
-  const { recipeIdParam } = useParams();
-  console.log(recipeIdParam);
-
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
@@ -31,20 +26,23 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [minutes, setMinutes] = useState();
   const [serves, setServes] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [labels, setLabels] = useState({});
 
   useEffect(() => {
-    if (!editMode) {
-      axios
-        .get(`/api/recipes/${recipeID}`)
-        .then((response) => {
-          setRecipeTitle(response.recipeName);
-          console.log(response);
-        })
-        .catch((error) => {
-          setErrorMessage(error.message);
-        });
-    }
-  }, [recipeIdParam]);
+    fetch(`http://localhost:3000/api/recipes/${recipeID}`)
+      .then((response) => response.json())
+      .then((recipe) => {
+        setRecipeTitle(recipe.recipe_name);
+        setDescription(recipe.description);
+        setImgUrl(recipe.img);
+        setMinutes(recipe.time_minutes);
+        setDifficulty(recipe.difficulty_level);
+        setServes(recipe.difficulty_level);
+        setCategory(recipe.category_name);
+        // setSelectedMainCategory(recipe.main_category_name);
+        setLabels({ value: recipe.label_name });
+      });
+  }, []);
 
   const uploadRecipe = () => {
     const formData = new FormData();
@@ -132,6 +130,7 @@ function DetailedRecipe({ editMode, recipeID }) {
               editMode={editMode}
               selectedOptions={selectedOptions}
               setSelectedOptions={setSelectedOptions}
+              Labels={labels}
             />
           </div>
         </div>
