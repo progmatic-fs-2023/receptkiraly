@@ -1,5 +1,4 @@
 import * as services from '../services/recipes.service';
-import * as utils from '../utils/helpers';
 
 export const list = async (req, res) => {
   try {
@@ -44,8 +43,7 @@ export const getLatest = async (req, res) => {
     const recipes = await services.listRecipes({ count });
 
     if (recipes) {
-      const arr = utils.transformArrayToIntegers(recipes, 'id');
-      res.status(200).json({ ids: arr });
+      res.status(200).json(recipes);
     } else {
       res.status(404).json({
         errorMessage: `Cannot get ${count} latest recipes`,
@@ -60,12 +58,11 @@ export const getLatest = async (req, res) => {
 
 export const byUserid = async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = req.userID;
     const recipes = await services.listRecipes({ userID: id });
 
     if (recipes) {
-      const arr = utils.transformArrayToIntegers(recipes, 'id');
-      res.status(200).json({ ids: arr });
+      res.status(200).json(recipes);
     } else {
       res.status(404).json({
         errorMessage: `Cannot get recipes of user ${id}`,
@@ -89,9 +86,7 @@ export const add = async (req, res) => {
     recipeLabels,
   } = req.body;
   const imagePath = req.file.path;
-  // A 6-os azért van benne, mert recept feltöltésnél a requestbe még nem tudjuk berakni a userID-t.
-  const { userID } = req.userID || { userID: 6 };
-
+  const { userID } = req;
   try {
     const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
 
