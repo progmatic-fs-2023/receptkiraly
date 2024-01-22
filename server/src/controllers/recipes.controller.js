@@ -1,9 +1,9 @@
 import * as services from '../services/recipes.service';
 import { prepocess } from '../utils/helpers';
+
 export const list = async (req, res) => {
   try {
     const recipes = await services.listRecipes();
-    console.log(recipes);
     if (recipes) {
       res.status(200).json(prepocess(recipes));
     } else {
