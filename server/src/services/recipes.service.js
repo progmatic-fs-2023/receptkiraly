@@ -1,7 +1,8 @@
 import * as db from './db.service';
 
 const $RECIPE = `  
-SELECT 
+SELECT
+  recipes.id,
   recipes.name AS recipe_name, 
   recipes.description, 
   recipes.img, 
