@@ -13,10 +13,10 @@ import IconContainer from './IconContainer';
   name="Air Fryer Fried Prawns"
 /> */
 
-function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions }) {
+function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions, openModal }) {
   return (
     <div>
-      <a className="block group" href={`/recipe/${id}`}>
+      <div className="block group" onClick={() => openModal(id)}>
         {actions ? (
           <div className="justify-between flex">
             <div className="relative  ">
@@ -40,7 +40,7 @@ function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions }) 
         <div className="flex justify-center mt-3">
           <h3 className="group-hover:text-primary">{name}</h3>
         </div>
-      </a>
+      </div>
     </div>
   );
 }
