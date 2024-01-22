@@ -88,7 +88,8 @@ export const add = async (req, res) => {
     recipeCategory,
     recipeLabels,
   } = req.body;
-  const imagePath = req.file.path;
+  const imagePathBackslash = req.file.path;
+  const imagePath = imagePathBackslash.replace(/\\/g, '/'); // EZ állítja át a per jelet adatbásiba lementett kép elérési path stringjében.
   // A 6-os azért van benne, mert recept feltöltésnél a requestbe még nem tudjuk berakni a userID-t.
   const { userID } = req.userID || { userID: 6 };
 
