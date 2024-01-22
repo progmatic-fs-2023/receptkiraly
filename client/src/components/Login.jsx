@@ -19,7 +19,7 @@ function Login({ setIsAuthenticated }) {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${API_URL}/api/login`, {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
