@@ -14,5 +14,5 @@ IconContainer.propTypes = {
 };
 IconContainer.defaultProps = {
   addClassName: '',
-}
+};
 export default IconContainer;

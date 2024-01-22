@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-function Login({setIsAuthenticated }) {
+function Login({ setIsAuthenticated }) {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -29,24 +29,21 @@ function Login({setIsAuthenticated }) {
       });
 
       if (response.ok) {
-        setLoginMessage('Bejelentkeztél ✅');
+        setLoginMessage('Login successful!');
         setIsAuthenticated(true);
       } else if (response.status === 401) {
-        setLoginMessage('Rossz név/jelszó ❗️');
+        setLoginMessage('Invalid credentials.');
       } else {
-        setLoginMessage('Egyéb ❗️');
+        setLoginMessage('Server error.');
       }
     } catch (error) {
-      setLoginMessage('technikai hiba ❗️');
+      setLoginMessage('Connection error.');
     }
   };
 
   return (
     <div className="relative inline-block z-10">
-      <Button
-        type="button"
-        text="Sign In"
-        onClick={handleToggle}/>
+      <Button type="button" text="Sign In" onClick={handleToggle} />
       {isOpen && (
         <div className="absolute left-0 mt-2 bg-white p-4 border rounded shadow-md">
           <form onSubmit={handleLogin}>
@@ -71,10 +68,12 @@ function Login({setIsAuthenticated }) {
               />
             </label>
             <div className="flex flex-col items-center justify-between">
-              <Button type="submit" text="Sign In"/>
+              <Button type="submit" text="Sign In" />
             </div>
           </form>
-          {loginMessage && <p>{loginMessage}</p>}
+          <div className="flex flex-row justify-center items-center my-1">
+            {loginMessage && <p>{loginMessage}</p>}
+          </div>
         </div>
       )}
     </div>

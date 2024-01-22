@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import LoginContext from '../contexts/LoginContext';
+import LoginDispatchContext from '../contexts/LoginDispatchContext';
 import Logo from '../assets/Logo.png';
 import Login from './Login';
 import Button from './Button';
 import Tooltips from './Tooltips';
 
 function Banner() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isAuthenticated = useContext(LoginContext);
+  const setIsAuthenticated = useContext(LoginDispatchContext);
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
 

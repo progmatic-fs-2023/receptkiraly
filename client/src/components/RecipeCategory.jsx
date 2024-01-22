@@ -1,27 +1,42 @@
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-function RecipeCategory({ editMode, category, setCategory }) {
+function RecipeCategory({ editMode, category, setCategory, selectedMainCategory }) {
   const onValueChange = (selectedOption) => {
     setCategory(selectedOption.value);
   };
 
-  const categories = [
+  const mealsCategories = [
+    { value: 'Appetizers', label: 'Appetizers' },
     { value: 'Breakfast', label: 'Breakfast' },
     { value: 'Lunch', label: 'Lunch' },
     { value: 'Dinner', label: 'Dinner' },
-    { value: 'Appetizer', label: 'Appetizer' },
-    { value: 'Cheesecake', label: 'Cheesecake' },
-    { value: 'Cake', label: 'Cake' },
-    { value: 'Cookie', label: 'Cookie' },
-    { value: 'Cocktail', label: 'Cocktail' },
-    { value: 'Soup', label: 'Soup' },
-    { value: 'Pie', label: 'Pie' },
-    { value: 'Pizza', label: 'Pizza' },
-    { value: 'Hamburger', label: 'Hamburger' },
-    { value: 'Pasta', label: 'Pasta' },
-    { value: 'Salad', label: 'Salad' },
   ];
+
+  const dessertsCategories = [
+    { value: 'Cakes', label: 'Cakes' },
+    { value: 'Frozen Desserts', label: 'Frozen Desserts' },
+    { value: 'Chocolate and Candies', label: 'Chocolate and Candies' },
+    { value: 'Fruit Desserts', label: 'Fruit Desserts' },
+  ];
+
+  const beveragesCategories = [
+    { value: 'Hot Drinks', label: 'Hot Drinks' },
+    { value: 'Cold Drinks', label: 'Cold Drinks' },
+    { value: 'Soft Drinks', label: 'Soft Drinks' },
+    { value: 'Juices', label: 'Juices' },
+    { value: 'Smoothies', label: 'Smoothies' },
+  ];
+
+  let options = null;
+
+  if (selectedMainCategory === 'Meals') {
+    options = mealsCategories;
+  } else if (selectedMainCategory === 'Desserts') {
+    options = dessertsCategories;
+  } else if (selectedMainCategory === 'Beverages') {
+    options = beveragesCategories;
+  }
 
   const customStyles = {
     control: (provided, state) => ({
@@ -44,13 +59,13 @@ function RecipeCategory({ editMode, category, setCategory }) {
     }),
   };
 
-  const selectedCategory = categories.find((c) => c.value === category);
+  const selectedCategory = options.find((c) => c.value === category);
 
   return (
     <div className="w-full">
       {editMode ? (
         <Select
-          options={categories}
+          options={options}
           value={selectedCategory}
           onChange={onValueChange}
           styles={customStyles}
@@ -66,6 +81,7 @@ RecipeCategory.propTypes = {
   editMode: PropTypes.bool.isRequired,
   category: PropTypes.string.isRequired,
   setCategory: PropTypes.func.isRequired,
+  selectedMainCategory: PropTypes.string.isRequired,
 };
 
 export default RecipeCategory;
