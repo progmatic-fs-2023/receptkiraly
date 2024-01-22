@@ -52,7 +52,7 @@ export const getRecipe = async recipeID => {
   `,
     [recipeID],
   );
-  return result.rows[0];
+  return result.rows;
 };
 
 export const addNewRecipe = async (
