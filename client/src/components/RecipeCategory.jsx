@@ -28,13 +28,13 @@ function RecipeCategory({ editMode, category, setCategory, selectedMainCategory 
     { value: 'Smoothies', label: 'Smoothies' },
   ];
 
-  let options = null;
+  let options = [];
 
-  if (selectedMainCategory === 'Meals') {
+  if (selectedMainCategory === 'meals') {
     options = mealsCategories;
-  } else if (selectedMainCategory === 'Desserts') {
+  } else if (selectedMainCategory === 'desserts') {
     options = dessertsCategories;
-  } else if (selectedMainCategory === 'Beverages') {
+  } else if (selectedMainCategory === 'beverages') {
     options = beveragesCategories;
   }
 
