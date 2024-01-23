@@ -25,7 +25,7 @@ function groupBy(array, keyOrIterator) {
   }, {});
 }
 // Preprocess recipes by creating array at label_name
-export const prepocess = array =>
+export const preprocess = array =>
   Object.values(groupBy(array, elem => elem.id)).map(arr => {
     const labels = arr.reduce((acc, curr) => {
       if (curr.label_name) {
