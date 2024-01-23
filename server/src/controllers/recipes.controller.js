@@ -1,11 +1,11 @@
 import * as services from '../services/recipes.service';
+import { prepocess } from '../utils/helpers';
 
 export const list = async (req, res) => {
   try {
     const recipes = await services.listRecipes();
-
     if (recipes) {
-      res.status(200).json(recipes);
+      res.status(200).json(prepocess(recipes));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipes...',
@@ -24,7 +24,7 @@ export const get = async (req, res) => {
     const recipe = await services.getRecipe(recipeID);
 
     if (recipe) {
-      res.status(200).json(recipe);
+      res.status(200).json(prepocess(recipe));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipe with that ID.',
@@ -43,7 +43,7 @@ export const getLatest = async (req, res) => {
     const recipes = await services.listRecipes({ count });
 
     if (recipes) {
-      res.status(200).json(recipes);
+      res.status(200).json(prepocess(recipes));
     } else {
       res.status(404).json({
         errorMessage: `Cannot get ${count} latest recipes`,
@@ -62,7 +62,7 @@ export const byUserid = async (req, res) => {
     const recipes = await services.listRecipes({ userID: id });
 
     if (recipes) {
-      res.status(200).json(recipes);
+      res.status(200).json(prepocess(recipes));
     } else {
       res.status(404).json({
         errorMessage: `Cannot get recipes of user ${id}`,

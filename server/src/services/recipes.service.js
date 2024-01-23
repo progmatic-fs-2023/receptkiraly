@@ -1,7 +1,8 @@
 import * as db from './db.service';
 
 const $RECIPE = `  
-SELECT 
+SELECT
+  recipes.id,
   recipes.name AS recipe_name, 
   recipes.description, 
   recipes.img, 
@@ -30,7 +31,7 @@ export const listRecipes = async params => {
   let result;
   const { count, userID } = params || {};
   if (!count && !userID) {
-    result = await db.query('SELECT * FROM recipes');
+    result = await db.query(`${$RECIPE};`);
   }
   if (count && !userID) {
     result = await db.query(`${$RECIPE} ORDER BY recipes.created_at DESC LIMIT $1`, [count]);
@@ -52,7 +53,7 @@ export const getRecipe = async recipeID => {
   `,
     [recipeID],
   );
-  return result.rows[0];
+  return result.rows;
 };
 
 export const addNewRecipe = async (
