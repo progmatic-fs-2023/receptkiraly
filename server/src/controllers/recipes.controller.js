@@ -136,7 +136,7 @@ export const searchRecipes = async (req, res) => {
   try {
     const recipes = await services.listSearchedRecipes({ title, category, labels });
 
-    if (recipes) {
+    if (recipes.length !== 0) {
       res.status(200).json(recipes);
     } else {
       res.status(404).json({
