@@ -16,6 +16,10 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
     { value: 'seafood', label: 'Seafood' },
   ];
 
+  const labels = ['vegan', 'egg-free', 'spicy'];
+
+  const defaultLabels = selectOption.filter((option) => labels.includes(option.value));
+
   const handleSelectChange = (selectedOptionsValue) => {
     const selectedLabelValues = [];
 
@@ -57,6 +61,7 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
           classNamePrefix="select"
           onChange={handleSelectChange}
           styles={customStyles}
+          defaultValue={defaultLabels}
         />
       ) : (
         <div className="flex">
