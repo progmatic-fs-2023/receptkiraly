@@ -161,7 +161,6 @@ export const listSearchedRecipes = async params => {
     queryParams.push(labels);
     queryString += ` labels.name = ANY($${queryParams.length}::text[])`;
   }
-  console.log($RECIPE, queryString, queryParams);
   const result = await db.query(`${$RECIPE} ${queryString}`, queryParams);
   return result.rows;
 };
