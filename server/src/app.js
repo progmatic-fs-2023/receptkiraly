@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(logger);
 
-app.use('/api/recipes', authenticate, recipeRouter);
+app.use('/api/recipes', recipeRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/register', registerRouter);
 app.use('/api/user', authenticate, userRouter);
