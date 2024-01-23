@@ -137,7 +137,7 @@ export const searchRecipes = async (req, res) => {
     const recipes = await services.listSearchedRecipes({ title, category, labels });
 
     if (recipes.length !== 0) {
-      res.status(200).json(recipes);
+      res.status(200).json(prepocess(recipes));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipes with that search filters...',
