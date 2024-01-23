@@ -35,3 +35,10 @@ export const preprocess = array =>
     }, []);
     return { ...arr[0], label_name: unique(labels) };
   });
+
+export const requireLabels = (recipes, labels) => {
+  if (labels !== undefined) {
+    return recipes.filter(recipe => labels.every(label => recipe.label_name.indexOf(label) > -1));
+  }
+  return recipes;
+};

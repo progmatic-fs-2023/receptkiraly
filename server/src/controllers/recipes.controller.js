@@ -1,5 +1,5 @@
 import * as services from '../services/recipes.service';
-import { preprocess } from '../utils/helpers';
+import { preprocess, requireLabels } from '../utils/helpers';
 
 export const list = async (req, res) => {
   try {
@@ -147,7 +147,7 @@ export const searchRecipes = async (req, res) => {
     const recipes = await services.listSearchedRecipes({ title, username, type, category, labels });
 
     if (recipes.length !== 0) {
-      res.status(200).json(preprocess(recipes));
+      res.status(200).json(requireLabels(preprocess(recipes), labels));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipes with that search filters...',
