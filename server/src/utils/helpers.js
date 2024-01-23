@@ -2,6 +2,8 @@ export function transformArrayToIntegers(arrayOfObjects, key) {
   return arrayOfObjects.map(obj => parseInt(obj[key], 10));
 }
 
+const unique = array => [...new Set(array)];
+
 // groups an array and returns an object, each key of the object will represent a group
 function groupBy(array, keyOrIterator) {
   let iterator;
@@ -31,5 +33,5 @@ export const prepocess = array =>
       }
       return acc;
     }, []);
-    return { ...arr[0], label_name: labels };
+    return { ...arr[0], label_name: unique(labels) };
   });
