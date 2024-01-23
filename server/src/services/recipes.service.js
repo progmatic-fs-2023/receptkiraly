@@ -9,11 +9,15 @@ SELECT
   recipes.time_minutes, 
   recipes.difficulty_level, 
   recipes.serve_count, 
+  users.username AS username,
   category.name AS category_name, 
   main_category.name AS main_category_name, 
   labels.name AS label_name
 
 FROM recipes
+
+INNER JOIN users
+  ON users.id = recipes.user_id
 
 INNER JOIN category 
   ON category.id = recipes.category_id 
@@ -112,18 +116,34 @@ export const addNewRecipe = async (
 };
 
 export const listSearchedRecipes = async params => {
-  const { title, category, labels } = params || {};
+  const { title, username, type, category, labels } = params || {};
 
   let queryString = '';
   const queryParams = [];
 
-  if (title || category || labels !== undefined) {
+  if (title || type || username || category || labels !== undefined) {
     queryString += 'WHERE';
   }
 
   if (title) {
-    queryString += ' main_category.name = $1';
-    queryParams.push(title);
+    queryParams.push(`%${title}%`);
+    queryString += ` recipes.name ILIKE $${queryParams.length}`;
+  }
+
+  if (username) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(username);
+    queryString += ` users.username = $${queryParams.length}`;
+  }
+
+  if (type) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(type);
+    queryString += ` main_category.name = $${queryParams.length}`;
   }
 
   if (category) {
@@ -141,7 +161,7 @@ export const listSearchedRecipes = async params => {
     queryParams.push(labels);
     queryString += ` labels.name = ANY($${queryParams.length}::text[])`;
   }
-
+  console.log($RECIPE, queryString, queryParams);
   const result = await db.query(`${$RECIPE} ${queryString}`, queryParams);
   return result.rows;
 };

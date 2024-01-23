@@ -114,11 +114,21 @@ export const add = async (req, res) => {
 
 export const searchRecipes = async (req, res) => {
   let title;
+  let username;
+  let type;
   let category;
   let labels;
 
   if (req.query.title) {
     title = req.query.title;
+  }
+
+  if (req.query.username) {
+    username = req.query.username;
+  }
+
+  if (req.query.type) {
+    type = req.query.type;
   }
 
   if (req.query.category) {
@@ -134,7 +144,7 @@ export const searchRecipes = async (req, res) => {
   }
 
   try {
-    const recipes = await services.listSearchedRecipes({ title, category, labels });
+    const recipes = await services.listSearchedRecipes({ title, username, type, category, labels });
 
     if (recipes.length !== 0) {
       res.status(200).json(preprocess(recipes));
