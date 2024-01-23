@@ -12,9 +12,9 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           <label htmlFor="meals">
             <input
               type="radio"
-              value="Meals"
+              value="meals"
               id="meals"
-              checked={selectedMainCategory === 'Meals'}
+              checked={selectedMainCategory === 'meals'}
               onChange={onValueChange}
               className="peer hidden"
             />
@@ -26,9 +26,9 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           <label htmlFor="desserts">
             <input
               type="radio"
-              value="Desserts"
+              value="desserts"
               id="desserts"
-              checked={selectedMainCategory === 'Desserts'}
+              checked={selectedMainCategory === 'desserts'}
               onChange={onValueChange}
               className="peer hidden"
             />
@@ -40,9 +40,9 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           <label htmlFor="beverages">
             <input
               type="radio"
-              value="Beverages"
+              value="beverages"
               id="beverages"
-              checked={selectedMainCategory === 'Beverages'}
+              checked={selectedMainCategory === 'beverages'}
               onChange={onValueChange}
               className="peer hidden"
             />
