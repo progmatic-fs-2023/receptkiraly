@@ -27,3 +27,35 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const logout = (req, res) => {
+  try {
+    res.clearCookie(COOKIE_NAME);
+    res.status(200).send('Logged out');
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal Server Error',
+      error: err.message,
+    });
+  }
+};
+
+export const renew = async (req, res) => {
+  try {
+    const result = await services.renewLogin(req.userID);
+
+    if (result) {
+      const { user, token } = result;
+
+      res.cookie(COOKIE_NAME, token, COOKIE_OPTIONS);
+      res.status(200).json({ message: 'Login renewed', user });
+    } else {
+      res.status(401).json({ message: 'Invalid user' });
+    }
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal Server Error',
+      error: err.message,
+    });
+  }
+};

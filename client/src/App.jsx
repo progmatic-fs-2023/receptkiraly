@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import LoginContext from './contexts/LoginContext';
@@ -24,9 +24,30 @@ import Banner from './components/Banner';
 import Fallback from './components/Fallback';
 import NavigationBar from './components/navigation/NavigationBar';
 import Footer from './components/Footer';
+import { API_URL } from './constants';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const revalidateLogin = () => {
+    fetch(`${API_URL}/login`, {
+      method: 'PATCH',
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsLoggedIn(true);
+        } else if (response.status === 401) {
+          throw new Error('Not logged in');
+        } else {
+          throw new Error(response.body);
+        }
+      })
+      .catch(() => {
+        setIsLoggedIn(false);
+      });
+  };
+  useEffect(revalidateLogin, []);
+
   return (
     <div>
       <LoginContext.Provider value={isLoggedIn}>
