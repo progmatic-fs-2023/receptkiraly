@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import { useState } from 'react';
+import { propTypes, defaultProps } from './DetailedRecipePropTypes';
 import ImageUpload from './ImageUpload';
 import RecipeTitle from './RecipeTitle';
 import Icons from './IconsInDetailedRecipe';
@@ -12,51 +11,25 @@ import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
 
-function DetailedRecipe({ editMode, recipeID }) {
+function DetailedRecipe({ editMode, recipeID, stateObject }) {
   const [fileUpload, setFileUpload] = useState();
-  const [imgUrl, setImgUrl] = useState();
-  const [recipeTitle, setRecipeTitle] = useState('');
-  const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
-  const [category, setCategory] = useState();
-  const [difficulty, setDifficulty] = useState();
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
-  const [description, setDescription] = useState();
-  const [minutes, setMinutes] = useState();
-  const [serves, setServes] = useState();
   const [errorMessage, setErrorMessage] = useState();
-  const [labels, setLabels] = useState({});
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/api/recipes/${recipeID}`)
-      .then((response) => response.json())
-      .then((recipe) => {
-        setRecipeTitle(recipe.recipe_name);
-        setDescription(recipe.description);
-        setImgUrl(recipe.img);
-        setMinutes(recipe.time_minutes);
-        setDifficulty(recipe.difficulty_level);
-        setServes(recipe.difficulty_level);
-        setCategory(recipe.category_name);
-        // setSelectedMainCategory(recipe.main_category_name);
-        setLabels({ value: recipe.label_name });
-      });
-  }, []);
 
   const uploadRecipe = () => {
     const formData = new FormData();
-    formData.append('recipeName', recipeTitle);
-    formData.append('recipeDescription', description);
-    formData.append('recipeTimeMinutes', minutes);
-    formData.append('recipeDifficultyLevel', difficulty);
-    formData.append('recipeServeCount', serves);
-    formData.append('recipeCategory', category);
-    selectedOptions.forEach((option) => {
+    formData.append('recipeName', stateObject.title.value);
+    formData.append('recipeDescription', stateObject.description.value);
+    formData.append('recipeTimeMinutes', stateObject.time.value);
+    formData.append('recipeDifficultyLevel', stateObject.difficulty.value);
+    formData.append('recipeServeCount', stateObject.serves.value);
+    formData.append('recipeCategory', stateObject.category.value);
+
+    stateObject.labels.value.forEach((option) => {
       formData.append('recipeLabels', option);
     });
-    formData.append('image', fileUpload);
 
+    formData.append('image', fileUpload);
     axios.post('/api/recipes/newrecipe', formData);
   };
   return errorMessage ? (
@@ -73,25 +46,25 @@ function DetailedRecipe({ editMode, recipeID }) {
                 editMode={editMode}
                 fileUpload={fileUpload}
                 setFileUpload={setFileUpload}
-                imgUrl={imgUrl}
-                setImgUrl={setImgUrl}
+                imgUrl={stateObject.image.value}
+                setImgUrl={stateObject.image.setter}
               />
             </div>
             <div className="flex-grow flex flex-wrap flex-col">
               <RecipeTitle
                 editMode={editMode}
-                recipeTitle={recipeTitle}
-                setRecipeTitle={setRecipeTitle}
+                recipeTitle={stateObject.title.value}
+                setRecipeTitle={stateObject.title.setter}
               />
               <Method
                 editMode={editMode}
-                description={description}
-                setDescription={setDescription}
+                description={stateObject.description.value}
+                setDescription={stateObject.description.setter}
               />
               <Ingredients
                 editMode={editMode}
-                ingredients={ingredients}
-                setIngredients={setIngredients}
+                ingredients={stateObject.ingredients.value}
+                setIngredients={stateObject.ingredients.setter}
                 newIngredient={newIngredient}
                 setNewIngredient={setNewIngredient}
               />
@@ -100,37 +73,36 @@ function DetailedRecipe({ editMode, recipeID }) {
           <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
             <RecipeMainCategory
               editMode={editMode}
-              selectedMainCategory={selectedMainCategory}
-              setSelectedMainCategory={setSelectedMainCategory}
+              selectedMainCategory={stateObject.mainCategory.value}
+              setSelectedMainCategory={stateObject.mainCategory.setter}
             />
             <RecipeCategory
               editMode={editMode}
-              category={category}
-              setCategory={setCategory}
-              selectedMainCategory={selectedMainCategory}
+              category={stateObject.category.value}
+              setCategory={stateObject.category.setter}
+              selectedMainCategory={stateObject.mainCategory.value}
             />
             <div className="flex flex-nowrap flex-row items-center w-full">
               <Icons
                 editMode={editMode}
-                minutes={minutes}
-                setMinutes={setMinutes}
-                difficulty={difficulty}
-                setDifficulty={setDifficulty}
-                serves={serves}
-                setServes={setServes}
+                minutes={stateObject.time.value}
+                setMinutes={stateObject.time.setter}
+                difficulty={stateObject.difficulty.value}
+                setDifficulty={stateObject.difficulty.setter}
+                serves={stateObject.serves.value}
+                setServes={stateObject.serves.setter}
                 addClassName="text-right w-28"
               />
               <RecipeDifficulty
                 editMode={editMode}
-                difficulty={difficulty}
-                setDifficulty={setDifficulty}
+                difficulty={stateObject.difficulty.value}
+                setDifficulty={stateObject.difficulty.setter}
               />
             </div>
             <Labels
               editMode={editMode}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
-              Labels={labels}
+              selectedOptions={stateObject.labels.value}
+              setSelectedOptions={stateObject.labels.setter}
             />
           </div>
         </div>
@@ -140,13 +112,7 @@ function DetailedRecipe({ editMode, recipeID }) {
   );
 }
 
-DetailedRecipe.propTypes = {
-  editMode: PropTypes.bool.isRequired,
-  recipeID: PropTypes.number,
-};
-
-DetailedRecipe.defaultProps = {
-  recipeID: 0,
-};
+DetailedRecipe.propTypes = propTypes;
+DetailedRecipe.defaultProps = defaultProps;
 
 export default DetailedRecipe;
