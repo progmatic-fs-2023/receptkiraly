@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Add, Login } from '@mui/icons-material';
 import { API_URL } from '../constants';
 
+import LoginContext from '../contexts/LoginContext';
+import LoginDispatchContext from '../contexts/LoginDispatchContext';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
@@ -28,12 +30,14 @@ function Home() {
 
   // Recipe King Modals
   const editMode = true;
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Here
+  const isAuthenticated = useContext(LoginContext);
+  const setIsAuthenticated = useContext(LoginDispatchContext);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); // Here
   const [isCreateRecipe, setISCreateRecipe] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleButtonClick = () => {
-    if (isLoggedIn) {
+    if (isAuthenticated) {
       setISCreateRecipe(true);
     } else {
       setShowLoginModal(true);
@@ -41,7 +45,7 @@ function Home() {
   };
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
+    setIsAuthenticated;
     setShowLoginModal(false);
   };
 
@@ -149,10 +153,10 @@ function Home() {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <div>
           <SwiperComponent title="Most Popular">
-            {idsLatestRecipe.map(() => (
+            {latestRecipe.map(() => (
               <RecipeCard
                 id={7}
                 imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
@@ -164,7 +168,7 @@ function Home() {
             ))}
           </SwiperComponent>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
