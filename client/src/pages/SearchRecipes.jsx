@@ -11,9 +11,81 @@ function SearchRecipes() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  const openModal = (id) => {
+  // states for one recipe
+  const [recipeTitle, setRecipeTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [imgUrl, setImgUrl] = useState();
+  const [minutes, setMinutes] = useState('');
+  const [difficulty, setDifficulty] = useState('');
+  const [serves, setServes] = useState('');
+  const [category, setCategory] = useState('');
+  const [selectedMainCategory, setSelectedMainCategory] = useState('');
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+
+  const stateObject = {
+    title: {
+      value: recipeTitle,
+      setter: setRecipeTitle,
+    },
+    description: {
+      value: description,
+      setter: setDescription,
+    },
+    image: {
+      value: imgUrl,
+      setter: setImgUrl,
+    },
+    time: {
+      value: minutes,
+      setter: setMinutes,
+    },
+    difficulty: {
+      value: difficulty,
+      setter: setDifficulty,
+    },
+    serves: {
+      value: serves,
+      setter: setServes,
+    },
+    category: {
+      value: category,
+      setter: setCategory,
+    },
+    mainCategory: {
+      value: selectedMainCategory,
+      setter: setSelectedMainCategory,
+    },
+    labels: {
+      value: selectedOptions,
+      setter: setSelectedOptions,
+    },
+    ingredients: {
+      value: ingredients,
+      setter: setIngredients,
+    },
+  };
+
+  const openModal = async (id) => {
     setSelectedRecipe(id);
     setModalOpen(true);
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
+      const recipe = await response.json();
+
+      setRecipeTitle(recipe.recipe_name);
+      setDescription(recipe.description);
+      setImgUrl(recipe.img);
+      setMinutes(recipe.time_minutes);
+      setDifficulty(recipe.difficulty_level);
+      setServes(recipe.serve_count);
+      setCategory(recipe.category_name);
+      setSelectedMainCategory(recipe.main_category_name);
+      setSelectedOptions(recipe.label_name);
+    } catch (error) {
+      console.error('Error fetching recipe data:', error);
+    }
   };
 
   const closeModal = () => {
@@ -30,8 +102,6 @@ function SearchRecipes() {
         console.error('Error fetching recipes data:', error);
       });
   }, []);
-
-  console.log(recipesData);
 
   return (
     <section className="container mx-auto my-2">
@@ -52,7 +122,7 @@ function SearchRecipes() {
       </RecipeGrid>
       {isModalOpen && (
         <ModalRecipe title="Detailed Recipe" close={closeModal}>
-          <DetailedRecipe editMode recipeID={selectedRecipe} />
+          <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
         </ModalRecipe>
       )}
     </section>
