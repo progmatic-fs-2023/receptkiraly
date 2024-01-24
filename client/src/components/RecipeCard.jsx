@@ -14,9 +14,21 @@ import IconContainer from './IconContainer';
 /> */
 
 function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions, openModal }) {
+  const handleOnKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      openModal(id);
+    }
+  };
+
   return (
     <div>
-      <div className="block group" onClick={() => openModal(id)}>
+      <div
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleOnKeyDown}
+        className="block group"
+        onClick={() => openModal(id)}
+      >
         {actions ? (
           <div className="justify-between flex">
             <div className="relative  ">
@@ -53,6 +65,7 @@ RecipeCard.propTypes = {
   serves: PropTypes.number,
   name: PropTypes.string.isRequired,
   actions: PropTypes.bool,
+  openModal: PropTypes.func.isRequired,
 };
 
 RecipeCard.defaultProps = {

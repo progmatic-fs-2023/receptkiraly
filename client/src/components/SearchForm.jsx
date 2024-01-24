@@ -59,7 +59,7 @@ function SearchFilter({ setRecipesData }) {
     });
 
     const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
-    console.log(`Filtered search URL: ${apiUrl}`);
+    // console.log(`Filtered search URL: ${apiUrl}`);
 
     fetch(apiUrl)
       .then((response) => {
@@ -70,16 +70,15 @@ function SearchFilter({ setRecipesData }) {
         return response.json();
       })
       .then((recipes) => {
-        console.log(recipes);
+        // console.log(recipes);
         setRecipesData(recipes);
       })
-      .catch((error) => {
+      .catch(() => {
         setRecipesData([]);
-        console.error('Error fetching data:', error);
       });
   };
 
-  const handleonKeyDown = (event) => {
+  const handleOnKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleSearch();
     }
@@ -108,7 +107,7 @@ function SearchFilter({ setRecipesData }) {
             className="border-2 border-gray-300 focus:outline-none py-3 px-4 rounded-md w-full"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={handleonKeyDown}
+            onKeyDown={handleOnKeyDown}
             placeholder="Search"
           />
           <Button text="Search" type="button" onClick={handleSearch} />

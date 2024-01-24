@@ -21,6 +21,7 @@ function SearchRecipes() {
   const [selectedMainCategory, setSelectedMainCategory] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [, setErrorMessage] = useState();
 
   const stateObject = {
     title: {
@@ -68,14 +69,14 @@ function SearchRecipes() {
 
   useEffect(() => {
     const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
-    console.log(`Navigation Search URL: ${apiUrl}`);
+    // console.log(`Navigation Search URL: ${apiUrl}`);
 
     fetch(apiUrl)
       .then((response) => response.json())
 
       .then((recipes) => {
         setRecipesData(recipes);
-        console.log(recipes);
+        // console.log(recipes);
       });
   }, []);
 
@@ -85,7 +86,7 @@ function SearchRecipes() {
     setModalOpen(true);
 
     try {
-      console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
+      // console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
       const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
       const recipe = await response.json();
 
@@ -99,9 +100,9 @@ function SearchRecipes() {
       setSelectedMainCategory(recipe.main_category_name);
       setSelectedOptions(recipe.label_name);
 
-      console.log(recipe);
+      // console.log(recipe);
     } catch (error) {
-      console.error('Error fetching recipe data:', error);
+      setErrorMessage(error);
     }
   };
 

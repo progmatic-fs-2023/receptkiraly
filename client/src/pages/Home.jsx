@@ -24,6 +24,7 @@ function Home() {
   const [selectedMainCategory, setSelectedMainCategory] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [, setErrorMessage] = useState();
 
   const stateObject = {
     title: {
@@ -75,7 +76,7 @@ function Home() {
     setModalOpen(true);
 
     try {
-      console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
+      // console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
       const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
       const recipe = await response.json();
 
@@ -89,9 +90,9 @@ function Home() {
       setSelectedMainCategory(recipe.main_category_name);
       setSelectedOptions(recipe.label_name);
 
-      console.log(recipe);
+      // console.log(recipe);
     } catch (error) {
-      console.error('Error fetching recipe data:', error);
+      setErrorMessage(error);
     }
   };
 

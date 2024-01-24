@@ -12,10 +12,10 @@ import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
 
-function DetailedRecipe({ editMode, recipeID, stateObject }) {
+function DetailedRecipe({ editMode, stateObject }) {
   const [fileUpload, setFileUpload] = useState();
   const [newIngredient, setNewIngredient] = useState('');
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage] = useState();
 
   const uploadRecipe = () => {
     const formData = new FormData();
