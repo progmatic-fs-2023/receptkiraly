@@ -1,4 +1,4 @@
-import { useState, useEffect, useSearchParams } from 'react';
+import { useState, useEffect } from 'react';
 import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
@@ -10,7 +10,7 @@ function SearchRecipes() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  // states for one recipe
+  // States for one recipe
   const [recipeTitle, setRecipeTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImgUrl] = useState();
@@ -64,6 +64,7 @@ function SearchRecipes() {
       setter: setIngredients,
     },
   };
+  // ------------------- End of the Detailed Recipe States
 
   useEffect(() => {
     const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
@@ -109,20 +110,9 @@ function SearchRecipes() {
   };
   // ---------------------------
 
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:3000/api/recipes')
-  //     .then((response) => {
-  //       setRecipesData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching recipes data:', error);
-  //     });
-  // }, []);
-
   return (
     <section className="container mx-auto my-2">
-      <SearchForm />
+      <SearchForm setRecipesData={setRecipesData} />
       <RecipeGrid>
         {recipesData.map((recipe) => (
           <RecipeCard
