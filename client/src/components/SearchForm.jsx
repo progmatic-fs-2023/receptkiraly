@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { meals, desserts, beverages } from './navigation/NavArrays';
 
 import Button from './Button';
 
-function SearchFilter() {
+function SearchFilter({ setRecipesData }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Search from the text input.
@@ -17,6 +19,21 @@ function SearchFilter() {
   const [selectedUser, setSelectedUser] = useState('');
 
   const navigate = useNavigate();
+
+  const getCategoriesForType = () => {
+    switch (selectedType) {
+      case 'meals':
+        return meals;
+      case 'desserts':
+        return desserts;
+      case 'beverages':
+        return beverages;
+      default:
+        return [];
+    }
+  };
+
+  const allCategories = [{ key: '0', value: '', label: 'All' }, ...getCategoriesForType()];
 
   const handleLabelSelection = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
@@ -38,17 +55,25 @@ function SearchFilter() {
       labels: selectedLabels,
     });
 
-    const apiUrl = `Filtered Search URL: http://localhost:3000/api/search${encodeURIComponent(
-      window.location.search,
-    )}`;
-
-    console.log(apiUrl);
+    const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
+    console.log(`Filtered search URL: ${apiUrl}`);
 
     fetch(apiUrl)
-      .then((response) => response.json())
-
+      .then((response) => {
+        if (!response.ok) {
+          setRecipesData([]);
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        return response.json();
+      })
       .then((recipes) => {
-        // console.log(recipes);
+        console.log(recipes);
+        setRecipesData(recipes);
+      })
+      .catch((error) => {
+        setRecipesData([]);
+        console.error('Error fetching data:', error);
+        // Handle the error appropriately (e.g., show a user-friendly message)
       });
   };
 
@@ -107,7 +132,7 @@ function SearchFilter() {
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
                     >
-                      <option>All</option>
+                      <option value="">All</option>
                       <option value="meals">Meal</option>
                       <option value="desserts">Dessert</option>
                       <option value="beverages">Beverage</option>
@@ -123,11 +148,11 @@ function SearchFilter() {
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
                     >
-                      <option>All</option>
-                      <option value="appetizer">Appetizer</option>
-                      <option value="breakfast">Breakfast</option>
-                      <option value="lunch">Lunch</option>
-                      <option value="dinner">Dinner</option>
+                      {allCategories.map((actualCategories) => (
+                        <option key={actualCategories.key} value={actualCategories.value}>
+                          {actualCategories.label}
+                        </option>
+                      ))}
                     </select>
                   </label>
                 </div>
@@ -141,6 +166,7 @@ function SearchFilter() {
                       value={selectedLabels}
                       onChange={handleLabelSelection}
                     >
+                      <option value="">All</option>
                       <option value="vegan">Vegan</option>
                       <option value="vegetarian">Vegetarian</option>
                       <option value="gluten-free">Gluten-free</option>
@@ -176,5 +202,9 @@ function SearchFilter() {
     </div>
   );
 }
+
+SearchFilter.propTypes = {
+  setRecipesData: PropTypes.func.isRequired,
+};
 
 export default SearchFilter;
