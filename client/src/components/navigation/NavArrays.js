@@ -20,6 +20,19 @@ export const beverages = [
   { key: 5, value: 'smoothies', label: 'Smoothies' },
 ];
 
+export const labels = [
+  { key: 1, value: 'vegan', label: 'Vegan' },
+  { key: 2, value: 'vegetarian', label: 'Vegetarian' },
+  { key: 3, value: 'nut-free', label: 'Nut-Free' },
+  { key: 4, value: 'egg-free', label: 'Egg-Free' },
+  { key: 5, value: 'dairy-free', label: 'Diary-Free' },
+  { key: 6, value: 'low-carb', label: 'Low-Carb' },
+  { key: 7, value: 'spicy', label: 'Spicy' },
+  { key: 8, value: 'alcoholic', label: 'Alcoholic' },
+  { key: 9, value: 'non-alcoholic', label: 'Non-Alcoholic' },
+  { key: 10, value: 'seafood', label: 'Seafood' },
+];
+
 export const chefsProf = [
   { key: 1, value: 'executive', label: 'Executive' },
   { key: 2, value: 'sous', label: 'Sous' },
