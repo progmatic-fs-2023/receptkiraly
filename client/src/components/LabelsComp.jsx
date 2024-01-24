@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 
 function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
@@ -15,10 +16,14 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
     { value: 'non-alcoholic', label: 'Non-alcoholic' },
     { value: 'seafood', label: 'Seafood' },
   ];
+  const [defaultLabels, setDefaultLabels] = useState([]);
 
-  const labels = ['vegan', 'egg-free', 'spicy'];
-
-  const defaultLabels = selectOption.filter((option) => labels.includes(option.value));
+  useEffect(() => {
+    const updateDefaultLabels = selectOption.filter((option) =>
+      selectedOptions.includes(option.value),
+    );
+    setDefaultLabels(updateDefaultLabels);
+  }, [selectedOptions]);
 
   const handleSelectChange = (selectedOptionsValue) => {
     const selectedLabelValues = [];
@@ -61,7 +66,7 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
           classNamePrefix="select"
           onChange={handleSelectChange}
           styles={customStyles}
-          defaultValue={defaultLabels}
+          value={defaultLabels}
         />
       ) : (
         <div className="flex">
