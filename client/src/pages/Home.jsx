@@ -4,7 +4,7 @@ import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
 import RecipeKingCard from '../components/RecipeKingCard';
-import ModalRecipe from '../components/ModalRecipe';
+import Modal from '../components/Modal';
 import DetailedRecipe from '../components/DetailedRecipe';
 
 function Home() {
@@ -194,9 +194,9 @@ function Home() {
       </div>
 
       {isModalOpen && (
-        <ModalRecipe title="Detailed Recipe" close={closeModal}>
+        <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
           <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
-        </ModalRecipe>
+        </Modal>
       )}
     </div>
   );

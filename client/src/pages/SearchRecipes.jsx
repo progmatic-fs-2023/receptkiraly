@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
-import ModalRecipe from '../components/ModalRecipe';
+import Modal from '../components/Modal';
 import DetailedRecipe from '../components/DetailedRecipe';
 
 function SearchRecipes() {
@@ -129,9 +129,9 @@ function SearchRecipes() {
         ))}
       </RecipeGrid>
       {isModalOpen && (
-        <ModalRecipe title="Detailed Recipe" close={closeModal}>
+        <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-min">
           <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
-        </ModalRecipe>
+        </Modal>
       )}
     </section>
   );
