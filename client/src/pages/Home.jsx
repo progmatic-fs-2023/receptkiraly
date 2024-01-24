@@ -157,16 +157,14 @@ function Home() {
                 <Carousel title="Latest recipes">
                   {latestRecipes.map((recipe) => (
                     <RecipeCard
-                      key={recipe.recipe_name}
-                      imgUrl={recipe.img}
+                      key={recipe.id}
+                      id={recipe.id}
+                      imgUrl={`http://localhost:3000/${recipe.img}`}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
-                      name={recipe.recipe_name}
-                      description={recipe.description}
-                      category={recipe.category_name}
-                      mainCategory={recipe.main_category_name}
-                      labels={recipe.label_name}
+                      name={recipe.name}
+                      openModal={openModal}
                     />
                   ))}
                 </Carousel>
@@ -178,14 +176,15 @@ function Home() {
         <div>
           <div>
             <SwiperComponent title="Most Popular">
-              {latestRecipes.map(() => (
+              {latestRecipes.map((recipe) => (
                 <RecipeCard
-                  id={7}
-                  imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
-                  minutes={55}
-                  difficulty="Easy"
-                  serves={5}
-                  name="Air Fryer Fried Prawns"
+                  key={recipe.id}
+                  id={recipe.id}
+                  imgUrl={`http://localhost:3000/${recipe.img}`}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.name}
                   openModal={openModal}
                 />
               ))}
@@ -196,7 +195,7 @@ function Home() {
 
       {isModalOpen && (
         <ModalRecipe title="Detailed Recipe" close={closeModal}>
-          <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
+          <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
         </ModalRecipe>
       )}
     </div>
