@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { propTypes, defaultProps } from './DetailedRecipePropTypes';
 import ImageUpload from './ImageUpload';
@@ -46,8 +47,8 @@ function DetailedRecipe({ editMode, recipeID, stateObject }) {
                 editMode={editMode}
                 fileUpload={fileUpload}
                 setFileUpload={setFileUpload}
-                imgUrl={stateObject.image.value}
-                setImgUrl={stateObject.image.setter}
+                imgUrl={`http://localhost:3000/${stateObject.image.value}`}
+                setImgUrl={`http://localhost:3000/${stateObject.image.setter}`}
               />
             </div>
             <div className="flex-grow flex flex-wrap flex-col">
