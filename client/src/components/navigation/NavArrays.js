@@ -1,36 +1,36 @@
 export const meals = [
-  { key: 1, value: 'appetizers', text: 'Appetizers' },
-  { key: 2, value: 'breakfast', text: 'Breakfast' },
-  { key: 3, value: 'lunch', text: 'Lunch' },
-  { key: 4, value: 'dinner', text: 'Dinner' },
+  { key: 1, value: 'appetizers', label: 'Appetizers' },
+  { key: 2, value: 'breakfast', label: 'Breakfast' },
+  { key: 3, value: 'lunch', label: 'Lunch' },
+  { key: 4, value: 'dinner', label: 'Dinner' },
 ];
 
 export const desserts = [
-  { key: 1, value: 'cakes', text: 'Cakes' },
-  { key: 2, value: 'frozen_desserts', text: 'Frozen desserts' },
-  { key: 3, value: 'Chocolate_and_candies', text: 'Chocolate and candies' },
-  { key: 4, value: 'fruit_desserts', text: 'Fruit desserts' },
+  { key: 1, value: 'cakes', label: 'Cakes' },
+  { key: 2, value: 'frozen_desserts', label: 'Frozen desserts' },
+  { key: 3, value: 'Chocolate_and_candies', label: 'Chocolate and candies' },
+  { key: 4, value: 'fruit_desserts', label: 'Fruit desserts' },
 ];
 
 export const beverages = [
-  { key: 1, value: 'hot_drinks', text: 'Hot drinks' },
-  { key: 2, value: 'cold_drinks', text: 'cold drinks' },
-  { key: 3, value: 'soft_drinks', text: 'soft drinks' },
-  { key: 4, value: 'juices', text: 'juices' },
-  { key: 5, value: 'smoothies', text: 'smoothies' },
+  { key: 1, value: 'hot_drinks', label: 'Hot drinks' },
+  { key: 2, value: 'cold_drinks', label: 'cold drinks' },
+  { key: 3, value: 'soft_drinks', label: 'soft drinks' },
+  { key: 4, value: 'juices', label: 'juices' },
+  { key: 5, value: 'smoothies', label: 'smoothies' },
 ];
 
 export const chefsProf = [
-  { key: 1, value: 'executive', text: 'Executive' },
-  { key: 2, value: 'sous', text: 'Sous' },
-  { key: 3, value: 'pastry', text: 'Pastry' },
-  { key: 4, value: 'cold_kitchen', text: 'Cold kitchen' },
-  { key: 5, value: 'saucier', text: 'Saucier' },
+  { key: 1, value: 'executive', label: 'Executive' },
+  { key: 2, value: 'sous', label: 'Sous' },
+  { key: 3, value: 'pastry', label: 'Pastry' },
+  { key: 4, value: 'cold_kitchen', label: 'Cold kitchen' },
+  { key: 5, value: 'saucier', label: 'Saucier' },
 ];
 
 export const chefsAmateur = [
-  { key: 1, value: 'dinner', text: 'Dinner' },
-  { key: 2, value: 'soup', text: 'Soup' },
-  { key: 3, value: 'italian', text: 'Italian' },
-  { key: 4, value: 'fast', text: 'Fast' },
+  { key: 1, value: 'dinner', label: 'Dinner' },
+  { key: 2, value: 'soup', label: 'Soup' },
+  { key: 3, value: 'italian', label: 'Italian' },
+  { key: 4, value: 'fast', label: 'Fast' },
 ];
