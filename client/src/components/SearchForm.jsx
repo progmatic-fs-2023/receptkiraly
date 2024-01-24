@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { meals, desserts, beverages } from './navigation/NavArrays';
+import { meals, desserts, beverages, labels } from './navigation/NavArrays';
 
 import Button from './Button';
 
@@ -28,12 +28,15 @@ function SearchFilter({ setRecipesData }) {
         return desserts;
       case 'beverages':
         return beverages;
+      case '':
+        return [...meals, ...desserts, ...beverages];
       default:
         return [];
     }
   };
 
   const allCategories = [{ key: '0', value: '', label: 'All' }, ...getCategoriesForType()];
+  const allLabels = [{ key: '0', value: '', label: 'All' }, ...labels];
 
   const handleLabelSelection = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
@@ -73,7 +76,6 @@ function SearchFilter({ setRecipesData }) {
       .catch((error) => {
         setRecipesData([]);
         console.error('Error fetching data:', error);
-        // Handle the error appropriately (e.g., show a user-friendly message)
       });
   };
 
@@ -166,12 +168,11 @@ function SearchFilter({ setRecipesData }) {
                       value={selectedLabels}
                       onChange={handleLabelSelection}
                     >
-                      <option value="">All</option>
-                      <option value="vegan">Vegan</option>
-                      <option value="vegetarian">Vegetarian</option>
-                      <option value="gluten-free">Gluten-free</option>
-                      <option value="low-carb">Low-carb</option>
-                      <option value="spicy">Spicy</option>
+                      {allLabels.map((label) => (
+                        <option key={label.key} value={label.value}>
+                          {label.label}
+                        </option>
+                      ))}
                     </select>
                   </label>
                 </div>
