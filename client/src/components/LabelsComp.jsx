@@ -1,21 +1,10 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { labels } from './navigation/NavArrays';
 
 function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
-  const selectOption = [
-    { value: 'vegan', label: 'Vegan' },
-    { value: 'vegetarian', label: 'Vegetarian' },
-    { value: 'nut-free', label: 'Nut-free' },
-    { value: 'egg-free', label: 'Egg-free' },
-    { value: 'dairy-free', label: 'Dairy-free' },
-    { value: 'gluten-free', label: 'Gluten-free' },
-    { value: 'low-carb', label: 'Low-carb' },
-    { value: 'spicy', label: 'Spicy' },
-    { value: 'alcoholic', label: 'Alcoholic' },
-    { value: 'non-alcoholic', label: 'Non-alcoholic' },
-    { value: 'seafood', label: 'Seafood' },
-  ];
+  const selectOption = labels;
   const [defaultLabels, setDefaultLabels] = useState([]);
 
   useEffect(() => {
