@@ -39,13 +39,13 @@ function SearchFilter() {
       labels: selectedLabels,
     });
 
-    const apiUrl = `${API_URL}/search${window.location.search}`;
+    const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
     console.log(apiUrl);
     fetch(apiUrl)
       .then((response) => response.json())
 
       .then((recipes) => {
-        console.log('zsír király');
+        console.log(recipes);
       });
   };
 
