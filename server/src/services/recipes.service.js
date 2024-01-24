@@ -50,7 +50,7 @@ export const listRecipes = async params => {
       ORDER BY 
         recipes.created_at DESC 
       LIMIT $1)
-    ORDER BY recipes.created_at;`,
+    ORDER BY recipes.created_at DESC;`,
       [count],
     );
   }
