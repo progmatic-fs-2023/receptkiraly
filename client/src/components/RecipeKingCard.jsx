@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import King from '../assets/king.png';
 import Crown from '../assets/crown.png';
 
