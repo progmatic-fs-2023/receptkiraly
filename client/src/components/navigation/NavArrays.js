@@ -1,5 +1,5 @@
 export const meals = [
-  { key: 1, value: 'appetizer', label: 'Appetizers' },
+  { key: 1, value: 'appetizer', label: 'Appetizer' },
   { key: 2, value: 'breakfast', label: 'Breakfast' },
   { key: 3, value: 'lunch', label: 'Lunch' },
   { key: 4, value: 'dinner', label: 'Dinner' },
@@ -7,17 +7,17 @@ export const meals = [
 
 export const desserts = [
   { key: 1, value: 'cakes', label: 'Cakes' },
-  { key: 2, value: 'frozen_desserts', label: 'Frozen desserts' },
-  { key: 3, value: 'Chocolate_and_candies', label: 'Chocolate and candies' },
-  { key: 4, value: 'fruit_desserts', label: 'Fruit desserts' },
+  { key: 2, value: 'frozen_desserts', label: 'Frozen Desserts' },
+  { key: 3, value: 'chocolate_and_candies', label: 'Chocolate and Candies' },
+  { key: 4, value: 'fruit-desserts', label: 'Fruit Desserts' },
 ];
 
 export const beverages = [
-  { key: 1, value: 'hot_drinks', label: 'Hot drinks' },
-  { key: 2, value: 'cold_drinks', label: 'cold drinks' },
-  { key: 3, value: 'soft_drinks', label: 'soft drinks' },
-  { key: 4, value: 'juices', label: 'juices' },
-  { key: 5, value: 'smoothies', label: 'smoothies' },
+  { key: 1, value: 'hot_drinks', label: 'Hot Drinks' },
+  { key: 2, value: 'cold_drinks', label: 'Cold Drinks' },
+  { key: 3, value: 'soft_drinks', label: 'Soft Drinks' },
+  { key: 4, value: 'juices', label: 'Juices' },
+  { key: 5, value: 'smoothies', label: 'Smoothies' },
 ];
 
 export const chefsProf = [
