@@ -12,7 +12,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           <label htmlFor="meals">
             <input
               type="radio"
-              value="Meals"
+              value="meals"
               id="meals"
               checked={selectedMainCategory === 'Meals'}
               onChange={onValueChange}
@@ -26,7 +26,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           <label htmlFor="desserts">
             <input
               type="radio"
-              value="Desserts"
+              value="desserts"
               id="desserts"
               checked={selectedMainCategory === 'Desserts'}
               onChange={onValueChange}
@@ -40,7 +40,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           <label htmlFor="beverages">
             <input
               type="radio"
-              value="Beverages"
+              value="beverages"
               id="beverages"
               checked={selectedMainCategory === 'Beverages'}
               onChange={onValueChange}

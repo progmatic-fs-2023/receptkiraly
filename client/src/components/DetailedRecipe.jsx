@@ -17,7 +17,7 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
-  const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
+  const [selectedMainCategory, setSelectedMainCategory] = useState('meals');
   const [category, setCategory] = useState();
   const [difficulty, setDifficulty] = useState();
   const [selectedOptions, setSelectedOptions] = useState([]);

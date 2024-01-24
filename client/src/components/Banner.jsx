@@ -7,6 +7,7 @@ import Logo from '../assets/Logo.png';
 import Login from './Login';
 import Button from './Button';
 import Tooltips from './Tooltips';
+import { API_URL } from '../constants';
 
 function Banner() {
   const isAuthenticated = useContext(LoginContext);
@@ -34,6 +35,25 @@ function Banner() {
     if (event.key === 'Enter') {
       handleSearch();
     }
+  };
+
+  const handleLogout = () => {
+    fetch(`${API_URL}/login`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        if (response.ok) {
+          setIsAuthenticated(false);
+          navigate('/');
+        } else if (response.status === 401) {
+          throw new Error('not loggedd in');
+        } else {
+          throw new Error(response.body);
+        }
+      })
+      .catch((err) => {
+        alert(err.message); // eslint-disable-line no-alert
+      });
   };
 
   return (
@@ -85,7 +105,7 @@ function Banner() {
           </ul>
         </nav>
         {isAuthenticated ? (
-          <Button text="Log out" type="button" onClick={() => setIsAuthenticated(false)} />
+          <Button text="Log out" type="button" onClick={handleLogout} />
         ) : (
           <Link to="/register">
             <Button text="Sign Up" type="button" />

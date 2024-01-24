@@ -9,30 +9,19 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import convertIsoTimestampToDate from '../helpers';
 
 function Profile() {
-  const [isConnect, setIsConnect] = useState(false);
   const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
-  const [myRecipes, setMyRecipes] = useState([1, 2, 3, 4]);
-  const [userData, setUserData] = useState({
-    id: 'dummy1',
-    username: 'dummy',
-    user_email: 'john@example.com',
-    user_password_hash: 'hashed_password_123',
-    user_registration_date: '2024-01-13T23:00:00.000Z',
-  });
-  const userID = '5703d862-c54c-47dc-bfc7-911e242ca24a';
+  const [myRecipes, setMyRecipes] = useState([]);
+  const [userData, setUserData] = useState({});
   useEffect(() => {
-    fetch(`${API_URL}`).then((response) => {
-      if (response.ok) setIsConnect(true);
-    });
-    fetch(`${API_URL}/user/${userID}/recipes/`)
+    fetch(`${API_URL}/user/recipes/`)
       .then((response) => {
         if (!response.ok) throw new Error('Recipes cannot be fetched');
         return response.json();
       })
       .then((data) => {
-        setMyRecipes(data.ids);
+        setMyRecipes(data);
       });
-    fetch(`${API_URL}/user/${userID}`)
+    fetch(`${API_URL}/user/`)
       .then((response) => {
         if (!response.ok) throw new Error('User cannot be fetched');
         return response.json();
@@ -42,80 +31,8 @@ function Profile() {
       });
   }, []);
 
-  const recipesData = [
-    {
-      id: 1,
-      imgUrl: '../images/food/scrambled_eggs.png',
-      minutes: 30,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Scrambled Eggs',
-    },
-    {
-      id: 2,
-      imgUrl: '../images/food/spaghetti_bolognese.png',
-      minutes: 45,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Spaghetti Bolognese',
-    },
-    {
-      id: 3,
-      imgUrl: '../images/food/plant_based_hamburger.png',
-      minutes: 60,
-      difficulty: 'Medium',
-      serves: 4,
-      name: 'Plant-based Hamburger',
-    },
-    {
-      id: 4,
-      imgUrl: '../images/food/strawberry_smoothie.png',
-      minutes: 10,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Strawberry Smoothie',
-    },
-    {
-      id: 7,
-      imgUrl: '../images/food/scrambled_eggs.png',
-      minutes: 30,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Scrambled Eggs',
-    },
-    {
-      id: 8,
-      imgUrl: '../images/food/spaghetti_bolognese.png',
-      minutes: 45,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Spaghetti Bolognese',
-    },
-    {
-      id: 5,
-      imgUrl: '../images/food/plant_based_hamburger.png',
-      minutes: 60,
-      difficulty: 'Medium',
-      serves: 4,
-      name: 'Plant-based Hamburger',
-    },
-    {
-      id: 6,
-      imgUrl: '../images/food/strawberry_smoothie.png',
-      minutes: 10,
-      difficulty: 'Easy',
-      serves: 4,
-      name: 'Strawberry Smoothie',
-    },
-  ];
-
   return (
     <div>
-      <ul>
-        <li>
-          {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
-        </li>
-      </ul>
       <div className="lg:w-3/5 mx-auto">
         <div className="w-full sm:w-3/4 flex-col sm:flex-row flex flex-wrap mx-auto">
           <div className="sm:w-1/2 w-full">
@@ -133,12 +50,12 @@ function Profile() {
                       {myRecipes.length}
                     </p>
                     <p>
-                      <strong>Last RecipeID: </strong>
-                      {myRecipes[0]}
+                      <strong>Last Recipe name: </strong>
+                      {myRecipes.length !== 0 ? myRecipes[0].recipe_name : 'No recipes yet'}
                     </p>
                     <p>
                       <strong>Registered at: </strong>
-                      {convertIsoTimestampToDate(userData.user_registration_date)}
+                      {convertIsoTimestampToDate(userData.registration_date)}
                     </p>
                   </div>
                 </div>
@@ -169,15 +86,18 @@ function Profile() {
       <div className="w-3/4 mx-auto">
         <h1>My recipes</h1>
         <RecipeGrid>
-          {myRecipes.map((recipe, index) => (
+          {myRecipes.map((recipe) => (
             <RecipeCard
-              key={recipe}
-              id={recipe}
-              imgUrl={recipesData[index].imgUrl}
-              minutes={recipesData[index].minutes}
-              difficulty={recipesData[index].difficulty}
-              serves={recipesData[index].serves}
-              name={recipesData[index].name}
+              key={recipe.name}
+              imgUrl={recipe.img}
+              minutes={recipe.time_minutes}
+              difficulty={recipe.difficulty_level}
+              serves={recipe.serve_count}
+              name={recipe.recipe_name}
+              description={recipe.description}
+              category={recipe.category_name}
+              mainCategory={recipe.main_category_name}
+              labels={recipe.label_name}
               actions
             />
           ))}
