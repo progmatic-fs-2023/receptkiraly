@@ -21,7 +21,7 @@ import chef6 from './img/chefs/chef6.webp';
 import chef7 from './img/chefs/chef7.webp';
 
 function NavigationBar() {
-  const link = 'http://localhost:3000/search';
+  const link = 'http://localhost:5173/search'; // Itt a portot változtatni kellene attól függ hogy 3000 vagy 5173-an vagyunk.
 
   const [activeMenu, setActiveMenu] = useState(null);
 
