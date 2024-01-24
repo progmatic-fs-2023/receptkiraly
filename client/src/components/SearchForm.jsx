@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { API_URL } from '../constants';
 
 import Button from './Button';
 
@@ -9,15 +8,15 @@ function SearchFilter() {
 
   // Search from the text input.
   const [searchText, setSearchText] = useState('');
+
   // Selected searching filters
+  const [, setSearchParams] = useSearchParams();
   const [selectedType, setSelectedType] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
 
   const navigate = useNavigate();
-
-  const [, setSearchParams] = useSearchParams();
 
   const handleLabelSelection = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
@@ -39,13 +38,17 @@ function SearchFilter() {
       labels: selectedLabels,
     });
 
-    const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
+    const apiUrl = `Filtered Search URL: http://localhost:3000/api/search${encodeURIComponent(
+      window.location.search,
+    )}`;
+
     console.log(apiUrl);
+
     fetch(apiUrl)
       .then((response) => response.json())
 
       .then((recipes) => {
-        console.log(recipes);
+        // console.log(recipes);
       });
   };
 
