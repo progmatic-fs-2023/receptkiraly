@@ -1,24 +1,52 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { API_URL } from '../constants';
+
 import Button from './Button';
 
 function SearchFilter() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLabels, setSelectedLabels] = useState([]);
+
+  // Search from the text input.
   const [searchText, setSearchText] = useState('');
+  // Selected searching filters
+  const [selectedType, setSelectedType] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState([]);
+  const [selectedUser, setSelectedUser] = useState('');
+
   const navigate = useNavigate();
 
-  const toggleFilter = () => {
-    setIsOpen(!isOpen);
-  };
+  const [, setSearchParams] = useSearchParams();
 
   const handleLabelSelection = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
     setSelectedLabels(selectedOptions);
   };
 
+  const toggleFilter = () => {
+    setIsOpen(!isOpen);
+  };
+
   const handleSearch = () => {
-    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+    navigate(`/search?title=${encodeURIComponent(searchText)}`);
+
+    setSearchParams({
+      title: searchText,
+      username: selectedUser,
+      type: selectedType,
+      category: selectedCategory,
+      labels: selectedLabels,
+    });
+
+    const apiUrl = `${API_URL}/search${window.location.search}`;
+    console.log(apiUrl);
+    fetch(apiUrl)
+      .then((response) => response.json())
+
+      .then((recipes) => {
+        console.log('zsír király');
+      });
   };
 
   const handleonKeyDown = (event) => {
@@ -73,11 +101,13 @@ function SearchFilter() {
                     <select
                       id="mealType"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2"
+                      value={selectedType}
+                      onChange={(e) => setSelectedType(e.target.value)}
                     >
                       <option>All</option>
-                      <option value="meal">Meal</option>
-                      <option value="dessert">Dessert</option>
-                      <option value="beverage">Beverage</option>
+                      <option value="meals">Meal</option>
+                      <option value="desserts">Dessert</option>
+                      <option value="beverages">Beverage</option>
                     </select>
                   </label>
                 </div>
@@ -87,6 +117,8 @@ function SearchFilter() {
                     <select
                       id="category"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2"
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
                     >
                       <option>All</option>
                       <option value="appetizer">Appetizer</option>
@@ -122,11 +154,18 @@ function SearchFilter() {
                       id="searchUser"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2 px-4"
                       placeholder="Search by recipe owner"
+                      value={selectedUser}
+                      onChange={(e) => setSelectedUser(e.target.value)}
                     />
                   </label>
                 </div>
               </div>
-              <Button text="Apply Changes" type="button" addClassName="ml-2" />
+              <Button
+                text="Apply Changes"
+                type="button"
+                addClassName="ml-2"
+                onClick={handleSearch}
+              />
             </div>
           </div>
         )}
