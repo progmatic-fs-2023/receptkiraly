@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect, useSearchParams } from 'react';
 import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
@@ -66,11 +65,26 @@ function SearchRecipes() {
     },
   };
 
+  useEffect(() => {
+    const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
+    console.log(`Navigation Search URL: ${apiUrl}`);
+
+    fetch(apiUrl)
+      .then((response) => response.json())
+
+      .then((recipes) => {
+        setRecipesData(recipes);
+        console.log(recipes);
+      });
+  }, []);
+
+  // Modal functions
   const openModal = async (id) => {
     setSelectedRecipe(id);
     setModalOpen(true);
 
     try {
+      console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
       const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
       const recipe = await response.json();
 
@@ -83,6 +97,8 @@ function SearchRecipes() {
       setCategory(recipe.category_name);
       setSelectedMainCategory(recipe.main_category_name);
       setSelectedOptions(recipe.label_name);
+
+      console.log(recipe);
     } catch (error) {
       console.error('Error fetching recipe data:', error);
     }
@@ -91,17 +107,18 @@ function SearchRecipes() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  // ---------------------------
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/recipes')
-      .then((response) => {
-        setRecipesData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching recipes data:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3000/api/recipes')
+  //     .then((response) => {
+  //       setRecipesData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching recipes data:', error);
+  //     });
+  // }, []);
 
   return (
     <section className="container mx-auto my-2">
