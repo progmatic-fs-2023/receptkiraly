@@ -9,12 +9,12 @@ function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
   const [allRecipes, setAllRecipes] = useState([{}, {}]);
-  const n = 6;
+  const countRecipesShown = 6;
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
-    fetch(`${API_URL}/recipes/latest/${n}`)
+    fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
         return response.json();
@@ -29,17 +29,14 @@ function Home() {
       })
       .then((data) => {
         setAllRecipes(data);
-        console.log(data);
       });
   }, []);
 
-  const nRandomRecipes = (n, recipes, condition) => {
-    return recipes
+  const nRandomRecipes = (n, recipes, condition) =>
+    recipes
       .filter((recipe) => condition(recipe))
       .sort(() => 0.5 - Math.random())
       .slice(0, n);
-  };
-
   return (
     <div>
       <div>
@@ -103,26 +100,28 @@ function Home() {
         <div>
           <div>
             <SwiperComponent title="Meals">
-              {nRandomRecipes(n, allRecipes, (recipe) => recipe.main_category_name === 'meals').map(
-                (recipe) => (
-                  <RecipeCard
-                    key={recipe.recipe_name}
-                    imgUrl={recipe.img}
-                    minutes={recipe.time_minutes}
-                    difficulty={recipe.difficulty_level}
-                    serves={recipe.serve_count}
-                    name={recipe.recipe_name}
-                    description={recipe.description}
-                    category={recipe.category_name}
-                    mainCategory={recipe.main_category_name}
-                    labels={recipe.label_name}
-                  />
-                ),
-              )}
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'meals',
+              ).map((recipe) => (
+                <RecipeCard
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                />
+              ))}
             </SwiperComponent>
             <SwiperComponent title="Desserts">
               {nRandomRecipes(
-                n,
+                countRecipesShown,
                 allRecipes,
                 (recipe) => recipe.main_category_name === 'desserts',
               ).map((recipe) => (
@@ -142,7 +141,7 @@ function Home() {
             </SwiperComponent>
             <SwiperComponent title="Beverages">
               {nRandomRecipes(
-                n,
+                countRecipesShown,
                 allRecipes,
                 (recipe) => recipe.main_category_name === 'beverages',
               ).map((recipe) => (
