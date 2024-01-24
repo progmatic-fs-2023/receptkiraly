@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(logger);
 
+app.use('/uploads', express.static('uploads'));
 app.use('/api/recipes', authenticate, recipeRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/register', registerRouter);
@@ -25,7 +26,6 @@ app.use('/api/user', authenticate, userRouter);
 app.use('/api', apiRouter);
 app.use(express.static('dist'));
 app.use('*', express.static('dist/index.html'));
-app.use('/uploads', express.static('uploads'));
 
 app.use(errorHandler);
 
