@@ -18,7 +18,7 @@ function groupBy(array, keyOrIterator) {
   }
 
   return array.reduce((acc, item) => {
-    const key = iterator(item);
+    const key = 'REC-' + iterator(item);
     acc[key] = acc[key] || []; // eslint-disable-line no-param-reassign
     acc[key].push(item);
     return acc;
