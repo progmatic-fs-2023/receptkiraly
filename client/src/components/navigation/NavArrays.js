@@ -1,5 +1,5 @@
 export const meals = [
-  { key: 1, value: 'appetizers', label: 'Appetizers' },
+  { key: 1, value: 'appetizer', label: 'Appetizers' },
   { key: 2, value: 'breakfast', label: 'Breakfast' },
   { key: 3, value: 'lunch', label: 'Lunch' },
   { key: 4, value: 'dinner', label: 'Dinner' },

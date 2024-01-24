@@ -24,7 +24,7 @@ export const get = async (req, res) => {
     const recipe = await services.getRecipe(recipeID);
 
     if (recipe) {
-      res.status(200).json(preprocess(recipe));
+      res.status(200).json(preprocess(recipe)[0]);
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipe with that ID.',
