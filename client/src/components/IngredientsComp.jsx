@@ -39,12 +39,9 @@ function IngredientsComp({
           </div>
         </label>
       ) : null}
-      <div className="recipe-paper">
+      <div className="recipe-paper flex flex-col flex-nowrap justify-between">
         <div className="recipe-paper-header">Ingredients</div>
         <ul>
-          <li>
-            <div />
-          </li>
           {ingredients.map((ingredient) => (
             <li key={ingredient.id}>
               <div className="recipe-paper-ingredients flex justify-between mx-10">
