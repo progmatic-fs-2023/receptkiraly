@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DetailedRecipe from '../components/DetailedRecipe';
+import PostNewRecipe from '../components/PostNewRecipe';
 
 function NewRecipe() {
   const editMode = true;
@@ -62,7 +62,7 @@ function NewRecipe() {
 
   return (
     <section className="container mx-auto my-2">
-      <DetailedRecipe editMode={editMode} stateObject={stateObject} />
+      <PostNewRecipe editMode={editMode} stateObject={stateObject} />
     </section>
   );
 }
