@@ -7,7 +7,7 @@ function NewRecipe() {
   // States for one recipe
   const [recipeTitle, setRecipeTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [imgUrl, setImgUrl] = useState();
+  const [imgUrl, setImgUrl] = useState('');
   const [minutes, setMinutes] = useState('');
   const [difficulty, setDifficulty] = useState('');
   const [serves, setServes] = useState('');
