@@ -92,17 +92,17 @@ function NavigationBar() {
                       <PopularThisWeekItem
                         img={dummyImg1}
                         link="http://localhost:5173/recipe/1"
-                        text="ChuckleChomp Deluxe"
+                        label="ChuckleChomp Deluxe"
                       />
                       <PopularThisWeekItem
                         img={dummyImg2}
                         link="http://localhost:5173/recipe/2"
-                        text="MeatyMirth Masterpiece"
+                        label="MeatyMirth Masterpiece"
                       />
                       <PopularThisWeekItem
                         img={dummyImg3}
                         link="http://localhost:5173/recipe/3"
-                        text="BrothBelly Giggler"
+                        label="BrothBelly Giggler"
                       />
                     </div>
                   </div>
