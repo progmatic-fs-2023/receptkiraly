@@ -16,19 +16,19 @@ VALUES
 
 INSERT INTO category (name, main_category)
 VALUES
-    ('Appetizer',1),
-    ('Breakfast',1),
-    ('Lunch',1),
-    ('Dinner',1),
-    ('Cakes',2),
-    ('Frozen Desserts',2),
-    ('Chocolate and Candies',2),
-    ('Fruit Desserts',2),
-    ('Hot Drinks',3),
-    ('Cold Drinks',3),
-    ('Soft Drinks',3),
-    ('Juices',3),
-    ('Smoothies',3);
+    ('appetizer',1),
+    ('breakfast',1),
+    ('lunch',1),
+    ('dinner',1),
+    ('cakes',2),
+    ('frozen_desserts',2),
+    ('chocolate_and_candies',2),
+    ('fruit_desserts',2),
+    ('hot_drinks',3),
+    ('cold_drinks',3),
+    ('soft_drinks',3),
+    ('juices',3),
+    ('smoothies',3);
 
 INSERT INTO recipes (name, user_id, description, img, time_minutes, difficulty_level, serve_count, category_id)
 VALUES

@@ -9,12 +9,16 @@ SELECT
   recipes.time_minutes, 
   recipes.difficulty_level, 
   recipes.serve_count, 
+  users.username AS username,
   category.name AS category_name, 
   main_category.name AS main_category_name, 
   labels.name AS label_name,
   ingredients.name AS ingredient_name
 
 FROM recipes
+
+INNER JOIN users
+  ON users.id = recipes.user_id
 
 INNER JOIN category 
   ON category.id = recipes.category_id 
@@ -39,7 +43,21 @@ export const listRecipes = async params => {
     result = await db.query(`${$RECIPE};`);
   }
   if (count && !userID) {
-    result = await db.query(`${$RECIPE} ORDER BY recipes.created_at DESC LIMIT $1`, [count]);
+    result = await db.query(
+      `
+    ${$RECIPE} 
+    WHERE 
+    recipes.id IN ( 
+      SELECT 
+        id 
+      FROM 
+        recipes 
+      ORDER BY 
+        recipes.created_at DESC 
+      LIMIT $1)
+    ORDER BY recipes.created_at DESC;`,
+      [count],
+    );
   }
   if (userID && !count) {
     result = await db.query(
@@ -126,5 +144,67 @@ export const addNewRecipe = async (
     );
   }
 
+  for (let i = 0; i < recipeIngredients.length; i += 1) {
+    db.query(
+      `
+      INSERT INTO ingredients
+      (recipe_id, name)
+      VALUES
+      ($1, $2)
+      `,
+      [recipeID, recipeIngredients[i]],
+    );
+  }
+
+  return result.rows;
+};
+
+export const listSearchedRecipes = async params => {
+  const { title, username, type, category, labels } = params || {};
+
+  let queryString = '';
+  const queryParams = [];
+
+  if (title || type || username || category || labels !== undefined) {
+    queryString += 'WHERE';
+  }
+
+  if (title) {
+    queryParams.push(`%${title}%`);
+    queryString += ` recipes.name ILIKE $${queryParams.length}`;
+  }
+
+  if (username) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(username);
+    queryString += ` users.username = $${queryParams.length}`;
+  }
+
+  if (type) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(type);
+    queryString += ` main_category.name = $${queryParams.length}`;
+  }
+
+  if (category) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(category);
+    queryString += ` category.name = $${queryParams.length}`;
+  }
+
+  if (labels !== undefined) {
+    if (queryParams.length > 0) {
+      queryString += ' AND';
+    }
+    queryParams.push(labels);
+    queryString += ` labels.name = ANY($${queryParams.length}::text[])`;
+  }
+  const result = await db.query(`${$RECIPE} ${queryString}`, queryParams);
   return result.rows;
 };

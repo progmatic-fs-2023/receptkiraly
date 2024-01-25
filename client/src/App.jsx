@@ -18,6 +18,7 @@ import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
 import Rankings from './pages/Rankings';
 import NewRecipe from './pages/NewRecipe';
+import About from './pages/About';
 /* Template */
 import Banner from './components/Banner';
 import Fallback from './components/Fallback';
@@ -31,6 +32,7 @@ function App() {
   const revalidateLogin = () => {
     fetch(`${API_URL}/login`, {
       method: 'PATCH',
+      credentials: 'include',
     })
       .then((response) => {
         if (response.ok) {
@@ -78,6 +80,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/rankings" element={<Rankings />} />
                 <Route path="/postrecipe" element={<NewRecipe />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/*" element={<NoPage />} />
               </Routes>
             </ErrorBoundary>

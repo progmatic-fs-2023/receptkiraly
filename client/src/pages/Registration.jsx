@@ -153,7 +153,9 @@ function Registration() {
             text="Submit"
             type="submit"
             addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
-              checkedTerm && checkedPrivacy ? 'bg-amber-300' : 'bg-amber-200'
+              checkedTerm && checkedPrivacy
+                ? 'bg-amber-300'
+                : 'custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 grayscale disabled-button'
             } rounded text-lg `}
             disabled={!(checkedTerm && checkedPrivacy)}
           />

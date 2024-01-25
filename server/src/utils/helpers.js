@@ -18,7 +18,7 @@ function groupBy(array, keyOrIterator) {
   }
 
   return array.reduce((acc, item) => {
-    const key = iterator(item);
+    const key = `REC-${iterator(item)}`;
     acc[key] = acc[key] || []; // eslint-disable-line no-param-reassign
     acc[key].push(item);
     return acc;
@@ -41,3 +41,10 @@ export const preprocess = array =>
     }, []);
     return { ...arr[0], label_name: unique(labels), ingredient_name: unique(ingredients) };
   });
+
+export const requireLabels = (recipes, labels) => {
+  if (labels !== undefined) {
+    return recipes.filter(recipe => labels.every(label => recipe.label_name.indexOf(label) > -1));
+  }
+  return recipes;
+};

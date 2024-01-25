@@ -17,7 +17,7 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [fileUpload, setFileUpload] = useState();
   const [imgUrl, setImgUrl] = useState();
   const [recipeTitle, setRecipeTitle] = useState('');
-  const [selectedMainCategory, setSelectedMainCategory] = useState('Meals');
+  const [selectedMainCategory, setSelectedMainCategory] = useState('meals');
   const [category, setCategory] = useState();
   const [difficulty, setDifficulty] = useState();
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -27,6 +27,18 @@ function DetailedRecipe({ editMode, recipeID }) {
   const [minutes, setMinutes] = useState();
   const [serves, setServes] = useState();
   const [errorMessage, setErrorMessage] = useState();
+
+  const emptyFields =
+    recipeTitle === '' ||
+    imgUrl === undefined ||
+    description === undefined ||
+    selectedMainCategory === undefined ||
+    category === undefined ||
+    difficulty === undefined ||
+    selectedOptions.length === 0 ||
+    ingredients.length === 0 ||
+    minutes === undefined ||
+    serves === undefined;
 
   useEffect(() => {
     if (!editMode) {
@@ -131,7 +143,18 @@ function DetailedRecipe({ editMode, recipeID }) {
             />
           </div>
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
+        {editMode ? (
+          <Button
+            text="Save"
+            onClick={uploadRecipe}
+            addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
+              emptyFields
+                ? 'custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 grayscale disabled-button'
+                : 'bg-amber-200'
+            } rounded text-lg `}
+            disabled={emptyFields}
+          />
+        ) : null}
       </form>
     </div>
   );
