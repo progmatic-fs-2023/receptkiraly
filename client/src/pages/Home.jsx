@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { API_URL } from '../constants';
+import { API_URL, HOST_PORT_URL } from '../constants';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
@@ -174,7 +174,7 @@ function Home() {
                     <RecipeCard
                       key={recipe.id}
                       id={recipe.id}
-                      imgUrl={`http://localhost:3000/${recipe.img}`}
+                      imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
@@ -199,7 +199,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`http://localhost:3000/${recipe.img}`}
+                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -221,7 +221,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`http://localhost:3000/${recipe.img}`}
+                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -243,7 +243,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`http://localhost:3000/${recipe.img}`}
+                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}

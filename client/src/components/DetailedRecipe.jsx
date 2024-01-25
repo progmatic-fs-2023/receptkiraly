@@ -11,6 +11,7 @@ import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
+import { API_URL, HOST_PORT_URL } from '../constants';
 
 function DetailedRecipe({ editMode, stateObject }) {
   const [fileUpload, setFileUpload] = useState();
@@ -31,7 +32,7 @@ function DetailedRecipe({ editMode, stateObject }) {
     });
 
     formData.append('image', fileUpload);
-    axios.post('/api/recipes/newrecipe', formData);
+    axios.post(`${API_URL}/recipes/newrecipe`, formData);
   };
   return errorMessage ? (
     <div>
@@ -47,8 +48,8 @@ function DetailedRecipe({ editMode, stateObject }) {
                 editMode={editMode}
                 fileUpload={fileUpload}
                 setFileUpload={setFileUpload}
-                imgUrl={`http://localhost:3000/${stateObject.image.value}`}
-                setImgUrl={`http://localhost:3000/${stateObject.image.setter}`}
+                imgUrl={`${HOST_PORT_URL}/${stateObject.image.value}`}
+                setImgUrl={`${HOST_PORT_URL}/${stateObject.image.setter}`}
               />
             </div>
             <div className="flex-grow flex flex-wrap flex-col">

@@ -4,7 +4,7 @@ import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
 import Modal from '../components/Modal';
 import DetailedRecipe from '../components/DetailedRecipe';
-import { API_URL } from '../constants';
+import { API_URL, HOST_PORT_URL } from '../constants';
 
 function SearchRecipes() {
   const [recipesData, setRecipesData] = useState([]);
@@ -120,7 +120,7 @@ function SearchRecipes() {
           <RecipeCard
             key={recipe.id}
             id={recipe.id}
-            imgUrl={`http://localhost:3000/${recipe.img}`}
+            imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
             minutes={recipe.time_minutes}
             difficulty={recipe.difficulty_level}
             serves={recipe.serve_count}

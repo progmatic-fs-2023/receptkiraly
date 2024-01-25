@@ -11,6 +11,7 @@ import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
+import { API_URL } from '../constants';
 
 function DetailedRecipe({ editMode, stateObject }) {
   const [fileUpload, setFileUpload] = useState();
@@ -43,7 +44,7 @@ function DetailedRecipe({ editMode, stateObject }) {
     });
 
     formData.append('image', fileUpload);
-    axios.post('http://localhost:3000/api/recipes/newrecipe', formData);
+    axios.post(`${API_URL}/recipes/newrecipe`, formData);
   };
   return errorMessage ? (
     <div>
