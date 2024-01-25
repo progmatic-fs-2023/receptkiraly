@@ -43,17 +43,16 @@ function IngredientsComp({
         <div className="recipe-paper-header">Ingredients</div>
         <ul>
           <li>
-            <div/>
+            <div />
           </li>
           {ingredients.map((ingredient) => (
             <li key={ingredient.id}>
               <div className="recipe-paper-ingredients flex justify-between mx-10">
                 {ingredient.text}
                 {editMode ? (
-                  <button
-                    type="button"
-                    onClick={() => deleteIngredient(ingredient.id)}
-                  ><img src="/images/delete.svg" alt="Delete ingredient" className="w-6"/></button>
+                  <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
+                    <img src="/images/delete.svg" alt="Delete ingredient" className="w-6" />
+                  </button>
                 ) : null}
               </div>
             </li>
