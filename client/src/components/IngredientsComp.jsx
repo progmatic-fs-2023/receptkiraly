@@ -19,6 +19,8 @@ function IngredientsComp({
     setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
   };
 
+  const getTotalIngredients = () => ingredients.length;
+
   return (
     <div>
       {editMode ? (
@@ -41,24 +43,23 @@ function IngredientsComp({
         <div className="recipe-paper-header">Ingredients</div>
         <ul>
           <li>
-            <div className="recipe-paper-ingredients" />
+            <div/>
           </li>
           {ingredients.map((ingredient) => (
             <li key={ingredient.id}>
-              <div className="recipe-paper-ingredients flex flex-nowrap flex-row items-center justify-between my-3">
+              <div className="recipe-paper-ingredients flex justify-between mx-10">
                 {ingredient.text}
                 {editMode ? (
-                  <Button
+                  <button
                     type="button"
-                    text="Remove"
                     onClick={() => deleteIngredient(ingredient.id)}
-                  />
+                  ><img src="/images/delete.svg" alt="Delete ingredient" className="w-6"/></button>
                 ) : null}
               </div>
             </li>
           ))}
         </ul>
-        <div className="recipe-paper-footer" />
+        <div className="recipe-paper-footer mx-8 my-4">Total: {getTotalIngredients()}</div>
       </div>
     </div>
   );
