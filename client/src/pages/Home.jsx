@@ -10,6 +10,8 @@ import DetailedRecipe from '../components/DetailedRecipe';
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
+  const [allRecipes, setAllRecipes] = useState([{}, {}]);
+  const countRecipesShown = 6;
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
@@ -77,7 +79,7 @@ function Home() {
 
     try {
       // console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
-      const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
+      const response = await fetch(`${API_URL}/recipes/${id}`);
       const recipe = await response.json();
 
       setRecipeTitle(recipe.recipe_name);
@@ -105,7 +107,7 @@ function Home() {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
-    fetch(`${API_URL}/recipes/latest/5`)
+    fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
         return response.json();
@@ -113,8 +115,21 @@ function Home() {
       .then((data) => {
         setLatestRecipes(data);
       });
+    fetch(`${API_URL}/recipes`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Latest recipe cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setAllRecipes(data);
+      });
   }, []);
 
+  const nRandomRecipes = (n, recipes, condition) =>
+    recipes
+      .filter((recipe) => condition(recipe))
+      .sort(() => 0.5 - Math.random())
+      .slice(0, n);
   return (
     <div>
       <div>
@@ -175,16 +190,68 @@ function Home() {
 
         <div>
           <div>
-            <SwiperComponent title="Most Popular">
-              {latestRecipes.map((recipe) => (
+            <SwiperComponent title="Meals">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'meals',
+              ).map((recipe) => (
                 <RecipeCard
-                  key={recipe.id}
                   id={recipe.id}
+                  key={recipe.recipe_name}
                   imgUrl={`http://localhost:3000/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
-                  name={recipe.name}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                  openModal={openModal}
+                />
+              ))}
+            </SwiperComponent>
+            <SwiperComponent title="Desserts">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'desserts',
+              ).map((recipe) => (
+                <RecipeCard
+                  id={recipe.id}
+                  key={recipe.recipe_name}
+                  imgUrl={`http://localhost:3000/${recipe.img}`}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                  openModal={openModal}
+                />
+              ))}
+            </SwiperComponent>
+            <SwiperComponent title="Beverages">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'beverages',
+              ).map((recipe) => (
+                <RecipeCard
+                  id={recipe.id}
+                  key={recipe.recipe_name}
+                  imgUrl={`http://localhost:3000/${recipe.img}`}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
                   openModal={openModal}
                 />
               ))}

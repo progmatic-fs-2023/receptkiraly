@@ -38,7 +38,21 @@ export const listRecipes = async params => {
     result = await db.query(`${$RECIPE};`);
   }
   if (count && !userID) {
-    result = await db.query(`${$RECIPE} ORDER BY recipes.created_at DESC LIMIT $1`, [count]);
+    result = await db.query(
+      `
+    ${$RECIPE} 
+    WHERE 
+    recipes.id IN ( 
+      SELECT 
+        id 
+      FROM 
+        recipes 
+      ORDER BY 
+        recipes.created_at DESC 
+      LIMIT $1)
+    ORDER BY recipes.created_at DESC;`,
+      [count],
+    );
   }
   if (userID && !count) {
     result = await db.query(

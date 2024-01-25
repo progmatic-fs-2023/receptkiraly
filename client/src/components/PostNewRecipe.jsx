@@ -17,6 +17,18 @@ function DetailedRecipe({ editMode, stateObject }) {
   const [newIngredient, setNewIngredient] = useState('');
   const [errorMessage] = useState();
 
+  const emptyFields =
+    stateObject.title.value === '' ||
+    stateObject.image.value === undefined ||
+    stateObject.description.value === undefined ||
+    stateObject.mainCategory.value === undefined ||
+    stateObject.category.value === undefined ||
+    stateObject.difficulty.value === undefined ||
+    stateObject.labels.value.length === 0 ||
+    stateObject.ingredients.value.length === 0 ||
+    stateObject.time.value === undefined ||
+    stateObject.serves.value === undefined;
+
   const uploadRecipe = () => {
     const formData = new FormData();
     formData.append('recipeName', stateObject.title.value);
@@ -31,7 +43,7 @@ function DetailedRecipe({ editMode, stateObject }) {
     });
 
     formData.append('image', fileUpload);
-    axios.post('/api/recipes/newrecipe', formData);
+    axios.post('http://localhost:3000/api/recipes/newrecipe', formData);
   };
   return errorMessage ? (
     <div>
@@ -107,7 +119,18 @@ function DetailedRecipe({ editMode, stateObject }) {
             />
           </div>
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
+        {editMode ? (
+          <Button
+            text="Save"
+            onClick={uploadRecipe}
+            addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
+              emptyFields
+                ? 'custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 grayscale disabled-button'
+                : 'bg-amber-200'
+            } rounded text-lg `}
+            disabled={emptyFields}
+          />
+        ) : null}
       </form>
     </div>
   );

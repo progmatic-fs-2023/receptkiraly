@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { meals, desserts, beverages, labels } from './navigation/NavArrays';
+import { API_URL } from '../constants';
 
 import Button from './Button';
 
@@ -58,7 +59,7 @@ function SearchFilter({ setRecipesData }) {
       labels: selectedLabels,
     });
 
-    const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
+    const apiUrl = `${API_URL}/search${window.location.search}`;
     // console.log(`Filtered search URL: ${apiUrl}`);
 
     fetch(apiUrl)

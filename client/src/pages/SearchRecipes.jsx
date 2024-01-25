@@ -4,6 +4,7 @@ import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
 import Modal from '../components/Modal';
 import DetailedRecipe from '../components/DetailedRecipe';
+import { API_URL } from '../constants';
 
 function SearchRecipes() {
   const [recipesData, setRecipesData] = useState([]);
@@ -68,7 +69,7 @@ function SearchRecipes() {
   // ------------------- End of the Detailed Recipe States
 
   useEffect(() => {
-    const apiUrl = `http://localhost:3000/api/search${window.location.search}`;
+    const apiUrl = `${API_URL}/search${window.location.search}`;
     // console.log(`Navigation Search URL: ${apiUrl}`);
 
     fetch(apiUrl)
@@ -87,7 +88,7 @@ function SearchRecipes() {
 
     try {
       // console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
-      const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
+      const response = await fetch(`${API_URL}/recipes/${id}`);
       const recipe = await response.json();
 
       setRecipeTitle(recipe.recipe_name);
@@ -129,8 +130,8 @@ function SearchRecipes() {
         ))}
       </RecipeGrid>
       {isModalOpen && (
-        <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-min">
-          <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
+        <Modal title="Detailed Recipe" close={closeModal}>
+          <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
         </Modal>
       )}
     </section>
