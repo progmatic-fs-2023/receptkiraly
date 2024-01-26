@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL } from '../constants';
+import { API_URL, HOST_PORT_URL } from '../constants';
 import InfoCard from '../components/InfoCard';
 import RecipeGrid from '../components/RecipeGrid';
 import RecipeCard from '../components/RecipeCard';
@@ -89,7 +89,7 @@ function Profile() {
           {myRecipes.map((recipe) => (
             <RecipeCard
               key={recipe.name}
-              imgUrl={recipe.img}
+              imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
               minutes={recipe.time_minutes}
               difficulty={recipe.difficulty_level}
               serves={recipe.serve_count}

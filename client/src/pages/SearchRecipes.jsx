@@ -124,7 +124,7 @@ function SearchRecipes() {
             minutes={recipe.time_minutes}
             difficulty={recipe.difficulty_level}
             serves={recipe.serve_count}
-            name={recipe.name}
+            name={recipe.recipe_name}
             openModal={openModal}
           />
         ))}
