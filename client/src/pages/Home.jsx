@@ -43,7 +43,6 @@ function Home() {
       .slice(0, n);
 
   const [isCreateRecipe, setISCreateRecipe] = useState(false);
-  const editMode = true;
 
   return (
     <div>
@@ -98,7 +97,7 @@ function Home() {
                         addClassName="w-4/5"
                         close={() => setISCreateRecipe(false)}
                       >
-                        <DetailedRecipe editMode={editMode} />
+                        <DetailedRecipe editMode />
                       </Modal>
                     ) : null}
                   </div>
