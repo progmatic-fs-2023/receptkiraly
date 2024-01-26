@@ -70,7 +70,7 @@ const useRecipeCardModal = (id) => {
     setModalOpen(true);
 
     try {
-      console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
+      // console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
       const response = await fetch(`${API_URL}/recipes/${recipeId}`);
       const recipe = await response.json();
 
