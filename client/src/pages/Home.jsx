@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../constants';
+import { Add } from '@mui/icons-material';
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
@@ -66,9 +67,12 @@ function Home() {
                   Recipe King
                 </h2>
                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                  Find recipes
+                  Post Recipes
                 </h1>
-                <p className="leading-relaxed text-base">and meet the &quot;Recipe King&quot;</p>
+                <div>
+                  <Add />
+                </div>
+                <p className="leading-relaxed text-base">and bee &quot;Recipe King&quot;</p>
               </div>
             </div>
           </div>
