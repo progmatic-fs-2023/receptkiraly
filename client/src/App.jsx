@@ -32,6 +32,7 @@ function App() {
   const revalidateLogin = () => {
     fetch(`${API_URL}/login`, {
       method: 'PATCH',
+      credentials: 'include',
     })
       .then((response) => {
         if (response.ok) {

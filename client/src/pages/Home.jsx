@@ -8,11 +8,13 @@ import RecipeKingCard from '../components/RecipeKingCard';
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
+  const [allRecipes, setAllRecipes] = useState([{}, {}]);
+  const countRecipesShown = 6;
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
-    fetch(`${API_URL}/recipes/latest/5`)
+    fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
         return response.json();
@@ -20,8 +22,21 @@ function Home() {
       .then((data) => {
         setLatestRecipes(data);
       });
+    fetch(`${API_URL}/recipes`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Latest recipe cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setAllRecipes(data);
+      });
   }, []);
 
+  const nRandomRecipes = (n, recipes, condition) =>
+    recipes
+      .filter((recipe) => condition(recipe))
+      .sort(() => 0.5 - Math.random())
+      .slice(0, n);
   return (
     <div>
       <div>
@@ -84,15 +99,63 @@ function Home() {
 
         <div>
           <div>
-            <SwiperComponent title="Most Popular">
-              {latestRecipes.map(() => (
+            <SwiperComponent title="Meals">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'meals',
+              ).map((recipe) => (
                 <RecipeCard
-                  id={7}
-                  imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
-                  minutes={55}
-                  difficulty="Easy"
-                  serves={5}
-                  name="Air Fryer Fried Prawns"
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                />
+              ))}
+            </SwiperComponent>
+            <SwiperComponent title="Desserts">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'desserts',
+              ).map((recipe) => (
+                <RecipeCard
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                />
+              ))}
+            </SwiperComponent>
+            <SwiperComponent title="Beverages">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'beverages',
+              ).map((recipe) => (
+                <RecipeCard
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
                 />
               ))}
             </SwiperComponent>
