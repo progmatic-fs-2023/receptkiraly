@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import NavSubHeadItem from './NavSubHeadItem';
 import NavSubListItem from './NavSubListItem';
-import PopularThisWeekItem from './PopularThisWeekItem';
+import PopularThisWeekItem from './PopularThisWeek';
+import OurChefs from './OurChefs';
 import NavButton from './NavButton';
-import { meals, desserts, beverages, chefs } from './NavArrays';
+import { meals, desserts, beverages, chefs, mainCategoryTypes } from './NavArrays';
 
 // Pictures of dishes
 import dummyImg1 from './img/dishes/dummyImg1.webp';
@@ -81,18 +82,24 @@ function NavigationBar() {
                     <div className="flex mt-8 space-x-6">
                       <PopularThisWeekItem
                         img={dummyImg1}
-                        link="http://localhost:5173/recipe/1"
+                        link={link}
                         label="ChuckleChomp Deluxe"
+                        type="Meals"
+                        typelabel="meals"
                       />
                       <PopularThisWeekItem
                         img={dummyImg2}
-                        link="http://localhost:5173/recipe/2"
+                        link={link}
                         label="MeatyMirth Masterpiece"
+                        type="Desserts"
+                        typelabel="desserts"
                       />
                       <PopularThisWeekItem
                         img={dummyImg3}
-                        link="http://localhost:5173/recipe/3"
+                        link={link}
                         label="BrothBelly Giggler"
+                        type="Beverages"
+                        typelabel="beverages"
                       />
                     </div>
                   </div>
@@ -120,7 +127,13 @@ function NavigationBar() {
                     <p className="block text-xs uppercase text-body/60">Our Chefs</p>
                     <div className="flex mt-8 space-x-6">
                       {chefs.map((chef) => (
-                        <PopularThisWeekItem img={chef.img} link={link} label={chef.label} username={chef.username}/>
+                        <OurChefs
+                          key={chef.key}
+                          img={chef.img}
+                          link={link}
+                          label={chef.label}
+                          username={chef.username}
+                        />
                       ))}
                     </div>
                   </div>

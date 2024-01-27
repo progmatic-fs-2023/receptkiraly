@@ -41,19 +41,10 @@ export const labels = [
   { key: 10, value: 'seafood', label: 'Seafood' },
 ];
 
-export const chefsProf = [
-  { key: 1, value: 'executive', label: 'Executive' },
-  { key: 2, value: 'sous', label: 'Sous' },
-  { key: 3, value: 'pastry', label: 'Pastry' },
-  { key: 4, value: 'cold_kitchen', label: 'Cold kitchen' },
-  { key: 5, value: 'saucier', label: 'Saucier' },
-];
-
-export const chefsAmateur = [
-  { key: 1, value: 'dinner', label: 'Dinner' },
-  { key: 2, value: 'soup', label: 'Soup' },
-  { key: 3, value: 'italian', label: 'Italian' },
-  { key: 4, value: 'fast', label: 'Fast' },
+export const mainCategoryTypes = [
+  { key: 1, type: 'meals', label: 'Meal' },
+  { key: 2, type: 'desserts', label: 'Desserts' },
+  { key: 1, type: 'beverages', label: 'Beverages' },
 ];
 
 export const chefs = [
