@@ -50,7 +50,7 @@ function About() {
               height="100%"
               className="absolute inset-0"
               title="map"
-              src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=%C4%B0zmir+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+              src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1036%20Budapest,%20B%C3%A9csi%20%C3%BAt%2053-55,%20Hungary+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
             />
             <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md mx-6">
               <div className="lg:w-1/2 px-6">
