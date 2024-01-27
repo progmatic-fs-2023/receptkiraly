@@ -54,7 +54,14 @@ function DetailedRecipe({ editMode, recipeID }) {
     });
     formData.append('image', fileUpload);
 
-    axios.post('/api/recipes/newrecipe', formData);
+    axios
+      .post('/api/recipes/newrecipe', formData)
+      .then(function (response) {
+        alert('Recipe upload is successful!');
+      })
+      .catch(function (error) {
+        console.log('error');
+      });
   };
 
   return errorMessage ? (
