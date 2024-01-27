@@ -12,7 +12,8 @@ SELECT
   users.username AS username,
   category.name AS category_name, 
   main_category.name AS main_category_name, 
-  labels.name AS label_name
+  labels.name AS label_name,
+  ingredients.name AS ingredient_name
 
 FROM recipes
 
@@ -29,7 +30,11 @@ INNER JOIN recipes_labels
   ON recipes_labels.recipe_id = recipes.id 
 
 INNER JOIN labels 
-  ON labels.id = recipes_labels.label_id`;
+  ON labels.id = recipes_labels.label_id
+
+INNER JOIN ingredients
+  ON ingredients.recipe_id = recipes.id
+`;
 
 export const listRecipes = async params => {
   let result;
@@ -38,7 +43,21 @@ export const listRecipes = async params => {
     result = await db.query(`${$RECIPE};`);
   }
   if (count && !userID) {
-    result = await db.query(`${$RECIPE} ORDER BY recipes.created_at DESC LIMIT $1`, [count]);
+    result = await db.query(
+      `
+    ${$RECIPE} 
+    WHERE 
+    recipes.id IN ( 
+      SELECT 
+        id 
+      FROM 
+        recipes 
+      ORDER BY 
+        recipes.created_at DESC 
+      LIMIT $1)
+    ORDER BY recipes.created_at DESC;`,
+      [count],
+    );
   }
   if (userID && !count) {
     result = await db.query(
@@ -68,6 +87,7 @@ export const addNewRecipe = async (
   recipeServeCount,
   recipeCategory,
   recipeLabels,
+  recipeIngredients,
   imagePath,
   userID,
 ) => {
@@ -89,7 +109,7 @@ export const addNewRecipe = async (
     [
       recipeName,
       recipeDescription,
-      imagePath,
+      `http://localhost:3000/${imagePath}`,
       recipeTimeMinutes,
       recipeDifficultyLevel,
       recipeServeCount,
@@ -109,6 +129,30 @@ export const addNewRecipe = async (
     ($1, (SELECT id FROM labels WHERE name = $2))
     `,
       [recipeID, recipeLabels[i]],
+    );
+  }
+
+  for (let i = 0; i < recipeIngredients.length; i += 1) {
+    db.query(
+      `
+      INSERT INTO ingredients
+      (recipe_id, name)
+      VALUES
+      ($1, $2)
+      `,
+      [recipeID, recipeIngredients[i]],
+    );
+  }
+
+  for (let i = 0; i < recipeIngredients.length; i += 1) {
+    db.query(
+      `
+      INSERT INTO ingredients
+      (recipe_id, name)
+      VALUES
+      ($1, $2)
+      `,
+      [recipeID, recipeIngredients[i]],
     );
   }
 

@@ -19,6 +19,8 @@ function IngredientsComp({
     setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
   };
 
+  const getTotalIngredients = () => ingredients.length;
+
   return (
     <div>
       {editMode ? (
@@ -37,28 +39,23 @@ function IngredientsComp({
           </div>
         </label>
       ) : null}
-      <div className="recipe-paper">
+      <div className="recipe-paper flex flex-col flex-nowrap justify-between">
         <div className="recipe-paper-header">Ingredients</div>
         <ul>
-          <li>
-            <div className="recipe-paper-ingredients" />
-          </li>
           {ingredients.map((ingredient) => (
             <li key={ingredient.id}>
-              <div className="recipe-paper-ingredients flex flex-nowrap flex-row items-center justify-between my-3">
+              <div className="recipe-paper-ingredients flex justify-between mx-10">
                 {ingredient.text}
                 {editMode ? (
-                  <Button
-                    type="button"
-                    text="Remove"
-                    onClick={() => deleteIngredient(ingredient.id)}
-                  />
+                  <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
+                    <img src="/images/delete.svg" alt="Delete ingredient" className="w-6" />
+                  </button>
                 ) : null}
               </div>
             </li>
           ))}
         </ul>
-        <div className="recipe-paper-footer" />
+        <div className="recipe-paper-footer mx-8 my-4">Total: {getTotalIngredients()}</div>
       </div>
     </div>
   );
@@ -66,7 +63,7 @@ function IngredientsComp({
 
 IngredientsComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  ingredients: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   setIngredients: PropTypes.func.isRequired,
   newIngredient: PropTypes.string.isRequired,
   setNewIngredient: PropTypes.func.isRequired,

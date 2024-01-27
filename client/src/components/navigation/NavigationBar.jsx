@@ -21,7 +21,8 @@ import chef6 from './img/chefs/chef6.webp';
 import chef7 from './img/chefs/chef7.webp';
 
 function NavigationBar() {
-  const link = 'http://localhost:5173/search';
+  const { port } = window.location;
+  const link = `http://localhost:${port}/search`;
 
   const [activeMenu, setActiveMenu] = useState(null);
 
@@ -65,34 +66,25 @@ function NavigationBar() {
                   <div className="bg-zinc-50 pr-16 py-12 relative">
                     <ul className="flex space-x-20">
                       <li>
-                        <NavSubHeadItem text="Meals" />
+                        <NavSubHeadItem label="Meals" />
                         <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            itemsArray={meals}
-                            link="http://localhost:5173/search?q="
-                          />
+                          <NavSubListItem itemsArray={meals} link={link} />
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem text="Desserts" />
+                        <NavSubHeadItem label="Desserts" />
                         <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            itemsArray={desserts}
-                            link="http://localhost:5173/search?q="
-                          />
+                          <NavSubListItem itemsArray={desserts} link={link} />
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem text="Beverages" />
+                        <NavSubHeadItem label="Beverages" />
                         <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            itemsArray={beverages}
-                            link="http://localhost:5173/search?q="
-                          />
+                          <NavSubListItem itemsArray={beverages} link={link} />
                         </ul>
                       </li>
                     </ul>
-                    <NavButton text="Explore All Recipes" />
+                    <NavButton label="Explore All Recipes" link={link} />
                   </div>
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
@@ -100,17 +92,17 @@ function NavigationBar() {
                       <PopularThisWeekItem
                         img={dummyImg1}
                         link="http://localhost:5173/recipe/1"
-                        text="ChuckleChomp Deluxe"
+                        label="ChuckleChomp Deluxe"
                       />
                       <PopularThisWeekItem
                         img={dummyImg2}
                         link="http://localhost:5173/recipe/2"
-                        text="MeatyMirth Masterpiece"
+                        label="MeatyMirth Masterpiece"
                       />
                       <PopularThisWeekItem
                         img={dummyImg3}
                         link="http://localhost:5173/recipe/3"
-                        text="BrothBelly Giggler"
+                        label="BrothBelly Giggler"
                       />
                     </div>
                   </div>
@@ -137,7 +129,7 @@ function NavigationBar() {
                   <div className="bg-zinc-50 pr-16 py-12 relative">
                     <ul className="flex space-x-20">
                       <li>
-                        <NavSubHeadItem text="Professional" />
+                        <NavSubHeadItem label="Professional" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={chefsProf}
@@ -146,7 +138,7 @@ function NavigationBar() {
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem text="Amateur" />
+                        <NavSubHeadItem label="Amateur" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={chefsAmateur}
@@ -156,18 +148,18 @@ function NavigationBar() {
                       </li>
                     </ul>
 
-                    <NavButton text="Explore Our Shefs" />
+                    <NavButton label="Explore Our Shefs" link="/*" />
                   </div>
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
                     <div className="flex mt-8 space-x-6">
-                      <PopularThisWeekItem img={chef1} link={link} text="Whisker Wendy" />
-                      <PopularThisWeekItem img={chef2} link={link} text="Giggles Gary" />
-                      <PopularThisWeekItem img={chef3} link={link} text="Laughing Larry" />
-                      <PopularThisWeekItem img={chef4} link={link} text="Snicker Steve" />
-                      <PopularThisWeekItem img={chef5} link={link} text="Jocular James" />
-                      <PopularThisWeekItem img={chef6} link={link} text="Chuckle Charlie" />
-                      <PopularThisWeekItem img={chef7} link={link} text="Humorous Hannah" />
+                      <PopularThisWeekItem img={chef1} link={link} label="Whisker Wendy" />
+                      <PopularThisWeekItem img={chef2} link={link} label="Giggles Gary" />
+                      <PopularThisWeekItem img={chef3} link={link} label="Laughing Larry" />
+                      <PopularThisWeekItem img={chef4} link={link} label="Snicker Steve" />
+                      <PopularThisWeekItem img={chef5} link={link} label="Jocular James" />
+                      <PopularThisWeekItem img={chef6} link={link} label="Chuckle Charlie" />
+                      <PopularThisWeekItem img={chef7} link={link} label="Humorous Hannah" />
                     </div>
                   </div>
                 </div>

@@ -23,7 +23,7 @@ h1 {
 
 .custom-div-shadow {
   box-shadow: 0px 1px 4px 1px #0000004f;
-  }
+}
 .custom-button-color {
   background: #ffab56;
   background-image: -webkit-linear-gradient(top, #ffab56, #ff8811);
@@ -64,26 +64,30 @@ h1 {
 }
 
 .recipe-paper {
+  font-family: 'Ammys Handwriting', sans-serif;
   background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  border: 1px solid #ccc;
   overflow: hidden;
+  box-shadow: 0px 2px 3px 0px #00000078;
+  min-height: 250px;
+  font-weight: bold;
 }
 
 .recipe-paper-header {
   padding: 10px;
   text-align: center;
-  background-color: #f9f9f9;
-  border-bottom: 2px solid #ccc;
-  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .recipe-paper-ingredients {
   padding: 10px;
+  border-bottom: 1px solid #ccc;
+  color: #1e73f3;
+  font-size: 0.9em;
 }
 
 .recipe-paper-footer {
-  height: 20px;
-  background-color: #f9f9f9;
-  border-top: 2px solid #ccc;
+  padding: 10px;
+  text-align: right;
+  font-size: 1.1em;
 }

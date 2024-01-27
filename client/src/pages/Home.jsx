@@ -1,18 +1,28 @@
 import { useEffect, useState } from 'react';
+import { Add } from '@mui/icons-material';
 import { API_URL } from '../constants';
+
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
 import RecipeKingCard from '../components/RecipeKingCard';
+import Modal from '../components/Modal';
+import DetailedRecipe from '../components/DetailedRecipe';
+import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
-  const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
+  const [latestRecipes, setLatestRecipes] = useState([]);
+  const [allRecipes, setAllRecipes] = useState([]);
+  const countRecipesShown = 6;
+
+  const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
     });
-    fetch(`${API_URL}/recipes/latest/5`)
+    fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
         return response.json();
@@ -20,7 +30,23 @@ function Home() {
       .then((data) => {
         setLatestRecipes(data);
       });
+    fetch(`${API_URL}/recipes`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Latest recipe cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setAllRecipes(data);
+      });
   }, []);
+
+  const nRandomRecipes = (n, recipes, condition) =>
+    recipes
+      .filter((recipe) => condition(recipe))
+      .sort(() => 0.5 - Math.random())
+      .slice(0, n);
+
+  const [isCreateRecipe, setISCreateRecipe] = useState(false);
 
   return (
     <div>
@@ -47,13 +73,41 @@ function Home() {
           <div className=" flex basis-2/6 border-x">
             <div className="m-auto">
               <div className="text-center ">
-                <h2 className="text-xs text-orange-400 tracking-widest font-medium title-font mb-1">
-                  Recipe King
+                <h2 className="text-4xl text-orange-400 tracking-widest font-medium title-font mb-5">
+                  Post Recipes
                 </h2>
-                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                  Find recipes
-                </h1>
-                <p className="leading-relaxed text-base">and meet the &quot;Recipe King&quot;</p>
+
+                <div>
+                  <div className="flex w-full max-w-md bg-gray-100 p-4 rounded-lg shadow mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center">
+                        <div className="mx-auto scale-150 hover:text-orange-400">
+                          <button
+                            aria-label="Click this to add a new recipe"
+                            type="button"
+                            onClick={() => setISCreateRecipe(true)}
+                          >
+                            <Add />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    {isCreateRecipe ? (
+                      <Modal
+                        title="Create New Recipes"
+                        addClassName="w-4/5"
+                        close={() => setISCreateRecipe(false)}
+                      >
+                        <DetailedRecipe editMode stateObject={stateObject} />
+                      </Modal>
+                    ) : null}
+                  </div>
+                </div>
+
+                <p className="leading-relaxed text-base">and be the &quot;Recipe King&quot;</p>
               </div>
             </div>
           </div>
@@ -64,16 +118,14 @@ function Home() {
                 <Carousel title="Latest recipes">
                   {latestRecipes.map((recipe) => (
                     <RecipeCard
-                      key={recipe.recipe_name}
+                      key={recipe.id}
+                      id={recipe.id}
                       imgUrl={recipe.img}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
                       name={recipe.recipe_name}
-                      description={recipe.description}
-                      category={recipe.category_name}
-                      mainCategory={recipe.main_category_name}
-                      labels={recipe.label_name}
+                      openModal={openModal}
                     />
                   ))}
                 </Carousel>
@@ -84,21 +136,81 @@ function Home() {
 
         <div>
           <div>
-            <SwiperComponent title="Most Popular">
-              {latestRecipes.map(() => (
+            <SwiperComponent title="Meals">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'meals',
+              ).map((recipe) => (
                 <RecipeCard
-                  id={7}
-                  imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
-                  minutes={55}
-                  difficulty="Easy"
-                  serves={5}
-                  name="Air Fryer Fried Prawns"
+                  id={recipe.id}
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                  openModal={openModal}
+                />
+              ))}
+            </SwiperComponent>
+            <SwiperComponent title="Desserts">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'desserts',
+              ).map((recipe) => (
+                <RecipeCard
+                  id={recipe.id}
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                  openModal={openModal}
+                />
+              ))}
+            </SwiperComponent>
+            <SwiperComponent title="Beverages">
+              {nRandomRecipes(
+                countRecipesShown,
+                allRecipes,
+                (recipe) => recipe.main_category_name === 'beverages',
+              ).map((recipe) => (
+                <RecipeCard
+                  id={recipe.id}
+                  key={recipe.recipe_name}
+                  imgUrl={recipe.img}
+                  minutes={recipe.time_minutes}
+                  difficulty={recipe.difficulty_level}
+                  serves={recipe.serve_count}
+                  name={recipe.recipe_name}
+                  description={recipe.description}
+                  category={recipe.category_name}
+                  mainCategory={recipe.main_category_name}
+                  labels={recipe.label_name}
+                  openModal={openModal}
                 />
               ))}
             </SwiperComponent>
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
+          <DetailedRecipe editMode={false} recipeID={selectedRecipe} stateObject={stateObject} />
+        </Modal>
+      )}
     </div>
   );
 }
