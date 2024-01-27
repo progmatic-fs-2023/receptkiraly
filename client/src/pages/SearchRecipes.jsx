@@ -15,7 +15,6 @@ function SearchRecipes() {
 
   useEffect(() => {
     const apiUrl = `${API_URL}/search${window.location.search}`;
-    // console.log(`Navigation Search URL: ${apiUrl}`);
 
     fetch(apiUrl)
       .then((response) => {
@@ -26,7 +25,6 @@ function SearchRecipes() {
       .then((recipes) => {
         setErrorMessage('');
         setRecipesData(recipes);
-        // console.log(recipes);
       })
       .catch((err) => {
         setErrorMessage(err.message);

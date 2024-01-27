@@ -60,7 +60,6 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
     });
 
     const apiUrl = `${API_URL}/search${window.location.search}`;
-    // console.log(`Filtered search URL: ${apiUrl}`);
 
     fetch(apiUrl)
       .then((response) => {
@@ -70,7 +69,6 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
         return response.json();
       })
       .then((recipes) => {
-        // console.log(recipes);
         setErrorMessage('');
         setRecipesData(recipes);
       })
