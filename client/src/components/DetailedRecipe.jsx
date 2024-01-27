@@ -31,9 +31,20 @@ function DetailedRecipe({ editMode, stateObject }) {
     });
 
     formData.append('image', fileUpload);
-    axios.post(`${API_URL}/recipes/newrecipe`, formData, {
-      withCredentials: true,
-    });
+    axios
+      .post(`${API_URL}/recipes/newrecipe`, formData, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          alert('Recipe upload is successful!'); // eslint-disable-line no-alert
+        } else {
+          throw new Error('Error while uploading recipe');
+        }
+      })
+      .catch((error) => {
+        alert(error.message); // eslint-disable-line no-alert
+      });
   };
   return errorMessage ? (
     <div>
