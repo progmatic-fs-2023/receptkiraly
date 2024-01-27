@@ -81,7 +81,9 @@ function RecipeCard({
         <ResponsiveImage imgUrl={imgUrl} />
         <IconContainer>
           {minutes ? <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} /> : null}
-          {difficulty ? <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty} /> : null}
+          {difficulty ? (
+            <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty.toString()} />
+          ) : null}
           {serves ? <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} /> : null}
         </IconContainer>
         <div className="flex justify-center mt-3">
@@ -96,7 +98,7 @@ RecipeCard.propTypes = {
   id: PropTypes.number.isRequired,
   imgUrl: PropTypes.string.isRequired,
   minutes: PropTypes.number,
-  difficulty: PropTypes.string,
+  difficulty: PropTypes.number,
   serves: PropTypes.number,
   name: PropTypes.string.isRequired,
   actions: PropTypes.bool,

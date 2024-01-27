@@ -40,6 +40,7 @@ function Banner() {
   const handleLogout = () => {
     fetch(`${API_URL}/login`, {
       method: 'DELETE',
+      credentials: 'include',
     })
       .then((response) => {
         if (response.ok) {

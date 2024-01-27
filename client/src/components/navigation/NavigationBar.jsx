@@ -129,7 +129,7 @@ function NavigationBar() {
                   <div className="bg-zinc-50 pr-16 py-12 relative">
                     <ul className="flex space-x-20">
                       <li>
-                        <NavSubHeadItem text="Professional" />
+                        <NavSubHeadItem label="Professional" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={chefsProf}
@@ -138,7 +138,7 @@ function NavigationBar() {
                         </ul>
                       </li>
                       <li>
-                        <NavSubHeadItem text="Amateur" />
+                        <NavSubHeadItem label="Amateur" />
                         <ul className="mt-8 space-y-2">
                           <NavSubListItem
                             itemsArray={chefsAmateur}
@@ -148,7 +148,7 @@ function NavigationBar() {
                       </li>
                     </ul>
 
-                    <NavButton label="Explore Our Shefs" />
+                    <NavButton label="Explore Our Shefs" link="/*" />
                   </div>
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>

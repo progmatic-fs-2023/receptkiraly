@@ -6,18 +6,18 @@ export const meals = [
 ];
 
 export const desserts = [
-  { key: 1, value: 'cakes', label: 'Cakes' },
-  { key: 2, value: 'frozen_desserts', label: 'Frozen Desserts' },
-  { key: 3, value: 'chocolate_and_candies', label: 'Chocolate and Candies' },
-  { key: 4, value: 'fruit-desserts', label: 'Fruit Desserts' },
+  { key: 5, value: 'cakes', label: 'Cakes' },
+  { key: 6, value: 'frozen_desserts', label: 'Frozen Desserts' },
+  { key: 7, value: 'chocolate_and_candies', label: 'Chocolate and Candies' },
+  { key: 8, value: 'fruit-desserts', label: 'Fruit Desserts' },
 ];
 
 export const beverages = [
-  { key: 1, value: 'hot_drinks', label: 'Hot Drinks' },
-  { key: 2, value: 'cold_drinks', label: 'Cold Drinks' },
-  { key: 3, value: 'soft_drinks', label: 'Soft Drinks' },
-  { key: 4, value: 'juices', label: 'Juices' },
-  { key: 5, value: 'smoothies', label: 'Smoothies' },
+  { key: 9, value: 'hot_drinks', label: 'Hot Drinks' },
+  { key: 10, value: 'cold_drinks', label: 'Cold Drinks' },
+  { key: 11, value: 'soft_drinks', label: 'Soft Drinks' },
+  { key: 12, value: 'juices', label: 'Juices' },
+  { key: 13, value: 'smoothies', label: 'Smoothies' },
 ];
 
 export const labels = [
@@ -25,7 +25,7 @@ export const labels = [
   { key: 2, value: 'vegetarian', label: 'Vegetarian' },
   { key: 3, value: 'nut-free', label: 'Nut-Free' },
   { key: 4, value: 'egg-free', label: 'Egg-Free' },
-  { key: 5, value: 'dairy-free', label: 'Diary-Free' },
+  { key: 5, value: 'dairy-free', label: 'Dairy-Free' },
   { key: 6, value: 'low-carb', label: 'Low-Carb' },
   { key: 7, value: 'spicy', label: 'Spicy' },
   { key: 8, value: 'alcoholic', label: 'Alcoholic' },

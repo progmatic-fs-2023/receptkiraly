@@ -61,9 +61,9 @@ function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName 
 Icons.propTypes = {
   editMode: PropTypes.bool.isRequired,
   minutes: PropTypes.number.isRequired,
-  setMinutes: PropTypes.bool.isRequired,
+  setMinutes: PropTypes.func.isRequired,
   serves: PropTypes.number.isRequired,
-  setServes: PropTypes.bool.isRequired,
+  setServes: PropTypes.func.isRequired,
   addClassName: PropTypes.string,
 };
 Icons.defaultProps = {

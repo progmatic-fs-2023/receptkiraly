@@ -109,7 +109,7 @@ export const addNewRecipe = async (
     [
       recipeName,
       recipeDescription,
-      imagePath,
+      `http://localhost:3000/${imagePath}`,
       recipeTimeMinutes,
       recipeDifficultyLevel,
       recipeServeCount,

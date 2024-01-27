@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL, HOST_PORT_URL } from '../constants';
+import { API_URL } from '../constants';
 
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
@@ -11,7 +11,6 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Home() {
-  const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
   const [allRecipes, setAllRecipes] = useState([{}, {}]);
   const countRecipesShown = 6;
@@ -19,9 +18,6 @@ function Home() {
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
 
   useEffect(() => {
-    fetch(`${API_URL}`).then((response) => {
-      if (response.ok) setIsConnect(true);
-    });
     fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
@@ -54,15 +50,6 @@ function Home() {
         <img src="/images/banner-v2.png" alt="Banner" className="w-full relative z-10" />
       </div>
       <div className="container mx-auto my-2">
-        <div>
-          Hello project!
-          <ul>
-            <li>
-              {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
-            </li>
-          </ul>
-        </div>
-
         <div className="flex">
           <div className=" flex text-center justify-center items-center basis-2/6 ">
             <div>
@@ -101,7 +88,7 @@ function Home() {
                         addClassName="w-4/5"
                         close={() => setISCreateRecipe(false)}
                       >
-                        <DetailedRecipe editMode />
+                        <DetailedRecipe editMode stateObject={stateObject} />
                       </Modal>
                     ) : null}
                   </div>
@@ -120,7 +107,7 @@ function Home() {
                     <RecipeCard
                       key={recipe.id}
                       id={recipe.id}
-                      imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                      imgUrl={recipe.img}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
@@ -145,7 +132,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -167,7 +154,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -189,7 +176,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -208,7 +195,7 @@ function Home() {
 
       {isModalOpen && (
         <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
-          <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
+          <DetailedRecipe editMode={false} recipeID={selectedRecipe} stateObject={stateObject} />
         </Modal>
       )}
     </div>

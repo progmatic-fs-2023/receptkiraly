@@ -10,9 +10,9 @@ const useRecipeCardModal = () => {
   const [recipeTitle, setRecipeTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImgUrl] = useState('');
-  const [minutes, setMinutes] = useState('');
-  const [difficulty, setDifficulty] = useState('');
-  const [serves, setServes] = useState('');
+  const [minutes, setMinutes] = useState(0);
+  const [difficulty, setDifficulty] = useState(1);
+  const [serves, setServes] = useState(0);
   const [category, setCategory] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -83,6 +83,7 @@ const useRecipeCardModal = () => {
       setCategory(recipe.category_name);
       setSelectedMainCategory(recipe.main_category_name);
       setSelectedOptions(recipe.label_name);
+      setIngredients(recipe.ingredient_name);
     } catch (error) {
       setErrorMessage(error);
       throw new Error(`Latest recipe cannot be fetched: ${errorMessage}`);
@@ -91,6 +92,16 @@ const useRecipeCardModal = () => {
 
   const closeModal = () => {
     setModalOpen(false);
+    setRecipeTitle('');
+    setDescription('');
+    setImgUrl('');
+    setMinutes(0);
+    setDifficulty(1);
+    setServes(0);
+    setCategory('');
+    setSelectedMainCategory('');
+    setSelectedOptions([]);
+    setIngredients([]);
     setEditUsersRecipe(false);
   };
 

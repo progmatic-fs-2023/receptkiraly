@@ -44,7 +44,9 @@ function DetailedRecipe({ editMode, stateObject }) {
     });
 
     formData.append('image', fileUpload);
-    axios.post(`${API_URL}/recipes/newrecipe`, formData);
+    axios.post(`${API_URL}/recipes/newrecipe`, formData, {
+      withCredentials: true,
+    });
   };
   return errorMessage ? (
     <div>

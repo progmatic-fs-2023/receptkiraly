@@ -176,8 +176,15 @@ export const modify = async (req, res) => {
     recipeIngredients,
   } = req.body;
   console.log(req.body);
-  const imagePathBackslash = req.file.path;
-  const imagePath = imagePathBackslash.replace(/\\/g, '/');
+  console.log(req.file);
+
+  let imagePath;
+
+  if (req.file !== undefined) {
+    imagePath = `http://localhost:3000/${req.file.path.replace(/\\/g, '/')}`;
+  } else {
+    imagePath = req.body.image;
+  }
 
   const recipe = await services.modifyRecipe(
     recipeID,

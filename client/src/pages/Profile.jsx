@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL, HOST_PORT_URL } from '../constants';
+import { API_URL } from '../constants';
 import InfoCard from '../components/InfoCard';
 import RecipeGrid from '../components/RecipeGrid';
 import RecipeCard from '../components/RecipeCard';
@@ -25,7 +25,7 @@ function Profile() {
   } = useRecipeCardModal();
 
   useEffect(() => {
-    fetch(`${API_URL}/user/recipes/`)
+    fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('Recipes cannot be fetched');
         return response.json();
@@ -33,7 +33,7 @@ function Profile() {
       .then((data) => {
         setMyRecipes(data);
       });
-    fetch(`${API_URL}/user/`)
+    fetch(`${API_URL}/user/`, { credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('User cannot be fetched');
         return response.json();
@@ -102,7 +102,7 @@ function Profile() {
             <RecipeCard
               id={recipe.id}
               key={recipe.name}
-              imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+              imgUrl={recipe.img}
               minutes={recipe.time_minutes}
               difficulty={recipe.difficulty_level}
               serves={recipe.serve_count}
@@ -111,6 +111,7 @@ function Profile() {
               category={recipe.category_name}
               mainCategory={recipe.main_category_name}
               labels={recipe.label_name}
+              ingredients={recipe.ingredient_name}
               openModal={openModal}
               actions
               editButtonClicked={editButtonClicked}
@@ -124,7 +125,7 @@ function Profile() {
           addClassName="w-4/5"
           close={() => setCreatingNewRecipe(false)}
         >
-          <DetailedRecipe editMode />
+          <DetailedRecipe editMode stateObject={stateObject} />
         </Modal>
       ) : null}
 

@@ -10,7 +10,7 @@ function IngredientsComp({
 }) {
   const addIngredient = () => {
     if (newIngredient.trim() !== '') {
-      setIngredients([...ingredients, { id: Date.now(), text: newIngredient }]);
+      setIngredients([...ingredients, newIngredient]);
       setNewIngredient('');
     }
   };
@@ -43,9 +43,9 @@ function IngredientsComp({
         <div className="recipe-paper-header">Ingredients</div>
         <ul>
           {ingredients.map((ingredient) => (
-            <li key={ingredient.id}>
+            <li key={ingredient}>
               <div className="recipe-paper-ingredients flex justify-between mx-10">
-                {ingredient.text}
+                {ingredient}
                 {editMode ? (
                   <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
                     <img src="/images/delete.svg" alt="Delete ingredient" className="w-6" />
@@ -63,7 +63,7 @@ function IngredientsComp({
 
 IngredientsComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  ingredients: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   setIngredients: PropTypes.func.isRequired,
   newIngredient: PropTypes.string.isRequired,
   setNewIngredient: PropTypes.func.isRequired,
