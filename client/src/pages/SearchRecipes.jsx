@@ -12,10 +12,11 @@ function SearchRecipes() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+
   useEffect(() => {
     const apiUrl = `${API_URL}/search${window.location.search}`;
     // console.log(`Navigation Search URL: ${apiUrl}`);
-    setErrorMessage('');
+
     fetch(apiUrl)
       .then((response) => {
         if (response.status === 404) throw new Error('No recipes found for that filter');
@@ -23,14 +24,18 @@ function SearchRecipes() {
       })
 
       .then((recipes) => {
+        setErrorMessage('');
         setRecipesData(recipes);
         // console.log(recipes);
+      })
+      .catch((err) => {
+        setErrorMessage(err.message);
       });
   }, []);
 
   return (
     <section className="container mx-auto my-2">
-      <SearchForm setRecipesData={setRecipesData} />
+      <SearchForm setRecipesData={setRecipesData} setErrorMessage={setErrorMessage} />
 
       {errorMessage === '' ? (
         <RecipeGrid>

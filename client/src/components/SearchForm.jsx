@@ -6,7 +6,7 @@ import { API_URL } from '../constants';
 
 import Button from './Button';
 
-function SearchFilter({ setRecipesData }) {
+function SearchFilter({ setRecipesData, setErrorMessage }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Search from the text input.
@@ -65,16 +65,17 @@ function SearchFilter({ setRecipesData }) {
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          setRecipesData([]);
-          throw new Error(`Network response was not ok: ${response.statusText}`);
+          throw new Error('No recipes found for that filter');
         }
         return response.json();
       })
       .then((recipes) => {
         // console.log(recipes);
+        setErrorMessage('');
         setRecipesData(recipes);
       })
-      .catch(() => {
+      .catch((err) => {
+        setErrorMessage(err.message);
         setRecipesData([]);
       });
   };
@@ -206,6 +207,7 @@ function SearchFilter({ setRecipesData }) {
 
 SearchFilter.propTypes = {
   setRecipesData: PropTypes.func.isRequired,
+  setErrorMessage: PropTypes.bool.isRequired,
 };
 
 export default SearchFilter;
