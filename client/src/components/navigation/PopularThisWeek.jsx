@@ -3,16 +3,22 @@ import PropTypes from 'prop-types';
 function PopularThisWeek({ img, label, link, type, typelabel }) {
   return (
     <div>
-      <div className="text-body max-w-[204px]">
+      <div className="text-body text-center   max-w-[204px]">
         <a
-          className="hover:text-orange-400 text-body max-w-[204px]"
+          className="hover:text-orange-400  text-body max-w-[204px]"
           href={`${link}?type=${typelabel}`}
         >
-          <span>Best {type}</span>
-          <img src={img} loading="lazy" width="1240" className="mb-4 rounded" alt="" />
+          <span className="capitalize font-medium">Best {type}</span>
+          <img
+            src={img}
+            loading="lazy"
+            width="1240"
+            className="mb-4 rounded my-hover-class p-2"
+            alt=""
+          />
         </a>
-        <span className="capitalize font-medium text-sm">{label}</span>
       </div>
+      <span className="capitalize text-left  font-medium text-sm">{label}</span>
     </div>
   );
 }

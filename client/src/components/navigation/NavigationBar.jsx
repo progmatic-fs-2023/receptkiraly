@@ -4,7 +4,7 @@ import NavSubListItem from './NavSubListItem';
 import PopularThisWeekItem from './PopularThisWeek';
 import OurChefs from './OurChefs';
 import NavButton from './NavButton';
-import { meals, desserts, beverages, chefs, mainCategoryTypes } from './NavArrays';
+import { meals, desserts, beverages, chefs } from './NavArrays';
 
 // Pictures of dishes
 import dummyImg1 from './img/dishes/dummyImg1.webp';

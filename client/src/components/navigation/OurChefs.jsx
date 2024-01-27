@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function PopularThisWeek({ img, link, label, username }) {
   return (
     <a
-      className="hover:text-primary text-body max-w-[204px] "
+      className="hover:text-orange-400 my-hover-class  text-body max-w-[204px] "
       href={`${link}?username=${username}`}
     >
       <img src={img} loading="lazy" width="1240" className="mb-4 rounded" alt="" />
