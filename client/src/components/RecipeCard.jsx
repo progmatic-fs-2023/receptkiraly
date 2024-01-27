@@ -4,19 +4,22 @@ import Icon from './Icon';
 import ResponsiveImage from './ResponsiveImage';
 import IconContainer from './IconContainer';
 
-/* <RecipeCard
-  id={7}
-  imgUrl="https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2480_1860.webp 2480w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_2074_1556.webp 2074w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1735_1301.webp 1735w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1452_1089.webp 1452w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1215_911.webp 1215w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_1016_762.webp 1016w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_850_638.webp 850w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_711_533.webp 711w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_595_446.webp 595w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_498_374.webp 498w, https://d2vsf1hynzxim7.cloudfront.net/production/media/23976/responsive-images/air-fryer-prawns___default_416_312.webp 416w"
-  minutes={55}
-  difficulty="Easy"
-  serves={5}
-  name="Air Fryer Fried Prawns"
-/> */
+function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions, openModal }) {
+  const handleOnKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      openModal(id);
+    }
+  };
 
-function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions }) {
   return (
     <div>
-      <a className="block group" href={`/recipe/${id}`}>
+      <div
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleOnKeyDown}
+        className="block group"
+        onClick={() => openModal(id)}
+      >
         {actions ? (
           <div className="justify-between flex">
             <div className="relative  ">
@@ -40,7 +43,7 @@ function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions }) 
         <div className="flex justify-center mt-3">
           <h3 className="group-hover:text-primary">{name}</h3>
         </div>
-      </a>
+      </div>
     </div>
   );
 }
@@ -53,6 +56,7 @@ RecipeCard.propTypes = {
   serves: PropTypes.number,
   name: PropTypes.string.isRequired,
   actions: PropTypes.bool,
+  openModal: PropTypes.func.isRequired,
 };
 
 RecipeCard.defaultProps = {

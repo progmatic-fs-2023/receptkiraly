@@ -24,7 +24,7 @@ export const get = async (req, res) => {
     const recipe = await services.getRecipe(recipeID);
 
     if (recipe) {
-      res.status(200).json(preprocess(recipe));
+      res.status(200).json(preprocess(recipe)[0]);
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipe with that ID.',
@@ -85,7 +85,8 @@ export const add = async (req, res) => {
     recipeCategory,
     recipeLabels,
   } = req.body;
-  const imagePath = req.file.path;
+  const imagePathBackslash = req.file.path;
+  const imagePath = imagePathBackslash.replace(/\\/g, '/'); // EZ állítja át a per jelet adatbásiba lementett kép elérési path stringjében.
   const { userID } = req;
   try {
     const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;

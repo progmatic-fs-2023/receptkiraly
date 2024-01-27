@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL } from '../constants';
+import { API_URL, HOST_PORT_URL } from '../constants';
 
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
 import RecipeKingCard from '../components/RecipeKingCard';
-import DetailedRecipe from '../components/DetailedRecipe';
 import Modal from '../components/Modal';
+import DetailedRecipe from '../components/DetailedRecipe';
+import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
   const [allRecipes, setAllRecipes] = useState([{}, {}]);
   const countRecipesShown = 6;
+
+  const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+
   useEffect(() => {
     fetch(`${API_URL}`).then((response) => {
       if (response.ok) setIsConnect(true);
@@ -114,16 +118,14 @@ function Home() {
                 <Carousel title="Latest recipes">
                   {latestRecipes.map((recipe) => (
                     <RecipeCard
-                      key={recipe.recipe_name}
-                      imgUrl={recipe.img}
+                      key={recipe.id}
+                      id={recipe.id}
+                      imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
                       name={recipe.recipe_name}
-                      description={recipe.description}
-                      category={recipe.category_name}
-                      mainCategory={recipe.main_category_name}
-                      labels={recipe.label_name}
+                      openModal={openModal}
                     />
                   ))}
                 </Carousel>
@@ -141,8 +143,9 @@ function Home() {
                 (recipe) => recipe.main_category_name === 'meals',
               ).map((recipe) => (
                 <RecipeCard
+                  id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={recipe.img}
+                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -151,6 +154,7 @@ function Home() {
                   category={recipe.category_name}
                   mainCategory={recipe.main_category_name}
                   labels={recipe.label_name}
+                  openModal={openModal}
                 />
               ))}
             </SwiperComponent>
@@ -161,8 +165,9 @@ function Home() {
                 (recipe) => recipe.main_category_name === 'desserts',
               ).map((recipe) => (
                 <RecipeCard
+                  id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={recipe.img}
+                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -171,6 +176,7 @@ function Home() {
                   category={recipe.category_name}
                   mainCategory={recipe.main_category_name}
                   labels={recipe.label_name}
+                  openModal={openModal}
                 />
               ))}
             </SwiperComponent>
@@ -181,8 +187,9 @@ function Home() {
                 (recipe) => recipe.main_category_name === 'beverages',
               ).map((recipe) => (
                 <RecipeCard
+                  id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={recipe.img}
+                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -191,12 +198,19 @@ function Home() {
                   category={recipe.category_name}
                   mainCategory={recipe.main_category_name}
                   labels={recipe.label_name}
+                  openModal={openModal}
                 />
               ))}
             </SwiperComponent>
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
+          <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
+        </Modal>
+      )}
     </div>
   );
 }

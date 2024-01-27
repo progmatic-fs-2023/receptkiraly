@@ -6,9 +6,9 @@ function NavSubHeadListItem({ itemsArray, link }) {
       <a
         className="capitalize font-medium text-body text-sm hover:text-orange-400"
         target="_self"
-        href={link + element.value}
+        href={`${link}?category=${element.value}`}
       >
-        <span>{element.text}</span>
+        <span>{element.label}</span>
       </a>
     </li>
   ));
@@ -19,7 +19,7 @@ NavSubHeadListItem.propTypes = {
     PropTypes.shape({
       key: PropTypes.number.isRequired,
       value: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
     }).isRequired,
   ),
   link: PropTypes.string.isRequired,

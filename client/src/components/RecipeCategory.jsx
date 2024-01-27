@@ -1,41 +1,20 @@
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import { meals, desserts, beverages } from './navigation/NavArrays';
 
 function RecipeCategory({ editMode, category, setCategory, selectedMainCategory }) {
   const onValueChange = (selectedOption) => {
     setCategory(selectedOption.value);
   };
 
-  const mealsCategories = [
-    { value: 'appetizers', label: 'Appetizers' },
-    { value: 'breakfast', label: 'Breakfast' },
-    { value: 'lunch', label: 'Lunch' },
-    { value: 'dinner', label: 'Dinner' },
-  ];
-
-  const dessertsCategories = [
-    { value: 'cakes', label: 'Cakes' },
-    { value: 'frozen_desserts', label: 'Frozen Desserts' },
-    { value: 'chocolate_and_candies', label: 'Chocolate and Candies' },
-    { value: 'fruit-desserts', label: 'Fruit Desserts' },
-  ];
-
-  const beveragesCategories = [
-    { value: 'hot_drinks', label: 'Hot Drinks' },
-    { value: 'cold_drinks', label: 'Cold Drinks' },
-    { value: 'soft_drinks', label: 'Soft Drinks' },
-    { value: 'juices', label: 'Juices' },
-    { value: 'smoothies', label: 'Smoothies' },
-  ];
-
-  let options = null;
+  let options = [];
 
   if (selectedMainCategory === 'meals') {
-    options = mealsCategories;
+    options = meals;
   } else if (selectedMainCategory === 'desserts') {
-    options = dessertsCategories;
+    options = desserts;
   } else if (selectedMainCategory === 'beverages') {
-    options = beveragesCategories;
+    options = beverages;
   }
 
   const customStyles = {
