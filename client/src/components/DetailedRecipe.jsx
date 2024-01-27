@@ -35,15 +35,15 @@ function DetailedRecipe({ editMode, stateObject }) {
       .post(`${API_URL}/recipes/newrecipe`, formData, {
         withCredentials: true,
       })
-      .then(function (response) {
+      .then((response) => {
         if (response.status === 201) {
-          alert('Recipe upload is successful!');
+          alert('Recipe upload is successful!'); // eslint-disable-line no-alert
         } else {
           throw new Error('Error while uploading recipe');
         }
       })
-      .catch(function (error) {
-        alert(error.message);
+      .catch((error) => {
+        alert(error.message); // eslint-disable-line no-alert
       });
   };
   return errorMessage ? (
