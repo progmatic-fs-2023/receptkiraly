@@ -14,7 +14,7 @@ function NoPages() {
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link to="/">
-            <Button text="Go Back to Home" type="button"></Button>
+            <Button text="Go Back to Home" type="button" />
           </Link>
         </div>
       </div>
