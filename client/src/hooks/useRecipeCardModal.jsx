@@ -19,6 +19,7 @@ const useRecipeCardModal = () => {
   const [ingredients, setIngredients] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [editUsersRecipe, setEditUsersRecipe] = useState(false);
+  const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
 
   // Put every Detailed Recipe state into one object
   const stateObject = {
@@ -92,6 +93,7 @@ const useRecipeCardModal = () => {
 
   const closeModal = () => {
     setModalOpen(false);
+    setCreatingNewRecipe(false);
     setRecipeTitle('');
     setDescription('');
     setImgUrl('');
@@ -119,6 +121,8 @@ const useRecipeCardModal = () => {
     selectedRecipe,
     editUsersRecipe,
     editButtonClicked,
+    creatingNewRecipe,
+    setCreatingNewRecipe,
   };
 };
 

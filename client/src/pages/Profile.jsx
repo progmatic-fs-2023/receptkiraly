@@ -10,7 +10,6 @@ import convertIsoTimestampToDate from '../helpers';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Profile() {
-  const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
   const [myRecipes, setMyRecipes] = useState([]);
   const [userData, setUserData] = useState({});
 
@@ -22,6 +21,8 @@ function Profile() {
     selectedRecipe,
     editUsersRecipe,
     editButtonClicked,
+    creatingNewRecipe,
+    setCreatingNewRecipe,
   } = useRecipeCardModal();
 
   useEffect(() => {
@@ -101,7 +102,7 @@ function Profile() {
           {myRecipes.map((recipe) => (
             <RecipeCard
               id={recipe.id}
-              key={recipe.name}
+              key={recipe.id}
               imgUrl={recipe.img}
               minutes={recipe.time_minutes}
               difficulty={recipe.difficulty_level}
@@ -120,12 +121,8 @@ function Profile() {
         </RecipeGrid>
       </div>
       {creatingNewRecipe ? (
-        <Modal
-          title="Creating new recipe"
-          addClassName="w-4/5"
-          close={() => setCreatingNewRecipe(false)}
-        >
-          <DetailedRecipe editMode stateObject={stateObject} />
+        <Modal title="Creating new recipe" addClassName="w-4/5" close={closeModal}>
+          <DetailedRecipe editMode stateObject={stateObject} closeModal={closeModal} />
         </Modal>
       ) : null}
 
@@ -136,6 +133,7 @@ function Profile() {
             recipeID={selectedRecipe}
             stateObject={stateObject}
             editButtonClicked={editUsersRecipe}
+            closeModal={closeModal}
           />
         </Modal>
       )}

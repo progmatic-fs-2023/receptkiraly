@@ -13,10 +13,11 @@ import Method from './MethodComp';
 import Button from './Button';
 import { API_URL } from '../constants';
 
-function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked }) {
+function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked, closeModal }) {
   const [fileUpload, setFileUpload] = useState();
   const [newIngredient, setNewIngredient] = useState('');
   const [errorMessage] = useState();
+
   const uploadRecipe = () => {
     const formData = new FormData();
     formData.append('recipeName', stateObject.title.value);
@@ -42,6 +43,7 @@ function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked }) 
       .then((response) => {
         if (response.status === 201) {
           alert('Recipe upload is successful!'); // eslint-disable-line no-alert
+          closeModal();
         } else {
           throw new Error('Error while uploading recipe');
         }
@@ -70,7 +72,19 @@ function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked }) 
     });
 
     formData.append('image', fileUpload || stateObject.image.value);
-    axios.patch(`${API_URL}/recipes/modifyrecipe`, formData);
+    axios
+      .patch(`${API_URL}/recipes/modifyrecipe`, formData)
+      .then((response) => {
+        if (response.status === 200) {
+          alert('Recipe modification was successful!'); // eslint-disable-line no-alert
+          closeModal();
+        } else {
+          throw new Error('Error while modifying recipe');
+        }
+      })
+      .catch((error) => {
+        alert(error.message); // eslint-disable-line no-alert
+      });
   };
 
   return errorMessage ? (
