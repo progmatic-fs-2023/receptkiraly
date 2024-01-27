@@ -33,7 +33,13 @@ export const preprocess = array =>
       }
       return acc;
     }, []);
-    return { ...arr[0], label_name: unique(labels) };
+    const ingredients = arr.reduce((acc, curr) => {
+      if (curr.ingredient_name) {
+        acc.push(curr.ingredient_name);
+      }
+      return acc;
+    }, []);
+    return { ...arr[0], label_name: unique(labels), ingredient_name: unique(ingredients) };
   });
 
 export const requireLabels = (recipes, labels) => {

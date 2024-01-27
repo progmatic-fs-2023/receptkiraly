@@ -84,6 +84,7 @@ export const add = async (req, res) => {
     recipeServeCount,
     recipeCategory,
     recipeLabels,
+    recipeIngredients,
   } = req.body;
   const imagePathBackslash = req.file.path;
   const imagePath = imagePathBackslash.replace(/\\/g, '/'); // EZ állítja át a per jelet adatbásiba lementett kép elérési path stringjében.
@@ -99,6 +100,7 @@ export const add = async (req, res) => {
       recipeServeCount,
       recipeCategory,
       recipeLabels,
+      recipeIngredients,
       imagePath,
       userID,
     );
