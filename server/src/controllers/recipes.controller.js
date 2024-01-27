@@ -6,7 +6,6 @@ export const list = async (req, res) => {
     const recipes = await services.listRecipes();
     if (recipes) {
       res.status(200).json(preprocess(recipes));
-      res.status(200).json(preprocess(recipes));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipes...',
@@ -45,7 +44,6 @@ export const getLatest = async (req, res) => {
 
     if (recipes) {
       res.status(200).json(preprocess(recipes));
-      res.status(200).json(preprocess(recipes));
     } else {
       res.status(404).json({
         errorMessage: `Cannot get ${count} latest recipes`,
@@ -64,7 +62,6 @@ export const byUserid = async (req, res) => {
     const recipes = await services.listRecipes({ userID: id });
 
     if (recipes) {
-      res.status(200).json(preprocess(recipes));
       res.status(200).json(preprocess(recipes));
     } else {
       res.status(404).json({
