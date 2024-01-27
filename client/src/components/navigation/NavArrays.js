@@ -1,3 +1,11 @@
+import chef1 from './img/chefs/chef1.webp';
+import chef2 from './img/chefs/chef2.webp';
+import chef3 from './img/chefs/chef3.webp';
+import chef4 from './img/chefs/chef4.webp';
+import chef5 from './img/chefs/chef5.webp';
+import chef6 from './img/chefs/chef6.webp';
+import chef7 from './img/chefs/chef7.webp';
+
 export const meals = [
   { key: 1, value: 'appetizer', label: 'Appetizer' },
   { key: 2, value: 'breakfast', label: 'Breakfast' },
@@ -46,4 +54,63 @@ export const chefsAmateur = [
   { key: 2, value: 'soup', label: 'Soup' },
   { key: 3, value: 'italian', label: 'Italian' },
   { key: 4, value: 'fast', label: 'Fast' },
+];
+
+export const chefs = [
+  {
+    id: 1,
+    key: 1,
+    username: 'john_doe',
+    label: 'Whisker Wendy',
+    email: 'john@example.com',
+    img: chef1,
+  },
+  {
+    id: 2,
+    key: 2,
+    username: 'alice_smith',
+    label: 'Giggles Gary',
+    email: 'alice@example.com',
+    img: chef2,
+  },
+  {
+    id: 3,
+    key: 3,
+    username: 'bob_jones',
+    label: 'Laughing Larry',
+    email: 'bob@example.com',
+    img: chef3,
+  },
+  {
+    id: 4,
+    key: 4,
+    username: 'emma_wilson',
+    label: 'Snicker Steve',
+    email: 'emma@example.com',
+    img: chef4,
+  },
+  {
+    id: 5,
+    key: 5,
+    username: 'michael_brown',
+    label: 'Jocular James',
+    email: 'michael@example.com',
+    img: chef5,
+  },
+  {
+    id: 6,
+    key: 6,
+    username: 'demo',
+    label: 'Chucke Charlie',
+    email: 'demo@example.com',
+    img: chef6,
+  },
+  {
+    id: 7,
+    key: 7,
+    username: 'demo2',
+    label: 'Humorous Hanna',
+    email: 'demo2@example.com',
+    img: chef7,
+  },
 ];

@@ -3,22 +3,12 @@ import NavSubHeadItem from './NavSubHeadItem';
 import NavSubListItem from './NavSubListItem';
 import PopularThisWeekItem from './PopularThisWeekItem';
 import NavButton from './NavButton';
-import { meals, desserts, beverages, chefsProf, chefsAmateur } from './NavArrays';
+import { meals, desserts, beverages, chefs } from './NavArrays';
 
 // Pictures of dishes
 import dummyImg1 from './img/dishes/dummyImg1.webp';
 import dummyImg2 from './img/dishes/dummyImg2.webp';
 import dummyImg3 from './img/dishes/dummyImg3.webp';
-
-// Pictures of chefs
-
-import chef1 from './img/chefs/chef1.webp';
-import chef2 from './img/chefs/chef2.webp';
-import chef3 from './img/chefs/chef3.webp';
-import chef4 from './img/chefs/chef4.webp';
-import chef5 from './img/chefs/chef5.webp';
-import chef6 from './img/chefs/chef6.webp';
-import chef7 from './img/chefs/chef7.webp';
 
 function NavigationBar() {
   const { port } = window.location;
@@ -126,40 +116,12 @@ function NavigationBar() {
             >
               <div className="container mx-auto">
                 <div className="flex">
-                  <div className="bg-zinc-50 pr-16 py-12 relative">
-                    <ul className="flex space-x-20">
-                      <li>
-                        <NavSubHeadItem label="Professional" />
-                        <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            itemsArray={chefsProf}
-                            link="http://localhost:5173/search?q="
-                          />
-                        </ul>
-                      </li>
-                      <li>
-                        <NavSubHeadItem label="Amateur" />
-                        <ul className="mt-8 space-y-2">
-                          <NavSubListItem
-                            itemsArray={chefsAmateur}
-                            link="http://localhost:5173/search?q="
-                          />
-                        </ul>
-                      </li>
-                    </ul>
-
-                    <NavButton label="Explore Our Shefs" link="/*" />
-                  </div>
                   <div className="bg-[#eee] pl-12 py-12 relative after:block after:bg-[#eee] after:absolute after:left-full after:h-full after:top-0 after:w-screen">
-                    <p className="block text-xs uppercase text-body/60">Popular This Week</p>
+                    <p className="block text-xs uppercase text-body/60">Our Chefs</p>
                     <div className="flex mt-8 space-x-6">
-                      <PopularThisWeekItem img={chef1} link={link} label="Whisker Wendy" />
-                      <PopularThisWeekItem img={chef2} link={link} label="Giggles Gary" />
-                      <PopularThisWeekItem img={chef3} link={link} label="Laughing Larry" />
-                      <PopularThisWeekItem img={chef4} link={link} label="Snicker Steve" />
-                      <PopularThisWeekItem img={chef5} link={link} label="Jocular James" />
-                      <PopularThisWeekItem img={chef6} link={link} label="Chuckle Charlie" />
-                      <PopularThisWeekItem img={chef7} link={link} label="Humorous Hannah" />
+                      {chefs.map((chef) => (
+                        <PopularThisWeekItem img={chef.img} link={link} label={chef.label} username={chef.username}/>
+                      ))}
                     </div>
                   </div>
                 </div>
