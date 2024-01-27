@@ -55,8 +55,10 @@ export const propTypes = {
       setter: PropTypes.func.isRequired,
     }).isRequired,
   }).isRequired,
+  editButtonClicked: PropTypes.bool,
 };
 
 export const defaultProps = {
   recipeID: 0,
+  editButtonClicked: false,
 };

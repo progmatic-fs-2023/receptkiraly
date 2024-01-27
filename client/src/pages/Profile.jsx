@@ -14,7 +14,15 @@ function Profile() {
   const [myRecipes, setMyRecipes] = useState([]);
   const [userData, setUserData] = useState({});
 
-  const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+  const {
+    stateObject,
+    closeModal,
+    openModal,
+    isModalOpen,
+    selectedRecipe,
+    editUsersRecipe,
+    editButtonClicked,
+  } = useRecipeCardModal();
 
   useEffect(() => {
     fetch(`${API_URL}/user/recipes/`)
@@ -105,6 +113,7 @@ function Profile() {
               labels={recipe.label_name}
               openModal={openModal}
               actions
+              editButtonClicked={editButtonClicked}
             />
           ))}
         </RecipeGrid>
@@ -121,7 +130,12 @@ function Profile() {
 
       {isModalOpen && (
         <Modal title="Detailed Recipe" close={closeModal} addClassName="w-5/6 h-5/6">
-          <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
+          <DetailedRecipe
+            editMode={editUsersRecipe}
+            recipeID={selectedRecipe}
+            stateObject={stateObject}
+            editButtonClicked={editUsersRecipe}
+          />
         </Modal>
       )}
     </div>

@@ -13,7 +13,7 @@ import Method from './MethodComp';
 import Button from './Button';
 import { API_URL, HOST_PORT_URL } from '../constants';
 
-function DetailedRecipe({ editMode, stateObject }) {
+function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked }) {
   const [fileUpload, setFileUpload] = useState();
   const [newIngredient, setNewIngredient] = useState('');
   const [errorMessage] = useState();
@@ -31,9 +31,36 @@ function DetailedRecipe({ editMode, stateObject }) {
       formData.append('recipeLabels', option);
     });
 
+    stateObject.ingredients.value.forEach((option) => {
+      formData.append('recipeIngredients', option);
+    });
+
     formData.append('image', fileUpload);
     axios.post(`${API_URL}/recipes/newrecipe`, formData);
   };
+
+  const modifyRecipe = () => {
+    const formData = new FormData();
+    formData.append('recipeID', recipeID);
+    formData.append('recipeName', stateObject.title.value);
+    formData.append('recipeDescription', stateObject.description.value);
+    formData.append('recipeTimeMinutes', stateObject.time.value);
+    formData.append('recipeDifficultyLevel', stateObject.difficulty.value);
+    formData.append('recipeServeCount', stateObject.serves.value);
+    formData.append('recipeCategory', stateObject.category.value);
+
+    stateObject.labels.value.forEach((option) => {
+      formData.append('recipeLabels', option);
+    });
+
+    stateObject.ingredients.value.forEach((option) => {
+      formData.append('recipeIngredients', option.text);
+    });
+
+    formData.append('image', fileUpload);
+    axios.patch(`${API_URL}/recipes/modifyrecipe`, formData);
+  };
+
   return errorMessage ? (
     <div>
       <p>{errorMessage}</p>
@@ -108,7 +135,8 @@ function DetailedRecipe({ editMode, stateObject }) {
             />
           </div>
         </div>
-        {editMode ? <Button text="Save" onClick={uploadRecipe} /> : null}
+        {editMode && !editButtonClicked ? <Button text="Save" onClick={uploadRecipe} /> : null}
+        {editButtonClicked ? <Button text="Modify" onClick={modifyRecipe} /> : null}
       </form>
     </div>
   );
