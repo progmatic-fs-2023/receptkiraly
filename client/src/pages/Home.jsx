@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Add } from '@mui/icons-material';
 import { API_URL, HOST_PORT_URL } from '../constants';
+
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
 import Carousel from '../components/Carousel';
@@ -43,6 +45,9 @@ function Home() {
       .filter((recipe) => condition(recipe))
       .sort(() => 0.5 - Math.random())
       .slice(0, n);
+
+  const [isCreateRecipe, setISCreateRecipe] = useState(false);
+
   return (
     <div>
       <div>
@@ -68,13 +73,41 @@ function Home() {
           <div className=" flex basis-2/6 border-x">
             <div className="m-auto">
               <div className="text-center ">
-                <h2 className="text-xs text-orange-400 tracking-widest font-medium title-font mb-1">
-                  Recipe King
+                <h2 className="text-4xl text-orange-400 tracking-widest font-medium title-font mb-5">
+                  Post Recipes
                 </h2>
-                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                  Find recipes
-                </h1>
-                <p className="leading-relaxed text-base">and meet the &quot;Recipe King&quot;</p>
+
+                <div>
+                  <div className="flex w-full max-w-md bg-gray-100 p-4 rounded-lg shadow mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center">
+                        <div className="mx-auto scale-150 hover:text-orange-400">
+                          <button
+                            aria-label="Click this to add a new recipe"
+                            type="button"
+                            onClick={() => setISCreateRecipe(true)}
+                          >
+                            <Add />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    {isCreateRecipe ? (
+                      <Modal
+                        title="Create New Recipes"
+                        addClassName="w-4/5"
+                        close={() => setISCreateRecipe(false)}
+                      >
+                        <DetailedRecipe editMode />
+                      </Modal>
+                    ) : null}
+                  </div>
+                </div>
+
+                <p className="leading-relaxed text-base">and be the &quot;Recipe King&quot;</p>
               </div>
             </div>
           </div>
@@ -91,7 +124,7 @@ function Home() {
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
-                      name={recipe.name}
+                      name={recipe.recipe_name}
                       openModal={openModal}
                     />
                   ))}

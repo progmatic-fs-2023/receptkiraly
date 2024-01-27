@@ -5,7 +5,7 @@ function About() {
   return (
     <div className="">
       <Link to="/" className="hover:underline mb-6 relative z-10">
-        <div className="ml-32">Home</div>
+        <div className="ml-32 font-bold">Home</div>
       </Link>
 
       <h1 className="ml-32 mt-6 mb-6 ">About Us</h1>
@@ -21,18 +21,24 @@ function About() {
             the ultimate food destination. We’re the go-to foodie friend for all your culinary
             needs. Take a look through thousands of recipes on our website, where you’ll also find
             all the information you need about your favourite chefs and programmes. Follow us on
-            Facebook, Instagram, YouTube and Twitter. Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Asperiores facilis quam minima, sed iusto illum cumque tempora
-            praesentium ipsum natus doloribus quaerat iste sapiente tenetur tempore neque iure at id
-            culpa ducimus aspernatur voluptatem libero quasi? Sit enim vel sunt aliquam tempora,
-            nobis error magni corporis dolor reprehenderit ratione beatae voluptatum eius dicta,
-            incidunt atque mollitia explicabo architecto possimus quod! Laboriosam aperiam officia
-            dolor dolores ratione, quidem magni dolorem cupiditate? Ea quae, vel culpa, dolorem iste
-            reprehenderit odit maiores voluptatum beatae deleniti architecto voluptate? Vero
-            deleniti alias debitis iure deserunt necessitatibus numquam dolores provident recusandae
-            pariatur illo ex praesentium explicabo doloribus eos id ratione hic libero accusamus,
-            voluptatem illum beatae laborum repellat? Assumenda nesciunt at quibusdam in
-            voluptatibus perspiciatis inventore cumque aspernatur.
+            Facebook, Instagram, YouTube and Twitter. <br />
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores facilis quam
+            minima, sed iusto illum cumque tempora praesentium ipsum natus doloribus quaerat iste
+            sapiente tenetur tempore neque iure at id culpa ducimus aspernatur voluptatem libero
+            quasi? Sit enim vel sunt aliquam tempora, nobis error magni corporis dolor reprehenderit
+            ratione beatae voluptatum eius dicta, incidunt atque mollitia explicabo architecto
+            possimus quod! Laboriosam aperiam officia dolor dolores ratione, quidem magni dolorem
+            cupiditate? <br />
+            Ea quae, vel culpa, dolorem iste reprehenderit odit maiores voluptatum beatae deleniti
+            architecto voluptate? Vero deleniti alias debitis iure deserunt necessitatibus numquam
+            dolores provident recusandae pariatur illo ex praesentium explicabo doloribus eos id
+            ratione hic libero accusamus, voluptatem illum beatae laborum repellat? Assumenda
+            nesciunt at quibusdam in voluptatibus perspiciatis inventore cumque aspernatur.
+            <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis natus iusto accusantium
+            rem quod dolor dicta aliquam, totam itaque non. Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Nihil recusandae distinctio quod, similique quaerat omnis dicta natus
+            quas impedit repellendus!
           </p>
         </div>
       </div>

@@ -12,12 +12,10 @@ export default function Modal({ children, title, close, addClassName }) {
               <h3 className="text-3xl font-semibold">{title}</h3>
               <button
                 type="button"
-                className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-xl outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 onClick={close}
               >
-                <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                  ×
-                </span>
+                ×
               </button>
             </div>
             {/* body */}
