@@ -69,12 +69,14 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
         return response.json();
       })
       .then((recipes) => {
+        if (recipes.length === 0) {
+          throw new Error('No recipes found for that filter');
+        }
         setErrorMessage('');
         setRecipesData(recipes);
       })
       .catch((err) => {
         setErrorMessage(err.message);
-        setRecipesData([]);
       });
   };
 
@@ -205,7 +207,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
 
 SearchFilter.propTypes = {
   setRecipesData: PropTypes.func.isRequired,
-  setErrorMessage: PropTypes.bool.isRequired,
+  setErrorMessage: PropTypes.func.isRequired,
 };
 
 export default SearchFilter;
