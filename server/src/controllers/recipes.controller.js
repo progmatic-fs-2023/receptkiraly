@@ -1,11 +1,28 @@
 import * as services from '../services/recipes.service';
-import { preprocess, requireLabels } from '../utils/helpers';
+import { preprocess, requireLabels, nRandomByCategory } from '../utils/helpers';
 
 export const list = async (req, res) => {
   try {
     const recipes = await services.listRecipes();
     if (recipes) {
       res.status(200).json(preprocess(recipes));
+    } else {
+      res.status(404).json({
+        errorMessage: 'There is no recipes...',
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      errorMessage: err.message,
+    });
+  }
+};
+
+export const categorize = async (req, res) => {
+  try {
+    const recipes = await services.listRecipes();
+    if (recipes) {
+      res.status(200).json(nRandomByCategory(6, preprocess(recipes)));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipes...',

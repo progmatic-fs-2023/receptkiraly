@@ -4,6 +4,10 @@ export function transformArrayToIntegers(arrayOfObjects, key) {
 
 const unique = array => [...new Set(array)];
 
+function isNumeric(value) {
+  return !Number.isNaN(Number(value));
+}
+
 // groups an array and returns an object, each key of the object will represent a group
 function groupBy(array, keyOrIterator) {
   let iterator;
@@ -18,7 +22,7 @@ function groupBy(array, keyOrIterator) {
   }
 
   return array.reduce((acc, item) => {
-    const key = `REC-${iterator(item)}`;
+    const key = isNumeric(iterator(item)) ? `REC-${iterator(item)}` : iterator(item);
     acc[key] = acc[key] || []; // eslint-disable-line no-param-reassign
     acc[key].push(item);
     return acc;
@@ -48,3 +52,11 @@ export const requireLabels = (recipes, labels) => {
   }
   return recipes;
 };
+
+const nRandom = (n, arr) => arr.sort(() => 0.5 - Math.random()).slice(0, n);
+
+export const nRandomByCategory = (n, recipes) =>
+  Object.entries(groupBy(recipes, elem => elem.main_category_name)).map(([category, arr]) => ({
+    category,
+    recipes: nRandom(n, arr),
+  }));
