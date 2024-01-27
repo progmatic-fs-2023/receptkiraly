@@ -17,7 +17,6 @@ function DetailedRecipe({ editMode, stateObject }) {
   const [fileUpload, setFileUpload] = useState();
   const [newIngredient, setNewIngredient] = useState('');
   const [errorMessage] = useState();
-
   const uploadRecipe = () => {
     const formData = new FormData();
     formData.append('recipeName', stateObject.title.value);
@@ -32,7 +31,9 @@ function DetailedRecipe({ editMode, stateObject }) {
     });
 
     formData.append('image', fileUpload);
-    axios.post(`${API_URL}/recipes/newrecipe`, formData);
+    axios.post(`${API_URL}/recipes/newrecipe`, formData, {
+      withCredentials: true,
+    });
   };
   return errorMessage ? (
     <div>
@@ -40,7 +41,7 @@ function DetailedRecipe({ editMode, stateObject }) {
     </div>
   ) : (
     <div>
-      <form form encType="multipart/form-data" className="flex flex-col flex-nowrap items-center">
+      <form encType="multipart/form-data" className="flex flex-col flex-nowrap items-center">
         <div className="flex flex-col lg:flex-row my-4">
           <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 p-2">
             <div className="flex-1">
@@ -48,8 +49,8 @@ function DetailedRecipe({ editMode, stateObject }) {
                 editMode={editMode}
                 fileUpload={fileUpload}
                 setFileUpload={setFileUpload}
-                imgUrl={`${HOST_PORT_URL}/${stateObject.image.value}`}
-                setImgUrl={`${HOST_PORT_URL}/${stateObject.image.setter}`}
+                imgUrl={stateObject.image.value === '' ? undefined : stateObject.image.value}
+                setImgUrl={stateObject.image.setter}
               />
             </div>
             <div className="flex-grow flex flex-wrap flex-col">

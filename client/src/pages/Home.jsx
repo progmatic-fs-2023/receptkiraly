@@ -12,8 +12,8 @@ import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Home() {
   const [isConnect, setIsConnect] = useState(false);
-  const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
-  const [allRecipes, setAllRecipes] = useState([{}, {}]);
+  const [latestRecipes, setLatestRecipes] = useState([]);
+  const [allRecipes, setAllRecipes] = useState([]);
   const countRecipesShown = 6;
 
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
@@ -101,7 +101,7 @@ function Home() {
                         addClassName="w-4/5"
                         close={() => setISCreateRecipe(false)}
                       >
-                        <DetailedRecipe editMode />
+                        <DetailedRecipe editMode={true} stateObject={stateObject} />
                       </Modal>
                     ) : null}
                   </div>
@@ -120,7 +120,7 @@ function Home() {
                     <RecipeCard
                       key={recipe.id}
                       id={recipe.id}
-                      imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                      imgUrl={recipe.img}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
@@ -145,7 +145,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -167,7 +167,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -189,7 +189,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -208,7 +208,7 @@ function Home() {
 
       {isModalOpen && (
         <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
-          <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
+          <DetailedRecipe editMode={false} recipeID={selectedRecipe} stateObject={stateObject} />
         </Modal>
       )}
     </div>

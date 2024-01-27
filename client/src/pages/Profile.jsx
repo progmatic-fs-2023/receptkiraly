@@ -17,7 +17,7 @@ function Profile() {
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
 
   useEffect(() => {
-    fetch(`${API_URL}/user/recipes/`)
+    fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('Recipes cannot be fetched');
         return response.json();
@@ -25,7 +25,7 @@ function Profile() {
       .then((data) => {
         setMyRecipes(data);
       });
-    fetch(`${API_URL}/user/`)
+    fetch(`${API_URL}/user/`, { credentials: 'include' })
       .then((response) => {
         if (!response.ok) throw new Error('User cannot be fetched');
         return response.json();
@@ -115,7 +115,7 @@ function Profile() {
           addClassName="w-4/5"
           close={() => setCreatingNewRecipe(false)}
         >
-          <DetailedRecipe editMode />
+          <DetailedRecipe editMode stateObject={stateObject} />
         </Modal>
       ) : null}
 

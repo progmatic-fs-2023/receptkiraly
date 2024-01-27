@@ -10,9 +10,9 @@ const useRecipeCardModal = (id) => {
   const [recipeTitle, setRecipeTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImgUrl] = useState('');
-  const [minutes, setMinutes] = useState('');
-  const [difficulty, setDifficulty] = useState('');
-  const [serves, setServes] = useState('');
+  const [minutes, setMinutes] = useState(0);
+  const [difficulty, setDifficulty] = useState(1);
+  const [serves, setServes] = useState(0);
   const [category, setCategory] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -93,6 +93,15 @@ const useRecipeCardModal = (id) => {
 
   const closeModal = () => {
     setModalOpen(false);
+    setRecipeTitle('');
+    setDescription('');
+    setImgUrl('');
+    setMinutes(0);
+    setDifficulty(1);
+    setServes(0);
+    setCategory('');
+    setSelectedMainCategory('');
+    setSelectedOptions([]);
   };
   // ---------------------------
 

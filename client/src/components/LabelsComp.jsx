@@ -59,8 +59,11 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
         />
       ) : (
         <div className="flex">
-          {selectedOptions.map((label) => (
-            <div className="m-1 p-1 border-solid border-2 border-orange-400 rounded-lg">
+          {selectedOptions.map((label, index) => (
+            <div
+              key={`label-${index}`}
+              className="m-1 p-1 border-solid border-2 border-orange-400 rounded-lg"
+            >
               {label}
             </div>
           ))}
