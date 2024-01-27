@@ -35,9 +35,9 @@ function RecipeCard({
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      console.log('Recipe deleted successfully');
+      // console.log('Recipe deleted successfully');
     } catch (error) {
-      console.error('Error deleting recipe:', error);
+      // console.error('Error deleting recipe:', error);
     }
   };
 
