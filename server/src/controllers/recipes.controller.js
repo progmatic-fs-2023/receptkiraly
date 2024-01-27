@@ -87,7 +87,7 @@ export const add = async (req, res) => {
     recipeServeCount,
     recipeCategory,
     recipeLabels,
-    recipeIngredients
+    recipeIngredients,
   } = req.body;
   const imagePath = req.file.path;
   const { userID } = req;
