@@ -6,17 +6,15 @@ import { ErrorBoundary } from 'react-error-boundary';
 import LoginContext from './contexts/LoginContext';
 import LoginDispatchContext from './contexts/LoginDispatchContext';
 import './App.css';
-import './components/RecipePostsCard.css';
-import './components/DailyRecipeCard.css';
+
 /* Navbar pages */
 import SearchRecipes from './pages/SearchRecipes';
 import Home from './pages/Home';
-import RecipesFeed from './pages/RecipesFeed';
-import Battle from './pages/Battle';
+
 import Registration from './pages/Registration';
 import NoPage from './pages/NoPages';
 import Profile from './pages/Profile';
-import Rankings from './pages/Rankings';
+
 import NewRecipe from './pages/NewRecipe';
 import About from './pages/About';
 /* Template */
@@ -73,12 +71,12 @@ function App() {
             <ErrorBoundary FallbackComponent={Fallback}>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/recipesfeed" element={<RecipesFeed />} />
+
                 <Route path="/search" element={<SearchRecipes />} />
-                <Route path="/battle" element={<Battle />} />
+
                 <Route path="/register" element={<Registration />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/rankings" element={<Rankings />} />
+
                 <Route path="/postrecipe" element={<NewRecipe />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/*" element={<NoPage />} />
