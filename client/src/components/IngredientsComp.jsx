@@ -63,7 +63,7 @@ function IngredientsComp({
 
 IngredientsComp.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  ingredients: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   setIngredients: PropTypes.func.isRequired,
   newIngredient: PropTypes.string.isRequired,
   setNewIngredient: PropTypes.func.isRequired,

@@ -53,7 +53,7 @@ function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
 
 RecipeDifficulty.propTypes = {
   editMode: PropTypes.bool.isRequired,
-  difficulty: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
   setDifficulty: PropTypes.func.isRequired,
 };
 
