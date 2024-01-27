@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL, HOST_PORT_URL } from '../constants';
+import { API_URL } from '../constants';
 
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
@@ -88,7 +88,7 @@ function Home() {
                         addClassName="w-4/5"
                         close={() => setISCreateRecipe(false)}
                       >
-                        <DetailedRecipe editMode />
+                        <DetailedRecipe editMode stateObject={stateObject} />
                       </Modal>
                     ) : null}
                   </div>
@@ -107,7 +107,7 @@ function Home() {
                     <RecipeCard
                       key={recipe.id}
                       id={recipe.id}
-                      imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                      imgUrl={recipe.img}
                       minutes={recipe.time_minutes}
                       difficulty={recipe.difficulty_level}
                       serves={recipe.serve_count}
@@ -132,7 +132,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -154,7 +154,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -176,7 +176,7 @@ function Home() {
                 <RecipeCard
                   id={recipe.id}
                   key={recipe.recipe_name}
-                  imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+                  imgUrl={recipe.img}
                   minutes={recipe.time_minutes}
                   difficulty={recipe.difficulty_level}
                   serves={recipe.serve_count}
@@ -195,7 +195,7 @@ function Home() {
 
       {isModalOpen && (
         <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
-          <DetailedRecipe recipeID={selectedRecipe} stateObject={stateObject} />
+          <DetailedRecipe editMode={false} recipeID={selectedRecipe} stateObject={stateObject} />
         </Modal>
       )}
     </div>

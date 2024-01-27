@@ -20,10 +20,11 @@ function Icon({ imgUrl, text, editMode, addClassName }) {
 Icon.propTypes = {
   imgUrl: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  editMode: PropTypes.bool.isRequired,
+  editMode: PropTypes.bool,
   addClassName: PropTypes.string,
 };
 Icon.defaultProps = {
   addClassName: '',
+  editMode: false,
 };
 export default Icon;

@@ -12,7 +12,7 @@ function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl })
       setFileUpload(file);
 
       const reader = new FileReader();
-      reader.onloadend = () => {
+      reader.onload = () => {
         setImgUrl(reader.result);
       };
 
@@ -23,7 +23,7 @@ function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl })
   return (
     <div className="flex items-center justify-center m-5 lg:mx-3">
       <div className="flex flex-col items-center lg:items-start">
-        <ResponsiveImage imgUrl={imgUrl || '/images/no_image.svg'} />
+        <ResponsiveImage imgUrl={imgUrl} />
         {editMode && (
           <label htmlFor="image">
             {fileUpload ? 'Change image:' : 'Upload image:'}
@@ -45,10 +45,11 @@ ImageUpload.propTypes = {
   editMode: PropTypes.bool.isRequired,
   fileUpload: PropTypes.instanceOf(File),
   setFileUpload: PropTypes.func.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
   setImgUrl: PropTypes.func.isRequired,
 };
 ImageUpload.defaultProps = {
   fileUpload: null,
+  imgUrl: '/images/no_image.svg',
 };
 export default ImageUpload;

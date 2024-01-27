@@ -20,9 +20,9 @@ export default function Modal({ children, title, close, addClassName }) {
             </div>
             {/* body */}
             <div className="relative p-6 flex-auto">
-              <p className="my-4 text-blueGray-500 text-lg leading-relaxed text-justify">
+              <div className="my-4 text-blueGray-500 text-lg leading-relaxed text-justify">
                 {children}
-              </p>
+              </div>
             </div>
             {/* footer */}
             <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

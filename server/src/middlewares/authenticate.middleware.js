@@ -10,6 +10,7 @@ export default function authenticate(req, res, next) {
       next();
     }
   } else {
+    // console.log('Cookie', req.cookies.authToken);
     jwt.verify(req.cookies.authToken, JWT_SECRET, (err, payload) => {
       if (err) {
         res.status(401).send('Not logged in');

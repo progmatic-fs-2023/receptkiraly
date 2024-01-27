@@ -25,8 +25,8 @@ function SwiperComponent({ children, title }) {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
       >
-        {children.map((child) => (
-          <SwiperSlide>
+        {children.map((child, index) => (
+          <SwiperSlide key={`slide-${index}`}>
             <div className="pb-6">{child}</div>
           </SwiperSlide>
         ))}

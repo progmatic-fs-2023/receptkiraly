@@ -46,12 +46,12 @@ export const propTypes = {
     }).isRequired,
 
     labels: PropTypes.shape({
-      value: PropTypes.arrayOf(PropTypes.strings).isRequired,
+      value: PropTypes.arrayOf(PropTypes.string).isRequired,
       setter: PropTypes.func.isRequired,
     }).isRequired,
 
     ingredients: PropTypes.shape({
-      value: PropTypes.arrayOf(PropTypes.strings).isRequired,
+      value: PropTypes.arrayOf(PropTypes.string).isRequired,
       setter: PropTypes.func.isRequired,
     }).isRequired,
   }).isRequired,
