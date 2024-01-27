@@ -11,7 +11,7 @@ import Labels from './LabelsComp';
 import Ingredients from './IngredientsComp';
 import Method from './MethodComp';
 import Button from './Button';
-import { API_URL, HOST_PORT_URL } from '../constants';
+import { API_URL } from '../constants';
 
 function DetailedRecipe({ editMode, stateObject }) {
   const [fileUpload, setFileUpload] = useState();

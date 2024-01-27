@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL, HOST_PORT_URL } from '../constants';
+import { API_URL } from '../constants';
 
 import SwiperComponent from '../components/SwiperComponent';
 import RecipeCard from '../components/RecipeCard';
@@ -101,7 +101,7 @@ function Home() {
                         addClassName="w-4/5"
                         close={() => setISCreateRecipe(false)}
                       >
-                        <DetailedRecipe editMode={true} stateObject={stateObject} />
+                        <DetailedRecipe editMode stateObject={stateObject} />
                       </Modal>
                     ) : null}
                   </div>
