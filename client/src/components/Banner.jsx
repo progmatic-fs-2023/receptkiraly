@@ -28,7 +28,7 @@ function Banner() {
   }, []);
 
   const handleSearch = () => {
-    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+    navigate(`/search?title=${encodeURIComponent(searchText)}`);
   };
 
   const handleKeyDown = (event) => {

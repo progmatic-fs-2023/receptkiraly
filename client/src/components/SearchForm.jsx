@@ -1,27 +1,85 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { meals, desserts, beverages, labels } from './navigation/NavArrays';
+import { API_URL } from '../constants';
+
 import Button from './Button';
 
-function SearchFilter() {
+function SearchFilter({ setRecipesData }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLabels, setSelectedLabels] = useState([]);
+
+  // Search from the text input.
   const [searchText, setSearchText] = useState('');
+
+  // Selected searching filters
+  const [, setSearchParams] = useSearchParams();
+  const [selectedType, setSelectedType] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedLabels, setSelectedLabels] = useState([]);
+  const [selectedUser, setSelectedUser] = useState('');
+
   const navigate = useNavigate();
 
-  const toggleFilter = () => {
-    setIsOpen(!isOpen);
+  const getCategoriesForType = () => {
+    switch (selectedType) {
+      case 'meals':
+        return meals;
+      case 'desserts':
+        return desserts;
+      case 'beverages':
+        return beverages;
+      case '':
+        return [...meals, ...desserts, ...beverages];
+      default:
+        return [];
+    }
   };
+
+  const allCategories = [{ key: '0', value: '', label: 'All' }, ...getCategoriesForType()];
+  const allLabels = [{ key: '0', value: '', label: 'All' }, ...labels];
 
   const handleLabelSelection = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
     setSelectedLabels(selectedOptions);
   };
 
-  const handleSearch = () => {
-    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+  const toggleFilter = () => {
+    setIsOpen(!isOpen);
   };
 
-  const handleonKeyDown = (event) => {
+  const handleSearch = () => {
+    navigate(`/search?title=${encodeURIComponent(searchText)}`);
+
+    setSearchParams({
+      title: searchText,
+      username: selectedUser,
+      type: selectedType,
+      category: selectedCategory,
+      labels: selectedLabels,
+    });
+
+    const apiUrl = `${API_URL}/search${window.location.search}`;
+    // console.log(`Filtered search URL: ${apiUrl}`);
+
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          setRecipesData([]);
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((recipes) => {
+        // console.log(recipes);
+        setRecipesData(recipes);
+      })
+      .catch(() => {
+        setRecipesData([]);
+      });
+  };
+
+  const handleOnKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleSearch();
     }
@@ -50,7 +108,7 @@ function SearchFilter() {
             className="border-2 border-gray-300 focus:outline-none py-3 px-4 rounded-md w-full"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={handleonKeyDown}
+            onKeyDown={handleOnKeyDown}
             placeholder="Search"
           />
           <Button text="Search" type="button" onClick={handleSearch} />
@@ -73,11 +131,13 @@ function SearchFilter() {
                     <select
                       id="mealType"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2"
+                      value={selectedType}
+                      onChange={(e) => setSelectedType(e.target.value)}
                     >
-                      <option>All</option>
-                      <option value="meal">Meal</option>
-                      <option value="dessert">Dessert</option>
-                      <option value="beverage">Beverage</option>
+                      <option value="">All</option>
+                      <option value="meals">Meal</option>
+                      <option value="desserts">Dessert</option>
+                      <option value="beverages">Beverage</option>
                     </select>
                   </label>
                 </div>
@@ -87,12 +147,14 @@ function SearchFilter() {
                     <select
                       id="category"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2"
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
                     >
-                      <option>All</option>
-                      <option value="appetizer">Appetizer</option>
-                      <option value="breakfast">Breakfast</option>
-                      <option value="lunch">Lunch</option>
-                      <option value="dinner">Dinner</option>
+                      {allCategories.map((actualCategories) => (
+                        <option key={actualCategories.key} value={actualCategories.value}>
+                          {actualCategories.label}
+                        </option>
+                      ))}
                     </select>
                   </label>
                 </div>
@@ -106,11 +168,11 @@ function SearchFilter() {
                       value={selectedLabels}
                       onChange={handleLabelSelection}
                     >
-                      <option value="vegan">Vegan</option>
-                      <option value="vegetarian">Vegetarian</option>
-                      <option value="gluten-free">Gluten-free</option>
-                      <option value="low-carb">Low-carb</option>
-                      <option value="spicy">Spicy</option>
+                      {allLabels.map((label) => (
+                        <option key={label.key} value={label.value}>
+                          {label.label}
+                        </option>
+                      ))}
                     </select>
                   </label>
                 </div>
@@ -122,11 +184,18 @@ function SearchFilter() {
                       id="searchUser"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2 px-4"
                       placeholder="Search by recipe owner"
+                      value={selectedUser}
+                      onChange={(e) => setSelectedUser(e.target.value)}
                     />
                   </label>
                 </div>
               </div>
-              <Button text="Apply Changes" type="button" addClassName="ml-2" />
+              <Button
+                text="Apply Changes"
+                type="button"
+                addClassName="ml-2"
+                onClick={handleSearch}
+              />
             </div>
           </div>
         )}
@@ -134,5 +203,9 @@ function SearchFilter() {
     </div>
   );
 }
+
+SearchFilter.propTypes = {
+  setRecipesData: PropTypes.func.isRequired,
+};
 
 export default SearchFilter;

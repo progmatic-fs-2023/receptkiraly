@@ -27,7 +27,7 @@ CREATE TABLE recipes (
     id SERIAL PRIMARY KEY,
     user_id SERIAL,
     name VARCHAR(100) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
     img VARCHAR(255),
     time_minutes SMALLINT,
     difficulty_level SMALLINT,
@@ -51,9 +51,9 @@ CREATE TABLE recipes_labels (
     FOREIGN KEY (label_id) REFERENCES labels(id)
 );
 
---  CREATE TABLE ingredients (
--- 	id SERIAL PRIMARY KEY,
--- 	recipe_id INT,
--- 	name VARCHAR(255) NOT NULL,
--- 	FOREIGN KEY (recipe_id) REFERENCES recipes(id)
--- );
+ CREATE TABLE ingredients (
+	id SERIAL PRIMARY KEY,
+	recipe_id INT,
+	name VARCHAR(255) NOT NULL,
+	FOREIGN KEY (recipe_id) REFERENCES recipes(id)
+);

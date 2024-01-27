@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL } from '../constants';
+import { API_URL, HOST_PORT_URL } from '../constants';
 import InfoCard from '../components/InfoCard';
 import RecipeGrid from '../components/RecipeGrid';
 import RecipeCard from '../components/RecipeCard';
 import Modal from '../components/Modal';
 import DetailedRecipe from '../components/DetailedRecipe';
 import convertIsoTimestampToDate from '../helpers';
+import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Profile() {
   const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
   const [myRecipes, setMyRecipes] = useState([]);
   const [userData, setUserData] = useState({});
+
+  const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+
   useEffect(() => {
     fetch(`${API_URL}/user/recipes/`)
       .then((response) => {
@@ -88,8 +92,9 @@ function Profile() {
         <RecipeGrid>
           {myRecipes.map((recipe) => (
             <RecipeCard
+              id={recipe.id}
               key={recipe.name}
-              imgUrl={recipe.img}
+              imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
               minutes={recipe.time_minutes}
               difficulty={recipe.difficulty_level}
               serves={recipe.serve_count}
@@ -98,6 +103,7 @@ function Profile() {
               category={recipe.category_name}
               mainCategory={recipe.main_category_name}
               labels={recipe.label_name}
+              openModal={openModal}
               actions
             />
           ))}
@@ -112,6 +118,12 @@ function Profile() {
           <DetailedRecipe editMode />
         </Modal>
       ) : null}
+
+      {isModalOpen && (
+        <Modal title="Detailed Recipe" close={closeModal} addClassName="w-5/6 h-5/6">
+          <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
+        </Modal>
+      )}
     </div>
   );
 }
