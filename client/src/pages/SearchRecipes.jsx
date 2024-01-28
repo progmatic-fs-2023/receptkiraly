@@ -8,12 +8,10 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import { API_URL } from '../constants';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
-
 function SearchRecipes() {
   const [recipesData, setRecipesData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const location = useLocation();
-  console.log(location);
 
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
 

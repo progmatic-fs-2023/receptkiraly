@@ -47,7 +47,7 @@ function Banner() {
           setIsAuthenticated(false);
           navigate('/');
         } else if (response.status === 401) {
-          throw new Error('not loggedd in');
+          throw new Error('not logged in');
         } else {
           throw new Error(response.body);
         }
