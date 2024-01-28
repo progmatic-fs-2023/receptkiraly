@@ -288,3 +288,33 @@ export const modifyRecipe = async (
 
   return result.rows;
 };
+
+export const deleteRecipeFromDB = async recipeID => {
+  const result = await db.query(
+    `
+    DELETE FROM recipes_labels
+    WHERE recipe_id = $1
+    `,
+    [recipeID],
+  );
+
+  db.query(
+    `
+    DELETE FROM ingredients
+    WHERE recipe_id = $1
+    `,
+    [recipeID],
+  );
+
+  db.query(
+    `
+    DELETE FROM recipes
+    WHERE id = $1
+
+    RETURNING *
+    `,
+    [recipeID],
+  );
+
+  return result.rows;
+};
