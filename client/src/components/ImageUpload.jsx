@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import ResponsiveImage from './ResponsiveImage';
+import noImage from '../assets/no_image.svg';
 
 function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl }) {
   const [imageName, setImageName] = useState(fileUpload ? fileUpload.name : 'No file chosen');
@@ -23,7 +24,7 @@ function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl })
   return (
     <div className="flex items-center justify-center m-5 lg:mx-3">
       <div className="flex flex-col items-center lg:items-start">
-        <ResponsiveImage imgUrl={imgUrl} />
+        <ResponsiveImage imgUrl={imgUrl || noImage} />
         {editMode && (
           <label htmlFor="image">
             {fileUpload ? 'Change image:' : 'Upload image:'}
