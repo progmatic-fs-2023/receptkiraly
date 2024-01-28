@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
   const onValueChange = (selectedOption) => {
-    setDifficulty(selectedOption.value);
+    setDifficulty(Number(selectedOption.value));
   };
 
   const difficulties = [
