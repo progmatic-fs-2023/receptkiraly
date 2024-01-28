@@ -34,7 +34,8 @@ function RecipeCard({
       });
   };
 
-  const deleteRecipe = async () => {
+  const deleteRecipe = async (event) => {
+    event.stopPropagation();
     const recipeID = id;
     try {
       const response = await fetch(`${API_URL}/recipes/deleterecipe`, {
@@ -86,7 +87,7 @@ function RecipeCard({
                 tabIndex={0}
                 onKeyDown={handleOnKeyDown}
                 className="absolute top-2 right-2 bg-white bg-opacity-75 rounded hover:filter hover:invert"
-                onClick={() => deleteRecipe()}
+                onClick={deleteRecipe}
               >
                 <Delete />
               </div>
