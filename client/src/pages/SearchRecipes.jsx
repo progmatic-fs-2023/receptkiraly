@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import SearchForm from '../components/SearchForm';
 import RecipeCard from '../components/RecipeCard';
 import RecipeGrid from '../components/RecipeGrid';
@@ -7,9 +8,12 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import { API_URL } from '../constants';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
+
 function SearchRecipes() {
   const [recipesData, setRecipesData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const location = useLocation();
+  console.log(location);
 
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
 
@@ -29,7 +33,7 @@ function SearchRecipes() {
       .catch((err) => {
         setErrorMessage(err.message);
       });
-  }, []);
+  }, [location]);
 
   return (
     <section className="container mx-auto my-2">
