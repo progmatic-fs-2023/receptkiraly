@@ -116,13 +116,19 @@ function Profile() {
               openModal={openModal}
               actions
               editButtonClicked={editButtonClicked}
+              setMyRecipes={setMyRecipes}
             />
           ))}
         </RecipeGrid>
       </div>
       {creatingNewRecipe ? (
         <Modal title="Creating new recipe" addClassName="w-4/5" close={closeModal}>
-          <DetailedRecipe editMode stateObject={stateObject} closeModal={closeModal} />
+          <DetailedRecipe
+            editMode
+            stateObject={stateObject}
+            closeModal={closeModal}
+            setMyRecipes={setMyRecipes}
+          />
         </Modal>
       ) : null}
 
@@ -134,6 +140,7 @@ function Profile() {
             stateObject={stateObject}
             editButtonClicked={editUsersRecipe}
             closeModal={closeModal}
+            setMyRecipes={setMyRecipes}
           />
         </Modal>
       )}

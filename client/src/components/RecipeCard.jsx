@@ -15,11 +15,23 @@ function RecipeCard({
   actions,
   openModal,
   editButtonClicked,
+  setMyRecipes,
 }) {
   const handleOnKeyDown = (event) => {
     if (event.key === 'Enter') {
       openModal(id);
     }
+  };
+
+  const refreshRecipes = () => {
+    fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Recipes cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setMyRecipes(data);
+      });
   };
 
   const deleteRecipe = async () => {
@@ -32,8 +44,11 @@ function RecipeCard({
         },
         body: JSON.stringify({ recipeID }),
       });
+
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
+      } else {
+        refreshRecipes();
       }
       // console.log('Recipe deleted successfully');
     } catch (error) {
@@ -95,21 +110,27 @@ function RecipeCard({
 }
 
 RecipeCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  imgUrl: PropTypes.string,
   minutes: PropTypes.number,
   difficulty: PropTypes.number,
   serves: PropTypes.number,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   actions: PropTypes.bool,
   openModal: PropTypes.func.isRequired,
-  editButtonClicked: PropTypes.func.isRequired,
+  editButtonClicked: PropTypes.func,
+  setMyRecipes: PropTypes.func,
 };
 
 RecipeCard.defaultProps = {
+  id: 0,
+  imgUrl: '',
   minutes: null,
   difficulty: null,
   serves: null,
+  name: '',
   actions: false,
+  editButtonClicked: () => {},
+  setMyRecipes: () => {},
 };
 export default RecipeCard;

@@ -13,10 +13,28 @@ import Method from './MethodComp';
 import Button from './Button';
 import { API_URL } from '../constants';
 
-function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked, closeModal }) {
+function DetailedRecipe({
+  editMode,
+  recipeID,
+  stateObject,
+  editButtonClicked,
+  closeModal,
+  setMyRecipes,
+}) {
   const [fileUpload, setFileUpload] = useState();
   const [newIngredient, setNewIngredient] = useState('');
   const [errorMessage] = useState();
+
+  const refreshRecipes = () => {
+    fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Recipes cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setMyRecipes(data);
+      });
+  };
 
   const uploadRecipe = () => {
     const formData = new FormData();
@@ -44,6 +62,7 @@ function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked, cl
         if (response.status === 201) {
           alert('Recipe upload is successful!'); // eslint-disable-line no-alert
           closeModal();
+          refreshRecipes();
         } else {
           throw new Error('Error while uploading recipe');
         }
@@ -78,6 +97,7 @@ function DetailedRecipe({ editMode, recipeID, stateObject, editButtonClicked, cl
         if (response.status === 200) {
           alert('Recipe modification was successful!'); // eslint-disable-line no-alert
           closeModal();
+          refreshRecipes();
         } else {
           throw new Error('Error while modifying recipe');
         }
