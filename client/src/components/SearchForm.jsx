@@ -35,7 +35,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
         return [];
     }
   };
-
+  // Set the filter selects to be able to select all option.
   const allCategories = [{ key: '0', value: '', label: 'All' }, ...getCategoriesForType()];
   const allLabels = [{ key: '0', value: '', label: 'All' }, ...labels];
 
@@ -44,10 +44,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
     setSelectedLabels(selectedOptions);
   };
 
-  const toggleFilter = () => {
-    setIsOpen(!isOpen);
-  };
-
+  // Set the searching parameters with URL. Handle search buttons.
   const handleSearch = () => {
     navigate(`/search?title=${encodeURIComponent(searchText)}`);
 
@@ -86,6 +83,19 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
     }
   };
 
+  // Handling fn for filter buttons
+  const toggleFilter = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const resetFilters = () => {
+    setSelectedType('');
+    setSelectedCategory('');
+    setSelectedLabels('');
+    setSelectedUser('');
+    setSearchText('');
+  };
+
   return (
     <div className="border-b border-gray-200 pb-6 lg:pb-10 relative z-10">
       <div className="bg-orange-400 mb-4 p-4 lg:px-8 lg:py-5 custom-div-shadow relative z-0">
@@ -122,6 +132,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
           onClick={toggleFilter}
           addClassName="transition-none"
         />
+
         {isOpen && (
           <div id="filterContainer">
             <div className="mb-4 mt-6 lg:mt-10">
@@ -196,6 +207,12 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
                 type="button"
                 addClassName="ml-2"
                 onClick={handleSearch}
+              />
+              <Button
+                text="Reset"
+                type="button"
+                onClick={resetFilters}
+                addClassName="transition-none"
               />
             </div>
           </div>
