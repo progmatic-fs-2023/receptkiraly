@@ -103,7 +103,6 @@ export const add = async (req, res) => {
     recipeLabels,
     recipeIngredients,
   } = req.body;
-  console.log('A request tartalma: ', req.body);
   const imagePathBackslash = req.file.path;
   const imagePath = imagePathBackslash.replace(/\\/g, '/'); // EZ állítja át a per jelet adatbásiba lementett kép elérési path stringjében.
   const { userID } = req;
