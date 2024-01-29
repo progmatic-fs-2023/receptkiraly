@@ -7,9 +7,9 @@ import NavButton from './NavButton';
 import { meals, desserts, beverages, chefs } from './NavArrays';
 
 // Pictures of dishes
-import dummyImg1 from './img/dishes/dummyImg1.webp';
 import dummyImg2 from './img/dishes/dummyImg2.webp';
-import dummyImg3 from './img/dishes/dummyImg3.webp';
+import dummyImg4 from './img/dishes/dummyImg4.webp';
+import dummyImg6 from './img/dishes/dummyImg6.webp';
 
 function NavigationBar() {
   const { port } = window.location;
@@ -81,23 +81,23 @@ function NavigationBar() {
                     <p className="block text-xs uppercase text-body/60">Popular This Week</p>
                     <div className="flex mt-8 space-x-6">
                       <PopularThisWeekItem
-                        img={dummyImg1}
+                        img={dummyImg2}
                         link={link}
-                        label="ChuckleChomp Deluxe"
+                        label="Grilled Chicken Salad"
                         type="Meals"
                         typelabel="meals"
                       />
                       <PopularThisWeekItem
-                        img={dummyImg2}
+                        img={dummyImg4}
                         link={link}
-                        label="MeatyMirth Masterpiece"
+                        label="Chocolate Cake"
                         type="Desserts"
                         typelabel="desserts"
                       />
                       <PopularThisWeekItem
-                        img={dummyImg3}
+                        img={dummyImg6}
                         link={link}
-                        label="BrothBelly Giggler"
+                        label="Strawberry Smoothie"
                         type="Beverages"
                         typelabel="beverages"
                       />
