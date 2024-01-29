@@ -120,29 +120,46 @@ export const addNewRecipe = async (
 
   const recipeID = result.rows[0].id;
 
-  for (let i = 0; i < recipeLabels.length; i += 1) {
-    db.query(
-      `
-    INSERT INTO recipes_labels
-    (recipe_id, label_id)
-    VALUES
-    ($1, (SELECT id FROM labels WHERE name = $2))
-    `,
-      [recipeID, recipeLabels[i]],
-    );
+  let recipeLabelsArray;
+  let recipeIngredientsArray;
+
+  if (!Array.isArray(recipeLabels)) {
+    recipeLabelsArray = [recipeLabels];
+  } else {
+    recipeLabelsArray = recipeLabels;
   }
 
-  for (let i = 0; i < recipeIngredients.length; i += 1) {
+  recipeLabelsArray.forEach(label => {
+    db.query(
+      `
+      INSERT INTO recipes_labels
+      (recipe_id, label_id)
+
+      VALUES
+      ($1, (SELECT id FROM labels WHERE name = $2))
+      `,
+      [recipeID, label],
+    );
+  });
+
+  if (!Array.isArray(recipeIngredients)) {
+    recipeIngredientsArray = [recipeIngredients];
+  } else {
+    recipeIngredientsArray = recipeIngredients;
+  }
+
+  recipeIngredientsArray.forEach(ingredient => {
     db.query(
       `
       INSERT INTO ingredients
       (recipe_id, name)
+
       VALUES
       ($1, $2)
       `,
-      [recipeID, recipeIngredients[i]],
+      [recipeID, ingredient],
     );
-  }
+  });
 
   return result.rows;
 };
@@ -261,29 +278,46 @@ export const modifyRecipe = async (
     [recipeID],
   );
 
-  for (let i = 0; i < [recipeLabels].flat().length; i += 1) {
-    db.query(
-      `
-    INSERT INTO recipes_labels
-    (recipe_id, label_id)
-    VALUES
-    ($1, (SELECT id FROM labels WHERE name = $2))
-    `,
-      [recipeID, [recipeLabels].flat()[i]],
-    );
+  let recipeLabelsArray;
+  let recipeIngredientsArray;
+
+  if (!Array.isArray(recipeLabels)) {
+    recipeLabelsArray = [recipeLabels];
+  } else {
+    recipeLabelsArray = recipeLabels;
   }
 
-  for (let i = 0; i < [recipeIngredients].flat().length; i += 1) {
+  recipeLabelsArray.forEach(label => {
+    db.query(
+      `
+      INSERT INTO recipes_labels
+      (recipe_id, label_id)
+
+      VALUES
+      ($1, (SELECT id FROM labels WHERE name = $2))
+      `,
+      [recipeID, label],
+    );
+  });
+
+  if (!Array.isArray(recipeIngredients)) {
+    recipeIngredientsArray = [recipeIngredients];
+  } else {
+    recipeIngredientsArray = recipeIngredients;
+  }
+
+  recipeIngredientsArray.forEach(ingredient => {
     db.query(
       `
       INSERT INTO ingredients
       (recipe_id, name)
+
       VALUES
       ($1, $2)
       `,
-      [recipeID, [recipeIngredients].flat()[i]],
+      [recipeID, ingredient],
     );
-  }
+  });
 
   return result.rows;
 };

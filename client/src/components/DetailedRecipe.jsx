@@ -25,6 +25,18 @@ function DetailedRecipe({
   const [newIngredient, setNewIngredient] = useState('');
   const [errorMessage] = useState();
 
+  const emptyFields =
+    stateObject.title.value === '' ||
+    stateObject.image.value === undefined ||
+    stateObject.description.value === undefined ||
+    stateObject.mainCategory.value === undefined ||
+    stateObject.category.value === undefined ||
+    stateObject.difficulty.value === undefined ||
+    stateObject.labels.value.length === 0 ||
+    stateObject.ingredients.value.length === 0 ||
+    stateObject.time.value === 0 ||
+    stateObject.serves.value === 0;
+
   const refreshRecipes = () => {
     fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
       .then((response) => {
@@ -185,8 +197,31 @@ function DetailedRecipe({
             />
           </div>
         </div>
-        {editMode && !editButtonClicked ? <Button text="Save" onClick={uploadRecipe} /> : null}
-        {editButtonClicked ? <Button text="Modify" onClick={modifyRecipe} /> : null}
+        {editMode && !editButtonClicked ? (
+          <Button
+            text="Save"
+            onClick={uploadRecipe}
+            addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
+              emptyFields
+                ? 'custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 grayscale disabled-button'
+                : 'bg-amber-200'
+            } rounded text-lg `}
+            disabled={emptyFields}
+          />
+        ) : null}
+
+        {editButtonClicked ? (
+          <Button
+            text="Modify"
+            onClick={modifyRecipe}
+            addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
+              emptyFields
+                ? 'custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 grayscale disabled-button'
+                : 'bg-amber-200'
+            } rounded text-lg `}
+            disabled={emptyFields}
+          />
+        ) : null}
       </form>
     </div>
   );
