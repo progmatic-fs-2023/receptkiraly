@@ -6,7 +6,7 @@ import { API_URL } from '../constants';
 
 import Button from './Button';
 
-function SearchFilter({ setRecipesData }) {
+function SearchFilter({ setRecipesData, setErrorMessage }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Search from the text input.
@@ -35,7 +35,7 @@ function SearchFilter({ setRecipesData }) {
         return [];
     }
   };
-
+  // Set the filter selects to be able to select all option.
   const allCategories = [{ key: '0', value: '', label: 'All' }, ...getCategoriesForType()];
   const allLabels = [{ key: '0', value: '', label: 'All' }, ...labels];
 
@@ -44,10 +44,7 @@ function SearchFilter({ setRecipesData }) {
     setSelectedLabels(selectedOptions);
   };
 
-  const toggleFilter = () => {
-    setIsOpen(!isOpen);
-  };
-
+  // Set the searching parameters with URL. Handle search buttons.
   const handleSearch = () => {
     navigate(`/search?title=${encodeURIComponent(searchText)}`);
 
@@ -60,22 +57,23 @@ function SearchFilter({ setRecipesData }) {
     });
 
     const apiUrl = `${API_URL}/search${window.location.search}`;
-    // console.log(`Filtered search URL: ${apiUrl}`);
 
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          setRecipesData([]);
-          throw new Error(`Network response was not ok: ${response.statusText}`);
+          throw new Error('No recipes found for that filter');
         }
         return response.json();
       })
       .then((recipes) => {
-        // console.log(recipes);
+        if (recipes.length === 0) {
+          throw new Error('No recipes found for that filter');
+        }
+        setErrorMessage('');
         setRecipesData(recipes);
       })
-      .catch(() => {
-        setRecipesData([]);
+      .catch((err) => {
+        setErrorMessage(err.message);
       });
   };
 
@@ -83,6 +81,19 @@ function SearchFilter({ setRecipesData }) {
     if (event.key === 'Enter') {
       handleSearch();
     }
+  };
+
+  // Handling fn for filter buttons
+  const toggleFilter = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const resetFilters = () => {
+    setSelectedType('');
+    setSelectedCategory('');
+    setSelectedLabels('');
+    setSelectedUser('');
+    setSearchText('');
   };
 
   return (
@@ -121,6 +132,7 @@ function SearchFilter({ setRecipesData }) {
           onClick={toggleFilter}
           addClassName="transition-none"
         />
+
         {isOpen && (
           <div id="filterContainer">
             <div className="mb-4 mt-6 lg:mt-10">
@@ -196,6 +208,12 @@ function SearchFilter({ setRecipesData }) {
                 addClassName="ml-2"
                 onClick={handleSearch}
               />
+              <Button
+                text="Reset"
+                type="button"
+                onClick={resetFilters}
+                addClassName="transition-none"
+              />
             </div>
           </div>
         )}
@@ -206,6 +224,7 @@ function SearchFilter({ setRecipesData }) {
 
 SearchFilter.propTypes = {
   setRecipesData: PropTypes.func.isRequired,
+  setErrorMessage: PropTypes.func.isRequired,
 };
 
 export default SearchFilter;
