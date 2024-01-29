@@ -62,7 +62,9 @@ function DetailedRecipe({
         if (response.status === 201) {
           alert('Recipe upload is successful!'); // eslint-disable-line no-alert
           closeModal();
-          refreshRecipes();
+          if (setMyRecipes) {
+            refreshRecipes();
+          }
         } else {
           throw new Error('Error while uploading recipe');
         }
@@ -97,7 +99,9 @@ function DetailedRecipe({
         if (response.status === 200) {
           alert('Recipe modification was successful!'); // eslint-disable-line no-alert
           closeModal();
-          refreshRecipes();
+          if (setMyRecipes) {
+            refreshRecipes();
+          }
         } else {
           throw new Error('Error while modifying recipe');
         }
