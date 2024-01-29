@@ -10,13 +10,16 @@ function IngredientsComp({
 }) {
   const addIngredient = () => {
     if (newIngredient.trim() !== '') {
-      setIngredients([...ingredients, { id: Date.now(), text: newIngredient }]);
+      setIngredients([...ingredients, newIngredient]);
       setNewIngredient('');
     }
   };
 
-  const deleteIngredient = (id) => {
-    setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
+  const deleteIngredient = (ingredientToDelete) => {
+    const updatedIngredients = ingredients.filter(
+      (ingredient) => ingredient !== ingredientToDelete,
+    );
+    setIngredients(updatedIngredients);
   };
 
   const getTotalIngredients = () => ingredients.length;
@@ -43,11 +46,11 @@ function IngredientsComp({
         <div className="recipe-paper-header">Ingredients</div>
         <ul>
           {ingredients.map((ingredient) => (
-            <li key={ingredient.id}>
+            <li key={ingredient}>
               <div className="recipe-paper-ingredients flex justify-between mx-10">
-                {ingredient.text}
+                {ingredient}
                 {editMode ? (
-                  <button type="button" onClick={() => deleteIngredient(ingredient.id)}>
+                  <button type="button" onClick={() => deleteIngredient(ingredient)}>
                     <img src="/images/delete.svg" alt="Delete ingredient" className="w-6" />
                   </button>
                 ) : null}
