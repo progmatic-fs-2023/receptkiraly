@@ -9,6 +9,12 @@
   animation: color 12s ease-in-out infinite;
 }
 
+.my-hover-class:hover {
+  filter: brightness(1.2);
+  transform: scale(1.01);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
 @keyframes color {
   0% {
     background-position: 0 50%;
