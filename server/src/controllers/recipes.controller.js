@@ -175,8 +175,6 @@ export const modify = async (req, res) => {
     recipeLabels,
     recipeIngredients,
   } = req.body;
-  console.log(req.body);
-  console.log(req.file);
 
   let imagePath;
 

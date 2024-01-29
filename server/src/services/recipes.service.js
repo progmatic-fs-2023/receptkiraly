@@ -261,7 +261,7 @@ export const modifyRecipe = async (
     [recipeID],
   );
 
-  for (let i = 0; i < recipeLabels.length; i += 1) {
+  for (let i = 0; i < [recipeLabels].flat().length; i += 1) {
     db.query(
       `
     INSERT INTO recipes_labels
@@ -269,12 +269,11 @@ export const modifyRecipe = async (
     VALUES
     ($1, (SELECT id FROM labels WHERE name = $2))
     `,
-      [recipeID, recipeLabels[i]],
+      [recipeID, [recipeLabels].flat()[i]],
     );
   }
 
-  for (let i = 0; i < recipeIngredients.length; i += 1) {
-    console.log(recipeID);
+  for (let i = 0; i < [recipeIngredients].flat().length; i += 1) {
     db.query(
       `
       INSERT INTO ingredients
@@ -282,7 +281,7 @@ export const modifyRecipe = async (
       VALUES
       ($1, $2)
       `,
-      [recipeID, recipeIngredients[i]],
+      [recipeID, [recipeIngredients].flat()[i]],
     );
   }
 
