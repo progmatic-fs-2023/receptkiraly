@@ -11,14 +11,8 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Home() {
-<<<<<<< HEAD
-  const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([]);
   const [randomRecipesByCategory, setRandomRecipesByCategory] = useState([]);
-=======
-  const [latestRecipes, setLatestRecipes] = useState([{}, {}]);
-  const [allRecipes, setAllRecipes] = useState([{}, {}]);
->>>>>>> main
   const countRecipesShown = 6;
 
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
