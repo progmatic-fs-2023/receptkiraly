@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
-import { API_URL, HOST_PORT_URL } from '../constants';
+import { API_URL } from '../constants';
 import InfoCard from '../components/InfoCard';
 import RecipeGrid from '../components/RecipeGrid';
 import RecipeCard from '../components/RecipeCard';
@@ -10,11 +10,20 @@ import convertIsoTimestampToDate from '../helpers';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Profile() {
-  const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
   const [myRecipes, setMyRecipes] = useState([]);
   const [userData, setUserData] = useState({});
 
-  const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+  const {
+    stateObject,
+    closeModal,
+    openModal,
+    isModalOpen,
+    selectedRecipe,
+    editUsersRecipe,
+    editButtonClicked,
+    creatingNewRecipe,
+    setCreatingNewRecipe,
+  } = useRecipeCardModal();
 
   useEffect(() => {
     fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
@@ -93,8 +102,8 @@ function Profile() {
           {myRecipes.map((recipe) => (
             <RecipeCard
               id={recipe.id}
-              key={recipe.name}
-              imgUrl={`${HOST_PORT_URL}/${recipe.img}`}
+              key={recipe.id}
+              imgUrl={recipe.img}
               minutes={recipe.time_minutes}
               difficulty={recipe.difficulty_level}
               serves={recipe.serve_count}
@@ -103,25 +112,36 @@ function Profile() {
               category={recipe.category_name}
               mainCategory={recipe.main_category_name}
               labels={recipe.label_name}
+              ingredients={recipe.ingredient_name}
               openModal={openModal}
               actions
+              editButtonClicked={editButtonClicked}
+              setMyRecipes={setMyRecipes}
             />
           ))}
         </RecipeGrid>
       </div>
       {creatingNewRecipe ? (
-        <Modal
-          title="Creating new recipe"
-          addClassName="w-4/5"
-          close={() => setCreatingNewRecipe(false)}
-        >
-          <DetailedRecipe editMode stateObject={stateObject} />
+        <Modal title="Creating new recipe" addClassName="w-4/5" close={closeModal}>
+          <DetailedRecipe
+            editMode
+            stateObject={stateObject}
+            closeModal={closeModal}
+            setMyRecipes={setMyRecipes}
+          />
         </Modal>
       ) : null}
 
       {isModalOpen && (
         <Modal title="Detailed Recipe" close={closeModal} addClassName="w-5/6 h-5/6">
-          <DetailedRecipe editMode recipeID={selectedRecipe} stateObject={stateObject} />
+          <DetailedRecipe
+            editMode={editUsersRecipe}
+            recipeID={selectedRecipe}
+            stateObject={stateObject}
+            editButtonClicked={editUsersRecipe}
+            closeModal={closeModal}
+            setMyRecipes={setMyRecipes}
+          />
         </Modal>
       )}
     </div>

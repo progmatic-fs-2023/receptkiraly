@@ -3,11 +3,57 @@ import { Edit, Delete } from '@mui/icons-material';
 import Icon from './Icon';
 import ResponsiveImage from './ResponsiveImage';
 import IconContainer from './IconContainer';
+import { API_URL } from '../constants';
 
-function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions, openModal }) {
+function RecipeCard({
+  id,
+  imgUrl,
+  minutes,
+  difficulty,
+  serves,
+  name,
+  actions,
+  openModal,
+  editButtonClicked,
+  setMyRecipes,
+}) {
   const handleOnKeyDown = (event) => {
     if (event.key === 'Enter') {
       openModal(id);
+    }
+  };
+
+  const refreshRecipes = () => {
+    fetch(`${API_URL}/user/recipes/`, { credentials: 'include' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Recipes cannot be fetched');
+        return response.json();
+      })
+      .then((data) => {
+        setMyRecipes(data);
+      });
+  };
+
+  const deleteRecipe = async (event) => {
+    event.stopPropagation();
+    const recipeID = id;
+    try {
+      const response = await fetch(`${API_URL}/recipes/deleterecipe`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ recipeID }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      } else {
+        refreshRecipes();
+      }
+      // console.log('Recipe deleted successfully');
+    } catch (error) {
+      // console.error('Error deleting recipe:', error);
     }
   };
 
@@ -23,12 +69,26 @@ function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions, op
         {actions ? (
           <div className="justify-between flex">
             <div className="relative  ">
-              <div className="absolute top-2 left-2 bg-white bg-opacity-75 rounded hover:filter hover:invert">
+              <div
+                aria-label="Edit"
+                role="button"
+                tabIndex={0}
+                onKeyDown={handleOnKeyDown}
+                className="absolute top-2 left-2 bg-white bg-opacity-75 rounded hover:filter hover:invert"
+                onClick={() => editButtonClicked()}
+              >
                 <Edit />
               </div>
             </div>
             <div className="relative">
-              <div className="absolute top-2 right-2 bg-white bg-opacity-75 rounded hover:filter hover:invert">
+              <div
+                aria-label="Delete"
+                role="button"
+                tabIndex={0}
+                onKeyDown={handleOnKeyDown}
+                className="absolute top-2 right-2 bg-white bg-opacity-75 rounded hover:filter hover:invert"
+                onClick={deleteRecipe}
+              >
                 <Delete />
               </div>
             </div>
@@ -51,20 +111,27 @@ function RecipeCard({ id, imgUrl, minutes, difficulty, serves, name, actions, op
 }
 
 RecipeCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  imgUrl: PropTypes.string,
   minutes: PropTypes.number,
   difficulty: PropTypes.number,
   serves: PropTypes.number,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   actions: PropTypes.bool,
   openModal: PropTypes.func.isRequired,
+  editButtonClicked: PropTypes.func,
+  setMyRecipes: PropTypes.func,
 };
 
 RecipeCard.defaultProps = {
+  id: 0,
+  imgUrl: '',
   minutes: null,
   difficulty: null,
   serves: null,
+  name: '',
   actions: false,
+  editButtonClicked: () => {},
+  setMyRecipes: () => {},
 };
 export default RecipeCard;

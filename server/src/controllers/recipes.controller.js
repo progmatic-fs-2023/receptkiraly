@@ -1,11 +1,28 @@
 import * as services from '../services/recipes.service';
-import { preprocess, requireLabels } from '../utils/helpers';
+import { preprocess, requireLabels, nRandomByCategory } from '../utils/helpers';
 
 export const list = async (req, res) => {
   try {
     const recipes = await services.listRecipes();
     if (recipes) {
       res.status(200).json(preprocess(recipes));
+    } else {
+      res.status(404).json({
+        errorMessage: 'There is no recipes...',
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      errorMessage: err.message,
+    });
+  }
+};
+
+export const categorize = async (req, res) => {
+  try {
+    const recipes = await services.listRecipes();
+    if (recipes) {
+      res.status(200).json(nRandomByCategory(6, preprocess(recipes)));
     } else {
       res.status(404).json({
         errorMessage: 'There is no recipes...',
@@ -86,7 +103,6 @@ export const add = async (req, res) => {
     recipeLabels,
     recipeIngredients,
   } = req.body;
-  console.log('A request tartalma: ', req.body);
   const imagePathBackslash = req.file.path;
   const imagePath = imagePathBackslash.replace(/\\/g, '/'); // EZ állítja át a per jelet adatbásiba lementett kép elérési path stringjében.
   const { userID } = req;
@@ -161,5 +177,54 @@ export const searchRecipes = async (req, res) => {
     res.status(400).json({
       errorMessage: err.message,
     });
+  }
+};
+
+export const modify = async (req, res) => {
+  const {
+    recipeID,
+    recipeName,
+    recipeDescription,
+    recipeTimeMinutes,
+    recipeDifficultyLevel,
+    recipeServeCount,
+    recipeCategory,
+    recipeLabels,
+    recipeIngredients,
+  } = req.body;
+
+  let imagePath;
+
+  if (req.file !== undefined) {
+    imagePath = `http://localhost:3000/${req.file.path.replace(/\\/g, '/')}`;
+  } else {
+    imagePath = req.body.image;
+  }
+
+  const recipe = await services.modifyRecipe(
+    recipeID,
+    recipeName,
+    recipeDescription,
+    recipeTimeMinutes,
+    recipeDifficultyLevel,
+    recipeServeCount,
+    recipeCategory,
+    recipeLabels,
+    recipeIngredients,
+    imagePath,
+  );
+
+  if (recipe) {
+    res.status(200).json(preprocess(recipe));
+  }
+};
+
+export const deleteRecipe = async (req, res) => {
+  const { recipeID } = req.body;
+
+  const recipe = await services.deleteRecipeFromDB(recipeID);
+
+  if (recipe) {
+    res.status(200).json(preprocess(recipe));
   }
 };
