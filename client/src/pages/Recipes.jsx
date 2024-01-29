@@ -25,7 +25,12 @@ function RecipesFeed() {
     <div>
       <div>
         {recipes.map((recipe) => (
-          <RecipeCard key={recipe.id} name={recipe.name} description={recipe.description} />
+          <RecipeCard
+            key={recipe.id}
+            id={recipe.id}
+            name={recipe.name}
+            description={recipe.description}
+          />
         ))}
       </div>
       <div>HELLO</div>

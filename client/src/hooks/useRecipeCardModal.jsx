@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { API_URL } from '../constants';
 
-const useRecipeCardModal = (id) => {
+const useRecipeCardModal = () => {
   // States for Modal
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -18,6 +18,8 @@ const useRecipeCardModal = (id) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [editUsersRecipe, setEditUsersRecipe] = useState(false);
+  const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
 
   // Put every Detailed Recipe state into one object
   const stateObject = {
@@ -66,11 +68,10 @@ const useRecipeCardModal = (id) => {
   // Modal functions
 
   const openModal = async (recipeId) => {
-    setSelectedRecipe(id);
+    setSelectedRecipe(recipeId);
     setModalOpen(true);
 
     try {
-      // console.log(`Recipe ID search URL: http://localhost:3000/api/recipes/${id}`);
       const response = await fetch(`${API_URL}/recipes/${recipeId}`);
       const recipe = await response.json();
 
@@ -83,8 +84,7 @@ const useRecipeCardModal = (id) => {
       setCategory(recipe.category_name);
       setSelectedMainCategory(recipe.main_category_name);
       setSelectedOptions(recipe.label_name);
-
-      // console.log(recipe);
+      setIngredients(recipe.ingredient_name);
     } catch (error) {
       setErrorMessage(error);
       throw new Error(`Latest recipe cannot be fetched: ${errorMessage}`);
@@ -93,6 +93,7 @@ const useRecipeCardModal = (id) => {
 
   const closeModal = () => {
     setModalOpen(false);
+    setCreatingNewRecipe(false);
     setRecipeTitle('');
     setDescription('');
     setImgUrl('');
@@ -102,10 +103,27 @@ const useRecipeCardModal = (id) => {
     setCategory('');
     setSelectedMainCategory('');
     setSelectedOptions([]);
+    setIngredients([]);
+    setEditUsersRecipe(false);
   };
+
+  const editButtonClicked = () => {
+    setEditUsersRecipe(true);
+  };
+
   // ---------------------------
 
-  return { stateObject, closeModal, openModal, isModalOpen, selectedRecipe };
+  return {
+    stateObject,
+    closeModal,
+    openModal,
+    isModalOpen,
+    selectedRecipe,
+    editUsersRecipe,
+    editButtonClicked,
+    creatingNewRecipe,
+    setCreatingNewRecipe,
+  };
 };
 
 export default useRecipeCardModal;

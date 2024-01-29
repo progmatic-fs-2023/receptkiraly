@@ -144,18 +144,6 @@ export const addNewRecipe = async (
     );
   }
 
-  for (let i = 0; i < recipeIngredients.length; i += 1) {
-    db.query(
-      `
-      INSERT INTO ingredients
-      (recipe_id, name)
-      VALUES
-      ($1, $2)
-      `,
-      [recipeID, recipeIngredients[i]],
-    );
-  }
-
   return result.rows;
 };
 
@@ -206,5 +194,126 @@ export const listSearchedRecipes = async params => {
     queryString += ` labels.name = ANY($${queryParams.length}::text[])`;
   }
   const result = await db.query(`${$RECIPE} ${queryString}`, queryParams);
+  return result.rows;
+};
+
+export const modifyRecipe = async (
+  recipeID,
+  recipeName,
+  recipeDescription,
+  recipeTimeMinutes,
+  recipeDifficultyLevel,
+  recipeServeCount,
+  recipeCategory,
+  recipeLabels,
+  recipeIngredients,
+  imagePath,
+) => {
+  const categoryIDobject = await db.query('SELECT id FROM category WHERE name = $1', [
+    recipeCategory,
+  ]);
+
+  const categoryID = categoryIDobject.rows[0].id;
+
+  const result = await db.query(
+    `
+    UPDATE recipes
+
+    SET
+    name = $1,
+    description = $2,
+    img = $3,
+    time_minutes = $4, 
+    difficulty_level = $5, 
+    serve_count = $6,
+    category_id = $7
+    
+    WHERE
+    id = $8
+
+    RETURNING *
+    `,
+    [
+      recipeName,
+      recipeDescription,
+      imagePath,
+      recipeTimeMinutes,
+      recipeDifficultyLevel,
+      recipeServeCount,
+      categoryID,
+      recipeID,
+    ],
+  );
+
+  db.query(
+    `
+    DELETE FROM recipes_labels
+    WHERE recipe_id = $1
+    `,
+    [recipeID],
+  );
+
+  db.query(
+    `
+    DELETE FROM ingredients
+    WHERE recipe_id = $1
+    `,
+    [recipeID],
+  );
+
+  for (let i = 0; i < [recipeLabels].flat().length; i += 1) {
+    db.query(
+      `
+    INSERT INTO recipes_labels
+    (recipe_id, label_id)
+    VALUES
+    ($1, (SELECT id FROM labels WHERE name = $2))
+    `,
+      [recipeID, [recipeLabels].flat()[i]],
+    );
+  }
+
+  for (let i = 0; i < [recipeIngredients].flat().length; i += 1) {
+    db.query(
+      `
+      INSERT INTO ingredients
+      (recipe_id, name)
+      VALUES
+      ($1, $2)
+      `,
+      [recipeID, [recipeIngredients].flat()[i]],
+    );
+  }
+
+  return result.rows;
+};
+
+export const deleteRecipeFromDB = async recipeID => {
+  const result = await db.query(
+    `
+    DELETE FROM recipes_labels
+    WHERE recipe_id = $1
+    `,
+    [recipeID],
+  );
+
+  db.query(
+    `
+    DELETE FROM ingredients
+    WHERE recipe_id = $1
+    `,
+    [recipeID],
+  );
+
+  db.query(
+    `
+    DELETE FROM recipes
+    WHERE id = $1
+
+    RETURNING *
+    `,
+    [recipeID],
+  );
+
   return result.rows;
 };

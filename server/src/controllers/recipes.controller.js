@@ -162,3 +162,52 @@ export const searchRecipes = async (req, res) => {
     });
   }
 };
+
+export const modify = async (req, res) => {
+  const {
+    recipeID,
+    recipeName,
+    recipeDescription,
+    recipeTimeMinutes,
+    recipeDifficultyLevel,
+    recipeServeCount,
+    recipeCategory,
+    recipeLabels,
+    recipeIngredients,
+  } = req.body;
+
+  let imagePath;
+
+  if (req.file !== undefined) {
+    imagePath = `http://localhost:3000/${req.file.path.replace(/\\/g, '/')}`;
+  } else {
+    imagePath = req.body.image;
+  }
+
+  const recipe = await services.modifyRecipe(
+    recipeID,
+    recipeName,
+    recipeDescription,
+    recipeTimeMinutes,
+    recipeDifficultyLevel,
+    recipeServeCount,
+    recipeCategory,
+    recipeLabels,
+    recipeIngredients,
+    imagePath,
+  );
+
+  if (recipe) {
+    res.status(200).json(preprocess(recipe));
+  }
+};
+
+export const deleteRecipe = async (req, res) => {
+  const { recipeID } = req.body;
+
+  const recipe = await services.deleteRecipeFromDB(recipeID);
+
+  if (recipe) {
+    res.status(200).json(preprocess(recipe));
+  }
+};
