@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName }) {
   const handleMinutesChange = (event) => {
-    setMinutes(event.target.value);
+    setMinutes(Number(event.target.value));
   };
 
   const handleServesChange = (event) => {
-    setServes(event.target.value);
+    setServes(Number(event.target.value));
   };
 
   return (

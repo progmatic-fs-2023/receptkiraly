@@ -25,12 +25,13 @@ export const labels = [
   { key: 2, value: 'vegetarian', label: 'Vegetarian' },
   { key: 3, value: 'nut-free', label: 'Nut-Free' },
   { key: 4, value: 'egg-free', label: 'Egg-Free' },
-  { key: 5, value: 'dairy-free', label: 'Diary-Free' },
-  { key: 6, value: 'low-carb', label: 'Low-Carb' },
-  { key: 7, value: 'spicy', label: 'Spicy' },
-  { key: 8, value: 'alcoholic', label: 'Alcoholic' },
-  { key: 9, value: 'non-alcoholic', label: 'Non-Alcoholic' },
-  { key: 10, value: 'seafood', label: 'Seafood' },
+  { key: 5, value: 'dairy-free', label: 'Dairy-Free' },
+  { key: 6, value: 'gluten-free', label: 'Gluten-Free' },
+  { key: 7, value: 'low-carb', label: 'Low-Carb' },
+  { key: 8, value: 'spicy', label: 'Spicy' },
+  { key: 9, value: 'alcoholic', label: 'Alcoholic' },
+  { key: 10, value: 'non-alcoholic', label: 'Non-Alcoholic' },
+  { key: 11, value: 'seafood', label: 'Seafood' },
 ];
 
 export const chefsProf = [

@@ -11,17 +11,13 @@ import DetailedRecipe from '../components/DetailedRecipe';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
 
 function Home() {
-  const [isConnect, setIsConnect] = useState(false);
   const [latestRecipes, setLatestRecipes] = useState([]);
-  const [allRecipes, setAllRecipes] = useState([]);
+  const [randomRecipesByCategory, setRandomRecipesByCategory] = useState([]);
   const countRecipesShown = 6;
 
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
 
   useEffect(() => {
-    fetch(`${API_URL}`).then((response) => {
-      if (response.ok) setIsConnect(true);
-    });
     fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
       .then((response) => {
         if (!response.ok) throw new Error('Latest recipe cannot be fetched');
@@ -30,21 +26,15 @@ function Home() {
       .then((data) => {
         setLatestRecipes(data);
       });
-    fetch(`${API_URL}/recipes`)
+    fetch(`${API_URL}/recipes/categoryswiper`)
       .then((response) => {
-        if (!response.ok) throw new Error('Latest recipe cannot be fetched');
+        if (!response.ok) throw new Error('Random recipes from categories can not be fetched');
         return response.json();
       })
       .then((data) => {
-        setAllRecipes(data);
+        setRandomRecipesByCategory(data);
       });
   }, []);
-
-  const nRandomRecipes = (n, recipes, condition) =>
-    recipes
-      .filter((recipe) => condition(recipe))
-      .sort(() => 0.5 - Math.random())
-      .slice(0, n);
 
   const [isCreateRecipe, setISCreateRecipe] = useState(false);
 
@@ -54,15 +44,6 @@ function Home() {
         <img src="/images/banner-v2.png" alt="Banner" className="w-full relative z-10" />
       </div>
       <div className="container mx-auto my-2">
-        <div>
-          Hello project!
-          <ul>
-            <li>
-              {isConnect ? '✅' : '️❗️'} Connect to backend {!isConnect && 'failed'}
-            </li>
-          </ul>
-        </div>
-
         <div className="flex">
           <div className=" flex text-center justify-center items-center basis-2/6 ">
             <div>
@@ -133,75 +114,32 @@ function Home() {
             </div>
           </div>
         </div>
-
         <div>
           <div>
-            <SwiperComponent title="Meals">
-              {nRandomRecipes(
-                countRecipesShown,
-                allRecipes,
-                (recipe) => recipe.main_category_name === 'meals',
-              ).map((recipe) => (
-                <RecipeCard
-                  id={recipe.id}
-                  key={recipe.recipe_name}
-                  imgUrl={recipe.img}
-                  minutes={recipe.time_minutes}
-                  difficulty={recipe.difficulty_level}
-                  serves={recipe.serve_count}
-                  name={recipe.recipe_name}
-                  description={recipe.description}
-                  category={recipe.category_name}
-                  mainCategory={recipe.main_category_name}
-                  labels={recipe.label_name}
-                  openModal={openModal}
-                />
-              ))}
-            </SwiperComponent>
-            <SwiperComponent title="Desserts">
-              {nRandomRecipes(
-                countRecipesShown,
-                allRecipes,
-                (recipe) => recipe.main_category_name === 'desserts',
-              ).map((recipe) => (
-                <RecipeCard
-                  id={recipe.id}
-                  key={recipe.recipe_name}
-                  imgUrl={recipe.img}
-                  minutes={recipe.time_minutes}
-                  difficulty={recipe.difficulty_level}
-                  serves={recipe.serve_count}
-                  name={recipe.recipe_name}
-                  description={recipe.description}
-                  category={recipe.category_name}
-                  mainCategory={recipe.main_category_name}
-                  labels={recipe.label_name}
-                  openModal={openModal}
-                />
-              ))}
-            </SwiperComponent>
-            <SwiperComponent title="Beverages">
-              {nRandomRecipes(
-                countRecipesShown,
-                allRecipes,
-                (recipe) => recipe.main_category_name === 'beverages',
-              ).map((recipe) => (
-                <RecipeCard
-                  id={recipe.id}
-                  key={recipe.recipe_name}
-                  imgUrl={recipe.img}
-                  minutes={recipe.time_minutes}
-                  difficulty={recipe.difficulty_level}
-                  serves={recipe.serve_count}
-                  name={recipe.recipe_name}
-                  description={recipe.description}
-                  category={recipe.category_name}
-                  mainCategory={recipe.main_category_name}
-                  labels={recipe.label_name}
-                  openModal={openModal}
-                />
-              ))}
-            </SwiperComponent>
+            {randomRecipesByCategory.map((obj, index) => (
+              <SwiperComponent
+                // eslint-disable-next-line react/no-array-index-key
+                key={`category-${index}`}
+                title={`${obj.category[0].toUpperCase()}${obj.category.substring(1)}`}
+              >
+                {obj.recipes.map((recipe) => (
+                  <RecipeCard
+                    id={recipe.id}
+                    key={recipe.recipe_name}
+                    imgUrl={recipe.img}
+                    minutes={recipe.time_minutes}
+                    difficulty={recipe.difficulty_level}
+                    serves={recipe.serve_count}
+                    name={recipe.recipe_name}
+                    description={recipe.description}
+                    category={recipe.category_name}
+                    mainCategory={recipe.main_category_name}
+                    labels={recipe.label_name}
+                    openModal={openModal}
+                  />
+                ))}
+              </SwiperComponent>
+            ))}
           </div>
         </div>
       </div>
