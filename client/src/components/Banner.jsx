@@ -70,15 +70,15 @@ function Banner() {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-96 shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mx-1"
+            className="w-96 shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
-          <Button text="Search" type="button" onClick={handleSearch} />
+          <Button type="button" addImage="/images/icons/search.svg" onClick={handleSearch} />
         </div>
       </div>
       <div className="flex flex-grow justify-center items-center sm:mt-4 md:mt-0">
         {isAuthenticated ? (
           <Link to="/postrecipe">
-            <Button text="Post Recipe" type="button" />
+            <Button text="Post Recipe" type="button" addImage="/images/icons/post.svg" />
           </Link>
         ) : (
           <Link to="/postrecipe">
@@ -86,6 +86,7 @@ function Banner() {
               <Button
                 text="Post Recipe"
                 type="button"
+                addImage="/images/icons/post.svg"
                 addClassName="grayscale disabled-button"
                 disabled
               />
@@ -97,7 +98,7 @@ function Banner() {
             <li>
               {isAuthenticated ? (
                 <NavLink to="/profile">
-                  <Button text="Profile" type="button" />
+                  <Button text="Profile" type="button" addImage="/images/icons/profile.svg" />
                 </NavLink>
               ) : (
                 <Login setIsAuthenticated={setIsAuthenticated} />
@@ -106,10 +107,10 @@ function Banner() {
           </ul>
         </nav>
         {isAuthenticated ? (
-          <Button text="Log out" type="button" onClick={handleLogout} />
+          <Button text="Log out" type="button" addImage="/images/icons/logout.svg" onClick={handleLogout} />
         ) : (
           <Link to="/register">
-            <Button text="Sign Up" type="button" />
+            <Button text="Sign Up" type="button" addImage="/images/icons/login.svg" />
           </Link>
         )}
       </div>

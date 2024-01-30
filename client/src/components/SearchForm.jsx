@@ -116,7 +116,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
           <input
             type="text"
             id="search"
-            className="border-2 border-gray-300 focus:outline-none py-3 px-4 rounded-md w-full"
+            className="border-2 border-gray-300 focus:outline-none py-2 px-4 rounded-md w-full"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={handleOnKeyDown}
@@ -129,6 +129,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
         <Button
           text="Filters"
           type="button"
+          addImage="/images/icons/filter.svg"
           onClick={toggleFilter}
           addClassName="transition-none"
         />
@@ -205,12 +206,14 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
               <Button
                 text="Apply Changes"
                 type="button"
+                addImage="/images/icons/add.svg"
                 addClassName="ml-2"
                 onClick={handleSearch}
               />
               <Button
                 text="Reset"
                 type="button"
+                addImage="/images/icons/reset.svg"
                 onClick={resetFilters}
                 addClassName="transition-none"
               />
