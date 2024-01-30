@@ -80,7 +80,7 @@ function App() {
               </Routes>
             </ErrorBoundary>
           </main>
-          <footer className="relative z-0">
+          <footer className="relative z-10">
             <Footer />
           </footer>
         </LoginDispatchContext.Provider>
