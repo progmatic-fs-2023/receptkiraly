@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { meals, desserts, beverages, labels } from './navigation/NavArrays';
 import { API_URL } from '../constants';
@@ -14,12 +14,26 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
 
   // Selected searching filters
   const [, setSearchParams] = useSearchParams();
-  const [selectedType, setSelectedType] = useState('');
+  const [lastSearchType, setLastSearchType] = useState('');
+  const [selectedType, setSelectedType] = useState(lastSearchType);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    const title = params.get('title');
+    if (title) {
+      setSearchText(title);
+    }
+    if (type) {
+      setLastSearchType(type);
+      setSelectedType(type);
+    }
+  }, [window.location.search]);
 
   const getCategoriesForType = () => {
     switch (selectedType) {
@@ -147,7 +161,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
                     >
-                      <option value="">All</option>
+                      <option selected>All</option>
                       <option value="meals">Meal</option>
                       <option value="desserts">Dessert</option>
                       <option value="beverages">Beverage</option>

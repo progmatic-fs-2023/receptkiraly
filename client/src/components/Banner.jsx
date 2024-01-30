@@ -13,6 +13,7 @@ function Banner() {
   const isAuthenticated = useContext(LoginContext);
   const setIsAuthenticated = useContext(LoginDispatchContext);
   const [searchText, setSearchText] = useState('');
+  const [selectedType, setSelectedType] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +29,9 @@ function Banner() {
   }, []);
 
   const handleSearch = () => {
-    navigate(`/search?title=${encodeURIComponent(searchText)}`);
+    navigate(`/search?type=${selectedType}&title=${encodeURIComponent(searchText)}`);
+    setSearchText('');
+    setSelectedType('');
   };
 
   const handleKeyDown = (event) => {
@@ -63,15 +66,24 @@ function Banner() {
         <Link to="/" className="focus:outline-none">
           <img src={Logo} alt="Recipe King" className="logo" />
         </Link>
-        <div className="flex items-center mx-6">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="w-96 shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
+        <div className="flex flex-nowrap flex-row items-center">
+          <div className="flex flex-nowrap flex-row">
+            <select value={selectedType}
+  onChange={(e) => setSelectedType(e.target.value)} className="flex-shrink-0 z-10 inline-flex items-center py-2 px-2 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100">
+              <option selected>All types</option>
+              <option value="meals">Meals</option>
+              <option value="desserts">Desserts</option>
+              <option value="beverages">Beverages</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="w-96 block p-2 z-20 text-sm text-gray-900 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
           <Button type="button" addImage="/images/icons/search.svg" onClick={handleSearch} />
         </div>
       </div>
