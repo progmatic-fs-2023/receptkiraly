@@ -107,7 +107,12 @@ function Banner() {
           </ul>
         </nav>
         {isAuthenticated ? (
-          <Button text="Log out" type="button" addImage="/images/icons/logout.svg" onClick={handleLogout} />
+          <Button
+            text="Log out"
+            type="button"
+            addImage="/images/icons/logout.svg"
+            onClick={handleLogout}
+          />
         ) : (
           <Link to="/register">
             <Button text="Sign Up" type="button" addImage="/images/icons/login.svg" />

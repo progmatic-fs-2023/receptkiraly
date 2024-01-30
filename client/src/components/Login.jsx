@@ -46,7 +46,12 @@ function Login({ setIsAuthenticated }) {
 
   return (
     <div className="relative inline-block z-10">
-      <Button type="button" text="Sign In" addImage="/images/icons/login.svg" onClick={handleToggle} />
+      <Button
+        type="button"
+        text="Sign In"
+        addImage="/images/icons/login.svg"
+        onClick={handleToggle}
+      />
       {isOpen && (
         <div className="absolute left-0 mt-2 bg-white p-4 border rounded shadow-md">
           <form onSubmit={handleLogin}>
