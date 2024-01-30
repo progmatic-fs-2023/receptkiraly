@@ -71,12 +71,9 @@ function App() {
             <ErrorBoundary FallbackComponent={Fallback}>
               <Routes>
                 <Route path="/" element={<Home />} />
-
                 <Route path="/search" element={<SearchRecipes />} />
-
                 <Route path="/register" element={<Registration />} />
                 <Route path="/profile" element={<Profile />} />
-
                 <Route path="/postrecipe" element={<NewRecipe />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/*" element={<NoPage />} />
