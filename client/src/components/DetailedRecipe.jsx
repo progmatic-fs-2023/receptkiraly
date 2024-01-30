@@ -130,9 +130,6 @@ function DetailedRecipe({
   ) : (
     <div>
       <form encType="multipart/form-data" className="flex flex-col flex-nowrap items-center">
-        <div className="flex flex-col lg:flex-row my-4">
-          <div className="flex-1 flex flex-col lg:flex-row items-center justify-between lg:w-2/3 p-2">
-            <div className="flex-1">
               <ImageUpload
                 editMode={editMode}
                 fileUpload={fileUpload}
@@ -140,8 +137,6 @@ function DetailedRecipe({
                 imgUrl={stateObject.image.value === '' ? undefined : stateObject.image.value}
                 setImgUrl={stateObject.image.setter}
               />
-            </div>
-            <div className="flex-grow flex flex-wrap flex-col">
               <RecipeTitle
                 editMode={editMode}
                 recipeTitle={stateObject.title.value}
@@ -159,9 +154,6 @@ function DetailedRecipe({
                 newIngredient={newIngredient}
                 setNewIngredient={setNewIngredient}
               />
-            </div>
-          </div>
-          <div className="w-full lg:w-1/3 p-2 mt-4 lg:mt-0 mx-1">
             <RecipeMainCategory
               editMode={editMode}
               selectedMainCategory={stateObject.mainCategory.value}
@@ -173,7 +165,6 @@ function DetailedRecipe({
               setCategory={stateObject.category.setter}
               selectedMainCategory={stateObject.mainCategory.value}
             />
-            <div className="flex flex-nowrap flex-row items-center w-full">
               <Icons
                 editMode={editMode}
                 minutes={stateObject.time.value}
@@ -189,14 +180,11 @@ function DetailedRecipe({
                 difficulty={stateObject.difficulty.value}
                 setDifficulty={stateObject.difficulty.setter}
               />
-            </div>
             <Labels
               editMode={editMode}
               selectedOptions={stateObject.labels.value}
               setSelectedOptions={stateObject.labels.setter}
             />
-          </div>
-        </div>
         {editMode && !editButtonClicked ? (
           <Button
             text="Save"
