@@ -117,22 +117,22 @@ function Footer() {
               Info
             </h6>
             <p className="mb-4">
-              <a
-                href="#top"
+              <Link
+                to="/about"
                 onClick={scrollToTop}
                 className="text-neutral-600 dark:text-neutral-200"
               >
-                <Link to="/about">About Us</Link>
-              </a>
+                About Us
+              </Link>
             </p>
             <p className="mb-4">
-              <a
-                href="#top"
+              <Link
+                to="/register"
                 onClick={scrollToTop}
                 className="text-neutral-600 dark:text-neutral-200"
               >
-                <Link to="/register">Join Now</Link>
-              </a>
+                Join Now
+              </Link>
             </p>
           </div>
           {/* <!-- Useful links section --> */}
@@ -151,13 +151,13 @@ function Footer() {
               </a>
             </p>
             <p className="mb-4">
-              <a
-                href="#top"
+              <Link
+                to="/search"
                 onClick={scrollToTop}
                 className="text-neutral-600 dark:text-neutral-200"
               >
-                <Link to="/search">Browse Our Recipes</Link>
-              </a>
+                Browse Our Recipes
+              </Link>
             </p>
           </div>
           {/* <!-- Contact section --> */}
