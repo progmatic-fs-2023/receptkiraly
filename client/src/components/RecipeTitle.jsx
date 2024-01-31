@@ -9,14 +9,16 @@ function RecipeTitle({ editMode, recipeTitle, setRecipeTitle, addClassName }) {
   return (
     <div>
       {editMode ? (
-          <Tooltips title="Give a name to your recipe!"><input
+        <Tooltips title="Give a name to your recipe!">
+          <input
             id="recipeTitle"
             type="text"
             className={`w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${addClassName}`}
             value={recipeTitle}
             onChange={handleRecipeTitleChange}
             placeholder="Recipe name"
-          /></Tooltips>
+          />
+        </Tooltips>
       ) : (
         <strong className="text-2xl">{recipeTitle}</strong>
       )}

@@ -42,18 +42,19 @@ function RecipeCategory({ editMode, category, setCategory, selectedMainCategory 
   const selectedCategory = options.find((c) => c.value === category);
 
   return (
-    <div className="w-full"><Tooltips title="Choose a category for your recipe">
-      {editMode ? (
-        <Select
-          options={options}
-          value={selectedCategory}
-          onChange={onValueChange}
-          styles={customStyles}
-          placeholder="Select category"
-        />
-      ) : (
-        <div className="hidden">{category}</div>
-      )}
+    <div className="w-full">
+      <Tooltips title="Choose a category for your recipe">
+        {editMode ? (
+          <Select
+            options={options}
+            value={selectedCategory}
+            onChange={onValueChange}
+            styles={customStyles}
+            placeholder="Select category"
+          />
+        ) : (
+          <div className="hidden">{category}</div>
+        )}
       </Tooltips>
     </div>
   );

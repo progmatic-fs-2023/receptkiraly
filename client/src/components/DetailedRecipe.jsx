@@ -132,7 +132,7 @@ function DetailedRecipe({
       <form encType="multipart/form-data" className="flex flex-col flex-nowrap items-center">
         <div className="lg:w-1/2 flex flex-col justify-around">
           <div>
-          <RecipeMainCategory
+            <RecipeMainCategory
               editMode={editMode}
               selectedMainCategory={stateObject.mainCategory.value}
               setSelectedMainCategory={stateObject.mainCategory.setter}
