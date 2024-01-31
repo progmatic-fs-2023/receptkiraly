@@ -1,11 +1,24 @@
 import PropTypes from 'prop-types';
+import { useRef, useEffect } from 'react';
 import Select from 'react-select';
 import { meals, desserts, beverages } from './navigation/NavArrays';
 
 function RecipeCategory({ editMode, category, setCategory, selectedMainCategory }) {
   const onValueChange = (selectedOption) => {
-    setCategory(selectedOption.value);
+    if (selectedOption) {
+      setCategory(selectedOption.value);
+    } else {
+      setCategory('');
+    }
   };
+
+  const selectRef = useRef();
+
+  useEffect(() => {
+    if (selectRef.current) {
+      selectRef.current.clearValue();
+    }
+  }, [selectedMainCategory]);
 
   let options = [];
 
@@ -44,6 +57,7 @@ function RecipeCategory({ editMode, category, setCategory, selectedMainCategory 
     <div className="w-full">
       {editMode ? (
         <Select
+            ref={selectRef}
           options={options}
           value={selectedCategory}
           onChange={onValueChange}
