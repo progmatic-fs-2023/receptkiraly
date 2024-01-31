@@ -145,7 +145,7 @@ function Home() {
       </div>
 
       {isModalOpen && (
-        <Modal title="Detailed Recipe" close={closeModal} addClassName="max-w-7xl">
+        <Modal title="Detailed Recipe" close={closeModal}>
           <DetailedRecipe editMode={false} recipeID={selectedRecipe} stateObject={stateObject} />
         </Modal>
       )}

@@ -122,7 +122,7 @@ function Profile() {
         </RecipeGrid>
       </div>
       {creatingNewRecipe ? (
-        <Modal title="Creating new recipe" addClassName="w-4/5" close={closeModal}>
+        <Modal title="Creating new recipe" close={closeModal}>
           <DetailedRecipe
             editMode
             stateObject={stateObject}
