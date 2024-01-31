@@ -56,6 +56,7 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
           onChange={handleSelectChange}
           styles={customStyles}
           value={defaultLabels}
+          placeholder="Select labels"
         />
       ) : (
         <div className="flex">
