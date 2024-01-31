@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useRef, useEffect } from 'react';
 import Select from 'react-select';
 import { meals, desserts, beverages } from './navigation/NavArrays';
+import Tooltips from './Tooltips';
 
 function RecipeCategory({ editMode, category, setCategory, selectedMainCategory }) {
   const onValueChange = (selectedOption) => {
@@ -55,17 +56,20 @@ function RecipeCategory({ editMode, category, setCategory, selectedMainCategory 
 
   return (
     <div className="w-full">
-      {editMode ? (
-        <Select
-            ref={selectRef}
+      <Tooltips title="Choose a category for your recipe">
+        {editMode ? (
+          <Select
+              ref={selectRef}
           options={options}
-          value={selectedCategory}
-          onChange={onValueChange}
-          styles={customStyles}
-        />
-      ) : (
-        <div>{category}</div>
-      )}
+            value={selectedCategory}
+            onChange={onValueChange}
+            styles={customStyles}
+            placeholder="Select category"
+          />
+        ) : (
+          <div className="hidden">{category}</div>
+        )}
+      </Tooltips>
     </div>
   );
 }

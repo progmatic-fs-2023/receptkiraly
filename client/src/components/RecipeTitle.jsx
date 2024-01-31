@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Tooltips from './Tooltips';
 
 function RecipeTitle({ editMode, recipeTitle, setRecipeTitle, addClassName }) {
   const handleRecipeTitleChange = (event) => {
@@ -8,19 +9,18 @@ function RecipeTitle({ editMode, recipeTitle, setRecipeTitle, addClassName }) {
   return (
     <div>
       {editMode ? (
-        <label htmlFor="recipeTitle">
-          Recipe Title
+        <Tooltips title="Give a name to your recipe!">
           <input
             id="recipeTitle"
             type="text"
             className={`w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${addClassName}`}
             value={recipeTitle}
             onChange={handleRecipeTitleChange}
-            placeholder="Give a name to your recipe!"
+            placeholder="Recipe name"
           />
-        </label>
+        </Tooltips>
       ) : (
-        <p>{recipeTitle}</p>
+        <strong className="text-2xl">{recipeTitle}</strong>
       )}
     </div>
   );

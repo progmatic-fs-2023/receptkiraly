@@ -9,7 +9,7 @@ function Button({ text, type, addClassName, onClick, disabled, addImage }) {
       onClick={onClick}
       disabled={disabled}
     >
-      <div className="flex flex-nowrap flex-row justify-between items-center">
+      <div className="flex flex-nowrap flex-row justify-center items-center">
         {text}
         {addImage && <img src={addImage} alt={`${text} icon`} className="w-5 mx-1 py-0.5" />}
       </div>
@@ -18,7 +18,7 @@ function Button({ text, type, addClassName, onClick, disabled, addImage }) {
 }
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   addClassName: PropTypes.string,
   onClick: PropTypes.func,
@@ -27,6 +27,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  text: '',
   type: 'button',
   addClassName: '',
   onClick: () => {},

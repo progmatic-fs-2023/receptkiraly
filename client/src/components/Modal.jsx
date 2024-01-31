@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-export default function Modal({ children, title, close, addClassName }) {
+export default function Modal({ children, title, close }) {
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none top-0">
-        <div className={`relative my-6 mx-auto max-h-screen overflow-y-auto ${addClassName}`}>
+        <div className="relative my-6 mx-auto max-h-screen overflow-y-auto w-full lg:w-4/5">
           {/* content */}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/* header */}
@@ -46,8 +46,4 @@ Modal.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   close: PropTypes.func.isRequired,
-  addClassName: PropTypes.string,
-};
-Modal.defaultProps = {
-  addClassName: '',
 };

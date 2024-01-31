@@ -20,7 +20,10 @@ function MethodComp({ editMode, description, setDescription, addClassName }) {
           />
         </label>
       ) : (
-        <p className="flex mx-auto text-black">{description}</p>
+        <div className="flex flex-col my-14">
+          <div className="font-bold border-b-2 border-blue-400">Description</div>
+          <div className="px-6">{description}</div>
+        </div>
       )}
     </div>
   );
