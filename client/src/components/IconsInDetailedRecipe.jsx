@@ -11,7 +11,7 @@ function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName 
 
   return (
     <div className="flex flex-nowrap flex-row mt-4">
-      <div className="flex flex-nowrap flex-row items-center my-3">
+      <div className="flex flex-nowrap flex-row items-center">
         <img
           src="/images/time-icon.svg"
           className="h-[31px] w-[31px] grow-0 h-auto w-auto"
@@ -33,7 +33,7 @@ function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName 
         )}
       </div>
 
-      <div className="flex flex-nowrap flex-row items-center my-3">
+      <div className="flex flex-nowrap flex-row items-center">
         <img
           src="/images/serves-icon.svg"
           className="h-[31px] w-[31px] grow-0 h-auto w-auto"

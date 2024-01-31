@@ -50,7 +50,7 @@ function RecipeCategory({ editMode, category, setCategory, selectedMainCategory 
           styles={customStyles}
         />
       ) : (
-        <div>{category}</div>
+        <div className="hidden">{category}</div>
       )}
     </div>
   );

@@ -21,7 +21,7 @@ function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl })
   };
 
   return (
-    <div className="flex items-center justify-center m-5 lg:mx-3">
+    <div className="flex items-center justify-center">
       <div className="flex flex-col items-center lg:items-start">
         <ResponsiveImage imgUrl={imgUrl} />
         {editMode && (

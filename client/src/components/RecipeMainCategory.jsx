@@ -52,7 +52,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
           </label>
         </div>
       ) : (
-        <div>{selectedMainCategory}</div>
+        <div className="hidden">{selectedMainCategory}</div>
       )}
     </div>
   );

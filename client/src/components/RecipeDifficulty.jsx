@@ -36,7 +36,7 @@ function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
   const selectedDifficulty = difficulties.find((c) => c.value === difficulty);
 
   return (
-    <div className="w-28 mt-4 mx-2">
+    <div className="mt-4">
       {editMode ? (
         <Select
           options={difficulties}
@@ -45,7 +45,7 @@ function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
           styles={customStyles}
         />
       ) : (
-        <div>{difficulty}</div>
+        <div className="flex flex-nowrap flex-row text-[12px] leading-[18px] h5 uppercase whitespace-nowrap"><img src="/images/difficulty-icon.svg" className="h-[31px] w-[31px] grow-0 h-auto w-auto mr-1" alt="Difficulty" />{selectedDifficulty.label}</div>
       )}
     </div>
   );
