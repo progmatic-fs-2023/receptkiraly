@@ -27,11 +27,10 @@ function DetailedRecipe({
 
   const emptyFields =
     stateObject.title.value === '' ||
-    stateObject.image.value === undefined ||
-    stateObject.description.value === undefined ||
-    stateObject.mainCategory.value === undefined ||
-    stateObject.category.value === undefined ||
-    stateObject.difficulty.value === undefined ||
+    stateObject.image.value === '' ||
+    stateObject.description.value === '' ||
+    stateObject.mainCategory.value === '' ||
+    stateObject.category.value === '' ||
     stateObject.labels.value.length === 0 ||
     stateObject.ingredients.value.length === 0 ||
     stateObject.time.value === 0 ||
