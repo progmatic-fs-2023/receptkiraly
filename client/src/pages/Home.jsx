@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Add } from '@mui/icons-material';
 import { API_URL } from '../constants';
 
@@ -9,13 +9,15 @@ import RecipeKingCard from '../components/RecipeKingCard';
 import Modal from '../components/Modal';
 import DetailedRecipe from '../components/DetailedRecipe';
 import useRecipeCardModal from '../hooks/useRecipeCardModal';
+import LoginContext from '../contexts/LoginContext';
+import Tooltips from '../components/Tooltips';
 
 function Home() {
   const [latestRecipes, setLatestRecipes] = useState([]);
   const [randomRecipesByCategory, setRandomRecipesByCategory] = useState([]);
   const countRecipesShown = 6;
-
   const { stateObject, closeModal, openModal, isModalOpen, selectedRecipe } = useRecipeCardModal();
+  const isLoggedIn = useContext(LoginContext);
 
   useEffect(() => {
     fetch(`${API_URL}/recipes/latest/${countRecipesShown}`)
@@ -62,14 +64,30 @@ function Home() {
                   <div className="flex w-full max-w-md bg-gray-100 p-4 rounded-lg shadow mb-4">
                     <div className="flex-1">
                       <div className="flex items-center">
-                        <div className="mx-auto scale-150 hover:text-orange-400">
-                          <button
-                            aria-label="Click this to add a new recipe"
-                            type="button"
-                            onClick={() => setISCreateRecipe(true)}
-                          >
-                            <Add />
-                          </button>
+                        <div
+                          className={`mx-auto scale-150 ${
+                            isLoggedIn ? 'hover:text-orange-400' : null
+                          }`}
+                        >
+                          {isLoggedIn ? (
+                            <button
+                              aria-label="Click this to add a new recipe"
+                              type="button"
+                              onClick={() => setISCreateRecipe(true)}
+                            >
+                              <Add />
+                            </button>
+                          ) : (
+                            <Tooltips title="Sign in to post new recipe!">
+                              <button
+                                aria-label="Click this to add a new recipe"
+                                type="button"
+                                className="text-gray-400"
+                              >
+                                <Add />
+                              </button>
+                            </Tooltips>
+                          )}
                         </div>
                       </div>
                     </div>
