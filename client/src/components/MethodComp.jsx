@@ -22,7 +22,7 @@ function MethodComp({ editMode, description, setDescription, addClassName }) {
       ) : (
         <div className="flex flex-col my-14">
           <div className="font-bold border-b-2 border-blue-400">Description</div>
-          <div className="px-6">{description}</div>
+          <div className="px-6 break-words">{description}</div>
         </div>
       )}
     </div>
