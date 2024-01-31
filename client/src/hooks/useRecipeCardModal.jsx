@@ -20,6 +20,7 @@ const useRecipeCardModal = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [editUsersRecipe, setEditUsersRecipe] = useState(false);
   const [creatingNewRecipe, setCreatingNewRecipe] = useState(false);
+  const [username, setUsername] = useState('');
 
   // Put every Detailed Recipe state into one object
   const stateObject = {
@@ -63,6 +64,10 @@ const useRecipeCardModal = () => {
       value: ingredients,
       setter: setIngredients,
     },
+    username: {
+      value: username,
+      setter: setUsername,
+    },
   };
 
   // Modal functions
@@ -85,6 +90,7 @@ const useRecipeCardModal = () => {
       setSelectedMainCategory(recipe.main_category_name);
       setSelectedOptions(recipe.label_name);
       setIngredients(recipe.ingredient_name);
+      setUsername(recipe.username);
     } catch (error) {
       setErrorMessage(error);
       throw new Error(`Latest recipe cannot be fetched: ${errorMessage}`);
@@ -105,6 +111,7 @@ const useRecipeCardModal = () => {
     setSelectedOptions([]);
     setIngredients([]);
     setEditUsersRecipe(false);
+    setUsername('');
   };
 
   const editButtonClicked = () => {
@@ -123,6 +130,7 @@ const useRecipeCardModal = () => {
     editButtonClicked,
     creatingNewRecipe,
     setCreatingNewRecipe,
+    username,
   };
 };
 
