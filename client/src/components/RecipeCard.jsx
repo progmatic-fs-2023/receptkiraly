@@ -36,24 +36,29 @@ function RecipeCard({
 
   const deleteRecipe = async (event) => {
     event.stopPropagation();
-    const recipeID = id;
-    try {
-      const response = await fetch(`${API_URL}/recipes/deleterecipe`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ recipeID }),
-      });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      } else {
-        refreshRecipes();
+    const recipeID = id;
+    const userResponse = window.confirm('Are you sure to delete this recipe?'); // eslint-disable-line no-alert
+
+    if (userResponse) {
+      try {
+        const response = await fetch(`${API_URL}/recipes/deleterecipe`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ recipeID }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        } else {
+          refreshRecipes();
+        }
+        // console.log('Recipe deleted successfully');
+      } catch (error) {
+        // console.error('Error deleting recipe:', error);
       }
-      // console.log('Recipe deleted successfully');
-    } catch (error) {
-      // console.error('Error deleting recipe:', error);
     }
   };
 
