@@ -59,7 +59,7 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
           value={defaultLabels}
         />
       ) : (
-        <div className="flex">
+        <div className="flex flex-wrap flex-row justify-start items-center">
           {selectedOptions.map((label, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Badge key={`label-${index}`} label={label} />
