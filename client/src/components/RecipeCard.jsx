@@ -68,7 +68,7 @@ function RecipeCard({
       >
         {actions ? (
           <div className="justify-between flex">
-            <div className="relative  ">
+            <div className="relative z-10">
               <div
                 aria-label="Edit"
                 role="button"
@@ -80,7 +80,7 @@ function RecipeCard({
                 <Edit />
               </div>
             </div>
-            <div className="relative">
+            <div className="relative z-10">
               <div
                 aria-label="Delete"
                 role="button"
