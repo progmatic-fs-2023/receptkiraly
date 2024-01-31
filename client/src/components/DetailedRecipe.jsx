@@ -131,60 +131,8 @@ function DetailedRecipe({
     <div>
       <form encType="multipart/form-data" className="flex flex-col flex-nowrap items-center">
         <div className="lg:w-1/2 flex flex-col justify-around">
-        <div className="flex flex-nowrap flex-row justify-between items-end">
-        <RecipeTitle
-              editMode={editMode}
-              recipeTitle={stateObject.title.value}
-              setRecipeTitle={stateObject.title.setter}
-            />
-          <div className="flex flex-row justify-end items-center">
-            <Icons
-              editMode={editMode}
-              minutes={stateObject.time.value}
-              setMinutes={stateObject.time.setter}
-              difficulty={stateObject.difficulty.value}
-              setDifficulty={stateObject.difficulty.setter}
-              serves={stateObject.serves.value}
-              setServes={stateObject.serves.setter}
-              addClassName="text-right w-28"
-            />
-            <RecipeDifficulty
-              editMode={editMode}
-              difficulty={stateObject.difficulty.value}
-              setDifficulty={stateObject.difficulty.setter}
-            />
-          </div>
-          </div>
-          <div className="my-3">
-            <ImageUpload
-              editMode={editMode}
-              fileUpload={fileUpload}
-              setFileUpload={setFileUpload}
-              imgUrl={stateObject.image.value === '' ? undefined : stateObject.image.value}
-              setImgUrl={stateObject.image.setter}
-            />
-            </div>
-            <div className="flex justify-center items-center">
-            <Labels
-              editMode={editMode}
-              selectedOptions={stateObject.labels.value}
-              setSelectedOptions={stateObject.labels.setter}
-            />
-            </div>
-            <Method
-              editMode={editMode}
-              description={stateObject.description.value}
-              setDescription={stateObject.description.setter}
-            />
           <div>
-            <Ingredients
-              editMode={editMode}
-              ingredients={stateObject.ingredients.value}
-              setIngredients={stateObject.ingredients.setter}
-              newIngredient={newIngredient}
-              setNewIngredient={setNewIngredient}
-            />
-            <RecipeMainCategory
+          <RecipeMainCategory
               editMode={editMode}
               selectedMainCategory={stateObject.mainCategory.value}
               setSelectedMainCategory={stateObject.mainCategory.setter}
@@ -195,19 +143,73 @@ function DetailedRecipe({
               setCategory={stateObject.category.setter}
               selectedMainCategory={stateObject.mainCategory.value}
             />
-
+          </div>
+          <div className="flex flex-nowrap flex-row justify-between items-end">
+            <RecipeTitle
+              editMode={editMode}
+              recipeTitle={stateObject.title.value}
+              setRecipeTitle={stateObject.title.setter}
+            />
+            <div className="flex flex-row justify-end items-center">
+              <Icons
+                editMode={editMode}
+                minutes={stateObject.time.value}
+                setMinutes={stateObject.time.setter}
+                difficulty={stateObject.difficulty.value}
+                setDifficulty={stateObject.difficulty.setter}
+                serves={stateObject.serves.value}
+                setServes={stateObject.serves.setter}
+                addClassName="text-right w-28"
+              />
+              <RecipeDifficulty
+                editMode={editMode}
+                difficulty={stateObject.difficulty.value}
+                setDifficulty={stateObject.difficulty.setter}
+              />
+            </div>
+          </div>
+          <div className="my-3">
+            <ImageUpload
+              editMode={editMode}
+              fileUpload={fileUpload}
+              setFileUpload={setFileUpload}
+              imgUrl={stateObject.image.value === '' ? undefined : stateObject.image.value}
+              setImgUrl={stateObject.image.setter}
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <Labels
+              editMode={editMode}
+              selectedOptions={stateObject.labels.value}
+              setSelectedOptions={stateObject.labels.setter}
+            />
+          </div>
+          <Method
+            editMode={editMode}
+            description={stateObject.description.value}
+            setDescription={stateObject.description.setter}
+          />
+          <div>
+            <Ingredients
+              editMode={editMode}
+              ingredients={stateObject.ingredients.value}
+              setIngredients={stateObject.ingredients.setter}
+              newIngredient={newIngredient}
+              setNewIngredient={setNewIngredient}
+            />
           </div>
         </div>
         {editMode && !editButtonClicked ? (
           <Button
-            text="Save"
+            text="Upload Recipe!"
             onClick={uploadRecipe}
-            addClassName={`text-white px-4 py-2 rounded focus:outline-none  ${
+            addClassName={`text-white px-4 py-1 my-2 rounded focus:outline-none  ${
               emptyFields
                 ? 'custom-button-color border custom-button-border custom-button-shadow text-white px-4 py-1 rounded focus:outline-none mx-1 grayscale disabled-button'
                 : 'bg-amber-200'
             } rounded text-lg `}
             disabled={emptyFields}
+            addImage="/images/icons/post.svg"
           />
         ) : null}
 

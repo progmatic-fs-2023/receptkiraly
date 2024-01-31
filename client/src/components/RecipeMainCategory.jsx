@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Tooltips from './Tooltips';
 
 function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCategory }) {
   function onValueChange(event) {
@@ -6,7 +7,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center"><Tooltips title="Select the recipe category">
       {editMode ? (
         <div className="grid w-[45rem] grid-cols-3 gap-2 rounded-xl p-2 m-4">
           <label htmlFor="meals">
@@ -54,6 +55,7 @@ function RecipeMainCategory({ editMode, selectedMainCategory, setSelectedMainCat
       ) : (
         <div className="hidden">{selectedMainCategory}</div>
       )}
+      </Tooltips>
     </div>
   );
 }

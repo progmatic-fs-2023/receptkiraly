@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import Tooltips from './Tooltips';
 
 function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
   const onValueChange = (selectedOption) => {
@@ -36,7 +37,7 @@ function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
   const selectedDifficulty = difficulties.find((c) => c.value === difficulty);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4"><Tooltips title="Difficulty">
       {editMode ? (
         <Select
           options={difficulties}
@@ -47,6 +48,7 @@ function RecipeDifficulty({ editMode, difficulty, setDifficulty }) {
       ) : (
         <div className="flex flex-nowrap flex-row text-[12px] leading-[18px] h5 uppercase whitespace-nowrap"><img src="/images/difficulty-icon.svg" className="h-[31px] w-[31px] grow-0 h-auto w-auto mr-1" alt="Difficulty" />{selectedDifficulty.label}</div>
       )}
+      </Tooltips>
     </div>
   );
 }

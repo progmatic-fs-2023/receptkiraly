@@ -38,7 +38,7 @@ function IngredientsComp({
               onChange={(e) => setNewIngredient(e.target.value)}
               className="w-full shadow-sm appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-            <Button type="button" text="Add" onClick={addIngredient} />
+            <Button type="button" text="Add" addImage="/images/icons/add.svg" onClick={addIngredient} />
           </div>
         </label>
       ) : null}

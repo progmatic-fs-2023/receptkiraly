@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Tooltips from './Tooltips';
 
 function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName }) {
   const handleMinutesChange = (event) => {
@@ -11,7 +12,7 @@ function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName 
 
   return (
     <div className="flex flex-nowrap flex-row mt-4">
-      <div className="flex flex-nowrap flex-row items-center">
+      <Tooltips title="Estimated cooking time (minutes)"><div className="flex flex-nowrap flex-row items-center">
         <img
           src="/images/time-icon.svg"
           className="h-[31px] w-[31px] grow-0 h-auto w-auto"
@@ -28,12 +29,12 @@ function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName 
           />
         ) : (
           <span className="text-[12px] leading-[18px] ml-[8px] mr-[16px] h5 uppercase whitespace-nowrap">
-            {minutes}
+            {minutes} min
           </span>
         )}
-      </div>
+      </div></Tooltips>
 
-      <div className="flex flex-nowrap flex-row items-center">
+      <Tooltips title="Servings"><div className="flex flex-nowrap flex-row items-center">
         <img
           src="/images/serves-icon.svg"
           className="h-[31px] w-[31px] grow-0 h-auto w-auto"
@@ -54,6 +55,7 @@ function Icons({ editMode, minutes, setMinutes, serves, setServes, addClassName 
           </span>
         )}
       </div>
+      </Tooltips>
     </div>
   );
 }
