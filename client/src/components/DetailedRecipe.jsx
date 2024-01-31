@@ -184,6 +184,16 @@ function DetailedRecipe({
               setSelectedOptions={stateObject.labels.setter}
             />
           </div>
+          {!editMode ? (
+            <div>
+              <p className="tracking-widest text-orange-400 text-xs font-medium title-font mt-6">
+                Uploaded by:{' '}
+              </p>
+              <p className="text-lg text-gray-900 font-medium title-font mb-4">
+                {stateObject.username.value}
+              </p>
+            </div>
+          ) : null}
           <Method
             editMode={editMode}
             description={stateObject.description.value}
