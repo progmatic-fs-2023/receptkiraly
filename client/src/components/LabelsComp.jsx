@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { labels } from './navigation/NavArrays';
+import Badge from './Badge';
 
 function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
   const selectOption = labels;
@@ -59,15 +60,10 @@ function LabelsComp({ editMode, selectedOptions, setSelectedOptions }) {
           placeholder="Select labels"
         />
       ) : (
-        <div className="flex">
+        <div className="flex flex-wrap flex-row justify-start items-center">
           {selectedOptions.map((label, index) => (
-            <div
-              // eslint-disable-next-line react/no-array-index-key
-              key={`label-${index}`}
-              className="m-1 p-1 border-solid border-2 border-orange-400 rounded-lg"
-            >
-              {label}
-            </div>
+            // eslint-disable-next-line react/no-array-index-key
+            <Badge key={`label-${index}`} label={label} />
           ))}
         </div>
       )}
