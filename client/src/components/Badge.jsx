@@ -12,7 +12,7 @@ function Badge({ label }) {
       case 'egg-free':
         return 'bg-orange-500 text-orange-50';
       case 'dairy-free':
-        return 'bg-amber-100 text-amber-800';
+        return 'bg-amber-100 text-orange-400';
       case 'gluten-free':
         return 'bg-orange-100 text-orange-800';
       case 'low-carb':
@@ -24,7 +24,7 @@ function Badge({ label }) {
       case 'non-alcoholic':
         return 'bg-teal-100 text-teal-800';
       case 'seafood':
-        return 'bg-aqua-100 text-aqua-800';
+        return 'bg-cyan-200 text-cyan-500';
       default:
         return 'bg-gray-100 text-gray-800';
     }
