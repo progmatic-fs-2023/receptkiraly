@@ -22,9 +22,7 @@ function ImageUpload({ editMode, fileUpload, setFileUpload, imgUrl, setImgUrl })
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div>
         <ResponsiveImage imgUrl={imgUrl} />
-      </div>
       {editMode && (
         <label className="my-2 inline-block text-neutral-700 dark:text-neutral-200" htmlFor="image">
           <input
