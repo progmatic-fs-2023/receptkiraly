@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 function ResponsiveImage({ imgUrl }) {
   return (
     <div className="square-image-wrapper">
-    <img
-      srcSet={imgUrl}
-      loading="lazy"
-      className="square-image"
-      alt=""
-    />
+      <img srcSet={imgUrl} loading="lazy" className="square-image" alt="" />
     </div>
   );
 }
