@@ -62,6 +62,9 @@ function RecipeCard({
     }
   };
 
+  const difficultyString =
+    difficulty === 1 ? 'Easy' : difficulty === 2 ? 'Medium' : difficulty === 3 ? 'Hard' : null; // eslint-disable-line no-nested-ternary
+
   return (
     <div>
       <div
@@ -103,7 +106,7 @@ function RecipeCard({
         <IconContainer>
           {minutes ? <Icon imgUrl="/images/time-icon.svg" text={`${minutes} mins`} /> : null}
           {difficulty ? (
-            <Icon imgUrl="/images/difficulty-icon.svg" text={difficulty.toString()} />
+            <Icon imgUrl="/images/difficulty-icon.svg" text={difficultyString} />
           ) : null}
           {serves ? <Icon imgUrl="/images/serves-icon.svg" text={serves.toString()} /> : null}
         </IconContainer>
