@@ -161,7 +161,7 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
                     >
-                      <option>All</option>
+                      <option value="">All</option>
                       <option value="meals">Meal</option>
                       <option value="desserts">Dessert</option>
                       <option value="beverages">Beverage</option>

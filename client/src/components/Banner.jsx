@@ -73,7 +73,7 @@ function Banner() {
               onChange={(e) => setSelectedType(e.target.value)}
               className="flex-shrink-0 z-10 inline-flex items-center py-2 px-2 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
             >
-              <option>All types</option>
+              <option value="">All types</option>
               <option value="meals">Meals</option>
               <option value="desserts">Desserts</option>
               <option value="beverages">Beverages</option>
