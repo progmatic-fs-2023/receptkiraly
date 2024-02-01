@@ -156,7 +156,6 @@ function SearchFilter({ setRecipesData, setErrorMessage }) {
                   <label htmlFor="mealType" className="block mb-2 text-sm">
                     Type
                     <select
-                      defaultValue={<option value="">All</option>}
                       id="mealType"
                       className="bg-white border-2 border-gray-300 rounded w-full py-2"
                       value={selectedType}
